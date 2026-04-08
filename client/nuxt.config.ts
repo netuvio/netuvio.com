@@ -16,20 +16,26 @@ function stablePrefixLetter(input: string): string {
 }
 
 export default defineNuxtConfig({
+    modules: ["@nuxtjs/i18n"],
+
     compatibilityDate: '2025-07-15',
+
     css: [
         "~/assets/app.scss",
     ],
-    devtools: {
-      enabled: true,
 
-      timeline: {
-        enabled: true
-      }
+    devtools: {
+        enabled: true,
+
+        timeline: {
+            enabled: true
+        }
     },
-    /*devServer: {
-        host: "0.0.0.0",
-    },*/
+
+    devServer: {
+        //host: "0.0.0.0",
+        port: 3810,
+    },
 
     nitro: {
         routeRules: {
@@ -70,5 +76,20 @@ export default defineNuxtConfig({
 
     features: {
         inlineStyles: true,
+    },
+
+    i18n: {
+        defaultLocale: "en",
+
+        differentDomains: isProd,
+        multiDomainLocales: false,
+
+        strategy: isProd ? "no_prefix" : "prefix",
+        detectBrowserLanguage: false,
+
+        locales: [
+            { code: "cs", name: "Čeština", file: "cs-CZ.ts", domain: "https://netuvio.cz" },
+            { code: "en", name: "English", file: "en-US.ts", domain: "https://netuvio.com" },
+        ],
     },
 })

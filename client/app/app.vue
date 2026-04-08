@@ -2,15 +2,15 @@
 import { NuxtPage, Head, Title, Meta, Html, Link } from '#components'
 import { computed, onMounted, ref } from 'vue'
 import { useNuxtApp, useRoute, useCookie, useHead } from '#imports'
-import { NuxtLink, ClientOnly } from '#components';
 import type {WebTheme} from "~/lib/types";
 
 // state
 const route = useRoute();
 const theme = useState<WebTheme>('theme', () => 'light');
+const { t } = useI18n();
 
 // seo base
-const description = "ASP.NET Core + Nuxt template";
+const description = "";
 
 // robots podle prostredi, aby se neindexoval dev/staging
 const isProd = import.meta.env.PROD;
@@ -46,10 +46,9 @@ useHead({
         <!-- zaklad -->
         <Meta charset="utf-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Title>ASP.NET Core + Nuxt</Title>
+        <Title>{{ t("common.comingSoon") }} • Netuvio</Title>
         <Meta name="description" :content="description" />
-        <Meta name="robots" :content="robotsValue" />
-        <Link rel="stylesheet" href="/lib/pure.css" type="text/css" />
+        <Meta name="robots" :content="'noindex, nofollow'/*robotsValue*/" />
 <!--        <Link rel="canonical" :href="canonicalUrl" />-->
 
         <!-- hreflang alternace -->

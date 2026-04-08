@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="app\components\" />
     <Folder Include="app\composables\" />
-    <Folder Include="public\lib\" />
+    <Folder Include="public\fonts\" />
+    <Folder Include="public\icons\" />
   </ItemGroup>
 </Project>
