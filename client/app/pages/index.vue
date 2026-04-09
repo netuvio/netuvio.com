@@ -18,7 +18,7 @@ const { t } = useI18n();
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: #101010;
+    background-color: #11120d;
     z-index: 0;
 }
 
@@ -42,13 +42,57 @@ const { t } = useI18n();
 
     >.logo {
         width: 80vw;
-        max-width: 500px;
+        max-width: 600px;
         aspect-ratio: 1/1;
-        background-color: #50288B;
-        mask-image: url('~/../public/icons/logo.svg');
-        mask-size: contain;
-        mask-repeat: no-repeat;
-        mask-position: center;
+        //background-color: #50288B;
+        //mask-image: url('~/../public/icons/logo.svg');
+        //mask-size: contain;
+        //mask-repeat: no-repeat;
+        //mask-position: center;
+        background-image: url(~/../public/icons/logo_neon.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: drop-shadow(0px 0px 120px rgba(171, 237, 49, 0.4));
+        animation: idle 8s infinite steps(1, end);
+
+        @keyframes idle {
+            0%, 10% {
+                opacity: 1;
+            }
+
+            11%, 12% {
+                opacity: 0.7;
+            }
+
+            13%, 30% {
+                opacity: 1;
+            }
+
+            31%, 32% {
+                opacity: 0.7;
+            }
+
+            33%, 60% {
+                opacity: 1;
+            }
+
+            61%, 62% {
+                opacity: 0.7;
+            }
+
+            63%, 64% {
+                opacity: 1;
+            }
+
+            65%, 66% {
+                opacity: 0.7;
+            }
+
+            67%, 100% {
+                opacity: 1;
+            }
+        }
     }
 
     h1 {
