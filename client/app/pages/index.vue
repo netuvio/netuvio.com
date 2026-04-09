@@ -27,7 +27,7 @@ const { t } = useI18n();
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; // Full viewport height
+    height: 100dvh;
     text-align: center;
     flex-direction: column;
     z-index: 1;
