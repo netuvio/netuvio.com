@@ -40,7 +40,7 @@ const { t } = useI18n();
 </template>
 
 <style module lang="scss">
-@use "~/assets/app" as *;
+@use "~/assets/variables" as *;
 
 .hero {
     min-height: 100vh;

@@ -3,6 +3,7 @@ import { NuxtPage, Head, Title, Meta, Html, Link } from '#components'
 import { computed, onMounted, ref } from 'vue'
 import { useNuxtApp, useRoute, useCookie, useHead } from '#imports'
 import type {WebTheme} from "~/lib/types";
+import Header from "~/components/header/Header.vue";
 
 // state
 const route = useRoute();
@@ -77,6 +78,7 @@ useHead({
 
 
 
+    <Header/>
     <NuxtPage />
 </template>
 

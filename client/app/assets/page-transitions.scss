@@ -1,0 +1,53 @@
+﻿
+// transition
+
+.page-enter-active,
+.page-leave-active { transition: opacity .28s ease, transform .28s ease; }
+.page-enter-from,
+.page-leave-to { opacity: 0; transform: translateY(8px); }
+
+
+
+
+
+
+
+
+.fade-enter-from, .fade-leave-to {
+    opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.2s ease;
+}
+
+.fade-enter-to, .fade-leave-from {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+.mobile-menu-anim-enter-active, .mobile-menu-anim-leave-active {
+    transition: 0.3s ease;
+}
+
+.mobile-menu-anim-enter-from, .mobile-menu-anim-leave-to {
+    //opacity: 0;
+    transform: translateX(100%);
+}
+
+.mobile-menu-anim-enter-to, .mobile-menu-anim-leave-from {
+    transform: translateX(0%);
+    //opacity: 1;
+}
+
+/* respektovani preferenci snizene animace */
+@media (prefers-reduced-motion: reduce) {
+    .collab-popup-fade-enter-active, .collab-popup-fade-leave-active { transition: none; }
+}

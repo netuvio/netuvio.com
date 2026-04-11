@@ -13,7 +13,7 @@ const { t } = useI18n();
 </template>
 
 <style module lang="scss">
-@use "../assets/app" as *;
+@use "~/assets/variables" as *;
 
 .gradientBackground {
     position: absolute;
