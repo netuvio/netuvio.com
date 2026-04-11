@@ -47,7 +47,7 @@ const { t } = useI18n();
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 60px;
+    padding-top: 0px;
 
     >.inner {
         position: relative;
