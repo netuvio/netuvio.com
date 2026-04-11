@@ -28,6 +28,8 @@ jobs:
           #secrets: |
           #  PROP=VALUE
           #  PROP2=${{ secrets.SOMESECRET }}
+          build-args: |
+            DEPLOY_ENVIRONMENT=beta
           tags: |
             registry.emsio.cz/${{ secrets.DEPLOY_REGISTRY_USER }}/${{ secrets.BETA_PROJECT_UUID }}:latest
 

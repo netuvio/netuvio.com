@@ -1,6 +1,6 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 import crypto  from 'node:crypto'
 import path from "node:path";
+import { csDomain, enDomain } from "./shared/vars";
 
 const target = 'http://localhost:5283'
 const isProd = process.env.NODE_ENV === 'production';
@@ -88,8 +88,8 @@ export default defineNuxtConfig({
         detectBrowserLanguage: false,
 
         locales: [
-            { code: "cs", name: "Čeština", file: "cs-CZ.ts", domain: "https://netuvio.cz" },
-            { code: "en", name: "English", file: "en-US.ts", domain: "https://netuvio.com" },
+            { code: "cs", name: "Čeština", file: "cs-CZ.ts", domain: csDomain },
+            { code: "en", name: "English", file: "en-US.ts", domain: enDomain },
         ],
     },
 })
