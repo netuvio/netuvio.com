@@ -19,6 +19,7 @@ select {
     border-radius: 10000px;
     padding: 6px 12px;
     font-weight: 700;
+    z-index: 1;
 }
 
 </style>

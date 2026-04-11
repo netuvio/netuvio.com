@@ -48,6 +48,7 @@ header {
             background-color: var(--color-text-primary);
             width: 200px;
             height: 100%;
+            z-index: 1;
         }
         
         // Has to be absolute to be in the center and not spaced by other elements

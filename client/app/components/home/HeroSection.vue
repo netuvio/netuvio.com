@@ -6,6 +6,7 @@ const { t } = useI18n();
 
 <template>
     <main :class="$style.hero">
+        <div :class="$style.stars"></div>
         <div :class="$style.inner">
             <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
             <div :class="$style.inner">
@@ -47,7 +48,7 @@ const { t } = useI18n();
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 0px;
+    padding-top: 0;
 
     >.inner {
         position: relative;
@@ -117,6 +118,15 @@ const { t } = useI18n();
                 }
             }
         }
+    }
+    
+    .stars {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image: url("/images/starry-sky.png");
+        background-size: 25%;
+        opacity: 0.5;
     }
 }
 
