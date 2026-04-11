@@ -112,8 +112,8 @@ const { t } = useI18n();
 
                 .hexagon {
                     position: absolute;
-                    right: -8%;
-                    bottom: 12%;
+                    left: 78%;
+                    top: 57%;
                 }
             }
         }

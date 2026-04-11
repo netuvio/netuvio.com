@@ -17,9 +17,9 @@ const { t } = useI18n();
 
 .gradientBackground {
     position: absolute;
-    top: 50vh;
+    top: 600px;
     width: 100vw;
-    height: 150vh;
+    height: 150%;
     pointer-events: none;
     background: radial-gradient(
         241.39% 100% at 50% 100%,
