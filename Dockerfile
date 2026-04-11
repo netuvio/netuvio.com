@@ -5,10 +5,16 @@ ARG APP_UID=1000
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
 WORKDIR /app
 
+ARG DEPLOY_ENVIRONMENT
+ENV DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT
+
 # Stage to install Node.js
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS with-node
 RUN apt-get update && apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_24.x | bash && apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_25.x | bash && apt-get install -y nodejs
+
+ARG DEPLOY_ENVIRONMENT
+ENV DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT
 
 # Stage to build the backend
 FROM with-node AS build
@@ -39,7 +45,7 @@ COPY --from=publish /app/publish .
 # Switch to root to install packages
 USER root
 RUN apt-get update && apt-get install -y curl nginx
-RUN curl -sL https://deb.nodesource.com/setup_22.x | bash && apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_25.x | bash && apt-get install -y nodejs
 
 # Copy frontend files and fix permissions
 COPY ["client/", "/app/client/"]
