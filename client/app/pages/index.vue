@@ -1,134 +1,31 @@
 <script setup lang="ts">
-import Button from "~/components/Button.vue";
+
+import HeroSection from "~/components/home/HeroSection.vue";
 
 const { t } = useI18n();
 </script>
 
 <template>
-    <main :class="$style.hero">
-        <div :class="$style.inner">
-            <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
-            <div :class="$style.inner">
-                <div>
-                    <h1>
-                        <span>Modern</span> apps, <br/>
-                        <span>powerful</span> hosting, <br/>
-                        <span>zero</span> hassle
-                    </h1>
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo.</h2>
-                    <Button size="xl" variant="primary">
-                        Learn More
-                    </Button>
-                </div>
-                <div :class="$style.glass">
-                    <img 
-                        src="~/../public/images/glass-triangle-1.png" 
-                        alt="" 
-                        draggable="false" 
-                        :class="$style.triangle"
-                    />
-                    <img 
-                        src="~/../public/images/glass-hexagon-1.png" 
-                        alt="" 
-                        draggable="false" 
-                        :class="$style.hexagon"
-                    />
-                </div>
-            </div>
-        </div>
-    </main>
+    <div>
+        <HeroSection/>
+        <div :class="$style.gradientBackground"></div>
+    </div>
 </template>
 
 <style module lang="scss">
 @use "../assets/app" as *;
 
-.hero {
-    background-color: var(--color-background-primary);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    >.inner {
-        position: relative;
-        
-        >img {
-            //position: absolute;
-            //inset: 0;
-            user-select: none;
-            min-width: 1088px;
-        }
-        
-        >.inner {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            
-            >div {
-                width: min(100%, 100vw);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-    
-                h1 {
-                    color: var(--color-text-primary);
-                    font-size: 80px;
-                    text-align: center;
-    
-                    span {
-                        color: var(--color-primary);
-                    }
-                }
-    
-                h2 {
-                    text-align: center;
-                    color: var(--color-lime-200);
-                    font-weight: 400;
-                    margin-top: 8px;
-                }
-    
-                button {
-                    margin-top: 40px;
-                    box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
-                }
-            }
-            
-            .glass {
-                position: absolute;
-                inset: 0;
-                
-                .triangle {
-                    position: absolute;
-                    top: 10%;
-                    left: 5%;
-                }
-                
-                .hexagon {
-                    position: absolute;
-                    right: -8%;
-                    bottom: 12%;
-                }
-            }
-        }
-    }
-}
-
-// Laptops Responsive
-@media screen and (max-width: $laptopBreakpoint) {
-
-}
-
-// tablet
-@media screen and (max-width: $tabletBreakpoint) {
-
-}
-
-// mobile
-@media screen and (max-width: $mobileBreakpoint) {
-
+.gradientBackground {
+    position: absolute;
+    top: 50vh;
+    width: 100vw;
+    height: 150vh;
+    pointer-events: none;
+    background: radial-gradient(
+        241.39% 100% at 50% 100%,
+        #FFF 60%, 
+        var(--color-primary) 65%, 
+        black 80%, 
+        rgba(16, 17, 12, 0.00) 100%);
 }
 </style>
