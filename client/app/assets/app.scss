@@ -1,21 +1,56 @@
+@use "./fonts";
+
 $mobileBreakpoint: 600px;
 $tabletBreakpoint: 960px;
 $laptopBreakpoint: 1264px;
 $desktopBreakpoint: 1800px;
 
+:root {
+    // Palettes
+    --color-lime-50: hsl(0 0% 100%);
+    --color-lime-100: hsl(82 85% 89%);
+    --color-lime-200: hsl(81 84% 78%);
+    --color-lime-300: hsl(81 84% 67%);
+    --color-lime-400: hsl(81 84% 56%);
+    --color-lime-500: hsl(81 65% 43%);
+    --color-lime-600: hsl(81 62% 30%);
+    --color-lime-700: hsl(82 58% 17%);
+    --color-lime-800: hsl(80 16% 4%);
 
-:root[data-theme="light"] {
+    --color-carbon-50: hsl(60 1% 86%);
+    --color-carbon-100: hsl(60 2% 68%);
+    --color-carbon-200: hsl(75 2% 51%);
+    --color-carbon-300: hsl(77 5% 30%);
+    --color-carbon-400: hsl(75 15% 10%);
+    --color-carbon-500: hsl(69 16% 8%);
+    --color-carbon-600: hsl(70 17% 7%);
+    --color-carbon-700: hsl(72 16% 6%);
+    --color-carbon-800: hsl(75 18% 4%);
 
+    
+    --color-primary: var(--color-lime-400);
+    
+    --color-background-primary: var(--color-carbon-800);
+    
+    --color-text-primary: white;
+    --color-text-secondary: black;
 }
 
-:root[data-theme="dark"] {
+//:root[data-theme="light"] {
+//
+//}
+//
+//:root[data-theme="dark"] {
+//
+//}
 
+body {
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
 }
 
-
-@font-face {
-    font-family: "gabarito";
-    src: url("../../public/fonts/gabarito.ttf");
+h1 {
+    line-height: normal;
 }
 
 
@@ -64,7 +99,6 @@ input, button, textarea, select {
 /* 8. Avoid text overflows */
 p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
-    font-family: "gabarito", sans-serif;
 }
 /* 9. Improve line wrapping */
 p {
@@ -175,10 +209,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     h1 { font-family: "leaguespartan", "Arial Black", sans-serif; font-size: 3vw; color: var(--text-color); }
-    .desc { font-family: "gabarito", sans-serif; font-size: 16px; margin: 0; color: var(--text-color-lighter); }
+    .desc { font-size: 16px; margin: 0; color: var(--text-color-lighter); }
 
     .btn {
-        font-family: "gabarito", sans-serif;
         font-size: 16px;
         margin: 0 auto;
         margin-top: 32px;

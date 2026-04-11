@@ -1,107 +1,121 @@
 <script setup lang="ts">
+import Button from "~/components/Button.vue";
+
 const { t } = useI18n();
 </script>
 
 <template>
-    <div :class="$style.wp"></div>
-
-    <div :class="$style.centerdiv">
-        <div :class="$style.logo" />
-<!--        <h1>{{ t("common.comingSoon") }}</h1>-->
-    </div>
+    <main :class="$style.hero">
+        <div :class="$style.inner">
+            <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
+            <div :class="$style.inner">
+                <div>
+                    <h1>
+                        <span>Modern</span> apps, <br/>
+                        <span>powerful</span> hosting, <br/>
+                        <span>zero</span> hassle
+                    </h1>
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo.</h2>
+                    <Button size="xl" variant="primary">
+                        Learn More
+                    </Button>
+                </div>
+                <div :class="$style.glass">
+                    <img 
+                        src="~/../public/images/glass-triangle-1.png" 
+                        alt="" 
+                        draggable="false" 
+                        :class="$style.triangle"
+                    />
+                    <img 
+                        src="~/../public/images/glass-hexagon-1.png" 
+                        alt="" 
+                        draggable="false" 
+                        :class="$style.hexagon"
+                    />
+                </div>
+            </div>
+        </div>
+    </main>
 </template>
 
 <style module lang="scss">
 @use "../assets/app" as *;
 
-.wp {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: #11120d;
-    z-index: 0;
-}
-
-.centerdiv {
-    position: relative;
+.hero {
+    background-color: var(--color-background-primary);
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100dvh;
-    text-align: center;
     flex-direction: column;
-    z-index: 1;
-
-    h1 {
-        font-size: 64px;
-    }
-
-    p {
-        font-size: 24px;
-    }
-
-    >.logo {
-        width: 80vw;
-        max-width: 600px;
-        aspect-ratio: 1/1;
-        //background-color: #50288B;
-        //mask-image: url('~/../public/icons/logo.svg');
-        //mask-size: contain;
-        //mask-repeat: no-repeat;
-        //mask-position: center;
-        background-image: url(~/../public/icons/logo_neon.svg);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        filter: drop-shadow(0px 0px 120px rgba(171, 237, 49, 0.4));
-        animation: idle 8s infinite steps(1, end);
-
-        @keyframes idle {
-            0%, 10% {
-                opacity: 1;
+    align-items: center;
+    
+    >.inner {
+        position: relative;
+        
+        >img {
+            //position: absolute;
+            //inset: 0;
+            user-select: none;
+            min-width: 1088px;
+        }
+        
+        >.inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            >div {
+                width: min(100%, 100vw);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+    
+                h1 {
+                    color: var(--color-text-primary);
+                    font-size: 80px;
+                    text-align: center;
+    
+                    span {
+                        color: var(--color-primary);
+                    }
+                }
+    
+                h2 {
+                    text-align: center;
+                    color: var(--color-lime-200);
+                    font-weight: 400;
+                    margin-top: 8px;
+                }
+    
+                button {
+                    margin-top: 40px;
+                    box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
+                }
             }
-
-            11%, 12% {
-                opacity: 0.7;
-            }
-
-            13%, 30% {
-                opacity: 1;
-            }
-
-            31%, 32% {
-                opacity: 0.7;
-            }
-
-            33%, 60% {
-                opacity: 1;
-            }
-
-            61%, 62% {
-                opacity: 0.7;
-            }
-
-            63%, 64% {
-                opacity: 1;
-            }
-
-            65%, 66% {
-                opacity: 0.7;
-            }
-
-            67%, 100% {
-                opacity: 1;
+            
+            .glass {
+                position: absolute;
+                inset: 0;
+                
+                .triangle {
+                    position: absolute;
+                    top: 10%;
+                    left: 5%;
+                }
+                
+                .hexagon {
+                    position: absolute;
+                    right: -8%;
+                    bottom: 12%;
+                }
             }
         }
     }
-
-    h1 {
-        color: #50288B;
-        text-transform: lowercase;
-    }
 }
-
-
 
 // Laptops Responsive
 @media screen and (max-width: $laptopBreakpoint) {
