@@ -44,7 +44,7 @@ const { t } = useI18n();
 @use "~/assets/variables" as *;
 
 .hero {
-    min-height: 100vh;
+    min-height: calc(100vh + 200px);
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -16,6 +16,26 @@ body {
     color: var(--color-text-secondary);
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 23.03px;
+    transition-duration: 0.3s;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border:0;
+    box-shadow: none;
+    transition-duration: 0.3s;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-carbon-400);
+    border-radius: 16.67px;
+    border: 0;
+    transition-duration: 0.3s;
+}
+
 @layer base {
     h1 {
         line-height: normal;

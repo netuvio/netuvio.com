@@ -5,5 +5,9 @@ export default defineI18nLocale(async (locale) => {
         common: {
             comingSoon: "Již brzy"
         },
+
+        home: {
+            title: "Domů"
+        }
     } satisfies MessageSchema
 })
