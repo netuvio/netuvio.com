@@ -1,5 +1,6 @@
 ﻿<script setup lang="ts">
 import Button from "~/components/Button.vue";
+import GlassShapes from "~/components/home/GlassShapes.vue";
 
 const { t } = useI18n();
 </script>
@@ -9,20 +10,7 @@ const { t } = useI18n();
         <div :class="$style.stars"></div>
         <div :class="$style.inner">
             <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
-            <div :class="$style.glass">
-                <img
-                    src="~/../public/images/glass-triangle-1.png"
-                    alt=""
-                    draggable="false"
-                    :class="$style.triangle"
-                />
-                <img
-                    src="~/../public/images/glass-hexagon-1.png"
-                    alt=""
-                    draggable="false"
-                    :class="$style.hexagon"
-                />
-            </div>
+            <GlassShapes />
             <div :class="$style.inner">
                 <div>
                     <h1>
@@ -100,24 +88,6 @@ const { t } = useI18n();
                     position: relative;
                     z-index: 1;
                 }
-            }
-        }
-        
-        .glass {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-
-            .triangle {
-                position: absolute;
-                top: 10%;
-                left: 5%;
-            }
-
-            .hexagon {
-                position: absolute;
-                left: 78%;
-                top: 57%;
             }
         }
     }
