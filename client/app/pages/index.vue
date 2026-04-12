@@ -12,8 +12,6 @@ const { t } = useI18n();
 
     <div>
         <HeroSection/>
-<!--        <div :class="$style.gradientBackground"></div>-->
-
         <section :class="$style.section1">
             <div :class="$style.gradient"></div>
         </section>
@@ -24,21 +22,25 @@ const { t } = useI18n();
 @use "~/assets/variables" as *;
 
 .section1 {
+    $gradientHeight: 800px;
+    
     width: 100%;
     min-height: 400px;
     background-color: white;
     position: relative;
-    $gradientHeight: 800px;
+    overflow-x: clip;
 
     .gradient {
         top: calc($gradientHeight / -2);
         position: absolute;
-        width: 100%;
+        width: max(1000px, 100%);
+        left: 50%;
+        transform: translateX(-50%);
         background: radial-gradient(
             150% 100% at 50% 100%,
-            #FFF 60%,
-            var(--color-primary) 65%,
-            black 80%,
+            #FFF 50%,
+            var(--color-primary) 55%,
+            black 70%,
             rgba(16, 17, 12, 0.00) 100%
         );
         height: $gradientHeight;

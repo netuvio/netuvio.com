@@ -9,31 +9,31 @@ const { t } = useI18n();
         <div :class="$style.stars"></div>
         <div :class="$style.inner">
             <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
+            <div :class="$style.glass">
+                <img
+                    src="~/../public/images/glass-triangle-1.png"
+                    alt=""
+                    draggable="false"
+                    :class="$style.triangle"
+                />
+                <img
+                    src="~/../public/images/glass-hexagon-1.png"
+                    alt=""
+                    draggable="false"
+                    :class="$style.hexagon"
+                />
+            </div>
             <div :class="$style.inner">
                 <div>
                     <h1>
-                        <span>Modern</span> apps, <br/>
-                        <span>powerful</span> hosting, <br/>
-                        <span>zero</span> hassle
+                        <span>Modern</span>&nbsp;apps, <br/>
+                        <span>powerful</span>&nbsp;hosting, <br/>
+                        <span>zero</span>&nbsp;hassle
                     </h1>
                     <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo.</h2>
                     <Button size="xl" variant="primary">
                         Learn More
                     </Button>
-                </div>
-                <div :class="$style.glass">
-                    <img
-                        src="~/../public/images/glass-triangle-1.png"
-                        alt=""
-                        draggable="false"
-                        :class="$style.triangle"
-                    />
-                    <img
-                        src="~/../public/images/glass-hexagon-1.png"
-                        alt=""
-                        draggable="false"
-                        :class="$style.hexagon"
-                    />
                 </div>
             </div>
         </div>
@@ -43,8 +43,11 @@ const { t } = useI18n();
 <style module lang="scss">
 @use "~/assets/variables" as *;
 
+* {
+    overflow-x: clip;
+}
+
 .hero {
-    min-height: calc(100vh + 200px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,10 +57,9 @@ const { t } = useI18n();
         position: relative;
 
         >img {
-            //position: absolute;
-            //inset: 0;
             user-select: none;
             min-width: 1088px;
+            width: 1088px;
         }
 
         >.inner {
@@ -74,6 +76,7 @@ const { t } = useI18n();
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                padding: 0 12px;
 
                 h1 {
                     color: var(--color-text-primary);
@@ -89,7 +92,9 @@ const { t } = useI18n();
                     text-align: center;
                     color: var(--color-lime-200);
                     font-weight: 400;
-                    margin-top: 8px;
+                    //font-size: clamp(16px, 3vw, 24px);
+                    margin-top: 20px;
+                    max-width: 700px;
                 }
 
                 button {
@@ -99,23 +104,24 @@ const { t } = useI18n();
                     z-index: 1;
                 }
             }
+        }
+        
+        .glass {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow-x: hidden;
 
-            .glass {
+            .triangle {
                 position: absolute;
-                inset: 0;
-                pointer-events: none;
+                top: 10%;
+                left: 5%;
+            }
 
-                .triangle {
-                    position: absolute;
-                    top: 10%;
-                    left: 5%;
-                }
-
-                .hexagon {
-                    position: absolute;
-                    left: 78%;
-                    top: 57%;
-                }
+            .hexagon {
+                position: absolute;
+                left: 78%;
+                top: 57%;
             }
         }
     }
@@ -132,16 +138,134 @@ const { t } = useI18n();
 
 // Laptops Responsive
 @media screen and (max-width: $laptopBreakpoint) {
+    .hero {
+        padding-top: 24px;
+        
+        > .inner {
+            > img {
+                min-width: 1000px;
+                width: 1000px;
+            }
+            
+            >.inner > div {
+                h1 {
+                    font-size: 70px;
+                }
+                
+                h2 {
+                    font-size: 20px;
+                    margin-top: 12px;
+                }
 
+                button {
+                    padding: 16px 24px;
+                    font-size: 22px;
+                    min-height: 0;
+                    margin-top: 32px;
+                }
+            }
+
+            .glass {
+                .hexagon {
+                    left: 70%;
+                }
+            }
+        }
+    }
 }
 
 // tablet
 @media screen and (max-width: $tabletBreakpoint) {
+    .hero {
+        padding-top: 32px;
+        margin-bottom: 100px;
+        
+        > .inner {
+            > img {
+                min-width: 700px;
+                width: 700px;
+            }
 
+            >.inner > div {
+                h1 {
+                    font-size: 50px;
+                }
+
+                h2 {
+                    font-size: 16px;
+                }
+
+                button {
+                    padding: 16px 24px;
+                    font-size: 20px;
+                    min-height: 0;
+                    margin-top: 32px;
+                }
+            }
+
+            .glass {
+                > * {
+                    transform: scale(0.7);
+                }
+                
+                .triangle {
+                    left: 0;
+                    top: 0;
+                }
+                
+                .hexagon {
+                    left: 65%;
+                    top: 50%;
+                }
+            }
+        }
+    }
 }
 
 // mobile
 @media screen and (max-width: $mobileBreakpoint) {
+    .hero {
+        padding-top: 32px;
 
+        > .inner {
+            > img {
+                min-width: 600px;
+                width: 600px;
+            }
+
+            >.inner > div {
+                h1 {
+                    font-size: max(10vw, 32px);
+                }
+
+                h2 {
+                    font-size: 12px;
+                }
+
+                button {
+                    padding: 12px 20px;
+                    font-size: 16px;
+                    min-height: 0;
+                    margin-top: 20px;
+                }
+            }
+
+            .glass {
+                > * {
+                    transform: scale(0.7);
+                }
+
+                .triangle {
+                    left: 5%;
+                    top: -5%;
+                }
+
+                .hexagon {
+                    left: 55%;
+                    top: 40%;
+                }
+            }
+        }
+    }
 }
 </style>

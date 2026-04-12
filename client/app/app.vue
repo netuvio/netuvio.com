@@ -4,6 +4,7 @@ import { computed, onMounted, ref } from 'vue'
 import { useNuxtApp, useRoute, useCookie, useHead } from '#imports'
 import type {WebTheme} from "~/lib/types";
 import Header from "~/components/header/Header.vue";
+import Debug from "~/components/Debug.vue";
 
 // state
 const route = useRoute();
@@ -37,6 +38,8 @@ useHead({
 
     ]
 });
+
+const isDev = import.meta.env.DEV;
 </script>
 
 <template>
@@ -78,7 +81,8 @@ useHead({
 
 
 
-    <Header/>
+    <Debug v-if="isDev" />
+    <Header />
     <NuxtPage />
 </template>
 
