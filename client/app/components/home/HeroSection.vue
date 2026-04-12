@@ -3,13 +3,14 @@ import Button from "~/components/Button.vue";
 import GlassShapes from "~/components/home/GlassShapes.vue";
 import { motion } from 'motion-v'
 import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
+import StarrySky from "~/components/home/StarrySky.vue";
 
 const { t } = useI18n();
 </script>
 
 <template>
     <main :class="$style.hero">
-        <div :class="$style.stars"></div>
+        <StarrySky />
         <div :class="$style.inner">
             <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
             <GlassShapes />
@@ -59,6 +60,7 @@ const { t } = useI18n();
 
     >.inner {
         position: relative;
+        user-select: none;
 
         >img {
             user-select: none;
@@ -73,6 +75,7 @@ const { t } = useI18n();
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            user-select: text;
 
             >div {
                 width: min(100%, 100vw);
@@ -109,15 +112,6 @@ const { t } = useI18n();
                 }
             }
         }
-    }
-    
-    .stars {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background-image: url("/images/starry-sky.png");
-        background-size: 25%;
-        opacity: 0.5;
     }
 }
 

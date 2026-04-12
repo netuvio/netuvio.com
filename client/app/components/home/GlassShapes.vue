@@ -120,6 +120,7 @@ onUnmounted(() => {
     position: absolute;
     inset: 0;
     pointer-events: none;
+    user-select: none;
 
     .triangle {
         position: absolute;
