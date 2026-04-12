@@ -8,6 +8,10 @@ const reduceMotion =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const isMobile =
+    typeof window !== "undefined" &&
+    (window.innerWidth <= 960);
+
 type ShapeState = {
     x: number;
     y: number;
@@ -76,13 +80,12 @@ const animateParallax = () => {
 };
 
 onMounted(() => {
-    if (reduceMotion) {
-        return;
-    }
+    if (reduceMotion || isMobile) return;
 
     window.addEventListener("mousemove", mouseParallax);
     window.addEventListener("mouseleave", resetTargets);
     window.addEventListener("blur", resetTargets);
+    
     rafId = window.requestAnimationFrame(animateParallax);
 });
 
@@ -90,9 +93,8 @@ onUnmounted(() => {
     window.removeEventListener("mousemove", mouseParallax);
     window.removeEventListener("mouseleave", resetTargets);
     window.removeEventListener("blur", resetTargets);
-    if (rafId) {
-        window.cancelAnimationFrame(rafId);
-    }
+    
+    if (rafId) window.cancelAnimationFrame(rafId);
 });
 </script>
 
@@ -115,7 +117,10 @@ onUnmounted(() => {
     </div>
 </template>
 
+
 <style module lang="scss">
+@use "~/assets/variables" as *;
+
 .glass {
     position: absolute;
     inset: 0;
@@ -134,6 +139,45 @@ onUnmounted(() => {
         left: 78%;
         top: 57%;
         will-change: transform;
+    }
+}
+
+
+@media screen and (max-width: $laptopBreakpoint) {
+    .glass {
+        .hexagon {
+            left: 70%;
+        }
+    }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .glass {
+        .triangle {
+            left: 10%;
+            top: 4%;
+            width: 170px;
+        }
+
+        .hexagon {
+            left: 75%;
+            top: 60%;
+            width: 220px;
+        }
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .glass {
+        .triangle {
+            left: 10%;
+            top: 0;
+        }
+
+        .hexagon {
+            left: 60%;
+            top: 50%;
+        }
     }
 }
 </style>

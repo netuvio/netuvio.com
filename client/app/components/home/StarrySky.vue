@@ -64,7 +64,6 @@ onUnmounted(() => {
 </template>
 
 <style module lang="scss">
-
 .sky {
     position: absolute;
     inset: 0;

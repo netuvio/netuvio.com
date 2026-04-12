@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<{
     delay: 0,
 })
 
-const chars = '!@#$%^&*()=_+';
+const chars = '!@#$%^&*()=+';
 
 function getInitialScramble(char: string, index: number) {
     if (!/[a-zA-Z]/.test(char)) return char;

@@ -99,7 +99,6 @@ const { t } = useI18n();
                     text-align: center;
                     color: var(--color-lime-200);
                     font-weight: 400;
-                    //font-size: clamp(16px, 3vw, 24px);
                     margin-top: 20px;
                     max-width: 700px;
                 }
@@ -143,12 +142,6 @@ const { t } = useI18n();
                     margin-top: 32px;
                 }
             }
-
-            .glass {
-                .hexagon {
-                    left: 70%;
-                }
-            }
         }
     }
 }
@@ -181,22 +174,6 @@ const { t } = useI18n();
                     margin-top: 32px;
                 }
             }
-
-            .glass {
-                > * {
-                    transform: scale(0.7);
-                }
-                
-                .triangle {
-                    left: 0;
-                    top: 0;
-                }
-                
-                .hexagon {
-                    left: 65%;
-                    top: 50%;
-                }
-            }
         }
     }
 }
@@ -215,6 +192,7 @@ const { t } = useI18n();
             >.inner > div {
                 h1 {
                     font-size: max(10vw, 32px);
+                    width: 200%;
                 }
 
                 h2 {
@@ -226,22 +204,6 @@ const { t } = useI18n();
                     font-size: 16px;
                     min-height: 0;
                     margin-top: 20px;
-                }
-            }
-
-            .glass {
-                > * {
-                    transform: scale(0.7);
-                }
-
-                .triangle {
-                    left: 5%;
-                    top: -5%;
-                }
-
-                .hexagon {
-                    left: 55%;
-                    top: 40%;
                 }
             }
         }
