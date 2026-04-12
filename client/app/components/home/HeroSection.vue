@@ -43,15 +43,12 @@ const { t } = useI18n();
 <style module lang="scss">
 @use "~/assets/variables" as *;
 
-* {
-    overflow-x: clip;
-}
-
 .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 0;
+    overflow-x: hidden;
 
     >.inner {
         position: relative;
@@ -110,7 +107,6 @@ const { t } = useI18n();
             position: absolute;
             inset: 0;
             pointer-events: none;
-            overflow-x: hidden;
 
             .triangle {
                 position: absolute;
