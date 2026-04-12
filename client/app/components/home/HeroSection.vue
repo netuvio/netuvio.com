@@ -1,6 +1,8 @@
 ﻿<script setup lang="ts">
 import Button from "~/components/Button.vue";
 import GlassShapes from "~/components/home/GlassShapes.vue";
+import { motion } from 'motion-v'
+import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
 
 const { t } = useI18n();
 </script>
@@ -14,14 +16,31 @@ const { t } = useI18n();
             <div :class="$style.inner">
                 <div>
                     <h1>
-                        <span>Modern</span>&nbsp;apps, <br/>
-                        <span>powerful</span>&nbsp;hosting, <br/>
-                        <span>zero</span>&nbsp;hassle
+                        <span :class="$style.colored"><RandomTextAnimation text="Modern" /></span>&nbsp;<RandomTextAnimation text="apps," /> <br/>
+                        <span :class="$style.colored"><RandomTextAnimation text="powerful" /></span>&nbsp;<RandomTextAnimation text="hosting," /> <br/>
+                        <span :class="$style.colored"><RandomTextAnimation text="zero" /></span>&nbsp;<RandomTextAnimation text="hassle" />
                     </h1>
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo.</h2>
-                    <Button size="xl" variant="primary">
-                        Learn More
-                    </Button>
+                    <motion.h2
+                        :initial="{ opacity: 0, y: 10 }"
+                        :animate="{ opacity: 1, y: 0 }"
+                        :transition="{ 
+                            duration: .2,
+                            ease: 'easeOut',
+                            delay: 1,
+                        }"
+                    >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo.</motion.h2>
+                    <motion.div
+                        :initial="{ opacity: 0, y: 10 }"
+                        :animate="{ opacity: 1, y: 0 }"
+                        :transition="{ 
+                            duration: .4,
+                            delay: 1.2,
+                        }"
+                    >
+                        <Button size="xl" variant="primary">
+                            Learn More
+                        </Button>
+                    </motion.div>
                 </div>
             </div>
         </div>
@@ -68,7 +87,7 @@ const { t } = useI18n();
                     font-size: 80px;
                     text-align: center;
 
-                    span {
+                    > .colored {
                         color: var(--color-primary);
                     }
                 }
