@@ -127,12 +127,10 @@ const { t } = useI18n();
 // Laptops Responsive
 @media screen and (max-width: $laptopBreakpoint) {
     .heroWrapper {
-        height: 900px;
+        height: 1088px;
     }
     
     .hero {
-        padding-top: 24px;
-        
         > .inner {
             > img {
                 min-width: 1000px;
@@ -163,11 +161,11 @@ const { t } = useI18n();
 // tablet
 @media screen and (max-width: $tabletBreakpoint) {
     .heroWrapper {
-        height: 800px;
+        height: 870px;
     }
 
     .hero {
-        padding-top: 32px;
+        padding-top: 48px;
         
         > .inner {
             > img {
@@ -198,7 +196,7 @@ const { t } = useI18n();
 // mobile
 @media screen and (max-width: $mobileBreakpoint) {
     .heroWrapper {
-        height: 700px;
+        height: 690px;
     }
 
     .hero {

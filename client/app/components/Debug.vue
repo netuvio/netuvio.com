@@ -21,12 +21,35 @@ const handler = (e: KeyboardEvent) => {
     }
 };
 
+const resolution = ref({
+    width: 0,
+    height: 0,
+    pixelRatio: 0,
+});
+
+const resizeHandler = () => {
+    resolution.value = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        pixelRatio: window.devicePixelRatio || 1,
+    };
+}
+
 onMounted(() => {
     window.addEventListener('keydown', handler);
+    
+    resolution.value = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        pixelRatio: window.devicePixelRatio || 1,
+    };
+    
+    window.addEventListener('resize', resizeHandler);
 });
 
 onUnmounted(() => {
     window.removeEventListener('keydown', handler);
+    window.removeEventListener('resize', resizeHandler);
 });
 </script>
 
@@ -38,6 +61,7 @@ onUnmounted(() => {
             <li :class="$style.laptop">laptop</li>
             <li :class="$style.desktop">desktop</li>
         </ul>
+        <span>{{ resolution.width }} x {{ resolution.height }} ({{ resolution.pixelRatio }})</span>
     </div>
 </template>
 
