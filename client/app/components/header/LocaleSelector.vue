@@ -22,4 +22,12 @@ select {
     z-index: 1;
 }
 
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+}
 </style>

@@ -1,7 +1,28 @@
 ﻿<script setup lang="ts">
 import LocaleSelector from "~/components/header/LocaleSelector.vue";
+import MobileMenu from "~/components/header/MobileMenu.vue";
+import type {HeaderLink} from "~/lib/types";
 
 const { t } = useI18n();
+
+const links: HeaderLink[] = [
+    {
+        name: "Home",
+        to: "/"
+    },
+    {
+        name: "Home",
+        to: "/"
+    },
+    {
+        name: "Home",
+        to: "/"
+    },
+    {
+        name: "Home",
+        to: "/"
+    }
+]
 </script>
 
 <template>
@@ -10,13 +31,13 @@ const { t } = useI18n();
             <NuxtLinkLocale to="/" :class="$style.logo"></NuxtLinkLocale>
             <div :class="$style.links">
                 <ul>
-                    <li><NuxtLinkLocale to="/">Home</NuxtLinkLocale></li>
-                    <li><NuxtLinkLocale to="/">Home</NuxtLinkLocale></li>
-                    <li><NuxtLinkLocale to="/">Home</NuxtLinkLocale></li>
-                    <li><NuxtLinkLocale to="/">Home</NuxtLinkLocale></li>
+                    <li v-for="link in links" :key="link.to">
+                        <NuxtLinkLocale :to="link.to">{{ link.name }}</NuxtLinkLocale>
+                    </li>
                 </ul>
             </div>
-            <LocaleSelector/>
+            <LocaleSelector :class="$style.locales"/>
+            <MobileMenu :class="$style.mobileMenu" :links="links" />
         </nav>
     </header>
 </template>
@@ -35,7 +56,8 @@ header {
     
     nav {
         height: $headerHeight;
-        padding: 24px 0;
+        padding-top: 24px;
+        padding-bottom: 24px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -46,7 +68,7 @@ header {
             mask-image: url("/icons/logo-full.svg");
             mask-size: contain;
             mask-repeat: no-repeat;
-            mask-position: center;
+            mask-position: left center;
             background-color: var(--color-text-primary);
             width: 200px;
             height: 100%;
@@ -74,6 +96,28 @@ header {
                 }
             }
         }
+        
+        .mobileMenu {
+            display: none;
+        }
     }
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    header nav {
+        .links, .locales {
+            display: none;
+        }
+        
+        .mobileMenu {
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
 }
 </style>
