@@ -9,54 +9,64 @@ const { t } = useI18n();
 </script>
 
 <template>
-    <main :class="$style.hero">
-        <StarrySky />
-        <div :class="$style.inner">
-            <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
-            <GlassShapes />
+    <main :class="$style.heroWrapper">
+        <main :class="$style.hero">
+            <StarrySky />
             <div :class="$style.inner">
-                <div>
-                    <h1>
-                        <span :class="$style.colored"><RandomTextAnimation text="Modern" /></span>&nbsp;<RandomTextAnimation text="apps," /> <br/>
-                        <span :class="$style.colored"><RandomTextAnimation text="powerful" /></span>&nbsp;<RandomTextAnimation text="hosting," /> <br/>
-                        <span :class="$style.colored"><RandomTextAnimation text="zero" /></span>&nbsp;<RandomTextAnimation text="hassle" />
-                    </h1>
-                    <motion.h2
-                        :initial="{ opacity: 0, y: 10 }"
-                        :animate="{ opacity: 1, y: 0 }"
-                        :transition="{ 
+                <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
+                <GlassShapes />
+                <div :class="$style.inner">
+                    <div>
+                        <h1>
+                            <span :class="$style.colored"><RandomTextAnimation text="Modern" /></span>&nbsp;<RandomTextAnimation text="apps," /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation text="powerful" /></span>&nbsp;<RandomTextAnimation text="hosting," /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation text="zero" /></span>&nbsp;<RandomTextAnimation text="hassle" />
+                        </h1>
+                        <motion.h2
+                            :initial="{ opacity: 0, y: 10 }"
+                            :animate="{ opacity: 1, y: 0 }"
+                            :transition="{ 
                             duration: .2,
                             ease: 'easeOut',
                             delay: 1,
                         }"
-                    >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo.</motion.h2>
-                    <motion.div
-                        :initial="{ opacity: 0, y: 10 }"
-                        :animate="{ opacity: 1, y: 0 }"
-                        :transition="{ 
+                        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo.</motion.h2>
+                        <motion.div
+                            :initial="{ opacity: 0, y: 10 }"
+                            :animate="{ opacity: 1, y: 0 }"
+                            :transition="{ 
                             duration: .4,
                             delay: 1.2,
                         }"
-                    >
-                        <Button size="xl" variant="primary">
-                            Learn More
-                        </Button>
-                    </motion.div>
+                        >
+                            <Button size="xl" variant="primary">
+                                Learn More
+                            </Button>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
     </main>
 </template>
 
 <style module lang="scss">
 @use "~/assets/variables" as *;
 
+.heroWrapper {
+    width: 100%;
+    height: 1088px;
+}
+
 .hero {
+    position: fixed;
+    top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 0;
     overflow-x: hidden;
+    width: 100%;
 
     >.inner {
         position: relative;
@@ -116,6 +126,10 @@ const { t } = useI18n();
 
 // Laptops Responsive
 @media screen and (max-width: $laptopBreakpoint) {
+    .heroWrapper {
+        height: 900px;
+    }
+    
     .hero {
         padding-top: 24px;
         
@@ -148,9 +162,12 @@ const { t } = useI18n();
 
 // tablet
 @media screen and (max-width: $tabletBreakpoint) {
+    .heroWrapper {
+        height: 800px;
+    }
+
     .hero {
         padding-top: 32px;
-        margin-bottom: 100px;
         
         > .inner {
             > img {
@@ -180,6 +197,10 @@ const { t } = useI18n();
 
 // mobile
 @media screen and (max-width: $mobileBreakpoint) {
+    .heroWrapper {
+        height: 700px;
+    }
+
     .hero {
         padding-top: 32px;
 
@@ -190,8 +211,10 @@ const { t } = useI18n();
             }
 
             >.inner > div {
+                margin-top: -70px;
+                
                 h1 {
-                    font-size: max(10vw, 32px);
+                    font-size: min(10vw, 36px);
                     width: 200%;
                 }
 
