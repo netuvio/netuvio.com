@@ -2,14 +2,25 @@
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
 
+// Native button types forwarded to the underlying <button> element.
 type ButtonType = 'button' | 'submit' | 'reset';
 
 const props = withDefaults(defineProps<{
+    /** Visual style variant for the button */
     variant?: ButtonVariant;
+    
+    /** Predefined size for the button */
     size?: ButtonSize;
+    
+    /** Native button type attribute */
     type?: ButtonType;
+    
     disabled?: boolean;
+    
+    /** Shows a loading spinner and disables the button when true */
     loading?: boolean;
+    
+    /** Makes the button take the full width of its container when true */
     block?: boolean;
 }>(), {
     variant: 'primary',
@@ -20,10 +31,12 @@ const props = withDefaults(defineProps<{
     block: false,
 });
 
+// CSS module classes generated for this component.
 const css = useCssModule();
 
 const isDisabled = computed<boolean>(() => props.disabled || props.loading);
 
+// Resolved CSS module class list for the current button state.
 const classes = computed(() => ([
     css.button,
     css[`variant-${props.variant}`],

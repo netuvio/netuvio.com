@@ -1,19 +1,32 @@
 ﻿<script setup lang="ts">
+/**
+ * Animates each word/letter of the text with a staggered animation using motion.
+ */
+
 import { motion } from "motion-v";
 
 const props = withDefaults(defineProps<{
     text: string;
+    
     type?: 'word' | 'letter';
+    
+    /** Delay of each child consecutively in seconds */
     staggerDuration?: number;
+    
+    /** Delay of the whole animation in seconds */
     delay?: number;
+    
+    /** Animation of children in motion values */
     itemAnimation?: any;
+    
+    /** Include raw hidden text for SEO and accessibility */
     seoFriendly?: boolean;
 }>(), {
     type: 'word',
     staggerDuration: 0.07,
     delay: 0,
     itemAnimation: {
-        hidden: { opacity:0 },
+        hidden: { opacity: 0 },
         show: { opacity: 1 }
     },
     seoFriendly: true,
@@ -53,16 +66,3 @@ const container = {
         >{{ x + (type === 'word' ? ' ' : '') }}</motion.span>
     </motion.span>
 </template>
-
-<style module lang="scss">
-@use "~/assets/variables" as *;
-
-@media screen and (max-width: $laptopBreakpoint) {
-}
-
-@media screen and (max-width: $tabletBreakpoint) {
-}
-
-@media screen and (max-width: $mobileBreakpoint) {
-}
-</style>

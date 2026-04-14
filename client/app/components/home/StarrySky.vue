@@ -16,11 +16,13 @@ const removeComet = (id: number) => {
     comets.value = comets.value.filter(c => c.id !== id)
 }
 
+// Recursive function for scheduling comets with a random delay
 const scheduleNextComet = () => {
     const randomDelay = 2000 + Math.random() * 8000;
 
     timerId = setTimeout(() => {
         if (!document.hidden) {
+            // Random x position offset to ensure comets start off-screen
             const x = Math.random() * window.innerWidth - 200;
 
             comets.value.push({

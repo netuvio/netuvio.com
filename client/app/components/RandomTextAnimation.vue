@@ -4,10 +4,19 @@ import { motion, AnimatePresence } from "motion-v";
 
 const props = withDefaults(defineProps<{
     text: string,
+    
+    /** Interval between each randomization in milliseconds (default: 50) */
     interval?: number,
+    
+    /** How many consecutive randomizations happen at a time */
     consecutiveCount?: number,
+    
     delay?: number,
+
+    /** Include raw hidden text for SEO and accessibility */
     seoFriendly?: boolean
+    
+    /** Hides the whole component from SEO (seoFriendly does this automatically) */
     ariaHidden?: boolean
 }>(), {
     interval: 50,
