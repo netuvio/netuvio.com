@@ -6,7 +6,8 @@ const props = withDefaults(defineProps<{
     type?: 'word' | 'letter';
     staggerDuration?: number;
     delay?: number;
-    itemAnimation?: any
+    itemAnimation?: any;
+    seoFriendly?: boolean;
 }>(), {
     type: 'word',
     staggerDuration: 0.07,
@@ -14,7 +15,8 @@ const props = withDefaults(defineProps<{
     itemAnimation: {
         hidden: { opacity:0 },
         show: { opacity: 1 }
-    }
+    },
+    seoFriendly: true,
 });
 
 const textArray = computed(() => {
@@ -35,15 +37,19 @@ const container = {
 </script>
 
 <template>
+    <span class="sr-only" v-if="seoFriendly">Modern apps, powerful hosting, zero hassle</span>
+    
     <motion.span
         :variants="container"
         initial="hidden"
         animate="show"
+        :aria-hidden="seoFriendly"
     >
         <motion.span 
             v-for="(x, index) in textArray"
             :key="index"
             :variants="props.itemAnimation"
+            :aria-hidden="seoFriendly"
         >{{ x + (type === 'word' ? ' ' : '') }}</motion.span>
     </motion.span>
 </template>

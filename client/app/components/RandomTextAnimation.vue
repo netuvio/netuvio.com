@@ -7,10 +7,14 @@ const props = withDefaults(defineProps<{
     interval?: number,
     consecutiveCount?: number,
     delay?: number,
+    seoFriendly?: boolean
+    ariaHidden?: boolean
 }>(), {
     interval: 50,
     consecutiveCount: 1,
     delay: 0,
+    seoFriendly: true,
+    ariaHidden: false,
 })
 
 const chars = '!@#$%^&*()=+';
@@ -85,35 +89,34 @@ onMounted(() => {
 </script>
 
 <template>
-    <span>
-        <span class="sr-only">{{ props.text }}</span>
-
-        <span aria-hidden="true" :class="$style.wrapper">
-            <AnimatePresence mode="popLayout">
-                <motion.span
-                    v-for="(item, i) in randomizedText"
-                    :key="`${i}-${item.letter}`"
-                    :initial="{ opacity: 0, y: -10, filter: 'blur(4px)' }"
-                    :animate="{ opacity: 1, y: 0, filter: 'blur(0px)' }"
-                    :exit="{ opacity: 0, y: 10, filter: 'blur(4px)', position: 'absolute' }"
-                    :transition="{ duration: 0.15 }"
-                    :class="$style.letter"
-                >
-                    {{ item.letter }}
-                </motion.span>
-            </AnimatePresence>
-        </span>
+    <span class="sr-only" v-if="seoFriendly">{{ props.text }}</span>
+    
+    <span :aria-hidden="seoFriendly || ariaHidden" :class="$style.wrapper">
+        <AnimatePresence mode="popLayout">
+            <motion.span
+                v-for="(item, i) in randomizedText"
+                :key="`${i}-${item.letter}`"
+                :initial="{ opacity: 0, y: -10, filter: 'blur(4px)' }"
+                :animate="{ opacity: 1, y: 0, filter: 'blur(0px)' }"
+                :exit="{ opacity: 0, y: 10, filter: 'blur(4px)', position: 'absolute' }"
+                :transition="{ duration: 0.15 }"
+                :class="$style.letter"
+                :aria-hidden="seoFriendly || ariaHidden"
+            >
+                {{ item.letter }}
+            </motion.span>
+        </AnimatePresence>
     </span>
 </template>
 
 <style module lang="scss">
 .wrapper {
-    white-space: pre-wrap; /* Preserves spaces and newlines */
+    white-space: pre-wrap;
     position: relative;
     display: inline-block;
 }
 
 .letter {
-    display: inline-block; /* Required for transforms (y-axis) to work */
+    display: inline-block;
 }
 </style>

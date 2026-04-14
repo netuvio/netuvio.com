@@ -19,9 +19,10 @@ const { t } = useI18n();
                 <div :class="$style.inner">
                     <motion.div>
                         <h1>
-                            <span :class="$style.colored"><RandomTextAnimation text="Modern" /></span>&nbsp;<RandomTextAnimation text="apps," /> <br/>
-                            <span :class="$style.colored"><RandomTextAnimation text="powerful" /></span>&nbsp;<RandomTextAnimation text="hosting," /> <br/>
-                            <span :class="$style.colored"><RandomTextAnimation text="zero" /></span>&nbsp;<RandomTextAnimation text="hassle" />
+                            <span class="sr-only">Modern apps, powerful hosting, zero hassle</span>
+                            <span :class="$style.colored"><RandomTextAnimation text="Modern" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="apps," :seoFriendly="false" :ariaHidden="true" /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation text="powerful" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hosting," :seoFriendly="false" :ariaHidden="true" /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation text="zero" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hassle" :seoFriendly="false" :ariaHidden="true" />
                         </h1>
                         <h2>
                             <TypingTextAnimation 
