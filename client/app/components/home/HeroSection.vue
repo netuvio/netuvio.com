@@ -4,6 +4,7 @@ import GlassShapes from "~/components/home/GlassShapes.vue";
 import { motion } from 'motion-v'
 import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
 import StarrySky from "~/components/home/StarrySky.vue";
+import TypingTextAnimation from "~/components/TypingTextAnimation.vue";
 
 const { t } = useI18n();
 </script>
@@ -16,34 +17,31 @@ const { t } = useI18n();
                 <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
                 <GlassShapes />
                 <div :class="$style.inner">
-                    <div>
+                    <motion.div>
                         <h1>
                             <span :class="$style.colored"><RandomTextAnimation text="Modern" /></span>&nbsp;<RandomTextAnimation text="apps," /> <br/>
                             <span :class="$style.colored"><RandomTextAnimation text="powerful" /></span>&nbsp;<RandomTextAnimation text="hosting," /> <br/>
                             <span :class="$style.colored"><RandomTextAnimation text="zero" /></span>&nbsp;<RandomTextAnimation text="hassle" />
                         </h1>
-                        <motion.h2
-                            :initial="{ opacity: 0, y: 10 }"
-                            :animate="{ opacity: 1, y: 0 }"
-                            :transition="{ 
-                            duration: .2,
-                            ease: 'easeOut',
-                            delay: 1,
-                        }"
-                        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo.</motion.h2>
+                        <h2>
+                            <TypingTextAnimation 
+                                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo."
+                                :delay=".7"
+                            />
+                        </h2>
                         <motion.div
                             :initial="{ opacity: 0, y: 10 }"
                             :animate="{ opacity: 1, y: 0 }"
                             :transition="{ 
                             duration: .4,
-                            delay: 1.2,
+                            delay: 1.8,
                         }"
                         >
                             <Button size="xl" variant="primary">
                                 Learn More
                             </Button>
                         </motion.div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </main>
