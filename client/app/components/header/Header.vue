@@ -2,6 +2,7 @@
 import LocaleSelector from "~/components/header/LocaleSelector.vue";
 import MobileMenu from "~/components/header/MobileMenu.vue";
 import type {HeaderLink} from "~/lib/types";
+import {ref} from "vue";
 
 const { t } = useI18n();
 
@@ -22,11 +23,25 @@ const links: HeaderLink[] = [
         name: "Home",
         to: "/"
     }
-]
+];
+
+const hasScrolled = ref(false);
+
+const handleScroll = () => {
+    hasScrolled.value = window.scrollY > 50;
+};
+
+onMounted(() => {
+    window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+    window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
 <template>
-    <header>
+    <header :class="{ [$style.scrolled]: hasScrolled }">
         <nav class="container">
             <NuxtLinkLocale to="/" :class="$style.logo"></NuxtLinkLocale>
             <div :class="$style.links">
@@ -53,6 +68,19 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
+    transition: all 0.3s ease;
+    padding: 0 12px;
+
+    &.scrolled {
+        margin: 16px 0;
+        
+        nav {
+            background-color: var(--color-background-header);
+            border-radius: 10000px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding: 24px;
+        }
+    }
     
     nav {
         height: $headerHeight;
@@ -62,6 +90,7 @@ header {
         align-items: center;
         justify-content: space-between;
         position: relative;
+        transition: all 0.3s ease;
                 
         .logo {
             display: block;
@@ -78,7 +107,8 @@ header {
         // Has to be absolute to be in the center and not spaced by other elements
         .links {
             position: absolute;
-            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -99,6 +129,8 @@ header {
         
         .mobileMenu {
             display: none;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
@@ -113,7 +145,7 @@ header {
         }
         
         .mobileMenu {
-            display: block;
+            display: flex;
         }
     }
 }
