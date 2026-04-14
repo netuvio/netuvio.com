@@ -112,7 +112,7 @@ const classes = computed(() => ([
 .size-xl {
     min-height: 48px;
     padding: 16px 32px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
 }
 

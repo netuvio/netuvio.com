@@ -1,12 +1,17 @@
 ﻿<script setup lang="ts">
 import Button from "~/components/Button.vue";
 import GlassShapes from "~/components/home/GlassShapes.vue";
-import { motion } from 'motion-v'
+import { motion, useScroll, useTransform } from 'motion-v'
 import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
 import StarrySky from "~/components/home/StarrySky.vue";
 import TypingTextAnimation from "~/components/TypingTextAnimation.vue";
 
 const { t } = useI18n();
+
+const { scrollYProgress } = useScroll();
+const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
+const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
+
 </script>
 
 <template>
@@ -14,10 +19,12 @@ const { t } = useI18n();
         <main :class="$style.hero">
             <StarrySky />
             <div :class="$style.inner">
-                <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
-                <GlassShapes />
+                <motion.div :style="{ scale: bgScale, transformOrigin: 'center center' }">
+                    <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
+                    <GlassShapes />
+                </motion.div>
                 <div :class="$style.inner">
-                    <motion.div>
+                    <motion.div :style="{ scale: textScale, transformOrigin: 'center center' }">
                         <h1>
                             <span class="sr-only">Modern apps, powerful hosting, zero hassle</span>
                             <span :class="$style.colored"><RandomTextAnimation text="Modern" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="apps," :seoFriendly="false" :ariaHidden="true" /> <br/>
@@ -33,10 +40,10 @@ const { t } = useI18n();
                         <motion.div
                             :initial="{ opacity: 0, y: 10 }"
                             :animate="{ opacity: 1, y: 0 }"
-                            :transition="{ 
-                            duration: .4,
-                            delay: 1.8,
-                        }"
+                            :transition="{
+                                duration: .4,
+                                delay: 1.8,
+                            }"
                         >
                             <Button size="xl" variant="primary">
                                 Learn More
