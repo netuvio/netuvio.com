@@ -123,6 +123,24 @@ header {
                 li a {
                     padding: 8px 16px;
                     color: var(--color-text-primary);
+                    position: relative;
+                    
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        height: 3px;
+                        bottom: 2px;
+                        width: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background-color: var(--color-primary);
+                        border-radius: 10000px;
+                        transition: width 0.3s ease;
+                    }
+                    
+                    &:hover::before {
+                        width: calc(100% - 32px + 4px);
+                    }
                 }
             }
         }
