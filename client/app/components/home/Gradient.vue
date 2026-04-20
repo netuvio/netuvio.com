@@ -15,7 +15,7 @@
     transform: translateX(-50%);
     background: radial-gradient(
         150% 100% at 50% 100%,
-        #FFF 50%,
+        var(--color-background-secondary) 50%,
         var(--color-primary) 55%,
         black 75%,
         rgba(0, 0, 0, 0.7) 85%,
