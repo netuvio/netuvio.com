@@ -54,6 +54,13 @@ export default defineNuxtConfig({
     },
 
     vite: {
+        optimizeDeps: {
+            include: [
+                '@vue/devtools-core',
+                '@vue/devtools-kit',
+            ]
+        },
+
         css: {
             modules: {
                 generateScopedName(className: string, fileName: string) { // hashing of css class names to avoid collisions, comment this unless you want it
