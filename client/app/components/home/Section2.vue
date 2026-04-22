@@ -14,29 +14,14 @@ const { scrollYProgress } = useScroll({
 });
 
 const textScale = useTransform(scrollYProgress, [0, 1], [1, 0]);
-const logoAnimationProgress = useTransform(scrollYProgress, [0, .7], [0, 1]);
-const fillOpacitySoft = useTransform(logoAnimationProgress, [.4, .7], [0, 0.11]);
-const fillOpacityFull = useTransform(logoAnimationProgress, [.4, .7], [0, 1]);
-
-// const draw = {
-//     hidden: { pathLength: 0, opacity: 1, fillOpacity: 0 },
-//     visible: () => {
-//         return {
-//             pathLength: 1,
-//             opacity: 1,
-//             fillOpacity: 1,
-//             transition: {
-//                 pathLength: { delay: 0, duration: 3 },
-//                 opacity: { delay: 0, duration: 0.2 },
-//                 fillOpacity: { delay: 1, duration: 0.35 }
-//             },
-//         }
-//     },
-// };
+const logoAnimationProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+const fillOpacitySoft = useTransform(logoAnimationProgress, [.4, 1], [0, 0.11]);
+const fillOpacityFull = useTransform(logoAnimationProgress, [.4, 1], [0, 1]);
+const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 </script>
 
 <template>
-    <section class="theme-secondary" ref="sectionRef">
+    <section class="theme-secondary" ref="sectionRef" :class="$style.section">
         <Gradient />
         <div :class="$style.spacer"></div>
         <div :class="['container', $style.container]">
@@ -45,6 +30,7 @@ const fillOpacityFull = useTransform(logoAnimationProgress, [.4, .7], [0, 1]);
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam. Cras in urna ipsum. Pellentesque nibh ligula, gravida vitae facilisis quis, malesuada in nisl.</p>
 
                 <div :class="$style.outlineLogo">
+                    <motion.div :class="$style.gradient" :style="{ opacity: gradientOpacity }"></motion.div>
                     <motion.svg
                         xmlns="http://www.w3.org/2000/svg"
                         xmlSpace="preserve"
@@ -92,10 +78,9 @@ const fillOpacityFull = useTransform(logoAnimationProgress, [.4, .7], [0, 1]);
 <style module lang="scss">
 @use "~/assets/variables" as *;
 
-section {
+.section {
     width: 100%;
-    min-height: 3000px;
-    height: 3000px;
+    height: 2500px;
     position: relative;
     overflow-x: clip;
     
@@ -127,6 +112,7 @@ section {
                 align-items: center;
                 margin-top: 64px;
                 overflow: visible;
+                position: relative;
                 
                 * {
                     outline: none;
@@ -135,6 +121,16 @@ section {
                 svg {
                     width: 1000px;
                     overflow: visible;
+                }
+                
+                .gradient {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100vw;
+                    height: 100vh;
+                    background: radial-gradient(circle at center, var(--color-primary) 0%, transparent 30%);
                 }
             }
         }
