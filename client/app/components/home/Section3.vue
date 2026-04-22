@@ -20,6 +20,20 @@ const scrollSection = useTransform(scrollYProgress, (v) => {
 
 const currentSection = ref("notScrolled");
 
+const scrollToProgress = (progress: number) => {
+    if (!sectionRef.value) return;
+    const rect = sectionRef.value.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    
+    const startScroll = rect.top + scrollTop - window.innerHeight;
+    const totalScrollable = rect.height + window.innerHeight;
+    
+    window.scrollTo({
+        top: startScroll + progress * totalScrollable,
+        behavior: "smooth"
+    });
+};
+
 const animationProps = {
     initial: { opacity: 0, y: 50 },
     animate: { opacity: 1, y: 0 },
@@ -44,9 +58,9 @@ onMounted(() => {
             <div :class="['container', $style.container]">
                 <div :class="[$style.wrapper, $style[currentSection]]">
                     <ul>
-                        <li>Design</li>
-                        <li>Development</li>
-                        <li>Hosting</li>
+                        <li @click="scrollToProgress(0.33)">Design</li>
+                        <li @click="scrollToProgress(0.50)">Development</li>
+                        <li @click="scrollToProgress(0.66)">Hosting</li>
                     </ul>
                     
                     <div :class="$style.description">
@@ -124,6 +138,7 @@ onMounted(() => {
                     font-weight: 700;
                     font-size: 48px;
                     transition: color 0.2s ease-in-out;
+                    cursor: pointer;
                 }
             }
             
