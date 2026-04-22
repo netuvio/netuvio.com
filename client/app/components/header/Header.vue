@@ -3,24 +3,25 @@ import LocaleSelector from "~/components/header/LocaleSelector.vue";
 import MobileMenu from "~/components/header/MobileMenu.vue";
 import type {HeaderLink} from "~/lib/types";
 import {ref} from "vue";
+import { NuxtLinkLocale } from "#components";
 
 const { t } = useI18n();
 
 const links: HeaderLink[] = [
     {
-        name: "Home",
+        name: t("home.title"),
         to: "/"
     },
     {
-        name: "Home",
+        name: t("home.title"),
         to: "/"
     },
     {
-        name: "Home",
+        name: t("home.title"),
         to: "/"
     },
     {
-        name: "Home",
+        name: t("home.title"),
         to: "/"
     }
 ];

@@ -6,7 +6,7 @@ import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
 import StarrySky from "~/components/home/StarrySky.vue";
 import TypingTextAnimation from "~/components/TypingTextAnimation.vue";
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 const { scrollYProgress } = useScroll();
 const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
@@ -25,15 +25,26 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
                 </motion.div>
                 <div :class="$style.inner">
                     <motion.div :style="{ scale: textScale, transformOrigin: 'center center' }">
-                        <h1>
+
+                        <!-- nadpis -->
+                        <h1 v-if="locale === 'en'">
                             <span class="sr-only">Modern apps, powerful hosting, zero hassle</span>
                             <span :class="$style.colored"><RandomTextAnimation text="Modern" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="apps," :seoFriendly="false" :ariaHidden="true" /> <br/>
                             <span :class="$style.colored"><RandomTextAnimation text="powerful" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hosting," :seoFriendly="false" :ariaHidden="true" /> <br/>
                             <span :class="$style.colored"><RandomTextAnimation text="zero" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hassle" :seoFriendly="false" :ariaHidden="true" />
                         </h1>
+
+                        <h1 v-else-if="locale === 'cs'">
+                            <span class="sr-only">Moderní aplikace, výkonný hosting, žádné starosti</span>
+                            <span :class="$style.colored"><RandomTextAnimation text="Moderní" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="aplikace," :seoFriendly="false" :ariaHidden="true" /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation text="výkonný" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hosting," :seoFriendly="false" :ariaHidden="true" /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation text="žádné" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="starosti" :seoFriendly="false" :ariaHidden="true" />
+                        </h1>
+
+                        <!-- podnadpis -->
                         <h2>
                             <TypingTextAnimation 
-                                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo."
+                                :text="t('home.subtitle')"
                                 :delay=".7"
                             />
                         </h2>
@@ -46,7 +57,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
                             }"
                         >
                             <Button size="xl" variant="primary">
-                                Learn More
+                                {{ t("home.learnMore") }}
                             </Button>
                         </motion.div>
                     </motion.div>
