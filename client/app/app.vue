@@ -4,6 +4,8 @@ import { computed, onMounted, ref } from 'vue'
 import { useNuxtApp, useRoute, useCookie, useHead } from '#imports'
 import type {WebTheme} from "~/lib/types";
 import Header from "~/components/header/Header.vue";
+import Debug from "~/components/Debug.vue";
+import 'lenis/dist/lenis.css'
 
 // state
 const route = useRoute();
@@ -37,6 +39,8 @@ useHead({
 
     ]
 });
+
+const isDev = import.meta.env.DEV;
 </script>
 
 <template>
@@ -78,8 +82,11 @@ useHead({
 
 
 
-    <Header/>
-    <NuxtPage />
+    <Debug v-if="isDev" />
+    <VueLenis root>
+        <Header />
+        <NuxtPage />
+    </VueLenis>
 </template>
 
 <style module lang="scss">

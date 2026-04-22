@@ -1,63 +1,98 @@
 ﻿<script setup lang="ts">
 import Button from "~/components/Button.vue";
+import GlassShapes from "~/components/home/GlassShapes.vue";
+import { motion, useScroll, useTransform } from 'motion-v'
+import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
+import StarrySky from "~/components/home/StarrySky.vue";
+import TypingTextAnimation from "~/components/TypingTextAnimation.vue";
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
+
+const { scrollYProgress } = useScroll();
+const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
+const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
+
 </script>
 
 <template>
-    <main :class="$style.hero">
-        <div :class="$style.stars"></div>
-        <div :class="$style.inner">
-            <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
+    <main :class="$style.heroWrapper">
+        <main :class="$style.hero">
+            <StarrySky />
             <div :class="$style.inner">
-                <div>
-                    <h1>
-                        <span>Modern</span> apps, <br/>
-                        <span>powerful</span> hosting, <br/>
-                        <span>zero</span> hassle
-                    </h1>
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sapien eget sapien pretium commodo.</h2>
-                    <Button size="xl" variant="primary">
-                        Learn More
-                    </Button>
-                </div>
-                <div :class="$style.glass">
-                    <img
-                        src="~/../public/images/glass-triangle-1.png"
-                        alt=""
-                        draggable="false"
-                        :class="$style.triangle"
-                    />
-                    <img
-                        src="~/../public/images/glass-hexagon-1.png"
-                        alt=""
-                        draggable="false"
-                        :class="$style.hexagon"
-                    />
+                <motion.div :style="{ scale: bgScale, transformOrigin: 'center center' }">
+                    <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
+                    <GlassShapes />
+                </motion.div>
+                <div :class="$style.inner">
+                    <motion.div :style="{ scale: textScale, transformOrigin: 'center center' }">
+
+                        <!-- nadpis -->
+                        <h1 v-if="locale === 'en'">
+                            <span class="sr-only">Modern apps, powerful hosting, zero hassle</span>
+                            <span :class="$style.colored"><RandomTextAnimation text="Modern" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="apps," :seoFriendly="false" :ariaHidden="true" /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation text="powerful" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hosting," :seoFriendly="false" :ariaHidden="true" /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation text="zero" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hassle" :seoFriendly="false" :ariaHidden="true" />
+                        </h1>
+
+                        <h1 v-else-if="locale === 'cs'">
+                            <span class="sr-only">Moderní aplikace, výkonný hosting, žádné starosti</span>
+                            <span :class="$style.colored"><RandomTextAnimation text="Moderní" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="aplikace," :seoFriendly="false" :ariaHidden="true" /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation text="výkonný" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hosting," :seoFriendly="false" :ariaHidden="true" /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation text="žádné" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="starosti" :seoFriendly="false" :ariaHidden="true" />
+                        </h1>
+
+                        <!-- podnadpis -->
+                        <h2>
+                            <TypingTextAnimation 
+                                :text="t('home.subtitle')"
+                                :delay=".7"
+                            />
+                        </h2>
+                        <motion.div
+                            :initial="{ opacity: 0, y: 10 }"
+                            :animate="{ opacity: 1, y: 0 }"
+                            :transition="{
+                                duration: .4,
+                                delay: 1.8,
+                            }"
+                        >
+                            <Button size="xl" variant="primary">
+                                {{ t("home.learnMore") }}
+                            </Button>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </div>
-        </div>
+        </main>
     </main>
 </template>
 
 <style module lang="scss">
 @use "~/assets/variables" as *;
 
+.heroWrapper {
+    width: 100%;
+    height: 1088px;
+}
+
 .hero {
-    min-height: calc(100vh + 200px);
+    position: fixed;
+    top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 0;
+    overflow-x: hidden;
+    width: 100%;
 
     >.inner {
         position: relative;
+        user-select: none;
 
         >img {
-            //position: absolute;
-            //inset: 0;
             user-select: none;
             min-width: 1088px;
+            width: 1088px;
         }
 
         >.inner {
@@ -67,6 +102,7 @@ const { t } = useI18n();
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            user-select: text;
 
             >div {
                 width: min(100%, 100vw);
@@ -74,13 +110,14 @@ const { t } = useI18n();
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                padding: 0 12px;
 
                 h1 {
                     color: var(--color-text-primary);
                     font-size: 80px;
                     text-align: center;
 
-                    span {
+                    > .colored {
                         color: var(--color-primary);
                     }
                 }
@@ -89,7 +126,8 @@ const { t } = useI18n();
                     text-align: center;
                     color: var(--color-lime-200);
                     font-weight: 400;
-                    margin-top: 8px;
+                    margin-top: 20px;
+                    max-width: 700px;
                 }
 
                 button {
@@ -99,49 +137,114 @@ const { t } = useI18n();
                     z-index: 1;
                 }
             }
-
-            .glass {
-                position: absolute;
-                inset: 0;
-                pointer-events: none;
-
-                .triangle {
-                    position: absolute;
-                    top: 10%;
-                    left: 5%;
-                }
-
-                .hexagon {
-                    position: absolute;
-                    left: 78%;
-                    top: 57%;
-                }
-            }
         }
-    }
-    
-    .stars {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background-image: url("/images/starry-sky.png");
-        background-size: 25%;
-        opacity: 0.5;
     }
 }
 
 // Laptops Responsive
 @media screen and (max-width: $laptopBreakpoint) {
+    .heroWrapper {
+        height: 1088px;
+    }
+    
+    .hero {
+        > .inner {
+            > img {
+                min-width: 1000px;
+                width: 1000px;
+            }
+            
+            >.inner > div {
+                h1 {
+                    font-size: 70px;
+                }
+                
+                h2 {
+                    font-size: 20px;
+                    margin-top: 12px;
+                }
 
+                button {
+                    padding: 16px 24px;
+                    font-size: 22px;
+                    min-height: 0;
+                    margin-top: 32px;
+                }
+            }
+        }
+    }
 }
 
 // tablet
 @media screen and (max-width: $tabletBreakpoint) {
+    .heroWrapper {
+        height: 870px;
+    }
 
+    .hero {
+        padding-top: 48px;
+        
+        > .inner {
+            > img {
+                min-width: 700px;
+                width: 700px;
+            }
+
+            >.inner > div {
+                h1 {
+                    font-size: 50px;
+                }
+
+                h2 {
+                    font-size: 16px;
+                }
+
+                button {
+                    padding: 16px 24px;
+                    font-size: 20px;
+                    min-height: 0;
+                    margin-top: 32px;
+                }
+            }
+        }
+    }
 }
 
 // mobile
 @media screen and (max-width: $mobileBreakpoint) {
+    .heroWrapper {
+        height: 690px;
+    }
 
+    .hero {
+        padding-top: 32px;
+
+        > .inner {
+            > img {
+                min-width: 600px;
+                width: 600px;
+            }
+
+            >.inner > div {
+                margin-top: -70px;
+                
+                h1 {
+                    font-size: min(10vw, 36px);
+                    width: 200%;
+                }
+
+                h2 {
+                    font-size: 12px;
+                }
+
+                button {
+                    padding: 12px 20px;
+                    font-size: 16px;
+                    min-height: 0;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
 }
 </style>

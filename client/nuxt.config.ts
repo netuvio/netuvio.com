@@ -16,7 +16,7 @@ function stablePrefixLetter(input: string): string {
 }
 
 export default defineNuxtConfig({
-    modules: ["@nuxtjs/i18n"],
+    modules: ["@nuxtjs/i18n", "motion-v/nuxt", "lenis/nuxt"],
 
     compatibilityDate: '2025-07-15',
 
@@ -54,6 +54,13 @@ export default defineNuxtConfig({
     },
 
     vite: {
+        optimizeDeps: {
+            include: [
+                '@vue/devtools-core',
+                '@vue/devtools-kit',
+            ]
+        },
+
         css: {
             modules: {
                 generateScopedName(className: string, fileName: string) { // hashing of css class names to avoid collisions, comment this unless you want it

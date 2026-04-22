@@ -24,11 +24,14 @@ $desktopBreakpoint: 1800px;
     --color-carbon-600: hsl(70 17% 7%);
     --color-carbon-700: hsl(72 16% 6%);
     --color-carbon-800: hsl(75 18% 4%);
+    --color-carbon-900: hsl(77 19% 2%);
 
 
     --color-primary: var(--color-lime-400);
 
     --color-background-primary: var(--color-carbon-800);
+    --color-background-secondary: white;
+    --color-background-header: var(--color-carbon-800);
 
     --color-text-primary: white;
     --color-text-secondary: black;

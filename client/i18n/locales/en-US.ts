@@ -7,7 +7,9 @@ export default defineI18nLocale(async (locale) => {
         },
 
         home: {
-            title: "Home"
-        }
+            title: "Home",
+            subtitle: "Behind every high-quality project lies not only a good idea, but also the right technical solution. We’ll help you with that from start to finish.",
+            learnMore: "Learn More",
+        },
     } satisfies MessageSchema
 })

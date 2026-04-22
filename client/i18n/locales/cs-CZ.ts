@@ -7,7 +7,9 @@ export default defineI18nLocale(async (locale) => {
         },
 
         home: {
-            title: "Domů"
+            title: "Domů",
+            subtitle: "Za každým kvalitním projektem stojí nejen dobrý nápad, ale i správné technické řešení. S tím vám pomůžeme od začátku do konce.",
+            learnMore: "Zjistit více",
         }
     } satisfies MessageSchema
 })
