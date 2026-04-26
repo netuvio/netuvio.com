@@ -82,8 +82,8 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
     flex-direction: column;
     align-items: center;
     padding-top: 0;
-    overflow-x: hidden;
     width: 100%;
+    overflow: hidden;
 
     >.inner {
         position: relative;
@@ -217,7 +217,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
     }
 
     .hero {
-        padding-top: 32px;
+        padding-top: 64px;
 
         > .inner {
             > img {
@@ -226,7 +226,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
             }
 
             >.inner > div {
-                margin-top: -70px;
+                margin-top: -0px;
                 
                 h1 {
                     font-size: min(10vw, 36px);

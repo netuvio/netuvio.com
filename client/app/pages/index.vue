@@ -2,7 +2,8 @@
 import { Head, Title } from "#components";
 import HeroSection from "~/components/home/HeroSection.vue";
 import Section2 from "~/components/home/Section2.vue";
-import Section3 from "~/components/home/Section3.vue";
+import WhatWeDoSection from "~/components/home/WhatWeDoSection.vue";
+import Section4 from "~/components/home/Section4.vue";
 
 const { t } = useI18n();
 </script>
@@ -12,17 +13,14 @@ const { t } = useI18n();
         <Title>{{ t("home.title") }} • Netuvio</Title>
     </Head>
 
-    <div :class="$style.test">
+    <div>
         <HeroSection />
         <Section2 />
-        <Section3 />
+        <WhatWeDoSection />
+        <Section4 />
     </div>
 </template>
 
 <style module lang="scss">
 @use "~/assets/variables" as *;
-
-.test {
-    padding-bottom: 1000px;
-}
 </style>

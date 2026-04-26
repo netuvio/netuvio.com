@@ -108,7 +108,7 @@ onMounted(() => {
     height: 4000px;
     position: relative;
     overflow-x: clip;
-    padding: 000px 0 400px;
+    padding-bottom: 200px;
 }
 
 .section {

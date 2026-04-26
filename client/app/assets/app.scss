@@ -75,6 +75,11 @@ body {
         }
     }
     
+    .theme-primary {
+        background-color: var(--color-background-primary);
+        color: var(--color-text-primary);
+    }
+    
     .theme-secondary {
         background-color: var(--color-background-secondary);
         color: var(--color-text-secondary);
