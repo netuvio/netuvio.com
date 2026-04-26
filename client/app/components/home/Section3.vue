@@ -52,7 +52,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <section :class="[$style.sectionContainer, 'theme-secondary']" id="test">
+    <section :class="[$style.sectionContainer, 'theme-secondary']">
         <section ref="sectionRef" :class="$style.section">
             <div :class="$style.spacer"></div>
             <div :class="['container', $style.container]">
@@ -88,6 +88,7 @@ onMounted(() => {
                                 key="third"
                                 v-bind="animationProps"
                             >
+                                <img src="/images/hosting.png" alt="" />
                                 <p>Praesent dictum, elit ut pharetra placerat, neque diam eleifend mi, et lobortis risus velit nec lacus. Vestibulum sed est urna. Nullam hendrerit nulla a felis blandit feugiat. Phasellus feugiat, urna sed rutrum consequat, quam ligula eleifend velit, in viverra mauris sem suscipit sem. Proin sed quam at neque molestie pellentesque. Sed volutpat in tortor sed consequat. Suspendisse et nisl sit amet turpis gravida scelerisque. Nullam vulputate convallis nulla, at auctor eros ultrices quis.</p>
                             </motion.div>
                         </AnimatePresence>
