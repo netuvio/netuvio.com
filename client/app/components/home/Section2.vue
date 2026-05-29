@@ -10,10 +10,9 @@ const sectionRef = ref<HTMLElement | null>(null);
 const { scrollYProgress } = useScroll({
     target: sectionRef,
     // Starts progress at 0 exactly when the container below the 200px spacer hits the center of the screen. Ends when the bottom of the container hits the center of the screen.
-    offset: ["200px center", "end center"]
+    offset: ["700px center", "end center"]
 });
 
-const textScale = useTransform(scrollYProgress, [0, 1], [1, 0]);
 const logoAnimationProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 const fillOpacitySoft = useTransform(logoAnimationProgress, [.4, 1], [0, 0.11]);
 const fillOpacityFull = useTransform(logoAnimationProgress, [.4, 1], [0, 1]);
@@ -23,12 +22,13 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 <template>
     <section class="theme-secondary" ref="sectionRef" :class="$style.section">
         <Gradient />
-        <div :class="$style.spacer"></div>
+        <div :class="$style.spacer" id="brief"></div>
         <div :class="['container', $style.container]">
             <motion.div :class="$style.wrapper">
-                <h1>Lorem ipsum dolor sit amet</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam. Cras in urna ipsum. Pellentesque nibh ligula, gravida vitae facilisis quis, malesuada in nisl.</p>
-
+                <div :class="$style.text">
+                    <h1>Lorem ipsum dolor sit amet</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam. Cras in urna ipsum. Pellentesque nibh ligula, gravida vitae facilisis quis, malesuada in nisl.</p>
+                </div>
                 <div :class="$style.outlineLogo">
                     <motion.div :class="$style.gradient" :style="{ opacity: gradientOpacity }"></motion.div>
                     <motion.svg
@@ -80,9 +80,10 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 
 .section {
     width: 100%;
-    height: 2500px;
+    height: 3000px;
     position: relative;
     overflow-x: clip;
+    padding-top: 300px;
     
     .spacer {
         padding-bottom: 600px;
@@ -94,16 +95,30 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
         .wrapper {
             position: sticky;
             z-index: 1;
-            top: 50%;
+            top: 53%;
             transform: translateY(-50%);
+            outline: 2px solid hsla(0, 0%, 0%, 0.1);
+            outline-offset: -2px;
+            border-radius: 30px;
+            padding: 48px;
+            background: 
+                radial-gradient(600px at top left, var(--color-primary) 0%, transparent 100%),
+                radial-gradient(500px at 30% 0%, hsl(from var(--color-primary) calc(h - 20) s l) 0%, transparent 100%),
+                radial-gradient(500px at bottom right, var(--color-primary) 0%, transparent 100%);
 
-            h1, p {
-                text-align: center;
-            }
+            .text {
+                display: flex;
+                
+                h1, p {
+                    width: 50%;
+                }
 
-            p {
-                margin-top: 16px;
-                font-size: 24px;
+                p {
+                    margin-top: 16px;
+                    font-size: 24px;
+                    width: 40%;
+                    margin-left: auto;
+                }
             }
 
             .outlineLogo {
