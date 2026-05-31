@@ -11,7 +11,13 @@ defineProps<{
 </script>
 
 <template>
-    <motion.div :class="$style.card">
+    <motion.div
+        :class="$style.card"
+        :initial="{ opacity: 0, y: 20 }"
+        :animate="{ opacity: 1, y: 0 }"
+        :exit="{ opacity: 0, y: 20 }"
+        :transition="{ duration: 0.4, ease: 'easeInOut' }"
+    >
         <section>
             <div>
                 <motion.h2
@@ -58,7 +64,6 @@ defineProps<{
 @use "~/assets/variables" as *;
 
 .card {
-    //border: 2px solid var(--color-primary);;
     outline: 1px solid hsla(0, 0%, 0%, 0.05);
     outline-offset: -2px;
     border-radius: 30px;

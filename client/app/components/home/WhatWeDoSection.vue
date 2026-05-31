@@ -111,7 +111,7 @@ onMounted(() => {
     height: 4000px;
     position: relative;
     overflow-x: clip;
-    padding-bottom: 200px;
+    padding-bottom: 600px;
 }
 
 .section {
@@ -121,7 +121,7 @@ onMounted(() => {
     height: 100%;
 
     .spacer {
-        //padding-bottom: 600px;
+        padding-bottom: 600px;
     }
 
     .container {
@@ -149,7 +149,8 @@ onMounted(() => {
             
             .description {
                 height: 640px;
-                
+                transition: opacity 0.4s ease-in-out;
+
                 //div {
                 //    display: flex;
                 //    flex-direction: row;
@@ -176,6 +177,12 @@ onMounted(() => {
             &.first {
                 .servicesList li:nth-child(1) {
                     color: var(--color-primary);
+                }
+            }
+
+            &.notScrolled {
+                .description {
+                    opacity: 0;
                 }
             }
 
