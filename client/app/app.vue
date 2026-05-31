@@ -6,6 +6,7 @@ import type {WebTheme} from "~/lib/types";
 import Header from "~/components/header/Header.vue";
 import Debug from "~/components/Debug.vue";
 import 'lenis/dist/lenis.css'
+import Footer from "~/components/Footer.vue";
 
 // state
 const route = useRoute();
@@ -86,6 +87,7 @@ const isDev = import.meta.env.DEV;
     <VueLenis root>
         <Header />
         <NuxtPage />
+        <Footer />
     </VueLenis>
 </template>
 
