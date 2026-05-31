@@ -162,9 +162,10 @@ onMounted(() => {
 
                 li {
                     font-weight: 700;
-                    font-size: 48px;
+                    font-size: 64px;
                     transition: color 0.2s ease-in-out;
                     cursor: pointer;
+                    line-height: 1.2em;
                 }
             }
             
