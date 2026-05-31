@@ -1,7 +1,9 @@
 ﻿<script setup lang="ts">
+import { motion } from "motion-v";
+
 const { t } = useI18n();
 
-const props = defineProps<{
+defineProps<{
     title: string;
     bulletPoints?: string[];
     image: string;
@@ -9,33 +11,61 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div :class="$style.card">
+    <motion.div :class="$style.card">
         <section>
             <div>
-                <h2>{{title}}</h2>
-                <p>
+                <motion.h2
+                    :initial="{ opacity: 0, x: -20 }"
+                    :animate="{ opacity: 1, x: 0 }"
+                    :exit="{ opacity: 0, x: 20 }"
+                    :transition="{ duration: 0.2, ease: 'easeInOut' }"
+                >
+                    {{title}}
+                </motion.h2>
+                <motion.p
+                    :initial="{ opacity: 0, y: 20 }"
+                    :animate="{ opacity: 1, y: 0 }"
+                    :exit="{ opacity: 0, y: -20 }"
+                    :transition="{ duration: 0.2, delay: 0.1, ease: 'easeInOut' }"
+                >
                     <slot />
-                </p>
-                <ul v-if="bulletPoints">
-                    <li v-for="point in bulletPoints">{{point}}</li>
-                </ul>
+                </motion.p>
+                <motion.ul
+                    v-if="bulletPoints"
+                    :initial="{ opacity: 0, y: 20 }"
+                    :animate="{ opacity: 1, y: 0 }"
+                    :exit="{ opacity: 0, y: -20 }"
+                    :transition="{ duration: 0.2, delay: 0.2, ease: 'easeInOut' }"
+                >
+                    <li v-for="point in bulletPoints" :key="point">{{point}}</li>
+                </motion.ul>
             </div>
         </section>
         <section>
-            <img :src="image"  alt=""/>
+            <motion.img 
+                :src="image"  
+                alt=""
+                :initial="{ opacity: 0, scale: 0.9 }"
+                :animate="{ opacity: 1, scale: 1 }"
+                :exit="{ opacity: 0, scale: 0.9 }"
+                :transition="{ duration: 0.3, delay: 0.1, ease: 'easeInOut' }"
+            />
         </section>
-    </div>
+    </motion.div>
 </template>
 
 <style module lang="scss">
 @use "~/assets/variables" as *;
 
 .card {
-    border: 2px solid var(--color-primary);
+    //border: 2px solid var(--color-primary);;
+    outline: 1px solid hsla(0, 0%, 0%, 0.05);
+    outline-offset: -2px;
     border-radius: 30px;
     padding: 64px;
     display: flex;
     height: 640px;
+    background: radial-gradient(600px at top left, var(--color-primary) 0%, transparent 100%);
 
     section:first-child {
         width: 60%;
@@ -88,10 +118,19 @@ const props = defineProps<{
         padding: 64px;
         background: linear-gradient(to top, var(--color-lime-300) 0%, var(--color-primary) 100%);
         border-radius: 32px;
+        width: 512px;
+        height: 512px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
         
         img {
             box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2);
             border-radius: 35px;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
     }
 }

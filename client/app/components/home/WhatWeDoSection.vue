@@ -1,6 +1,6 @@
 ﻿<script setup lang="ts">
 
-import {useScroll, useTransform, motion, AnimatePresence} from "motion-v";
+import {useScroll, useTransform, useMotionValueEvent, AnimatePresence} from "motion-v";
 import ServiceCard from "~/components/home/ServiceCard.vue";
 
 const { t } = useI18n();
@@ -34,16 +34,6 @@ const scrollToProgress = (progress: number) => {
     });
 };
 
-const animationProps = {
-    initial: { opacity: 0, y: 50 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 0 },
-    transition: {
-        ease: "easeOut",
-        duration: .2,
-    }
-};
-
 onMounted(() => {
     useMotionValueEvent(scrollSection, "change", (v) => {
         currentSection.value = v;
@@ -65,57 +55,45 @@ onMounted(() => {
                     
                     <div :class="$style.description">
                         <AnimatePresence mode="wait">
-                            <motion.div
+                            <ServiceCard
                                 v-if="currentSection === 'first'"
                                 key="first"
-                                v-bind="animationProps"
+                                title="Lorem ipsum dolor sit amet"
+                                image="/images/design.png"
+                                :bulletPoints="[
+                                    'Lorem ipsum dolor sit amet',
+                                    'Lorem ipsum dolor sit amet',
+                                    'Lorem ipsum dolor sit amet'
+                                ]"
                             >
-                                <ServiceCard
-                                    title="Lorem ipsum dolor sit amet"
-                                    image="/images/design.png"
-                                    :bulletPoints="[
-                                'Lorem ipsum dolor sit amet',
-                                'Lorem ipsum dolor sit amet',
-                                'Lorem ipsum dolor sit amet'
-                            ]"
-                                >
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
-                                </ServiceCard>
-                            </motion.div>
-                            <motion.div
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+                            </ServiceCard>
+                            <ServiceCard
                                 v-if="currentSection === 'second'"
                                 key="second"
-                                v-bind="animationProps"
+                                title="Lorem ipsum dolor sit amet"
+                                image="/images/development.png"
+                                :bulletPoints="[
+                                    'Lorem ipsum dolor sit amet',
+                                    'Lorem ipsum dolor sit amet',
+                                    'Lorem ipsum dolor sit amet'
+                                ]"
                             >
-                                <ServiceCard
-                                    title="Lorem ipsum dolor sit amet"
-                                    image="/images/development.png"
-                                    :bulletPoints="[
-                                'Lorem ipsum dolor sit amet',
-                                'Lorem ipsum dolor sit amet',
-                                'Lorem ipsum dolor sit amet'
-                            ]"
-                                >
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
-                                </ServiceCard>
-                            </motion.div>
-                            <motion.div
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+                            </ServiceCard>
+                            <ServiceCard
                                 v-if="currentSection === 'third'"
                                 key="third"
-                                v-bind="animationProps"
+                                title="Lorem ipsum dolor sit amet"
+                                image="/images/hosting.png"
+                                :bulletPoints="[
+                                    'Lorem ipsum dolor sit amet',
+                                    'Lorem ipsum dolor sit amet',
+                                    'Lorem ipsum dolor sit amet'
+                                ]"
                             >
-                                <ServiceCard
-                                    title="Lorem ipsum dolor sit amet"
-                                    image="/images/hosting.png"
-                                    :bulletPoints="[
-                                'Lorem ipsum dolor sit amet',
-                                'Lorem ipsum dolor sit amet',
-                                'Lorem ipsum dolor sit amet'
-                            ]"
-                                >
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
-                                </ServiceCard>
-                            </motion.div>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+                            </ServiceCard>
                         </AnimatePresence>
                     </div>
                 </div>

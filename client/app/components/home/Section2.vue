@@ -26,8 +26,22 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
         <div :class="['container', $style.container]">
             <motion.div :class="$style.wrapper">
                 <div :class="$style.text">
-                    <h1>Lorem ipsum dolor sit amet</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam. Cras in urna ipsum. Pellentesque nibh ligula, gravida vitae facilisis quis, malesuada in nisl.</p>
+                    <motion.h1
+                        :initial="{ opacity: 0, y: 30 }"
+                        :whileInView="{ opacity: 1, y: 0 }"
+                        :inViewOptions="{ once: true, margin: '-100px' }"
+                        :transition="{ duration: 0.5, delay: 0.2, ease: 'easeOut' }"
+                    >
+                        Lorem ipsum dolor sit amet
+                    </motion.h1>
+                    <motion.p
+                        :initial="{ opacity: 0, y: 30 }"
+                        :whileInView="{ opacity: 1, y: 0 }"
+                        :inViewOptions="{ once: true, margin: '-100px' }"
+                        :transition="{ duration: 0.5, delay: 0.4, ease: 'easeOut' }"
+                    >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam. Cras in urna ipsum. Pellentesque nibh ligula, gravida vitae facilisis quis, malesuada in nisl.
+                    </motion.p>
                 </div>
                 <div :class="$style.outlineLogo">
                     <motion.div :class="$style.gradient" :style="{ opacity: gradientOpacity }"></motion.div>
@@ -97,7 +111,7 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
             z-index: 1;
             top: 53%;
             transform: translateY(-50%);
-            outline: 2px solid hsla(0, 0%, 0%, 0.1);
+            outline: 1px solid hsla(0, 0%, 0%, 0.1);
             outline-offset: -2px;
             border-radius: 30px;
             padding: 48px;
