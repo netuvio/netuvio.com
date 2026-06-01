@@ -111,7 +111,7 @@ onMounted(() => {
     height: 4000px;
     position: relative;
     overflow-x: clip;
-    padding-bottom: 600px;
+    padding-bottom: 200px;
 }
 
 .section {
@@ -121,7 +121,7 @@ onMounted(() => {
     height: 100%;
 
     .spacer {
-        padding-bottom: 600px;
+        //padding-bottom: 600px;
     }
 
     .container {
