@@ -1,5 +1,5 @@
 ﻿<script setup lang="ts">
-import {useScroll, useTransform, motion, useMotionValueEvent} from "motion-v";
+import {useScroll, useTransform, motion, useMotionValueEvent, AnimatePresence} from "motion-v";
 
 const { t } = useI18n();
 
@@ -22,22 +22,51 @@ interface Section {
 
 const sections: Section[] = [
     {
-        title: "Lorem ipsum dolor sit amet 1",
-        description: "Lorem ipsum dolor sit amet 1",
+        title: "Consultation",
+        description: `Every successful project starts with understanding your goals. We'll discuss your requirements, challenges, and vision to identify the best solution for your needs.
+        \n
+        This can be done through any way that suits you best, whether it's a quick call, a detailed questionnaire, or an in-person meeting. The goal is to ensure we're aligned and ready to move forward together.`
     },
     {
-        title: "Lorem ipsum dolor sit amet 2",
-        description: "Lorem ipsum dolor sit amet 2",
+        title: "Choose what you need",
+        description: `Every project is different, which is why we offer flexible services that can be used individually or combined into a complete solution.
+        \n
+        - UI/UX Design
+        - Web Development
+        - Application Development
+        - Hosting & Infrastructure
+        - Maintenance & Support
+        - Full-Service Solutions
+        \n
+        Choose only what you need today and expand your services as your project grows.`
     },
     {
-        title: "Lorem ipsum dolor sit amet 3",
-        description: "Lorem ipsum dolor sit amet 3",
+        title: "Build & Deploy",
+        description: "Once the plan is clear, we bring your project to life. From creating intuitive designs and developing reliable applications to deploying them on modern infrastructure, we handle the technical work so you can focus on your business."
     },
     {
-        title: "Lorem ipsum dolor sit amet 4",
-        description: "Lorem ipsum dolor sit amet 4",
+        title: "Ongoing Support",
+        description: "Launching is only the beginning. We can continue to support your project with maintenance, updates, monitoring, hosting management, and future improvements as your needs evolve."
     },
-]
+];
+
+function parseDescription(description: string) {
+    return description
+        .split("\n")
+        .map(line => {
+            line = line.trim();
+            if (line.startsWith("- ")) {
+                return `<li>${line.slice(2)}</li>`;
+            }
+            
+            if (line === "") {
+                return "<br/>";
+            }
+
+            return line;
+        })
+        .join("");
+}
 
 const activeSectionValue = useTransform(scrollYProgress, (v) => {
     if (v < START) return 0;
@@ -67,12 +96,22 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
             </motion.div>
             <div :class="$style.mainSection">
                 <div :class="$style.left">
-                    <h1>Process of getting a website</h1>
+                    <h1>From Idea to Launch,<br/>Your Way</h1>
                 </div>
-                <div :class="$style.content">
-                    <h2>{{sections[activeSection]?.title}}</h2>
-                    <p>{{sections[activeSection]?.description}}</p>
-                </div>
+                <AnimatePresence mode="wait">
+                    <motion.div 
+                        :class="$style.content"
+                        :key="activeSection"
+                        :initial="{ opacity: 0, x: 40 }"
+                        :animate="{ opacity: 1, x: 0 }"
+                        :exit="{ opacity: 0, x: -40 }"
+                        :transition="{ duration: 0.2, ease: 'easeInOut' }"
+                    >
+                        <h2>{{activeSection + 1}}. {{sections[activeSection]?.title}}</h2>
+<!--                        <p>{{sections[activeSection]?.description}}</p>-->
+                        <p v-html="parseDescription(sections[activeSection]?.description ?? '')"/>
+                    </motion.div>
+                </AnimatePresence>
             </div>
         </div>
     </section>
@@ -93,7 +132,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
     flex-direction: column;
     justify-content: space-between;
     margin-top: 40vh;
-    height: 70vh;
+    height: 40vh;
     position: sticky;
     top: 50%;
     transform: translateY(-50%);
@@ -144,13 +183,27 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
     
     .mainSection {
         display: flex;
+        flex-grow: 1;
+        padding-top: 10%;
         
         .left {
             width: 50%;
+            color: var(--color-primary);
         }
         
         .content {
             width: 50%;
+            
+            h2 {
+                font-size: 36px;
+                margin-bottom: 12px;
+            }
+            
+            p {
+                li {
+                    margin-left: 40px;
+                }
+            }
         }
     }
 }
