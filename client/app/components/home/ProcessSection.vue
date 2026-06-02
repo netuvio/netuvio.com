@@ -148,13 +148,16 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
             
             .dot {
                 position: relative;
-                width: 22px;
-                height: 22px;
+                width: 18px;
+                height: 18px;
                 border-radius: 50%;
                 background-color: var(--color-carbon-400);
+                transition: all 0.2s ease-in-out;
                 
                 &.active {
                     background-color: var(--color-primary);
+                    box-shadow: 0 0 8px 2px hsla(81, 84%, 56%, 0.5);
+                    scale: 1.2;
                 }
                 
                 span {
