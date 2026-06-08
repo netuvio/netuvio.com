@@ -72,7 +72,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
 .heroWrapper {
     width: 100%;
-    height: 1088px;
+    height: 1088px
 }
 
 .hero {

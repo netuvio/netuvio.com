@@ -76,11 +76,15 @@ body {
     }
     
     .theme-primary {
+        position: relative;
+        z-index: 1;
         background-color: var(--color-background-primary);
         color: var(--color-text-primary);
     }
     
     .theme-secondary {
+        position: relative;
+        z-index: 1;
         background-color: var(--color-background-secondary);
         color: var(--color-text-secondary);
     }

@@ -4,6 +4,7 @@ import HeroSection from "~/components/home/HeroSection.vue";
 import Section2 from "~/components/home/Section2.vue";
 import WhatWeDoSection from "~/components/home/WhatWeDoSection.vue";
 import ProcessSection from "../components/home/ProcessSection.vue";
+import FeaturedProjects from "~/components/home/FeaturedProjects.vue";
 
 const { t } = useI18n();
 </script>
@@ -17,7 +18,8 @@ const { t } = useI18n();
         <HeroSection />
         <Section2 />
         <WhatWeDoSection />
-        <ProcessSection />
+        <ProcessSection /> 
+        <FeaturedProjects />
     </div>
 </template>
 
