@@ -8,7 +8,10 @@ const { t } = useI18n();
         <div :class="['container', $style.container]">
             <h1>Why Choose Us</h1>
             <section :class="$style.grid">
-                sdfg
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </section>
         </div>
     </section>
@@ -19,6 +22,19 @@ const { t } = useI18n();
 
 .section {
     padding: 150px 0;
+    
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 24px;
+        
+        >div {
+            background-color: var(--color-primary);
+            width: 100%;
+            height: 300px;
+        }
+    }
 }
 
 .transition {
