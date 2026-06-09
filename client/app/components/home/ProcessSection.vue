@@ -85,6 +85,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
 
 <template>
     <section :class="[$style.section, 'theme-primary']" id="process" ref="sectionRef">
+        <div :class="$style.transition"></div>
         <div :class="['container', $style.container]">
             <motion.div :class="$style.timeline" :style="{ left: scrollLeft }">
                 <div v-for="(section, index) in sections" :key="index" :class="$style.timeSection">
@@ -119,6 +120,14 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
 
 <style module lang="scss">
 @use "~/assets/variables" as *;
+
+.transition {
+    width: 100%;
+    height: 50px;
+    background-color: var(--color-primary);
+    position: absolute;
+    top: -50px;
+}
 
 .section {
     min-height: 400vh;

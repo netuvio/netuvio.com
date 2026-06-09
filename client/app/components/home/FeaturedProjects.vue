@@ -25,7 +25,7 @@ const { t } = useI18n();
 
 .section {
     min-height: 100vh;
-    padding-top: 150px;
+    padding: 150px 0;
     
     h1 {
         margin-bottom: 32px;

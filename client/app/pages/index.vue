@@ -5,6 +5,7 @@ import Section2 from "~/components/home/Section2.vue";
 import WhatWeDoSection from "~/components/home/WhatWeDoSection.vue";
 import ProcessSection from "../components/home/ProcessSection.vue";
 import FeaturedProjects from "~/components/home/FeaturedProjects.vue";
+import WhyChooseUsSection from "~/components/home/WhyChooseUsSection.vue";
 
 const { t } = useI18n();
 </script>
@@ -20,6 +21,7 @@ const { t } = useI18n();
         <WhatWeDoSection />
         <ProcessSection /> 
         <FeaturedProjects />
+        <WhyChooseUsSection />
     </div>
 </template>
 
