@@ -98,6 +98,7 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
     position: relative;
     overflow-x: clip;
     padding-top: 300px;
+    z-index: 2;
     
     .spacer {
         padding-bottom: 600px;

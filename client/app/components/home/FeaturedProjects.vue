@@ -11,7 +11,7 @@ const { t } = useI18n();
             <h1>Featured Projects</h1>
             <ul>
                 <li v-for="project in projects.filter(p => p.isFeatured)" :key="project.name">
-                    <Project :title="project.name" :imageUrl="project.imageUrl">
+                    <Project :title="project.name" :imageUrl="project.imageUrl" :type="project.type" >
                         {{project.description}}
                     </Project>
                 </li>
@@ -26,11 +26,20 @@ const { t } = useI18n();
 .section {
     min-height: 100vh;
     padding-top: 150px;
-}
 
-ul {
-    list-style: none;
-    padding: 0;
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+        
+        li:nth-child(even) {
+            >div {
+                flex-direction: row-reverse;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: $laptopBreakpoint) {

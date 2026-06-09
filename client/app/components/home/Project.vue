@@ -1,7 +1,10 @@
 ﻿<script setup lang="ts">
+import Button from "~/components/Button.vue";
+
 defineProps<{
     title: string;
-    imageUrl: string;    
+    imageUrl: string;
+    type: "website" | "graphics";
 }>();
 
 const { t } = useI18n();
@@ -9,11 +12,17 @@ const { t } = useI18n();
 
 <template>
     <div :class="$style.project">
-        <div>
-            <h2>{{title}}</h2>
-            <p><slot/></p>
+        <div :class="$style.info">
+            <section :class="$style.top">
+                <h2>{{title}}</h2>
+                <h3>{{ type === "website" ? "Website" : "Graphical design" }}</h3>
+                <p><slot/></p>
+            </section>
+            <section :class="$style.bottom">
+                <Button>Learn More</Button>
+            </section>
         </div>
-        <div>
+        <div :class="$style.image">
             <img :src="imageUrl"  alt=""/>
         </div>
     </div>
@@ -24,6 +33,46 @@ const { t } = useI18n();
 
 .project {
     display: flex;
+    height: 600px;
+    gap: 32px;
+    
+    .info {
+        width: 40%;
+        background-color: var(--color-carbon-600);
+        border: 1px solid var(--color-carbon-400);
+        border-radius: 30px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        .top {
+            h2 {
+                font-size: 36px;
+            }
+            
+            h3 {
+                margin-top: -4px;
+                margin-bottom: 8px;
+                font-size: 18px;
+                opacity: 0.8;
+                font-weight: normal;
+            }
+        }
+    }
+    
+    .image {
+        width: 60%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+        
+        img {
+            width: 100%;
+        }
+    }
 }
 
 @media screen and (max-width: $laptopBreakpoint) {
