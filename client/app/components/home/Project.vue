@@ -1,5 +1,6 @@
 ﻿<script setup lang="ts">
 import Button from "~/components/Button.vue";
+import { motion } from "motion-v";
 
 defineProps<{
     title: string;
@@ -11,7 +12,13 @@ const { t } = useI18n();
 </script>
 
 <template>
-    <div :class="$style.project">
+    <motion.div 
+        :class="$style.project"
+        :initial="{ opacity: 0, y: 16 }"
+        :whileInView="{ opacity: 1, y: 0 }"
+        :inViewOptions="{ once: true }"
+        :transition="{ delay: .3 }"
+    >
         <div :class="$style.info">
             <section :class="$style.top">
                 <h2>{{title}}</h2>
@@ -25,7 +32,7 @@ const { t } = useI18n();
         <div :class="$style.image">
             <img :src="imageUrl"  alt=""/>
         </div>
-    </div>
+    </motion.div>
 </template>
 
 <style module lang="scss">
@@ -47,8 +54,10 @@ const { t } = useI18n();
         justify-content: space-between;
         
         .top {
+            
             h2 {
                 font-size: 36px;
+                color: var(--color-primary);
             }
             
             h3 {
@@ -68,6 +77,8 @@ const { t } = useI18n();
         align-items: center;
         justify-content: center;
         border-radius: 30px;
+        outline: 1px solid hsla(0, 0%, 100%, 0.1);
+        outline-offset: -1px;
         
         img {
             width: 100%;

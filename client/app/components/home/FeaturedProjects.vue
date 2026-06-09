@@ -26,13 +26,17 @@ const { t } = useI18n();
 .section {
     min-height: 100vh;
     padding-top: 150px;
+    
+    h1 {
+        margin-bottom: 32px;
+    }
 
     ul {
         list-style: none;
         padding: 0;
         display: flex;
         flex-direction: column;
-        gap: 64px;
+        gap: 32px;
         
         li:nth-child(even) {
             >div {
