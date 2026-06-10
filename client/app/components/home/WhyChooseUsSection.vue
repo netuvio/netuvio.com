@@ -6,10 +6,15 @@ const { t } = useI18n();
     <section :class="[$style.section, 'theme-secondary']" id="why-choose-us" ref="sectionRef">
         <div :class="$style.transition"></div>
         <div :class="['container', $style.container]">
-            <h1>Why Choose Us</h1>
             <section :class="$style.grid">
-                <div></div>
-                <div></div>
+                <div :class="$style.title">
+                    <h1>Why Choose Us</h1>
+                </div>
+                <div>
+                    <h2>Lorem ipsum</h2>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div :class="$style.cta">dfgh</div>
                 <div></div>
                 <div></div>
             </section>
@@ -25,14 +30,31 @@ const { t } = useI18n();
     
     .grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 400px;
         grid-template-rows: 1fr 1fr;
         gap: 24px;
         
         >div {
-            background-color: var(--color-primary);
+            border: 1px solid var(--color-carbon-50);
             width: 100%;
             height: 300px;
+            border-radius: 30px;
+            padding: 24px;
+            
+            h2 {
+                font-size: 48px;
+            }
+        }
+        
+        .title {
+            border: none;
+        }
+        
+        .cta {
+            background-color: var(--color-primary);
+            grid-column: 3;
+            grid-row: span 2;
+            height: 100%;
         }
     }
 }
