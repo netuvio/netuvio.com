@@ -16,7 +16,7 @@ function stablePrefixLetter(input: string): string {
 }
 
 export default defineNuxtConfig({
-    modules: ["@nuxtjs/i18n", "motion-v/nuxt", "lenis/nuxt"],
+    modules: ["@nuxtjs/i18n", "motion-v/nuxt", "lenis/nuxt", "unplugin-icons/nuxt"],
 
     compatibilityDate: '2025-07-15',
 

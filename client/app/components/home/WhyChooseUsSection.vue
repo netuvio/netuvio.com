@@ -1,5 +1,6 @@
 ﻿<script setup lang="ts">
 import Button from "~/components/Button.vue";
+import IonLayers from '~icons/ion/layers';
 
 const { t } = useI18n();
 </script>
@@ -13,7 +14,8 @@ const { t } = useI18n();
                     <h1>Why Choose Us</h1>
                 </div>
                 <div>
-                    <h2>Flexible Services</h2>
+                    
+                    <h2><i><IonLayers /></i>Flexible Services</h2>
                     <p>Every project is different. Whether you need design, development, hosting, or a complete solution, you can choose the services that fit your goals without paying for what you don't need.</p>
                 </div>
                 <div :class="$style.cta">
@@ -61,6 +63,9 @@ const { t } = useI18n();
             
             h2 {
                 font-size: 40px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
             }
         }
         
@@ -80,6 +85,10 @@ const { t } = useI18n();
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+        
+        i {
+            font-size: 36px;
         }
     }
 }

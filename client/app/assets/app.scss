@@ -4,6 +4,10 @@
 @use "./page-transitions";
 @use "./other";
 
+* {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Montserrat', Helvetica, Arial, sans-serif;
     overflow-x: clip;
