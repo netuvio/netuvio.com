@@ -56,9 +56,11 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
                                 delay: 1.8,
                             }"
                         >
-                            <Button size="xl" variant="primary">
-                                {{ t("home.learnMore") }}
-                            </Button>
+                            <NuxtLinkLocale to="/#brief">
+                                <Button size="xl" variant="primary">
+                                    {{ t("home.learnMore") }}
+                                </Button>
+                            </NuxtLinkLocale>
                         </motion.div>
                     </motion.div>
                 </div>
