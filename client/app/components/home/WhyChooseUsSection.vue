@@ -1,6 +1,8 @@
 ﻿<script setup lang="ts">
 import Button from "~/components/Button.vue";
 import IonLayers from '~icons/ion/layers';
+import IonSparkles from '~icons/ion/sparkles';
+import MaterialSymbolsHandshakeRounded from '~icons/material-symbols/handshake-rounded';
 
 const { t } = useI18n();
 </script>
@@ -14,8 +16,7 @@ const { t } = useI18n();
                     <h1>Why Choose Us</h1>
                 </div>
                 <div>
-                    
-                    <h2><i><IonLayers /></i>Flexible Services</h2>
+                    <h2><i><IonLayers :style="{ fontSize: '35px' }" /></i> Flexible Services</h2>
                     <p>Every project is different. Whether you need design, development, hosting, or a complete solution, you can choose the services that fit your goals without paying for what you don't need.</p>
                 </div>
                 <div :class="$style.cta">
@@ -30,11 +31,11 @@ const { t } = useI18n();
                     </section>
                 </div>
                 <div>
-                    <h2>Modern Technology</h2>
+                    <h2><i><IonSparkles :style="{ fontSize: '32px' }" /></i> Modern Technology</h2>
                     <p>We build with modern frameworks, tools, and best practices to create fast, scalable, and maintainable solutions that are ready to grow with your business.</p>
                 </div>
                 <div>
-                    <h2>Reliable Infrastructure</h2>
+                    <h2><i><MaterialSymbolsHandshakeRounded :style="{ fontSize: '38px' }" /></i> Personal Approach</h2>
                     <p>As a small team, we work closely with every client. You'll communicate directly with the people building your project, ensuring clear communication, faster decisions, and a solution tailored to your needs.</p>
                 </div>
             </section>
@@ -66,6 +67,18 @@ const { t } = useI18n();
                 display: flex;
                 align-items: center;
                 gap: 8px;
+
+                i {
+                    width: 40px;
+                    height: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    svg {
+                        position: absolute;
+                    }
+                }
             }
         }
         
@@ -85,10 +98,6 @@ const { t } = useI18n();
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-        }
-        
-        i {
-            font-size: 36px;
         }
     }
 }
