@@ -5,6 +5,14 @@ import { motion, AnimatePresence } from "motion-v";
 
 const { t } = useI18n();
 
+const MAX_LENGTHS = {
+    firstName: 50,
+    lastName: 50,
+    email: 100,
+    phone: 25,
+    message: 2000
+};
+
 const sectionRef = ref(null);
 
 const form = reactive({
@@ -26,14 +34,13 @@ const errors = reactive({
 });
 
 const isSubmitting = ref(false);
-const showSuccess = ref(false);
 
 watch(() => form.phone, (newValue) => {
     form.phone = newValue.replace(/[^\d\s\-+()]/g, '');
 });
 
 const parsedPhoneNumber = computed(() => {
-    return parsePhoneNumberFromString(form.phone);
+    return parsePhoneNumberFromString(form.phone, 'CZ');
 });
 
 const validate = () => {
@@ -43,29 +50,48 @@ const validate = () => {
     if (!form.firstName.trim()) {
         errors.firstName = 'First name is required';
         isValid = false;
+    } else if (form.firstName.length > MAX_LENGTHS.firstName) {
+        errors.firstName = `Maximum ${MAX_LENGTHS.firstName} characters`;
+        isValid = false;
     }
+
     if (!form.lastName.trim()) {
         errors.lastName = 'Last name is required';
         isValid = false;
+    } else if (form.lastName.length > MAX_LENGTHS.lastName) {
+        errors.lastName = `Maximum ${MAX_LENGTHS.lastName} characters`;
+        isValid = false;
     }
+
     if (!form.email.trim()) {
         errors.email = 'Email is required';
         isValid = false;
     } else if (!/^\S+@\S+\.\S+$/.test(form.email)) {
         errors.email = 'Invalid email format';
         isValid = false;
+    } else if (form.email.length > MAX_LENGTHS.email) {
+        errors.email = `Maximum ${MAX_LENGTHS.email} characters`;
+        isValid = false;
     }
+
     if (!form.service) {
         errors.service = 'Please select a service';
         isValid = false;
     }
+
     if (!form.message.trim()) {
         errors.message = 'Message is required';
         isValid = false;
+    } else if (form.message.length > MAX_LENGTHS.message) {
+        errors.message = `Maximum ${MAX_LENGTHS.message} characters`;
+        isValid = false;
     }
     
-    if (form.phone.trim() && !parsedPhoneNumber.value?.isPossible()) {
+    if (form.phone.trim() && !parsedPhoneNumber.value?.isValid()) {
         errors.phone = 'Phone number is invalid';
+        isValid = false;
+    } else if (form.phone.length > MAX_LENGTHS.phone) {
+        errors.phone = `Maximum ${MAX_LENGTHS.phone} characters`;
         isValid = false;
     }
 
@@ -82,7 +108,6 @@ const handleSubmit = async () => {
         await new Promise(resolve => setTimeout(resolve, 1500));
         
         console.log('Form submitted:', form);
-        showSuccess.value = true;
         
         // Reset form
         Object.assign(form, {
@@ -93,8 +118,6 @@ const handleSubmit = async () => {
             service: '',
             message: ''
         });
-        
-        setTimeout(() => (showSuccess.value = false), 5000);
     } catch (error) {
         console.error('Submission failed:', error);
     } finally {
@@ -107,86 +130,84 @@ const handleSubmit = async () => {
     <section :class="[$style.section, 'theme-secondary']" id="contact" ref="sectionRef">
         <div :class="['container', $style.container]">
             <h1>Contact Us</h1>
-            <transition name="fade" mode="out-in">
-                <div v-if="showSuccess" :class="$style.successMessage">
-                    <h2>Thank you!</h2>
-                    <p>Your message has been sent successfully. We'll get back to you soon.</p>
-                </div>
-                <form v-else @submit.prevent="handleSubmit">
-                    <section>
-                        <label :class="{ [$style.hasError]: errors.firstName }">
-                            <span>First Name *</span>
-                            <input v-model="form.firstName" />
-                            <span :class="$style.errorText">{{ errors.firstName }}</span>
-                        </label>
-                        <label :class="{ [$style.hasError]: errors.lastName }">
-                            <span>Last Name *</span>
-                            <input v-model="form.lastName" />
-                            <span :class="$style.errorText">{{ errors.lastName }}</span>
-                        </label>
-                    </section>
-                    <section>
-                        <label :class="{ [$style.hasError]: errors.email }">
-                            <span>E-Mail *</span>
-                            <input v-model="form.email" type="email" />
-                            <span :class="$style.errorText">{{ errors.email }}</span>
-                        </label>
-                        <label :class="{ [$style.hasError]: errors.phone }">
-                            <span>Phone Number</span>
-                            <div :class="$style.phone">
-                                <div :class="$style.flagWrapper">
-                                    <AnimatePresence mode="popLayout">
-                                        <motion.img
-                                            :key="parsedPhoneNumber?.country ?? 'UN'"
-                                            :src="`https://flagcdn.com/24x18/${parsedPhoneNumber?.country?.toLowerCase() ?? 'un'}.png`"
-                                            alt="Country Flag"
-                                            :initial="{ opacity: 0, scale: 0.5 }"
-                                            :animate="{ opacity: 1, scale: 1 }"
-                                            :exit="{ opacity: 0, scale: 0.5 }"
-                                            :transition="{ duration: 0.2, ease: 'easeOut' }"
-                                        />
-                                    </AnimatePresence>
-                                </div>
-                                <input v-model="form.phone" placeholder="+420 123 456 789" />
-                            </div>
-                            <span :class="$style.errorText">{{ errors.phone }}</span>
-                        </label>
-                    </section>
-                    <section :class="[$style.services, { [$style.hasError]: errors.service }]">
-                        <span>What do you need? *</span>
-                        
-                        <div>
-                            <label>
-                                <input type="radio" v-model="form.service" value="design" />
-                                Design
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.service" value="development" />
-                                Development
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.service" value="hosting" />
-                                Hosting
-                            </label>
-                            <label>
-                                <input type="radio" v-model="form.service" value="other" />
-                                Something else
-                            </label>
-                        </div>
-                        <span :class="$style.errorText">{{ errors.service }}</span>
-                    </section>
-                    <label :class="{ [$style.hasError]: errors.message }">
-                        <span>Message *</span>
-                        <textarea v-model="form.message" />
-                        <span :class="$style.errorText">{{ errors.message }}</span>
+            <form @submit.prevent="handleSubmit">
+                <section>
+                    <label :class="{ [$style.hasError]: errors.firstName }">
+                        <span>First Name *</span>
+                        <input v-model="form.firstName" :maxlength="MAX_LENGTHS.firstName" />
+                        <span :class="$style.errorText">{{ errors.firstName }}</span>
                     </label>
-                    <span>
-                        <Button type="submit" size="lg" :disabled="isSubmitting">
-                            {{ isSubmitting ? 'Sending...' : 'Send' }}
-                        </Button>
-                    </span>
-                </form>
-            </transition>
+                    <label :class="{ [$style.hasError]: errors.lastName }">
+                        <span>Last Name *</span>
+                        <input v-model="form.lastName" :maxlength="MAX_LENGTHS.lastName" />
+                        <span :class="$style.errorText">{{ errors.lastName }}</span>
+                    </label>
+                </section>
+                <section>
+                    <label :class="{ [$style.hasError]: errors.email }">
+                        <span>E-Mail *</span>
+                        <input v-model="form.email" type="email" :maxlength="MAX_LENGTHS.email" />
+                        <span :class="$style.errorText">{{ errors.email }}</span>
+                    </label>
+                    <label :class="{ [$style.hasError]: errors.phone }">
+                        <span>Phone Number</span>
+                        <div :class="$style.phone">
+                            <div :class="$style.flagWrapper">
+                                <AnimatePresence mode="popLayout">
+                                    <motion.img
+                                        :key="parsedPhoneNumber?.country ?? 'UN'"
+                                        :src="`https://flagcdn.com/24x18/${parsedPhoneNumber?.country?.toLowerCase() ?? 'un'}.png`"
+                                        :title="parsedPhoneNumber?.country ?? 'UN'"
+                                        alt="Country Flag"
+                                        :initial="{ opacity: 0, scale: 0.5 }"
+                                        :animate="{ opacity: 1, scale: 1 }"
+                                        :exit="{ opacity: 0, scale: 0.5 }"
+                                        :transition="{ duration: 0.2, ease: 'easeOut' }"
+                                    />
+                                </AnimatePresence>
+                            </div>
+                            <input v-model="form.phone" placeholder="+420 123 456 789 (optional)" :maxlength="MAX_LENGTHS.phone" />
+                        </div>
+                        <span :class="$style.errorText">{{ errors.phone }}</span>
+                    </label>
+                </section>
+                <section :class="[$style.services, { [$style.hasError]: errors.service }]">
+                    <span>What do you need? *</span>
+                    
+                    <div>
+                        <label>
+                            <input type="radio" v-model="form.service" value="design" />
+                            Design
+                        </label>
+                        <label>
+                            <input type="radio" v-model="form.service" value="development" />
+                            Development
+                        </label>
+                        <label>
+                            <input type="radio" v-model="form.service" value="hosting" />
+                            Hosting
+                        </label>
+                        <label>
+                            <input type="radio" v-model="form.service" value="other" />
+                            Something else
+                        </label>
+                    </div>
+                    <span :class="$style.errorText">{{ errors.service }}</span>
+                </section>
+                <label :class="{ [$style.hasError]: errors.message }">
+                    <div :class="$style.labelHeader">
+                        <span>Message *</span>
+                        <span :class="$style.charCount">{{ form.message.length }} / {{ MAX_LENGTHS.message }}</span>
+                    </div>
+                    <textarea v-model="form.message" :maxlength="MAX_LENGTHS.message" />
+                    <span :class="$style.errorText">{{ errors.message }}</span>
+                </label>
+                <span>
+                    <Button type="submit" size="lg" :disabled="isSubmitting">
+                        {{ isSubmitting ? 'Sending...' : 'Send' }}
+                    </Button>
+                </span>
+            </form>
         </div>
     </section>
 </template>
@@ -221,6 +242,24 @@ const handleSubmit = async () => {
             
             >span {
                 margin-left: 12px;
+            }
+
+            .labelHeader {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-right: 12px;
+
+                span {
+                    margin-left: 12px;
+                }
+
+                .charCount {
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    color: var(--color-carbon-400);
+                    margin: 0;
+                }
             }
 
             .errorText {
@@ -283,7 +322,7 @@ const handleSubmit = async () => {
             font-weight: normal;
             transition: all 0.18s ease;
 
-            &:focus {
+            &:focus-within {
                 outline: none;
                 border: 1px solid var(--color-carbon-400);
             }
@@ -328,21 +367,6 @@ const handleSubmit = async () => {
         textarea {
             min-height: 120px;
             resize: vertical;
-        }
-    }
-    
-    .successMessage {
-        text-align: center;
-        padding: 48px 0;
-        
-        h2 {
-            color: var(--color-background-primary);
-            margin-bottom: 16px;
-        }
-        
-        p {
-            font-size: 1.1rem;
-            color: var(--color-carbon-600);
         }
     }
 }
