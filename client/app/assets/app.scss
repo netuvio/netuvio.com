@@ -49,6 +49,11 @@ body {
     a {
         color: var(--color-primary);
         text-decoration: none;
+        transition: color 200ms;
+        
+        &:hover {
+            color: var(--color-lime-200);
+        }
     }
     
     p {

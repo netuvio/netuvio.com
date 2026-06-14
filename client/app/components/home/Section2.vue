@@ -21,7 +21,7 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 
 <template>
     <section class="theme-secondary" ref="sectionRef" :class="$style.section">
-        <Gradient />
+        <Gradient :class="$style.gradient" />
         <div :class="$style.spacer" id="brief"></div>
         <div :class="['container', $style.container]">
             <motion.div :class="$style.wrapper">
@@ -99,6 +99,12 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
     overflow-x: clip;
     padding-top: 300px;
     z-index: 2;
+    
+    >.gradient {
+        position: absolute;
+        top: 50px;
+        width: 100%;
+    }
     
     .spacer {
         padding-bottom: 600px;

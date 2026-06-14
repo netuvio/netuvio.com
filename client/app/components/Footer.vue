@@ -1,13 +1,227 @@
 ﻿<script setup lang="ts">
-
+import { motion } from "motion-v";
+import Gradient from "~/components/home/Gradient.vue";
+import IonMail from '~icons/ion/mail';
+import Fa7BrandsLinkedinIn from '~icons/fa7-brands/linkedin-in';
+import Fa7BrandsInstagram from '~icons/fa7-brands/instagram';
+import Fa7BrandsFacebookF from '~icons/fa7-brands/facebook-f';
+import Fa7BrandsGithub from '~icons/fa7-brands/github';
 </script>
 
 <template>
-    <footer>
-        
+    <footer :class="['theme-primary', $style.footer]" id="footer">
+        <Gradient :class="$style.gradient" />
+        <div :class="['container', $style.container]">
+            <section :class="$style.linkSection">
+                <motion.div 
+                    :class="$style.info"
+                    :initial="{ opacity: 0, y: 30 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.6 }"
+                >
+                    <NuxtLinkLocale to="/">
+                        <div :class="$style.logo"></div>
+                    </NuxtLinkLocale>
+                    <span>Whether you need design, development, hosting, or everything in between, we're here to turn your ideas into reliable digital products.</span>
+                    <span :class="$style.email"><a href="mailto:info@netuvio.com"><IonMail/></a> info@netuvio.com</span>
+                    <ul :class="$style.links">
+                        <li><a target="_blank" href="https://github.com/netuvio"><Fa7BrandsGithub/></a></li>
+                        <li><a target="_blank" href="https://www.linkedin.com/company/netuvio"><Fa7BrandsLinkedinIn/></a></li>
+                        <li><a target="_blank" href="https://www.instagram.com/netuvio_com/"><Fa7BrandsInstagram/></a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/netuvio"><Fa7BrandsFacebookF/></a></li>
+                    </ul>
+                </motion.div>
+                <motion.nav
+                    :initial="{ opacity: 0, y: 30 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.6, delay: 0.1 }"
+                >
+                    <h1>Design</h1>
+                    <ul>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                    </ul>
+                </motion.nav>
+                <motion.nav
+                    :initial="{ opacity: 0, y: 30 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.6, delay: 0.2 }"
+                >
+                    <h1>Development</h1>
+                    <ul>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                    </ul>
+                </motion.nav>
+                <motion.nav
+                    :initial="{ opacity: 0, y: 30 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.6, delay: 0.3 }"
+                >
+                    <h1>Hosting</h1>
+                    <ul>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                    </ul>
+                </motion.nav>
+                <motion.nav
+                    :initial="{ opacity: 0, y: 30 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.6, delay: 0.4 }"
+                >
+                    <h1>About</h1>
+                    <ul>
+                        <li><NuxtLinkLocale to="/#brief">Brief</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#services">Services</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#process">Process</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/projects">Projects</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#why-choose-us">Why Choose Us</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#contact">Contact Us</NuxtLinkLocale></li>
+                    </ul>
+                </motion.nav>
+            </section>
+            <motion.hr 
+                :initial="{ scaleX: 0, opacity: 0 }"
+                :whileInView="{ scaleX: 1, opacity: 1 }"
+                :inViewOptions="{ once: true }"
+                :transition="{ duration: 1, delay: 0.5, ease: 'easeOut' }"
+            />
+            <motion.section 
+                :class="$style.copyrightSection"
+                :initial="{ opacity: 0, y: 20 }"
+                :whileInView="{ opacity: 1, y: 0 }"
+                :inViewOptions="{ once: true }"
+                :transition="{ duration: 0.6, delay: 0.6 }"
+            >
+                <div>&copy; {{(new Date()).getUTCFullYear()}} Netuvio, All rights reserved</div>
+                <div :class="$style.terms">
+                    <NuxtLinkLocale to="/privacy">Privacy Policy</NuxtLinkLocale>
+                    <NuxtLinkLocale to="/terms">Terms of Service</NuxtLinkLocale>
+                </div>
+            </motion.section>
+        </div>
     </footer>
 </template>
 
 <style module lang="scss">
 
+.gradient {
+    transform: rotate(180deg);
+    position: absolute;
+    top: -50px;
+    z-index: -1;
+}
+
+.footer {
+    padding: 200px 0 50px;
+    
+    .linkSection {
+        display: grid;
+        grid-template-columns: 40% repeat(4, 1fr);
+        
+        .info {
+            margin-right: 64px;
+            
+            .logo {
+                mask-image: url('/icons/logo-full.svg');
+                mask-repeat: no-repeat;
+                width: 100%;
+                height: 40px;
+                background-color: white;
+                margin-bottom: 12px;
+            }
+            
+            .email {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-top: 16px;
+                
+                svg {
+                    font-size: 20px;
+                }
+            }
+            
+            .links {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-top: 16px;
+                
+                li a {
+                    font-size: 24px;
+                    border-radius: 9999px;
+                    padding: 6px;
+                    display: block;
+                    background-color: var(--color-primary);
+                    color: var(--color-background-primary);
+                    transition: background-color 200ms;
+                    
+                    &:hover {
+                        background-color: var(--color-lime-200);
+                    }
+                }
+            }
+        }
+        
+        nav {
+            margin-top: 16px;
+            
+            h1 {
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 12px;
+            }
+            
+            ul {
+                list-style: none;
+                padding: 0;
+                
+                a {
+                    color: var(--color-text-primary);
+                    transition: color 0.15s ease-in-out;
+                    padding: 4px 0;
+
+                    &:hover {
+                        color: var(--color-lime-300);
+                    }
+                }
+            }
+        }
+    }
+    
+    .copyrightSection {
+        display: flex;
+        justify-content: space-between;
+        
+        .terms {
+            display: flex;
+            gap: 16px;
+        }
+    }
+    
+    hr {
+        width: 100%;
+        border: none;
+        //border-top: 1px solid var(--color-carbon-500);
+        margin: 64px 0;
+        height: 1px;
+        background: radial-gradient(circle, var(--color-primary) 0%, transparent 100%);
+        position: relative;
+        overflow: visible;
+    }
+}
 </style>
