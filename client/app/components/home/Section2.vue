@@ -133,7 +133,7 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 
                 p {
                     margin-top: 16px;
-                    font-size: clamp(18px, 1.7vw, 24px);
+                    font-size: clamp(14px, 1.7vw, 24px);
                     width: 40%;
                     margin-left: auto;
                 }
@@ -210,6 +210,9 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 
         .container .wrapper {
             border-radius: 24px;
+            top: 100px;
+            transform: none;
+            background: radial-gradient(600px at top left, var(--color-primary) 0%, transparent 100%);
 
             .outlineLogo {
                 margin-top: 32px;
