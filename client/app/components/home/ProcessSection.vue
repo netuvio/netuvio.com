@@ -20,35 +20,24 @@ interface Section {
     description: string;
 }
 
-const sections: Section[] = [
+const sections = computed<Section[]>(() => [
     {
-        title: "Consultation",
-        description: `Every successful project starts with understanding your goals. We'll discuss your requirements, challenges, and vision to identify the best solution for your needs.
-        \n
-        This can be done through any way that suits you best, whether it's a quick call, a detailed questionnaire, or an in-person meeting. The goal is to ensure we're aligned and ready to move forward together.`
+        title: t('process.sections.consultation.title'),
+        description: t('process.sections.consultation.description')
     },
     {
-        title: "Choose what you need",
-        description: `Every project is different, which is why we offer flexible services that can be used individually or combined into a complete solution.
-        \n
-        - UI/UX Design
-        - Web Development
-        - Application Development
-        - Hosting & Infrastructure
-        - Maintenance & Support
-        - Full-Service Solutions
-        \n
-        Choose only what you need today and expand your services as your project grows.`
+        title: t('process.sections.choose.title'),
+        description: t('process.sections.choose.description')
     },
     {
-        title: "Build & Deploy",
-        description: "Once the plan is clear, we bring your project to life. From creating intuitive designs and developing reliable applications to deploying them on modern infrastructure, we handle the technical work so you can focus on your business."
+        title: t('process.sections.build.title'),
+        description: t('process.sections.build.description')
     },
     {
-        title: "Ongoing Support",
-        description: "Launching is only the beginning. We can continue to support your project with maintenance, updates, monitoring, hosting management, and future improvements as your needs evolve."
+        title: t('process.sections.support.title'),
+        description: t('process.sections.support.description')
     },
-];
+]);
 
 function parseDescription(description: string) {
     return description
@@ -69,10 +58,13 @@ function parseDescription(description: string) {
 }
 
 const activeSectionValue = useTransform(scrollYProgress, (v) => {
+    const count = sections.value.length;
+
     if (v < START) return 0;
-    if (v >= END) return sections.length - 1;
+    if (v >= END) return count - 1;
+
     const progress = (v - START) / (END - START);
-    return Math.floor(progress * sections.length);
+    return Math.floor(progress * count);
 });
 
 const activeSection = ref(0);
@@ -97,7 +89,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
             </motion.div>
             <div :class="$style.mainSection">
                 <div :class="$style.left">
-                    <h1>From Idea to Launch,<br/>Your Way</h1>
+                    <h1 v-html="t('process.title')"></h1>
                 </div>
                 <AnimatePresence mode="wait">
                     <motion.div 

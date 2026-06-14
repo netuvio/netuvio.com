@@ -3,7 +3,7 @@
 import {useScroll, useTransform, useMotionValueEvent, AnimatePresence} from "motion-v";
 import ServiceCard from "~/components/home/ServiceCard.vue";
 
-const { t } = useI18n();
+const { t, tm } = useI18n();
 
 const sectionRef = ref<HTMLElement | null>(null);
 
@@ -48,9 +48,9 @@ onMounted(() => {
             <div :class="['container', $style.container]" id="services">
                 <div :class="[$style.wrapper, $style[currentSection]]">
                     <ul :class="$style.servicesList">
-                        <li @click="scrollToProgress(0.33)">Design</li>
-                        <li @click="scrollToProgress(0.50)">Development</li>
-                        <li @click="scrollToProgress(0.66)">Hosting</li>
+                        <li @click="scrollToProgress(0.33)">{{ t('services.design.title') }}</li>
+                        <li @click="scrollToProgress(0.50)">{{ t('services.development.title') }}</li>
+                        <li @click="scrollToProgress(0.66)">{{ t('services.hosting.title') }}</li>
                     </ul>
                     
                     <div :class="$style.description">
@@ -58,41 +58,32 @@ onMounted(() => {
                             <ServiceCard
                                 v-if="currentSection === 'first'"
                                 key="first"
-                                title="Lorem ipsum dolor sit amet"
+                                :title="t('services.design.title')"
                                 image="/images/design.png"
-                                :bulletPoints="[
-                                    'Lorem ipsum dolor sit amet',
-                                    'Lorem ipsum dolor sit amet',
-                                    'Lorem ipsum dolor sit amet'
-                                ]"
+                                :bulletPoints="tm('services.design.bulletPoints') as string[]"
+
                             >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+                                {{ t('services.design.description') }}
                             </ServiceCard>
                             <ServiceCard
                                 v-if="currentSection === 'second'"
                                 key="second"
-                                title="Lorem ipsum dolor sit amet"
+                                :title="t('services.development.title')"
                                 image="/images/development.png"
-                                :bulletPoints="[
-                                    'Lorem ipsum dolor sit amet',
-                                    'Lorem ipsum dolor sit amet',
-                                    'Lorem ipsum dolor sit amet'
-                                ]"
+                                :bulletPoints="tm('services.development.bulletPoints') as string[]"
+
                             >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+                                {{ t('services.development.description') }}
                             </ServiceCard>
                             <ServiceCard
                                 v-if="currentSection === 'third'"
                                 key="third"
-                                title="Lorem ipsum dolor sit amet"
+                                :title="t('services.hosting.title')"
                                 image="/images/hosting.png"
-                                :bulletPoints="[
-                                    'Lorem ipsum dolor sit amet',
-                                    'Lorem ipsum dolor sit amet',
-                                    'Lorem ipsum dolor sit amet'
-                                ]"
+                                :bulletPoints="tm('services.hosting.bulletPoints') as string[]"
+
                             >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+                                {{ t('services.hosting.description') }}
                             </ServiceCard>
                         </AnimatePresence>
                     </div>

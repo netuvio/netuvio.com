@@ -1,4 +1,6 @@
 ﻿<script setup lang="ts">
+const { t } = useI18n();
+
 import { motion } from "motion-v";
 import Gradient from "~/components/home/Gradient.vue";
 import IonMail from '~icons/ion/mail';
@@ -23,7 +25,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     <NuxtLinkLocale to="/">
                         <div :class="$style.logo"></div>
                     </NuxtLinkLocale>
-                    <span>Whether you need design, development, hosting, or everything in between, we're here to turn your ideas into reliable digital products.</span>
+                    <span>{{ t('footer.description') }}</span>
                     <span :class="$style.email"><a href="mailto:info@netuvio.com"><IonMail/></a> info@netuvio.com</span>
                     <ul :class="$style.links">
                         <li><a target="_blank" href="https://github.com/netuvio"><Fa7BrandsGithub/></a></li>
@@ -38,12 +40,12 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.1 }"
                 >
-                    <h1>Design</h1>
+                    <h1>{{ t('footer.design.title') }}</h1>
                     <ul>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
                     </ul>
                 </motion.nav>
                 <motion.nav
@@ -52,12 +54,12 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.2 }"
                 >
-                    <h1>Development</h1>
+                    <h1>{{ t('footer.development.title') }}</h1>
                     <ul>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
                     </ul>
                 </motion.nav>
                 <motion.nav
@@ -66,12 +68,12 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.3 }"
                 >
-                    <h1>Hosting</h1>
+                    <h1>{{ t('footer.hosting.title') }}</h1>
                     <ul>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">Lorem ipsum</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
                     </ul>
                 </motion.nav>
                 <motion.nav
@@ -80,14 +82,14 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.4 }"
                 >
-                    <h1>About</h1>
+                    <h1>{{ t('footer.about.title') }}</h1>
                     <ul>
-                        <li><NuxtLinkLocale to="/#brief">Brief</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#services">Services</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#process">Process</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/projects">Projects</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#why-choose-us">Why Choose Us</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#contact">Contact Us</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#brief">{{ t('footer.about.brief') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#services">{{ t('footer.about.services') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#process">{{ t('footer.about.process') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/projects">{{ t('footer.about.projects') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#why-choose-us">{{ t('footer.about.whyChooseUs') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#contact">{{ t('footer.about.contact') }}</NuxtLinkLocale></li>
                     </ul>
                 </motion.nav>
             </section>
@@ -104,10 +106,10 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                 :inViewOptions="{ once: true }"
                 :transition="{ duration: 0.6, delay: 0.6 }"
             >
-                <div>&copy; {{(new Date()).getUTCFullYear()}} Netuvio, All rights reserved</div>
+                <div>&copy; {{(new Date()).getUTCFullYear()}} Netuvio, {{ t('footer.allRightsReserved') }}</div>
                 <div :class="$style.terms">
-                    <NuxtLinkLocale to="/privacy">Privacy Policy</NuxtLinkLocale>
-                    <NuxtLinkLocale to="/terms">Terms of Service</NuxtLinkLocale>
+                    <NuxtLinkLocale to="/privacy">{{ t('footer.privacyPolicy') }}</NuxtLinkLocale>
+                    <NuxtLinkLocale to="/terms">{{ t('footer.termsOfService') }}</NuxtLinkLocale>
                 </div>
             </motion.section>
         </div>

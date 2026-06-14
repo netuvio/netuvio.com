@@ -5,6 +5,8 @@
 
 import { motion } from "motion-v";
 
+const { t } = useI18n();
+
 const props = withDefaults(defineProps<{
     text: string;
     
@@ -50,7 +52,7 @@ const container = {
 </script>
 
 <template>
-    <span class="sr-only" v-if="seoFriendly">Modern apps, powerful hosting, zero hassle</span>
+    <span class="sr-only" v-if="seoFriendly">{{ t('home.hero.srOnly') }}</span>
     
     <motion.span
         :variants="container"

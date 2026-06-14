@@ -27,18 +27,11 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
                     <motion.div :style="{ scale: textScale, transformOrigin: 'center center' }">
 
                         <!-- nadpis -->
-                        <h1 v-if="locale === 'en'">
-                            <span class="sr-only">Modern apps, powerful hosting, zero hassle</span>
-                            <span :class="$style.colored"><RandomTextAnimation text="Modern" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="apps," :seoFriendly="false" :ariaHidden="true" /> <br/>
-                            <span :class="$style.colored"><RandomTextAnimation text="powerful" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hosting," :seoFriendly="false" :ariaHidden="true" /> <br/>
-                            <span :class="$style.colored"><RandomTextAnimation text="zero" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hassle" :seoFriendly="false" :ariaHidden="true" />
-                        </h1>
-
-                        <h1 v-else-if="locale === 'cs'">
-                            <span class="sr-only">Moderní aplikace, výkonný hosting, žádné starosti</span>
-                            <span :class="$style.colored"><RandomTextAnimation text="Moderní" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="aplikace," :seoFriendly="false" :ariaHidden="true" /> <br/>
-                            <span :class="$style.colored"><RandomTextAnimation text="výkonný" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="hosting," :seoFriendly="false" :ariaHidden="true" /> <br/>
-                            <span :class="$style.colored"><RandomTextAnimation text="žádné" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation text="starosti" :seoFriendly="false" :ariaHidden="true" />
+                        <h1>
+                            <span class="sr-only">{{ t('home.hero.srOnly') }}</span>
+                            <span :class="$style.colored"><RandomTextAnimation :text="t('home.hero.line1.colored')" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation :text="t('home.hero.line1.text')" :seoFriendly="false" :ariaHidden="true" /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation :text="t('home.hero.line2.colored')" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation :text="t('home.hero.line2.text')" :seoFriendly="false" :ariaHidden="true" /> <br/>
+                            <span :class="$style.colored"><RandomTextAnimation :text="t('home.hero.line3.colored')" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation :text="t('home.hero.line3.text')" :seoFriendly="false" :ariaHidden="true" />
                         </h1>
 
                         <!-- podnadpis -->

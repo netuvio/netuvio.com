@@ -48,50 +48,50 @@ const validate = () => {
     Object.keys(errors).forEach(key => (errors[key as keyof typeof errors] = ''));
 
     if (!form.firstName.trim()) {
-        errors.firstName = 'First name is required';
+        errors.firstName = t('contact.validation.firstNameRequired');
         isValid = false;
     } else if (form.firstName.length > MAX_LENGTHS.firstName) {
-        errors.firstName = `Maximum ${MAX_LENGTHS.firstName} characters`;
+        errors.firstName = t('contact.validation.maxLength', { max: MAX_LENGTHS.firstName });
         isValid = false;
     }
 
     if (!form.lastName.trim()) {
-        errors.lastName = 'Last name is required';
+        errors.lastName = t('contact.validation.lastNameRequired');
         isValid = false;
     } else if (form.lastName.length > MAX_LENGTHS.lastName) {
-        errors.lastName = `Maximum ${MAX_LENGTHS.lastName} characters`;
+        errors.lastName = t('contact.validation.maxLength', { max: MAX_LENGTHS.lastName });
         isValid = false;
     }
 
     if (!form.email.trim()) {
-        errors.email = 'Email is required';
+        errors.email = t('contact.validation.emailRequired');
         isValid = false;
     } else if (!/^\S+@\S+\.\S+$/.test(form.email)) {
-        errors.email = 'Invalid email format';
+        errors.email = t('contact.validation.emailInvalid');
         isValid = false;
     } else if (form.email.length > MAX_LENGTHS.email) {
-        errors.email = `Maximum ${MAX_LENGTHS.email} characters`;
+        errors.email = t('contact.validation.maxLength', { max: MAX_LENGTHS.email });
         isValid = false;
     }
 
     if (!form.service) {
-        errors.service = 'Please select a service';
+        errors.service = t('contact.validation.serviceRequired');
         isValid = false;
     }
 
     if (!form.message.trim()) {
-        errors.message = 'Message is required';
+        errors.message = t('contact.validation.messageRequired');
         isValid = false;
     } else if (form.message.length > MAX_LENGTHS.message) {
-        errors.message = `Maximum ${MAX_LENGTHS.message} characters`;
+        errors.message = t('contact.validation.maxLength', { max: MAX_LENGTHS.message });
         isValid = false;
     }
     
     if (form.phone.trim() && !parsedPhoneNumber.value?.isValid()) {
-        errors.phone = 'Phone number is invalid';
+        errors.phone = t('contact.validation.phoneInvalid');
         isValid = false;
     } else if (form.phone.length > MAX_LENGTHS.phone) {
-        errors.phone = `Maximum ${MAX_LENGTHS.phone} characters`;
+        errors.phone = t('contact.validation.maxLength', { max: MAX_LENGTHS.phone });
         isValid = false;
     }
 
@@ -135,7 +135,7 @@ const handleSubmit = async () => {
                 :inViewOptions="{ once: true }"
                 :transition="{ duration: 0.6 }"
             >
-                Contact Us
+                {{ t('contact.title') }}
             </motion.h1>
             <form @submit.prevent="handleSubmit">
                 <motion.section
@@ -145,12 +145,12 @@ const handleSubmit = async () => {
                     :transition="{ duration: 0.5, delay: 0.1 }"
                 >
                     <label :class="{ [$style.hasError]: errors.firstName }">
-                        <span>First Name *</span>
+                        <span>{{ t('contact.firstName') }} *</span>
                         <input v-model="form.firstName" :maxlength="MAX_LENGTHS.firstName" />
                         <span :class="$style.errorText">{{ errors.firstName }}</span>
                     </label>
                     <label :class="{ [$style.hasError]: errors.lastName }">
-                        <span>Last Name *</span>
+                        <span>{{ t('contact.lastName') }} *</span>
                         <input v-model="form.lastName" :maxlength="MAX_LENGTHS.lastName" />
                         <span :class="$style.errorText">{{ errors.lastName }}</span>
                     </label>
@@ -162,12 +162,12 @@ const handleSubmit = async () => {
                     :transition="{ duration: 0.5, delay: 0.2 }"
                 >
                     <label :class="{ [$style.hasError]: errors.email }">
-                        <span>E-Mail *</span>
+                        <span>{{ t('contact.email') }} *</span>
                         <input v-model="form.email" type="email" :maxlength="MAX_LENGTHS.email" />
                         <span :class="$style.errorText">{{ errors.email }}</span>
                     </label>
                     <label :class="{ [$style.hasError]: errors.phone }">
-                        <span>Phone Number</span>
+                        <span>{{ t('contact.phoneNumber') }}</span>
                         <div :class="$style.phone">
                             <div :class="$style.flagWrapper">
                                 <AnimatePresence mode="popLayout">
@@ -175,7 +175,7 @@ const handleSubmit = async () => {
                                         :key="parsedPhoneNumber?.country ?? 'UN'"
                                         :src="`https://flagcdn.com/24x18/${parsedPhoneNumber?.country?.toLowerCase() ?? 'un'}.png`"
                                         :title="parsedPhoneNumber?.country ?? 'UN'"
-                                        alt="Country Flag"
+                                        :alt="t('contact.countryFlag')"
                                         :initial="{ opacity: 0, scale: 0.5 }"
                                         :animate="{ opacity: 1, scale: 1 }"
                                         :exit="{ opacity: 0, scale: 0.5 }"
@@ -183,7 +183,7 @@ const handleSubmit = async () => {
                                     />
                                 </AnimatePresence>
                             </div>
-                            <input v-model="form.phone" placeholder="+420 123 456 789 (optional)" :maxlength="MAX_LENGTHS.phone" />
+                            <input v-model="form.phone" :placeholder="t('contact.phonePlaceholder')" :maxlength="MAX_LENGTHS.phone" />
                         </div>
                         <span :class="$style.errorText">{{ errors.phone }}</span>
                     </label>
@@ -195,24 +195,24 @@ const handleSubmit = async () => {
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.5, delay: 0.3 }"
                 >
-                    <span>What do you need? *</span>
+                    <span>{{ t('contact.whatDoYouNeed') }} *</span>
                     
                     <div>
                         <label>
                             <input type="radio" v-model="form.service" value="design" />
-                            Design
+                            {{ t('contact.services.design') }}
                         </label>
                         <label>
                             <input type="radio" v-model="form.service" value="development" />
-                            Development
+                            {{ t('contact.services.development') }}
                         </label>
                         <label>
                             <input type="radio" v-model="form.service" value="hosting" />
-                            Hosting
+                            {{ t('contact.services.hosting') }}
                         </label>
                         <label>
                             <input type="radio" v-model="form.service" value="other" />
-                            Something else
+                            {{ t('contact.services.other') }}
                         </label>
                     </div>
                     <span :class="$style.errorText">{{ errors.service }}</span>
@@ -225,7 +225,7 @@ const handleSubmit = async () => {
                     :transition="{ duration: 0.5, delay: 0.4 }"
                 >
                     <div :class="$style.labelHeader">
-                        <span>Message *</span>
+                        <span>{{ t('contact.message') }} *</span>
                         <span :class="$style.charCount">{{ form.message.length }} / {{ MAX_LENGTHS.message }}</span>
                     </div>
                     <textarea v-model="form.message" :maxlength="MAX_LENGTHS.message" />
@@ -238,7 +238,7 @@ const handleSubmit = async () => {
                     :transition="{ duration: 0.5, delay: 0.5 }"
                 >
                     <Button type="submit" size="lg" :disabled="isSubmitting">
-                        {{ isSubmitting ? 'Sending...' : 'Send' }}
+                        {{ isSubmitting ? t('contact.sending') : t('contact.send') }}
                     </Button>
                 </motion.span>
             </form>

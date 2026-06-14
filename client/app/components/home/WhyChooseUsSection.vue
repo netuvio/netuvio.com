@@ -20,7 +20,7 @@ const { t } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6 }"
                 >
-                    <h1>Why Choose Us</h1>
+                    <h1>{{ t('whyChooseUs.title') }}</h1>
                 </motion.div>
                 <motion.div
                     :initial="{ opacity: 0, y: 30 }"
@@ -28,8 +28,8 @@ const { t } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.1 }"
                 >
-                    <h2><i><IonLayers :style="{ fontSize: '35px' }" /></i> Flexible Services</h2>
-                    <p>Every project is different. Whether you need design, development, hosting, or a complete solution, you can choose the services that fit your goals without paying for what you don't need.</p>
+                    <h2><i><IonLayers :style="{ fontSize: '35px' }" /></i> {{ t('whyChooseUs.flexibleServices.title') }}</h2>
+                    <p>{{ t('whyChooseUs.flexibleServices.description') }}</p>
                 </motion.div>
                 <motion.div
                     :class="$style.cta"
@@ -39,12 +39,12 @@ const { t } = useI18n();
                     :transition="{ duration: 0.6, delay: 0.3 }"
                 >
                     <section>
-                        <h2>Ready to Bring Your Idea to Life?</h2>
-                        <p>Whether you need a complete solution or help with a specific part of your project, we're here to help. Let's discuss your goals and find the right approach for your business.</p>
+                        <h2>{{ t('whyChooseUs.cta.title') }}</h2>
+                        <p>{{ t('whyChooseUs.cta.description') }}</p>
                     </section>
                     <section>
                         <NuxtLinkLocale to="/#contact">
-                            <Button size="xl">Contact Us</Button>
+                            <Button size="xl">{{ t('whyChooseUs.cta.button') }}</Button>
                         </NuxtLinkLocale>
                     </section>
                 </motion.div>
@@ -54,8 +54,8 @@ const { t } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.2 }"
                 >
-                    <h2><i><IonSparkles :style="{ fontSize: '32px' }" /></i> Modern Technology</h2>
-                    <p>We build with modern frameworks, tools, and best practices to create fast, scalable, and maintainable solutions that are ready to grow with your business.</p>
+                    <h2><i><IonSparkles :style="{ fontSize: '32px' }" /></i> {{ t('whyChooseUs.modernTechnology.title') }}</h2>
+                    <p>{{ t('whyChooseUs.modernTechnology.description') }}</p>
                 </motion.div>
                 <motion.div
                     :initial="{ opacity: 0, y: 30 }"
@@ -63,8 +63,8 @@ const { t } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.3 }"
                 >
-                    <h2><i><MaterialSymbolsHandshakeRounded :style="{ fontSize: '38px' }" /></i> Personal Approach</h2>
-                    <p>As a small team, we work closely with every client. You'll communicate directly with the people building your project, ensuring clear communication, faster decisions, and a solution tailored to your needs.</p>
+                    <h2><i><MaterialSymbolsHandshakeRounded :style="{ fontSize: '38px' }" /></i> {{ t('whyChooseUs.personalApproach.title') }}</h2>
+                    <p>{{ t('whyChooseUs.personalApproach.description') }}</p>
                 </motion.div>
             </section>
         </div>

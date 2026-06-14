@@ -8,7 +8,7 @@ const { t } = useI18n();
 <template>
     <section :class="[$style.section, 'theme-primary']" id="projects" ref="sectionRef">
         <div :class="['container', $style.container]">
-            <h1>Featured Projects</h1>
+            <h1>{{ t('projects.featuredProjects') }}</h1>
             <ul>
                 <li v-for="project in projects.filter(p => p.isFeatured)" :key="project.name">
                     <Project :title="project.name" :imageUrl="project.imageUrl" :type="project.type" >

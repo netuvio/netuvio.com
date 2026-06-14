@@ -22,11 +22,11 @@ const { t } = useI18n();
         <div :class="$style.info">
             <section :class="$style.top">
                 <h2>{{title}}</h2>
-                <h3>{{ type === "website" ? "Website" : "Graphical design" }}</h3>
+                <h3>{{ type === "website" ? t('projects.types.website') : t('projects.types.graphicDesign') }}</h3>
                 <p><slot/></p>
             </section>
             <section :class="$style.bottom">
-                <Button>Learn More</Button>
+                <Button>{{ t('projects.learnMore') }}</Button>
             </section>
         </div>
         <div :class="$style.image">

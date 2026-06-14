@@ -31,17 +31,13 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
                         :whileInView="{ opacity: 1, y: 0 }"
                         :inViewOptions="{ once: true, margin: '-100px' }"
                         :transition="{ duration: 0.5, delay: 0.2, ease: 'easeOut' }"
-                    >
-                        Lorem ipsum dolor sit amet
-                    </motion.h1>
+                    >{{ t('brief.title') }}</motion.h1>
                     <motion.p
                         :initial="{ opacity: 0, y: 30 }"
                         :whileInView="{ opacity: 1, y: 0 }"
                         :inViewOptions="{ once: true, margin: '-100px' }"
                         :transition="{ duration: 0.5, delay: 0.4, ease: 'easeOut' }"
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam. Cras in urna ipsum. Pellentesque nibh ligula, gravida vitae facilisis quis, malesuada in nisl.
-                    </motion.p>
+                    >{{ t('brief.description') }}</motion.p>
                 </div>
                 <div :class="$style.outlineLogo">
                     <motion.div :class="$style.gradient" :style="{ opacity: gradientOpacity }"></motion.div>
