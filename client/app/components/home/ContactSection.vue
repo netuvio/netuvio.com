@@ -250,7 +250,7 @@ const handleSubmit = async () => {
 @use "~/assets/variables" as *;
 
 .section {
-    padding: 150px 0;
+    padding: clamp(90px, 10vw, 150px) 0;
     
     h1 {
         margin-bottom: 32px;
@@ -314,6 +314,7 @@ const handleSubmit = async () => {
         .services {
             >div {
                 display: flex;
+                flex-wrap: wrap;
                 gap: 8px;
                 
                 label {
@@ -409,8 +410,27 @@ const handleSubmit = async () => {
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
+    .section form {
+        section {
+            flex-direction: column;
+        }
+    }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    .section form {
+        gap: 18px;
+
+        .services > div label {
+            width: 100%;
+            min-height: 44px;
+        }
+
+        input,
+        textarea,
+        .phone {
+            min-height: 44px;
+        }
+    }
 }
 </style>

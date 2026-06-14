@@ -20,7 +20,7 @@
     
     top: calc(var(--gradient-height) / -2);
     position: absolute;
-    width: max(1000px, 101%);
+    width: 100vw;
     left: 50%;
     transform: translateX(-50%);
     background: radial-gradient(

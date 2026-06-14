@@ -98,8 +98,8 @@ onMounted(() => {
 
 .sectionContainer {
     width: 100%;
-    min-height: 4000px;
-    height: 4000px;
+    min-height: clamp(2800px, 280vh, 4000px);
+    height: clamp(2800px, 280vh, 4000px);
     position: relative;
     overflow-x: clip;
     padding-bottom: 200px;
@@ -108,7 +108,7 @@ onMounted(() => {
 .section {
     position: relative;
     overflow-x: clip;
-    padding-top: 800px;
+    padding-top: clamp(420px, 55vw, 800px);
     height: 100%;
 
     .spacer {
@@ -131,7 +131,7 @@ onMounted(() => {
 
                 li {
                     font-weight: 700;
-                    font-size: 64px;
+                    font-size: clamp(40px, 4.45vw, 64px);
                     transition: color 0.2s ease-in-out;
                     cursor: pointer;
                     line-height: 1.2em;
@@ -139,7 +139,8 @@ onMounted(() => {
             }
             
             .description {
-                height: 640px;
+                min-height: 640px;
+                height: auto;
                 transition: opacity 0.4s ease-in-out;
 
                 //div {
@@ -188,6 +189,42 @@ onMounted(() => {
                     color: var(--color-primary);
                 }
             }
+        }
+    }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .sectionContainer {
+        min-height: 2500px;
+        height: 2500px;
+        padding-bottom: 120px;
+    }
+
+    .section {
+        padding-top: 360px;
+
+        .container .wrapper {
+            top: 52%;
+
+            .description {
+                min-height: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .sectionContainer {
+        min-height: 2300px;
+        height: 2300px;
+        padding-bottom: 80px;
+    }
+
+    .section {
+        padding-top: 260px;
+
+        .container .wrapper .servicesList {
+            margin-bottom: 20px;
         }
     }
 }

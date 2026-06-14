@@ -25,7 +25,7 @@ const { t } = useI18n();
 
 .section {
     min-height: 100vh;
-    padding: 150px 0;
+    padding: clamp(90px, 10vw, 150px) 0;
     
     h1 {
         margin-bottom: 32px;
@@ -50,6 +50,13 @@ const { t } = useI18n();
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
+    .section ul {
+        li:nth-child(even) {
+            >div {
+                flex-direction: column;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {

@@ -126,11 +126,12 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
 }
 
 .footer {
-    padding: 200px 0 50px;
+    padding: clamp(120px, 14vw, 200px) 0 50px;
     
     .linkSection {
         display: grid;
-        grid-template-columns: 40% repeat(4, 1fr);
+        grid-template-columns: minmax(280px, 40%) repeat(4, 1fr);
+        gap: 24px;
         
         .info {
             margin-right: 64px;
@@ -208,6 +209,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
     .copyrightSection {
         display: flex;
         justify-content: space-between;
+        gap: 16px;
         
         .terms {
             display: flex;
@@ -224,6 +226,43 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
         background: radial-gradient(circle, var(--color-primary) 0%, transparent 100%);
         position: relative;
         overflow: visible;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .footer .linkSection {
+        grid-template-columns: repeat(4, 1fr);
+
+        .info {
+            grid-column: 1 / -1;
+            margin-right: 0;
+            max-width: 520px;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .footer {
+        .linkSection {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .copyrightSection {
+            flex-direction: column;
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .footer {
+        .linkSection {
+            grid-template-columns: 1fr;
+        }
+
+        .copyrightSection .terms {
+            flex-direction: column;
+            gap: 8px;
+        }
     }
 }
 </style>

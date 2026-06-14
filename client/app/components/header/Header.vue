@@ -163,6 +163,12 @@ header {
 
 @media screen and (max-width: $tabletBreakpoint) {
     header nav {
+        height: 72px;
+        
+        .logo {
+            width: 170px;
+        }
+        
         .links, .locales {
             display: none;
         }
@@ -174,5 +180,20 @@ header {
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    header {
+        padding: 0 4px;
+
+        &.scrolled {
+            margin: 8px 0;
+
+            nav {
+                padding: 18px;
+            }
+        }
+        
+        nav .logo {
+            width: 150px;
+        }
+    }
 }
 </style>

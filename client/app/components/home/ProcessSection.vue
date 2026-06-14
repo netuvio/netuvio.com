@@ -125,7 +125,8 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
     min-height: 400vh;
     z-index: 1;
     position: relative;
-    padding-top: 300px;
+    padding-top: clamp(180px, 21vw, 300px);
+    overflow-x: clip;
 }
 
 .container {
@@ -137,11 +138,13 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
     position: sticky;
     top: 50%;
     transform: translateY(-50%);
+    overflow-x: clip;
     
     .timeline {
         display: flex;
         margin-left: 30%;
         position: relative;
+        width: max-content;
         
         .timeSection {
             display: flex;
@@ -189,6 +192,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
         display: flex;
         flex-grow: 1;
         padding-top: 10%;
+        gap: 32px;
         
         .left {
             width: 50%;
@@ -199,7 +203,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
             width: 50%;
             
             h2 {
-                font-size: 36px;
+                font-size: clamp(28px, 2.5vw, 36px);
                 margin-bottom: 12px;
             }
             
@@ -213,11 +217,86 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
 }
 
 @media screen and (max-width: $laptopBreakpoint) {
+    .container .timeline {
+        margin-left: 18%;
+
+        .timeSection .line {
+            width: 420px;
+        }
+    }
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
+    .section {
+        min-height: 320vh;
+    }
+
+    .container {
+        height: 54vh;
+
+        .timeline {
+            margin-left: 10%;
+
+            .timeSection {
+                .dot span {
+                    width: 220px;
+                    font-size: 15px;
+                }
+
+                .line {
+                    width: 300px;
+                }
+            }
+        }
+
+        .mainSection {
+            flex-direction: column;
+            gap: 24px;
+            padding-top: 12%;
+
+            .left,
+            .content {
+                width: 100%;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    .section {
+        min-height: 300vh;
+    }
+
+    .container {
+        height: 62vh;
+
+        .timeline {
+            margin-left: 18%;
+
+            .timeSection {
+                .dot {
+                    width: 16px;
+                    height: 16px;
+
+                    span {
+                        width: 150px;
+                        font-size: 13px;
+                    }
+                }
+
+                .line {
+                    width: 220px;
+                }
+            }
+        }
+
+        .mainSection {
+            padding-top: 18%;
+
+            .content p li {
+                margin-left: 24px;
+            }
+        }
+    }
 }
 </style>

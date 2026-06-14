@@ -67,9 +67,11 @@ defineProps<{
     outline: 1px solid hsla(0, 0%, 0%, 0.05);
     outline-offset: -2px;
     border-radius: 30px;
-    padding: 64px;
+    padding: clamp(24px, 4.5vw, 64px);
     display: flex;
-    height: 640px;
+    min-height: 640px;
+    height: auto;
+    gap: clamp(24px, 4vw, 64px);
     background: radial-gradient(600px at top left, var(--color-primary) 0%, transparent 100%);
 
     section:first-child {
@@ -77,12 +79,12 @@ defineProps<{
         margin: auto 0;
 
         div {
-            width: 70%;
-            font-size: 20px;
+            width: min(70%, 620px);
+            font-size: clamp(16px, 1.4vw, 20px);
             
             h2 {
-                font-size: 48px;
-                line-height: 56px;
+                font-size: clamp(32px, 3.35vw, 48px);
+                line-height: 1.16;
                 margin-bottom: 16px;
             }
             
@@ -120,11 +122,12 @@ defineProps<{
 
     section:last-child {
         margin-left: auto;
-        padding: 64px;
+        padding: clamp(28px, 4.5vw, 64px);
         background: linear-gradient(to top, var(--color-lime-300) 0%, var(--color-primary) 100%);
         border-radius: 32px;
-        width: 512px;
-        height: 512px;
+        width: min(40vw, 512px);
+        aspect-ratio: 1;
+        height: auto;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -136,6 +139,37 @@ defineProps<{
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+        }
+    }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .card {
+        min-height: auto;
+        flex-direction: column;
+
+        section:first-child {
+            width: 100%;
+
+            div {
+                width: 100%;
+            }
+        }
+
+        section:last-child {
+            width: min(100%, 420px);
+            margin: 0 auto;
+        }
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .card {
+        border-radius: 24px;
+
+        section:last-child {
+            border-radius: 24px;
+            width: min(100%, 320px);
         }
     }
 }

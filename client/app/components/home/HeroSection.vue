@@ -67,7 +67,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
 .heroWrapper {
     width: 100%;
-    height: 1088px
+    height: clamp(760px, 75vw, 1088px);
 }
 
 .hero {
@@ -86,8 +86,8 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
         >img {
             user-select: none;
-            min-width: 1088px;
-            width: 1088px;
+            min-width: min(1088px, 165vw);
+            width: min(1088px, 165vw);
         }
 
         >.inner {
@@ -109,7 +109,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
                 h1 {
                     color: var(--color-text-primary);
-                    font-size: 80px;
+                    font-size: clamp(52px, 5.55vw, 80px);
                     text-align: center;
 
                     > .colored {
@@ -139,19 +139,19 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 // Laptops Responsive
 @media screen and (max-width: $laptopBreakpoint) {
     .heroWrapper {
-        height: 1088px;
+        height: clamp(820px, 82vw, 1088px);
     }
     
     .hero {
         > .inner {
             > img {
-                min-width: 1000px;
-                width: 1000px;
+                min-width: min(1000px, 150vw);
+                width: min(1000px, 150vw);
             }
             
             >.inner > div {
                 h1 {
-                    font-size: 70px;
+                    font-size: clamp(50px, 6.8vw, 70px);
                 }
                 
                 h2 {
@@ -173,7 +173,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 // tablet
 @media screen and (max-width: $tabletBreakpoint) {
     .heroWrapper {
-        height: 870px;
+        height: clamp(720px, 90vw, 870px);
     }
 
     .hero {
@@ -181,13 +181,13 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
         
         > .inner {
             > img {
-                min-width: 700px;
-                width: 700px;
+                min-width: min(760px, 145vw);
+                width: min(760px, 145vw);
             }
 
             >.inner > div {
                 h1 {
-                    font-size: 50px;
+                    font-size: clamp(38px, 6.5vw, 50px);
                 }
 
                 h2 {
@@ -208,7 +208,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 // mobile
 @media screen and (max-width: $mobileBreakpoint) {
     .heroWrapper {
-        height: 690px;
+        height: clamp(600px, 155vw, 720px);
     }
 
     .hero {
@@ -216,16 +216,16 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
         > .inner {
             > img {
-                min-width: 600px;
-                width: 600px;
+                min-width: min(620px, 175vw);
+                width: min(620px, 175vw);
             }
 
             >.inner > div {
                 margin-top: -0px;
                 
                 h1 {
-                    font-size: min(10vw, 36px);
-                    width: 200%;
+                    font-size: clamp(30px, 10vw, 42px);
+                    width: min(100%, 720px);
                 }
 
                 h2 {

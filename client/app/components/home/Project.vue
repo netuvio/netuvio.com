@@ -40,7 +40,8 @@ const { t } = useI18n();
 
 .project {
     display: flex;
-    height: 600px;
+    min-height: 600px;
+    height: auto;
     gap: 32px;
     
     .info {
@@ -82,16 +83,46 @@ const { t } = useI18n();
         
         img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 }
 
 @media screen and (max-width: $laptopBreakpoint) {
+    .project {
+        min-height: 520px;
+    }
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
+    .project {
+        flex-direction: column;
+        min-height: 0;
+
+        .info,
+        .image {
+            width: 100%;
+        }
+
+        .image {
+            aspect-ratio: 16 / 10;
+        }
+    }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    .project {
+        gap: 20px;
+
+        .info,
+        .image {
+            border-radius: 24px;
+        }
+
+        .info .top h2 {
+            font-size: clamp(28px, 9vw, 36px);
+        }
+    }
 }
 </style>

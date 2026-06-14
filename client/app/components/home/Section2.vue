@@ -90,10 +90,10 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 
 .section {
     width: 100%;
-    height: 3000px;
+    height: clamp(2100px, 210vh, 3000px);
     position: relative;
     overflow-x: clip;
-    padding-top: 300px;
+    padding-top: clamp(160px, 20vw, 300px);
     z-index: 2;
     
     >.gradient {
@@ -117,7 +117,7 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
             outline: 1px solid hsla(0, 0%, 0%, 0.1);
             outline-offset: -2px;
             border-radius: 30px;
-            padding: 48px;
+            padding: clamp(24px, 3.35vw, 48px);
             background: 
                 radial-gradient(600px at top left, var(--color-primary) 0%, transparent 100%),
                 radial-gradient(500px at 30% 0%, hsl(from var(--color-primary) calc(h - 20) s l) 0%, transparent 100%),
@@ -125,6 +125,7 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 
             .text {
                 display: flex;
+                gap: 32px;
                 
                 h1, p {
                     width: 50%;
@@ -132,7 +133,7 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 
                 p {
                     margin-top: 16px;
-                    font-size: 24px;
+                    font-size: clamp(18px, 1.7vw, 24px);
                     width: 40%;
                     margin-left: auto;
                 }
@@ -151,7 +152,7 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
                 }
 
                 svg {
-                    width: 1000px;
+                    width: min(1000px, 90vw);
                     overflow: visible;
                 }
                 
@@ -164,6 +165,54 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
                     height: 100vh;
                     background: radial-gradient(circle at center, var(--color-primary) 0%, transparent 30%);
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .section {
+        height: 2200px;
+
+        .spacer {
+            padding-bottom: 420px;
+        }
+
+        .container .wrapper {
+            .text {
+                flex-direction: column;
+                gap: 16px;
+
+                h1,
+                p {
+                    width: 100%;
+                }
+
+                p {
+                    margin-left: 0;
+                }
+            }
+
+            .outlineLogo {
+                margin-top: 48px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .section {
+        height: 1850px;
+
+        .spacer {
+            padding-bottom: 320px;
+        }
+
+        .container .wrapper {
+            border-radius: 24px;
+
+            .outlineLogo {
+                margin-top: 32px;
             }
         }
     }

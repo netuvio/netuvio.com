@@ -75,23 +75,24 @@ const { t } = useI18n();
 @use "~/assets/variables" as *;
 
 .section {
-    padding: 150px 0;
+    padding: clamp(90px, 10vw, 150px) 0;
     
     .grid {
         display: grid;
-        grid-template-columns: 1fr 1fr 450px;
+        grid-template-columns: 1fr 1fr minmax(360px, 450px);
         grid-template-rows: 1fr 1fr;
         gap: 24px;
         
         >div {
             border: 1px solid var(--color-carbon-50);
             width: 100%;
-            height: 300px;
+            min-height: 300px;
+            height: auto;
             border-radius: 30px;
             padding: 24px;
             
             h2 {
-                font-size: 40px;
+                font-size: clamp(28px, 2.8vw, 40px);
                 display: flex;
                 align-items: center;
                 gap: 8px;
@@ -139,11 +140,36 @@ const { t } = useI18n();
 }
 
 @media screen and (max-width: $laptopBreakpoint) {
+    .section .grid {
+        grid-template-columns: 1fr 1fr minmax(320px, 380px);
+    }
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
+    .section .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: auto;
+
+        .cta {
+            grid-column: 1 / -1;
+            grid-row: auto;
+            min-height: 320px;
+        }
+    }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    .section .grid {
+        grid-template-columns: 1fr;
+
+        > div {
+            min-height: auto;
+            border-radius: 24px;
+        }
+
+        .title {
+            padding: 0;
+        }
+    }
 }
 </style>
