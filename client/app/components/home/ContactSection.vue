@@ -129,9 +129,21 @@ const handleSubmit = async () => {
 <template>
     <section :class="[$style.section, 'theme-secondary']" id="contact" ref="sectionRef">
         <div :class="['container', $style.container]">
-            <h1>Contact Us</h1>
+            <motion.h1 
+                :initial="{ opacity: 0, y: 30 }"
+                :whileInView="{ opacity: 1, y: 0 }"
+                :inViewOptions="{ once: true }"
+                :transition="{ duration: 0.6 }"
+            >
+                Contact Us
+            </motion.h1>
             <form @submit.prevent="handleSubmit">
-                <section>
+                <motion.section
+                    :initial="{ opacity: 0, y: 20 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.5, delay: 0.1 }"
+                >
                     <label :class="{ [$style.hasError]: errors.firstName }">
                         <span>First Name *</span>
                         <input v-model="form.firstName" :maxlength="MAX_LENGTHS.firstName" />
@@ -142,8 +154,13 @@ const handleSubmit = async () => {
                         <input v-model="form.lastName" :maxlength="MAX_LENGTHS.lastName" />
                         <span :class="$style.errorText">{{ errors.lastName }}</span>
                     </label>
-                </section>
-                <section>
+                </motion.section>
+                <motion.section
+                    :initial="{ opacity: 0, y: 20 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.5, delay: 0.2 }"
+                >
                     <label :class="{ [$style.hasError]: errors.email }">
                         <span>E-Mail *</span>
                         <input v-model="form.email" type="email" :maxlength="MAX_LENGTHS.email" />
@@ -170,8 +187,14 @@ const handleSubmit = async () => {
                         </div>
                         <span :class="$style.errorText">{{ errors.phone }}</span>
                     </label>
-                </section>
-                <section :class="[$style.services, { [$style.hasError]: errors.service }]">
+                </motion.section>
+                <motion.section 
+                    :class="[$style.services, { [$style.hasError]: errors.service }]"
+                    :initial="{ opacity: 0, y: 20 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.5, delay: 0.3 }"
+                >
                     <span>What do you need? *</span>
                     
                     <div>
@@ -193,20 +216,31 @@ const handleSubmit = async () => {
                         </label>
                     </div>
                     <span :class="$style.errorText">{{ errors.service }}</span>
-                </section>
-                <label :class="{ [$style.hasError]: errors.message }">
+                </motion.section>
+                <motion.label 
+                    :class="{ [$style.hasError]: errors.message }"
+                    :initial="{ opacity: 0, y: 20 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.5, delay: 0.4 }"
+                >
                     <div :class="$style.labelHeader">
                         <span>Message *</span>
                         <span :class="$style.charCount">{{ form.message.length }} / {{ MAX_LENGTHS.message }}</span>
                     </div>
                     <textarea v-model="form.message" :maxlength="MAX_LENGTHS.message" />
                     <span :class="$style.errorText">{{ errors.message }}</span>
-                </label>
-                <span>
+                </motion.label>
+                <motion.span
+                    :initial="{ opacity: 0, y: 20 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.5, delay: 0.5 }"
+                >
                     <Button type="submit" size="lg" :disabled="isSubmitting">
                         {{ isSubmitting ? 'Sending...' : 'Send' }}
                     </Button>
-                </span>
+                </motion.span>
             </form>
         </div>
     </section>
