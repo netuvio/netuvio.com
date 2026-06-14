@@ -87,8 +87,8 @@ const isOpen = ref(false);
 }
 
 .menuButton {
-    width: 24px;
-    height: 20px;
+    width: 44px;
+    height: 44px;
     position: relative;
     display: inline-block;
     cursor: pointer;
@@ -99,8 +99,8 @@ const isOpen = ref(false);
 
     span {
         position: absolute;
-        left: 0;
-        width: 100%;
+        left: 10px;
+        width: 24px;
         height: 3px;
         background: white;
         border-radius: 2px;
@@ -108,7 +108,7 @@ const isOpen = ref(false);
     }
 
     span:nth-child(1) {
-        top: 0;
+        top: 12px;
     }
 
     span:nth-child(2) {
@@ -117,7 +117,7 @@ const isOpen = ref(false);
     }
 
     span:nth-child(3) {
-        bottom: 0;
+        bottom: 12px;
     }
 }
 

@@ -4,11 +4,28 @@
 @use "./page-transitions";
 @use "./other";
 
+* {
+    scroll-behavior: smooth;
+}
+
+html {
+    overflow-x: clip;
+}
+
 body {
     font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
     background-color: var(--color-background-primary);
     color: var(--color-text-primary);
+}
+
+img,
+svg,
+video,
+canvas,
+picture {
+    max-width: 100%;
+    height: auto;
 }
 
 ::selection {
@@ -39,16 +56,21 @@ body {
 @layer base {
     h1 {
         line-height: normal;
-        font-size: 64px;
+        font-size: clamp(40px, 4.45vw, 64px);
     }
     
     a {
         color: var(--color-primary);
         text-decoration: none;
+        transition: color 200ms;
+        
+        &:hover {
+            color: var(--color-lime-200);
+        }
     }
     
     p {
-        font-size: 20px;
+        font-size: clamp(16px, 1.4vw, 20px);
     }
 }
 
@@ -56,17 +78,14 @@ body {
     .container {
         width: 100%;
         margin: 0 auto;
-        padding: 0 16px;
+        padding: 0 clamp(16px, 3vw, 32px);
+        max-width: 100%;
 
-        @media (min-width: $mobileBreakpoint) {
-            max-width: $mobileBreakpoint;
-        }
-
-        @media (min-width: $tabletBreakpoint) {
+        @media (min-width: 768px) {
             max-width: $tabletBreakpoint;
         }
 
-        @media (min-width: $laptopBreakpoint) {
+        @media (min-width: 1024px) {
             max-width: $laptopBreakpoint;
         }
 
@@ -75,7 +94,16 @@ body {
         }
     }
     
+    .theme-primary {
+        position: relative;
+        z-index: 1;
+        background-color: var(--color-background-primary);
+        color: var(--color-text-primary);
+    }
+    
     .theme-secondary {
+        position: relative;
+        z-index: 1;
         background-color: var(--color-background-secondary);
         color: var(--color-text-secondary);
     }

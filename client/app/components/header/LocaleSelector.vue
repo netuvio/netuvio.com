@@ -1,11 +1,10 @@
 ﻿<script setup lang="ts">
-const { t } = useI18n();
+const { t, locale, setLocale, locales } = useI18n();
 </script>
 
 <template>
-    <select>
-        <option>CZ</option>
-        <option>EN</option>
+    <select :value="locale" @change="setLocale(($event.target as HTMLSelectElement).value)">
+        <option v-for="loc in locales" :key="loc.code" :value="loc.code">{{ loc.name }}</option>
     </select>
 </template>
 

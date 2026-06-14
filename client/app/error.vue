@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n();
+
 import type {WebTheme} from "~/lib/types";
 
 const nuxtError = useError();
@@ -38,14 +40,14 @@ const message = computed<string>(() => {
     const c = code.value
     // preferuj statusMessage/message z chyby, pokud neni jedna z nasich preset kategorii
     if (!([404, 403, 500] as number[]).includes(c)) {
-        return (nuxtError.value?.statusMessage || nuxtError.value?.message) ?? 'Unexpected error'
+        return (nuxtError.value?.statusMessage || nuxtError.value?.message) ?? t('error.messages.unexpected')
     }
 
     switch (c) {
-        case 404: return 'Page not found';
-        case 403: return "You don't have enough permissions";
-        case 500: return 'Something went wrong'
-        default:  return (nuxtError.value?.statusMessage || nuxtError.value?.message) ?? 'Unexpected error'
+        case 404: return t('error.messages.notFound');
+        case 403: return t('error.messages.forbidden');
+        case 500: return t('error.messages.serverError')
+        default:  return (nuxtError.value?.statusMessage || nuxtError.value?.message) ?? t('error.messages.unexpected')
     }
 })
 
@@ -66,9 +68,9 @@ function goHome() {
     <main id="error-page">
         <div class="center">
             <div class="logo" aria-hidden="true"></div>
-            <h1>Error {{ code }}</h1>
+            <h1>{{ t('error.title', { code }) }}</h1>
             <p class="desc">{{ message }}</p>
-            <button class="btn" @click="goHome">Back</button>
+            <button class="btn" @click="goHome">{{ t('error.back') }}</button>
         </div>
     </main>
 </template>

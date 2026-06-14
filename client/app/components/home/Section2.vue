@@ -10,41 +10,37 @@ const sectionRef = ref<HTMLElement | null>(null);
 const { scrollYProgress } = useScroll({
     target: sectionRef,
     // Starts progress at 0 exactly when the container below the 200px spacer hits the center of the screen. Ends when the bottom of the container hits the center of the screen.
-    offset: ["200px center", "end center"]
+    offset: ["700px center", "end center"]
 });
 
-const textScale = useTransform(scrollYProgress, [0, 1], [1, 0]);
-const logoAnimationProgress = useTransform(scrollYProgress, [0, .7], [0, 1]);
-const fillOpacitySoft = useTransform(logoAnimationProgress, [.4, .7], [0, 0.11]);
-const fillOpacityFull = useTransform(logoAnimationProgress, [.4, .7], [0, 1]);
-
-// const draw = {
-//     hidden: { pathLength: 0, opacity: 1, fillOpacity: 0 },
-//     visible: () => {
-//         return {
-//             pathLength: 1,
-//             opacity: 1,
-//             fillOpacity: 1,
-//             transition: {
-//                 pathLength: { delay: 0, duration: 3 },
-//                 opacity: { delay: 0, duration: 0.2 },
-//                 fillOpacity: { delay: 1, duration: 0.35 }
-//             },
-//         }
-//     },
-// };
+const logoAnimationProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+const fillOpacitySoft = useTransform(logoAnimationProgress, [.4, 1], [0, 0.11]);
+const fillOpacityFull = useTransform(logoAnimationProgress, [.4, 1], [0, 1]);
+const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 </script>
 
 <template>
-    <section class="theme-secondary" ref="sectionRef">
-        <Gradient />
-        <div :class="$style.spacer"></div>
+    <section class="theme-secondary" ref="sectionRef" :class="$style.section">
+        <Gradient :class="$style.gradient" />
+        <div :class="$style.spacer" id="brief"></div>
         <div :class="['container', $style.container]">
             <motion.div :class="$style.wrapper">
-                <h1>Lorem ipsum dolor sit amet</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam. Cras in urna ipsum. Pellentesque nibh ligula, gravida vitae facilisis quis, malesuada in nisl.</p>
-
+                <div :class="$style.text">
+                    <motion.h1
+                        :initial="{ opacity: 0, y: 30 }"
+                        :whileInView="{ opacity: 1, y: 0 }"
+                        :inViewOptions="{ once: true, margin: '-100px' }"
+                        :transition="{ duration: 0.5, delay: 0.2, ease: 'easeOut' }"
+                    >{{ t('brief.title') }}</motion.h1>
+                    <motion.p
+                        :initial="{ opacity: 0, y: 30 }"
+                        :whileInView="{ opacity: 1, y: 0 }"
+                        :inViewOptions="{ once: true, margin: '-100px' }"
+                        :transition="{ duration: 0.5, delay: 0.4, ease: 'easeOut' }"
+                    >{{ t('brief.description') }}</motion.p>
+                </div>
                 <div :class="$style.outlineLogo">
+                    <motion.div :class="$style.gradient" :style="{ opacity: gradientOpacity }"></motion.div>
                     <motion.svg
                         xmlns="http://www.w3.org/2000/svg"
                         xmlSpace="preserve"
@@ -92,12 +88,19 @@ const fillOpacityFull = useTransform(logoAnimationProgress, [.4, .7], [0, 1]);
 <style module lang="scss">
 @use "~/assets/variables" as *;
 
-section {
+.section {
     width: 100%;
-    min-height: 3000px;
-    height: 3000px;
+    height: clamp(2100px, 210vh, 3000px);
     position: relative;
     overflow-x: clip;
+    padding-top: clamp(160px, 20vw, 300px);
+    z-index: 2;
+    
+    >.gradient {
+        position: absolute;
+        top: 50px;
+        width: 100%;
+    }
     
     .spacer {
         padding-bottom: 600px;
@@ -109,16 +112,31 @@ section {
         .wrapper {
             position: sticky;
             z-index: 1;
-            top: 50%;
+            top: 53%;
             transform: translateY(-50%);
+            outline: 1px solid hsla(0, 0%, 0%, 0.1);
+            outline-offset: -2px;
+            border-radius: 30px;
+            padding: clamp(24px, 3.35vw, 48px);
+            background: 
+                radial-gradient(600px at top left, var(--color-primary) 0%, transparent 100%),
+                radial-gradient(500px at 30% 0%, hsl(from var(--color-primary) calc(h - 20) s l) 0%, transparent 100%),
+                radial-gradient(500px at bottom right, var(--color-primary) 0%, transparent 100%);
 
-            h1, p {
-                text-align: center;
-            }
+            .text {
+                display: flex;
+                gap: 32px;
+                
+                h1, p {
+                    width: 50%;
+                }
 
-            p {
-                margin-top: 16px;
-                font-size: 24px;
+                p {
+                    margin-top: 16px;
+                    font-size: clamp(14px, 1.7vw, 24px);
+                    width: 40%;
+                    margin-left: auto;
+                }
             }
 
             .outlineLogo {
@@ -127,15 +145,77 @@ section {
                 align-items: center;
                 margin-top: 64px;
                 overflow: visible;
+                position: relative;
                 
                 * {
                     outline: none;
                 }
 
                 svg {
-                    width: 1000px;
+                    width: min(1000px, 90vw);
                     overflow: visible;
                 }
+                
+                .gradient {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100vw;
+                    height: 100vh;
+                    background: radial-gradient(circle at center, var(--color-primary) 0%, transparent 30%);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .section {
+        height: 2200px;
+
+        .spacer {
+            padding-bottom: 420px;
+        }
+
+        .container .wrapper {
+            .text {
+                flex-direction: column;
+                gap: 16px;
+
+                h1,
+                p {
+                    width: 100%;
+                }
+
+                p {
+                    margin-left: 0;
+                }
+            }
+
+            .outlineLogo {
+                margin-top: 48px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .section {
+        height: 1850px;
+
+        .spacer {
+            padding-bottom: 320px;
+        }
+
+        .container .wrapper {
+            border-radius: 24px;
+            top: 100px;
+            transform: none;
+            background: radial-gradient(600px at top left, var(--color-primary) 0%, transparent 100%);
+
+            .outlineLogo {
+                margin-top: 32px;
             }
         }
     }

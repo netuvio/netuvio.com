@@ -9,20 +9,24 @@ const { t } = useI18n();
 
 const links: HeaderLink[] = [
     {
-        name: t("home.title"),
-        to: "/"
+        name: t("footer.about.brief"),
+        to: "/#brief"
     },
     {
-        name: t("home.title"),
-        to: "/"
+        name: t("footer.about.services"),
+        to: "/#services"
     },
     {
-        name: t("home.title"),
-        to: "/"
+        name: t("footer.about.process"),
+        to: "/#process"
     },
     {
-        name: t("home.title"),
-        to: "/"
+        name: t("footer.about.projects"),
+        to: "/#projects"
+    },
+    {
+        name: t("footer.about.contact"),
+        to: "/#contact"
     }
 ];
 
@@ -159,6 +163,12 @@ header {
 
 @media screen and (max-width: $tabletBreakpoint) {
     header nav {
+        height: 72px;
+        
+        .logo {
+            width: 170px;
+        }
+        
         .links, .locales {
             display: none;
         }
@@ -170,5 +180,20 @@ header {
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    header {
+        padding: 0 4px;
+
+        &.scrolled {
+            margin: 8px 0;
+
+            nav {
+                padding: 18px;
+            }
+        }
+        
+        nav .logo {
+            width: 150px;
+        }
+    }
 }
 </style>

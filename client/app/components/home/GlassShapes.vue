@@ -172,11 +172,13 @@ onUnmounted(() => {
         .triangle {
             left: 10%;
             top: 0;
+            width: clamp(130px, 42vw, 170px);
         }
 
         .hexagon {
             left: 60%;
             top: 50%;
+            width: clamp(160px, 52vw, 220px);
         }
     }
 }
