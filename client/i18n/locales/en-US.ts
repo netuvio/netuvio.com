@@ -85,7 +85,7 @@ export default defineI18nLocale(async (locale) => {
                 "process": "Process",
                 "projects": "Projects",
                 "whyChooseUs": "Why Choose Us",
-                "contactUs": "Contact Us"
+                "contact": "Contact Us"
             },
             "loremIpsum": "Lorem ipsum",
             "allRightsReserved": "All rights reserved",
