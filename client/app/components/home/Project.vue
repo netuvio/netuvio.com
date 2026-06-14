@@ -40,8 +40,7 @@ const { t } = useI18n();
 
 .project {
     display: flex;
-    min-height: 600px;
-    height: auto;
+    height: 600px;
     gap: 32px;
     
     .info {
@@ -86,12 +85,6 @@ const { t } = useI18n();
             height: 100%;
             object-fit: cover;
         }
-    }
-}
-
-@media screen and (max-width: $laptopBreakpoint) {
-    .project {
-        min-height: 520px;
     }
 }
 
