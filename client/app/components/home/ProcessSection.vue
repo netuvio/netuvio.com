@@ -138,7 +138,6 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
     position: sticky;
     top: 50%;
     transform: translateY(-50%);
-    overflow-x: clip;
     
     .timeline {
         display: flex;
