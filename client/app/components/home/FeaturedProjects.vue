@@ -4,9 +4,11 @@ import {useFetch} from "#app";
 import type {Project} from "~/lib/types";
 import {watch} from "vue";
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
-const { data: projects, pending, error } = useFetch<Project[]>("/api/v1/projects?locale=cs");
+const { data: projects, pending, error } = useFetch<Project[]>("/api/v1/projects", {
+    query: { locale }
+});
 
 const featuredProjects = computed(() => {
     return projects.value?.filter(p => p.isFeatured) || [];
