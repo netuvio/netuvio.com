@@ -4,3 +4,16 @@ export interface HeaderLink {
     name: string;
     to: string;
 }
+
+export type ProjectType = "Website" | "Graphics";
+
+export interface Project {
+    id: string;
+    slug: string;
+    title: string;
+    description: string;
+    body: string;
+    isFeatured: boolean;
+    imageUrl: string;
+    type: ProjectType;
+}

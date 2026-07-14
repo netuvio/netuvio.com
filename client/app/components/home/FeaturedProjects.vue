@@ -1,19 +1,27 @@
 ﻿<script setup lang="ts">
-import Project from "~/components/home/Project.vue";
-import projects from "../../data/projects";
+import ProjectComponent from "~/components/home/Project.vue";
+import {useFetch} from "#app";
+import type {Project} from "~/lib/types";
+import {watch} from "vue";
 
 const { t } = useI18n();
+
+const { data: projects, pending, error } = useFetch<Project[]>("/api/v1/projects?locale=cs");
+
+const featuredProjects = computed(() => {
+    return projects.value?.filter(p => p.isFeatured) || [];
+});
 </script>
 
 <template>
-    <section :class="[$style.section, 'theme-primary']" id="projects" ref="sectionRef">
+    <section :class="[$style.section, 'theme-primary']" id="projects" ref="sectionRef" v-if="projects && projects.length > 0">
         <div :class="['container', $style.container]">
             <h1>{{ t('projects.featuredProjects') }}</h1>
             <ul>
-                <li v-for="project in projects.filter(p => p.isFeatured)" :key="project.name">
-                    <Project :title="project.name" :imageUrl="project.imageUrl" :type="project.type" >
+                <li v-for="project in featuredProjects" :key="project.title">
+                    <ProjectComponent :title="project.title" :imageUrl="project.imageUrl" :type="project.type">
                         {{project.description}}
-                    </Project>
+                    </ProjectComponent>
                 </li>
             </ul>
         </div>

@@ -1,11 +1,12 @@
 ﻿<script setup lang="ts">
 import Button from "~/components/Button.vue";
 import { motion } from "motion-v";
+import type {ProjectType} from "~/lib/types";
 
 defineProps<{
     title: string;
     imageUrl: string;
-    type: "website" | "graphics";
+    type: ProjectType;
 }>();
 
 const { t } = useI18n();
@@ -22,7 +23,7 @@ const { t } = useI18n();
         <div :class="$style.info">
             <section :class="$style.top">
                 <h2>{{title}}</h2>
-                <h3>{{ type === "website" ? t('projects.types.website') : t('projects.types.graphicDesign') }}</h3>
+                <h3>{{ type === "Website" ? t('projects.types.website') : t('projects.types.graphicDesign') }}</h3>
                 <p><slot/></p>
             </section>
             <section :class="$style.bottom">
