@@ -102,4 +102,33 @@ public class ProjectsController
 
         return new OkObjectResult(projects);
     }
+    
+    [HttpGet("{slug}")]
+    public IActionResult GetProjectBySlug(string slug, [FromQuery] string? locale = null)
+    {
+        var project = _projects.FirstOrDefault(p => p.Slug == slug);
+        if (project == null)
+            return new NotFoundResult();
+
+        var localization = locale != null
+            ? project.Localizations.FirstOrDefault(l => l.Locale == locale)
+            : project.Localizations.FirstOrDefault();
+
+        if (localization == null)
+            return new NotFoundResult();
+
+        var response = new ProjectResponse
+        {
+            Id = project.Id,
+            Slug = project.Slug,
+            Title = localization.Title,
+            Description = localization.Description,
+            Body = localization.Body,
+            IsFeatured = project.IsFeatured,
+            ImageUrl = project.ImageUrl,
+            Type = project.Type
+        };
+
+        return new OkObjectResult(response);
+    }
 }
