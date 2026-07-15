@@ -10,6 +10,6 @@ public class ProjectResponse
     public string? Description { get; set; }
     public required string Body { get; set; }
     public required bool IsFeatured { get; set; } = false;
-    public string? ImageUrl { get; set; }
-    public ProjectType Type { get; set; } = ProjectType.Website;
+    public required List<string> ImageUrls { get; set; } = [];
+    public required ProjectType Type { get; set; } = ProjectType.Website;
 }

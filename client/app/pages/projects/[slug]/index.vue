@@ -1,7 +1,6 @@
 ﻿<script setup lang="ts">
 import {useFetch, useRoute} from "#app";
 import type {Project} from "~/lib/types";
-import {computed} from "vue";
 
 const { t, locale } = useI18n();
 
@@ -21,17 +20,19 @@ if (error.value || !project.value) {
 </script>
 
 <template>
-    <div :class="$style.test">
-        <h1>{{ project?.title }}</h1>
-        <p>{{ project?.body }}</p>
-    </div>
+    <section :class="[$style.section, 'theme-primary']" id="projects" ref="sectionRef">
+        <div :class="['container', $style.container]">
+            <h1>{{ project?.title }}</h1>
+            <p>{{ project?.body }}</p>
+        </div>
+    </section>
 </template>
 
 <style module lang="scss">
 @use "~/assets/variables" as *;
 
-.test {
-    margin: 128px 64px 256px;
+.section {
+    margin: 128px 0 150px;
 }
 
 @media screen and (max-width: $laptopBreakpoint) {

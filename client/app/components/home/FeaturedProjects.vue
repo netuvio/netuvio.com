@@ -21,8 +21,13 @@ const featuredProjects = computed(() => {
             <h1>{{ t('projects.featuredProjects') }}</h1>
             <ul>
                 <li v-for="project in featuredProjects" :key="project.title">
-                    <ProjectComponent :title="project.title" :imageUrl="project.imageUrl" :type="project.type">
-                        {{project.description}}
+                    <ProjectComponent 
+                        :title="project.title" 
+                        :imageUrl="project.imageUrls[0]" 
+                        :type="project.type"
+                        :slug="project.slug"
+                    >
+                        {{project.description ?? project.body}}
                     </ProjectComponent>
                 </li>
             </ul>

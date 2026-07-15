@@ -18,13 +18,19 @@ public class ProjectsController
         {
             Slug = "project-alpha",
             IsFeatured = true,
-            ImageUrl = "https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg"
+            ImageUrls = new List<string>
+            {
+                "https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg"
+            }
         };
         var p2 = new Project
         {
             Slug = "project-beta",
             IsFeatured = true,
-            ImageUrl = "https://pawspace.in/wp-content/uploads/2021/09/siamese-cat-1.jpg",
+            ImageUrls = new List<string>
+            {
+                "https://pawspace.in/wp-content/uploads/2021/09/siamese-cat-1.jpg"
+            },
             Type = ProjectType.Graphics
         };
 
@@ -34,7 +40,6 @@ public class ProjectsController
             {
                 Locale = "en", 
                 Title = "Alpha Project", 
-                Description = "Short EN description.", 
                 Body = "Lorem ipsum dolor sit amet.", 
                 ProjectId = p1.Id, 
                 Project = p1
@@ -43,7 +48,6 @@ public class ProjectsController
             {
                 Locale = "cs", 
                 Title = "Projekt Alfa", 
-                Description = "Krátký CS popis.", 
                 Body = "Lorem ipsum dolor sit amet.", 
                 ProjectId = p1.Id, 
                 Project = p1
@@ -95,7 +99,7 @@ public class ProjectsController
                 Description = localization.Description,
                 Body = localization.Body,
                 IsFeatured = p.IsFeatured,
-                ImageUrl = p.ImageUrl,
+                ImageUrls = p.ImageUrls,
                 Type = p.Type
             };
         }).Where(p => p != null).ToArray();
@@ -125,7 +129,7 @@ public class ProjectsController
             Description = localization.Description,
             Body = localization.Body,
             IsFeatured = project.IsFeatured,
-            ImageUrl = project.ImageUrl,
+            ImageUrls = project.ImageUrls,
             Type = project.Type
         };
 

@@ -5,8 +5,9 @@ import type {ProjectType} from "~/lib/types";
 
 defineProps<{
     title: string;
-    imageUrl: string;
+    imageUrl?: string;
     type: ProjectType;
+    slug: string;
 }>();
 
 const { t } = useI18n();
@@ -27,11 +28,14 @@ const { t } = useI18n();
                 <p><slot/></p>
             </section>
             <section :class="$style.bottom">
-                <Button>{{ t('projects.learnMore') }}</Button>
+                <NuxtLinkLocale :to="`/projects/${slug}`">
+                    <Button>{{ t('projects.learnMore') }}</Button>
+                </NuxtLinkLocale>
             </section>
         </div>
         <div :class="$style.image">
-            <img :src="imageUrl"  alt=""/>
+            <img v-if="imageUrl" :src="imageUrl"  alt=""/>
+<!--            TODO: add a fallback image -->
         </div>
     </motion.div>
 </template>

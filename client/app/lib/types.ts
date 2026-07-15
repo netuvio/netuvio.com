@@ -11,9 +11,9 @@ export interface Project {
     id: string;
     slug: string;
     title: string;
-    description: string;
+    description?: string;
     body: string;
     isFeatured: boolean;
-    imageUrl: string;
+    imageUrls: string[];
     type: ProjectType;
 }

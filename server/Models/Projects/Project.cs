@@ -18,8 +18,8 @@ public class Project
     public required string Slug { get; set; }
     
     public bool IsFeatured { get; set; } = false;
-    
-    public string? ImageUrl { get; set; }
+
+    public List<string> ImageUrls { get; set; } = [];
     
     public ProjectType Type { get; set; } = ProjectType.Website;
     
