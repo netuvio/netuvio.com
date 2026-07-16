@@ -100,19 +100,25 @@ onUnmounted(() => {
 
 <template>
     <div :class="$style.glass">
-        <img
+        <NuxtImg
             ref="triangleRef"
-            src="~/../public/images/glass-triangle-1.png"
+            src="/images/glass-triangle-1.png"
             alt=""
             draggable="false"
             :class="$style.triangle"
+            width="243"
+            height="272"
+            format="webp"
         />
-        <img
+        <NuxtImg
             ref="hexagonRef"
-            src="~/../public/images/glass-hexagon-1.png"
+            src="/images/glass-hexagon-1.png"
             alt=""
             draggable="false"
             :class="$style.hexagon"
+            width="320"
+            height="321"
+            format="webp"
         />
     </div>
 </template>

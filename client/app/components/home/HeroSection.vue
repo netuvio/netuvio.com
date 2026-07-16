@@ -20,7 +20,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
             <StarrySky />
             <div :class="$style.inner">
                 <motion.div :style="{ scale: bgScale, transformOrigin: 'center center' }">
-                    <img src="~/../public/images/hero-circle.svg" alt="" draggable="false" />
+                    <img src="/images/hero-circle.svg" alt="" draggable="false" />
                     <GlassShapes />
                 </motion.div>
                 <div :class="$style.inner">
