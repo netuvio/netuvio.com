@@ -60,8 +60,74 @@ public class ProjectsController
             { 
                 Locale = "en", 
                 Title = "Beta Project", 
-                Description = "Short EN description.", 
-                Body = "[Click Me](https://netuvio.com) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consectetur mauris sed purus molestie, non congue nunc ultricies. In non consequat arcu. Suspendisse nec tristique ante. Vestibulum cursus ante lacinia turpis consequat fringilla. Fusce congue nisl eu mauris suscipit interdum. Suspendisse ac odio leo. Nulla euismod lorem eget urna rhoncus tincidunt. Ut id justo nunc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc a aliquet eros.", 
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna mi, lobortis eget lobortis non, rhoncus ut purus. Curabitur sit amet nisi quis nunc imperdiet tincidunt vel nec orci. Morbi congue, leo consectetur efficitur egestas, libero lectus volutpat justo, ut pulvinar lorem mauris sed eros. Suspendisse elementum dui eget urna pharetra, et fringilla nisl vehicula. Vivamus egestas sed massa quis luctus. Vestibulum blandit sapien lorem, eu semper libero aliquet eu. Aliquam erat volutpat.", 
+                Body = @"
+# Title text
+
+## 1. Introduction
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum, tellus ac tristique dictum, nisl lorem porta erat, sit amet accumsan tellus erat nec lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam nec ex at massa hendrerit molestie. Ut tristique elementum nisl, non hendrerit lorem porttitor eu.
+
+* **Dolor sit amet:** Consectetur adipiscing elit.
+* **Proin elementum:** Tellus ac tristique dictum.
+* **Aliquam nec ex:** At massa hendrerit molestie.
+
+## 2. Classical Latin Passage (Cicero)
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from ""de Finibus Bonorum et Malorum"" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+
+### 2.1 Section 1.10.32
+> ""Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.""
+
+### 2.2 Section 1.10.33
+> ""At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.""
+
+## 3. Structural Elements and Typography
+
+Below is a demonstration of various Markdown formatting styles using standard placeholder text.
+
+### 3.1 Text Styles
+* *Italicized text* represents soft emphasis.
+* **Bold text** represents strong emphasis.
+* ***Bold and italicized text*** represents maximum emphasis.
+* ~~Strikethrough text~~ represents deleted or outdated details.
+* `Monospace text` represents inline code or literal inputs.
+
+### 3.2 Tabular Data
+
+| Metric ID | Target Parameter | Status | Value (Est.) | Performance Trend |
+| :--- | :--- | :---: | :---: | :--- |
+| **SYS-001** | Lorem Ipsum Limit | Active | 98.4% | Escalating upward |
+| **SYS-002** | Dolor Sit Delay | Pending | 12.0 ms | Holding steady |
+| **SYS-003** | Consectetur Load | Failed | N/A | Declining rapidly |
+| **SYS-004** | Adipiscing Rate | Active | 450 kbps | Fluctuating slightly |
+
+---
+
+## 4. Code Blocks & Implementation
+
+Here is an example of how one might programmatically generate placeholder paragraphs in Python:
+
+```python
+import random
+
+def generate_lorem_ipsum(paragraphs_count=3):
+    words = [
+        ""lorem"", ""ipsum"", ""dolor"", ""sit"", ""amet"", ""consectetur"", ""adipiscing"", 
+        ""elit"", ""sed"", ""do"", ""eiusmod"", ""tempor"", ""incididunt"", ""ut"", ""labore""
+    ]
+    generated_text = []
+    for _ in range(paragraphs_count):
+        paragraph = "" "".join(random.choices(words, k=50)).capitalize() + "".""
+        generated_text.append(paragraph)
+    return ""\\n\\n"".join(generated_text)
+
+# Example output
+print(generate_lorem_ipsum(1))
+```
+
+Press `test` to continue
+", 
                 ProjectId = p2.Id, 
                 Project = p2 
             },

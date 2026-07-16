@@ -1,8 +1,7 @@
 ﻿<script setup lang="ts">
 import {createError, useFetch, useRoute} from "#app";
 import type {Project} from "~/lib/types";
-import MarkdownIt from "markdown-it";
-import DOMPurify from "isomorphic-dompurify";
+import Markdown from "~/components/Markdown.vue";
 
 const { t, locale } = useI18n();
 
@@ -19,14 +18,6 @@ if (error.value || !project.value) {
         fatal: true
     });
 }
-
-const md = new MarkdownIt({
-    html: true,
-    breaks: true
-});
-
-const rawBodyMarkdown = md.render(project.value.body);
-const cleanBodyMarkdown = DOMPurify.sanitize(rawBodyMarkdown);
 </script>
 
 <template>
@@ -45,7 +36,10 @@ const cleanBodyMarkdown = DOMPurify.sanitize(rawBodyMarkdown);
                     :alt="project.title"
                 />
             </main>
-            <div v-html="cleanBodyMarkdown"></div>
+            
+            <section :class="$style.body">
+                <Markdown :markdown="project.body" />
+            </section>
         </div>
     </section>
 </template>
@@ -62,7 +56,12 @@ const cleanBodyMarkdown = DOMPurify.sanitize(rawBodyMarkdown);
             width: 100%;
             height: 900px;
             object-fit: cover;
+            margin-top: 16px;
         }
+    }
+    
+    .body {
+        margin-top: 32px;
     }
 }
 
