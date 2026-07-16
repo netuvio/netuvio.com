@@ -34,7 +34,7 @@ const { t } = useI18n();
             </section>
         </div>
         <div :class="$style.image">
-            <img v-if="imageUrl" :src="imageUrl"  alt=""/>
+            <NuxtImg v-if="imageUrl" :src="imageUrl"  alt=""/>
 <!--            TODO: add a fallback image -->
         </div>
     </motion.div>

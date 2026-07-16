@@ -16,7 +16,7 @@ function stablePrefixLetter(input: string): string {
 }
 
 export default defineNuxtConfig({
-    modules: ["@nuxtjs/i18n", "motion-v/nuxt", "lenis/nuxt", "unplugin-icons/nuxt"],
+    modules: ["@nuxtjs/i18n", "motion-v/nuxt", "lenis/nuxt", "unplugin-icons/nuxt", "@nuxt/image"],
 
     compatibilityDate: '2025-07-15',
 
@@ -100,4 +100,9 @@ export default defineNuxtConfig({
             { code: "en", name: "English", file: "en-US.ts", domain: enDomain },
         ],
     },
+
+    image: {
+        format: ["webp"],
+        domains: ["cloud0.emsio.cz"]
+    }
 })

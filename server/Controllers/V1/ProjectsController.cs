@@ -61,7 +61,7 @@ public class ProjectsController
                 Locale = "en", 
                 Title = "Beta Project", 
                 Description = "Short EN description.", 
-                Body = "Sed ut perspiciatis unde omnis.", 
+                Body = "[Click Me](https://netuvio.com) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consectetur mauris sed purus molestie, non congue nunc ultricies. In non consequat arcu. Suspendisse nec tristique ante. Vestibulum cursus ante lacinia turpis consequat fringilla. Fusce congue nisl eu mauris suscipit interdum. Suspendisse ac odio leo. Nulla euismod lorem eget urna rhoncus tincidunt. Ut id justo nunc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc a aliquet eros.", 
                 ProjectId = p2.Id, 
                 Project = p2 
             },
@@ -70,7 +70,7 @@ public class ProjectsController
                 Locale = "cs", 
                 Title = "Projekt Beta", 
                 Description = "Krátký CS popis.", 
-                Body = "Sed ut perspiciatis unde omnis.", 
+                Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consectetur mauris sed purus molestie, non congue nunc ultricies. In non consequat arcu. Suspendisse nec tristique ante. Vestibulum cursus ante lacinia turpis consequat fringilla. Fusce congue nisl eu mauris suscipit interdum. Suspendisse ac odio leo. Nulla euismod lorem eget urna rhoncus tincidunt. Ut id justo nunc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc a aliquet eros.", 
                 ProjectId = p2.Id, 
                 Project = p2
             }
