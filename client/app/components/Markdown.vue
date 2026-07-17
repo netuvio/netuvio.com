@@ -16,7 +16,7 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown);
 </script>
 
 <template>
-    <div v-html="cleanMarkdown" :class="$style.markdown"></div>
+    <article v-html="cleanMarkdown" :class="$style.markdown"></article>
 </template>
 
 <style module lang="scss">

@@ -29,7 +29,11 @@ public class ProjectsController
             IsFeatured = true,
             ImageUrls = new List<string>
             {
-                "https://pawspace.in/wp-content/uploads/2021/09/siamese-cat-1.jpg"
+                "https://pawspace.in/wp-content/uploads/2021/09/siamese-cat-1.jpg",
+                "https://i.guim.co.uk/img/media/327aa3f0c3b8e40ab03b4ae80319064e401c6fbc/377_133_3542_2834/master/3542.jpg?width=700&quality=85&auto=format&fit=max&s=6358df6dcb66158b5227b0c4444902e7",
+                "https://bestfriends.org/sites/default/files/styles/image_small_mobile/public/image/CantaloupeNora1277MW_.jpg?itok=JrkGNp5b",
+                "https://upload.wikimedia.org/wikipedia/commons/2/27/Samiha%27s_Siberian_cat_Moon_Pie.jpg",
+                "https://static1.squarespace.com/static/66ec3b49803ab81bf84f89e4/66ec3b69bf61a73d71744826/66eca14ee7ad767297ce31d4/1734296092801/?format=1500w"
             },
             Type = ProjectType.Graphics
         };

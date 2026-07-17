@@ -61,7 +61,7 @@ watch(() => route.path, () => {
         <!-- zaklad -->
         <Meta charset="utf-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Title>{{ t("common.comingSoon") }} • Netuvio</Title>
+        <Title>Netuvio</Title>
         <Meta name="description" :content="description" />
         <Meta name="robots" :content="'noindex, nofollow'/*robotsValue*/" />
 <!--        <Link rel="canonical" :href="canonicalUrl" />-->
