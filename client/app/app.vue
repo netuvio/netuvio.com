@@ -42,6 +42,15 @@ useHead({
 });
 
 const isDev = import.meta.env.DEV;
+
+
+// When switching pages scroll to top
+const lenisRef = ref<any>(null);
+watch(() => route.path, () => {
+    if (lenisRef.value?.lenis) {
+        lenisRef.value.lenis.scrollTo(0, { immediate: true });
+    }
+});
 </script>
 
 <template>
@@ -84,7 +93,7 @@ const isDev = import.meta.env.DEV;
 
 
     <Debug v-if="isDev" />
-    <VueLenis root>
+    <VueLenis root ref="lenisRef">
         <Header />
         <NuxtPage />
         <Footer />
