@@ -1,5 +1,6 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import MarkdownIt from "markdown-it";
+import markdownItAnchor from "markdown-it-anchor";
 import DOMPurify from "isomorphic-dompurify";
 
 const props = defineProps<{
@@ -9,14 +10,36 @@ const props = defineProps<{
 const md = new MarkdownIt({
     html: true,
     breaks: true
+}).use(markdownItAnchor, {
+    permalink: markdownItAnchor.permalink.linkInsideHeader({
+        symbol: '#',
+        placement: 'after',
+        class: 'header-anchor',
+        ariaHidden: true
+    })
 });
 
 const rawMarkdown = md.render(props.markdown);
-const cleanMarkdown = DOMPurify.sanitize(rawMarkdown);
+const cleanMarkdown = DOMPurify.sanitize(rawMarkdown, { ADD_ATTR: ['id', 'target'] });
+
+function handleLinkClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (target && target.classList.contains('header-anchor')) {
+        event.preventDefault();
+        
+        const href = target.getAttribute('href');
+        if (href) {
+            const url = new URL(href, window.location.href);
+            navigator.clipboard.writeText(url.href).catch(console.error);
+            
+            history.pushState(null, '', href);
+        }
+    }
+}
 </script>
 
 <template>
-    <article v-html="cleanMarkdown" :class="$style.markdown"></article>
+    <article @click="handleLinkClick" v-html="cleanMarkdown" :class="$style.markdown"></article>
 </template>
 
 <style module lang="scss">
@@ -33,6 +56,23 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown);
     
     h1, h2, h3, h4, h5, h6 {
         padding-top: 12px;
+        position: relative;
+
+        &:hover :global(.header-anchor) {
+            opacity: 1;
+        }
+    }
+
+    :global(.header-anchor) {
+        text-decoration: none;
+        color: hsl(81, 84%, 56%);
+        margin-left: 8px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     hr {
@@ -53,7 +93,6 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown);
         font-size: 20px;
     }
 
-    // Table Component
     table {
         width: 100%;
         border-collapse: collapse;
