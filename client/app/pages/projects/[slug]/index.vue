@@ -4,6 +4,8 @@ import type {Project} from "~/lib/types";
 import Markdown from "~/components/Markdown.vue";
 import Lightbox from "~/components/lightbox/Lightbox.vue";
 import LightboxItem from "~/components/lightbox/LightboxItem.vue";
+import SimpleIconsNextdotjs from '~icons/simple-icons/nextdotjs'
+import TechnologyTag from "~/components/TechnologyTag.vue";
 
 const { t, locale } = useI18n();
 
@@ -33,11 +35,16 @@ if (error.value || !project.value) {
                 <main>
                     <h1>{{ project.title }}</h1>
                     <p>{{ project.description }}</p>
-<!--                    <NuxtImg-->
-<!--                        v-if="project.imageUrls[0]"-->
-<!--                        :src="project.imageUrls[0]"-->
-<!--                        :alt="project.title"-->
-<!--                    />-->
+                    <div :class="$style.info">
+                        <div :class="$style.technologies">
+                            <h2>Technologies</h2>
+                            <ul>
+                                <li v-for="technology in project.technologies" :key="technology">
+                                    <TechnologyTag :technology="technology" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     <LightboxItem
                         :key="project.imageUrls[0]"
                         :src="project.imageUrls[0]"
@@ -76,6 +83,10 @@ if (error.value || !project.value) {
     margin: 128px 0 150px;
     
     main {
+        h1 {
+            color: var(--color-primary);
+        }
+        
         p {
             margin-bottom: 16px;
         }
@@ -85,6 +96,22 @@ if (error.value || !project.value) {
             width: 100%;
             height: 900px;
             object-fit: cover;
+        }
+        
+        .info {
+            .technologies {
+                h2 {
+                    margin-bottom: 4px;
+                }
+                
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    display: flex;
+                    margin-bottom: 16px;
+                    gap: 12px;
+                }
+            }
         }
     }
     

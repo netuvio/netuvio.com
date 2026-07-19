@@ -72,6 +72,10 @@ picture {
     p {
         font-size: clamp(16px, 1.4vw, 20px);
     }
+    
+    ul li::marker {
+        color: var(--color-primary);
+    }
 }
 
 @layer components {

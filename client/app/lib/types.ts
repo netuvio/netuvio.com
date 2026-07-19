@@ -16,4 +16,5 @@ export interface Project {
     isFeatured: boolean;
     imageUrls: string[];
     type: ProjectType;
+    technologies: string[];
 }

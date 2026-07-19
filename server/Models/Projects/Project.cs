@@ -22,6 +22,8 @@ public class Project
     public List<string> ImageUrls { get; set; } = [];
     
     public ProjectType Type { get; set; } = ProjectType.Website;
+
+    public List<string> Technologies { get; set; } = [];
     
     
     public ICollection<ProjectLocalization> Localizations { get; set; } = new List<ProjectLocalization>();

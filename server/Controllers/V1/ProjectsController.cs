@@ -35,7 +35,8 @@ public class ProjectsController
                 "https://upload.wikimedia.org/wikipedia/commons/2/27/Samiha%27s_Siberian_cat_Moon_Pie.jpg",
                 "https://static1.squarespace.com/static/66ec3b49803ab81bf84f89e4/66ec3b69bf61a73d71744826/66eca14ee7ad767297ce31d4/1734296092801/?format=1500w"
             },
-            Type = ProjectType.Graphics
+            Type = ProjectType.Graphics,
+            Technologies = ["Next.js", "React", "Nuxt"]
         };
 
         p1.Localizations = new List<ProjectLocalization>
@@ -170,7 +171,8 @@ Press `test` to continue
                 Body = localization.Body,
                 IsFeatured = p.IsFeatured,
                 ImageUrls = p.ImageUrls,
-                Type = p.Type
+                Type = p.Type,
+                Technologies = p.Technologies
             };
         }).Where(p => p != null).ToArray();
 
@@ -200,7 +202,8 @@ Press `test` to continue
             Body = localization.Body,
             IsFeatured = project.IsFeatured,
             ImageUrls = project.ImageUrls,
-            Type = project.Type
+            Type = project.Type,
+            Technologies = project.Technologies
         };
 
         return new OkObjectResult(response);

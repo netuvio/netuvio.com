@@ -3,7 +3,7 @@ import Button from "~/components/Button.vue";
 import { motion } from "motion-v";
 import type {ProjectType} from "~/lib/types";
 
-defineProps<{
+const props = defineProps<{
     title: string;
     imageUrl?: string;
     type: ProjectType;

@@ -93,28 +93,13 @@ defineProps<{
             }
             
             ul {
-                list-style: none;
-                padding: 0;
                 font-weight: 500;
                 margin-top: 16px;
-                
+                padding: 0 0 0 20px;
+
                 li {
                     position: relative;
-                    padding-left: 20px;
                     margin-top: 4px;
-                    
-                    &::before {
-                        position: absolute;
-                        content: '';
-                        height: 6px;
-                        width: 6px;
-                        top: 50%;
-                        left: 4px;
-                        transform: translateY(-50%);
-                        border-radius: 10000px;
-                        background: var(--color-primary);
-                        z-index: 0;
-                    }
                 }
             }
         }

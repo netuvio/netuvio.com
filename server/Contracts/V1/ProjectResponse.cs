@@ -12,4 +12,5 @@ public class ProjectResponse
     public required bool IsFeatured { get; set; } = false;
     public required List<string> ImageUrls { get; set; } = [];
     public required ProjectType Type { get; set; } = ProjectType.Website;
+    public required List<string> Technologies { get; set; } = [];
 }
