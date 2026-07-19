@@ -6,6 +6,7 @@ import Lightbox from "~/components/lightbox/Lightbox.vue";
 import LightboxItem from "~/components/lightbox/LightboxItem.vue";
 import SimpleIconsNextdotjs from '~icons/simple-icons/nextdotjs'
 import TechnologyTag from "~/components/TechnologyTag.vue";
+import {computed} from "vue";
 
 const { t, locale } = useI18n();
 
@@ -22,6 +23,29 @@ if (error.value || !project.value) {
         fatal: true
     });
 }
+
+function formatDate(date: string): string {
+    return new Intl.DateTimeFormat(undefined, {
+        year: 'numeric',
+        month: 'short',
+    }).format(new Date(date));
+}
+
+const dateRange = computed(() => {
+    const startedAt = project.value?.startedAt ? formatDate(project.value?.startedAt) : null;
+    const finishedAt = project.value?.finishedAt ? formatDate(project.value?.finishedAt) : null;
+    
+    if (startedAt && finishedAt)
+        return `${startedAt} – ${finishedAt}`;
+    
+    if (!startedAt && finishedAt)
+        return `${finishedAt}`;
+    
+    if (!finishedAt && startedAt)
+        return `${startedAt} – Ongoing`;
+    
+    return "";
+})
 </script>
 
 <template>
@@ -33,7 +57,9 @@ if (error.value || !project.value) {
         <div :class="['container', $style.container]" v-if="project">
             <Lightbox>
                 <main>
-                    <h1>{{ project.title }}</h1>
+                    <div :class="$style.title">
+                        <h1>{{ project.title }}</h1> <span>{{ dateRange }}</span>
+                    </div>
                     <p>{{ project.description }}</p>
                     <div :class="$style.info">
                         <div :class="$style.technologies">
@@ -83,8 +109,19 @@ if (error.value || !project.value) {
     margin: 128px 0 150px;
     
     main {
-        h1 {
-            color: var(--color-primary);
+        .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            h1 {
+                color: var(--color-primary);
+            }
+            
+            span {
+                font-size: 18px;
+                color: var(--color-carbon-100);
+            }
         }
         
         p {

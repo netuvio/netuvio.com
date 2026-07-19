@@ -36,7 +36,9 @@ public class ProjectsController
                 "https://static1.squarespace.com/static/66ec3b49803ab81bf84f89e4/66ec3b69bf61a73d71744826/66eca14ee7ad767297ce31d4/1734296092801/?format=1500w"
             },
             Type = ProjectType.Graphics,
-            Technologies = ["Next.js", "React", "Nuxt"]
+            Technologies = ["Next.js", "React", "Nuxt"],
+            StartedAt = new DateTimeOffset(2022, 1, 1, 0, 0, 0, TimeSpan.Zero),
+            FinishedAt = new DateTimeOffset(2022, 6, 1, 0, 0, 0, TimeSpan.Zero)
         };
 
         p1.Localizations = new List<ProjectLocalization>
@@ -172,7 +174,9 @@ Press `test` to continue
                 IsFeatured = p.IsFeatured,
                 ImageUrls = p.ImageUrls,
                 Type = p.Type,
-                Technologies = p.Technologies
+                Technologies = p.Technologies,
+                StartedAt = p.StartedAt,
+                FinishedAt = p.FinishedAt
             };
         }).Where(p => p != null).ToArray();
 
@@ -203,7 +207,9 @@ Press `test` to continue
             IsFeatured = project.IsFeatured,
             ImageUrls = project.ImageUrls,
             Type = project.Type,
-            Technologies = project.Technologies
+            Technologies = project.Technologies,
+            StartedAt = project.StartedAt,
+            FinishedAt = project.FinishedAt
         };
 
         return new OkObjectResult(response);

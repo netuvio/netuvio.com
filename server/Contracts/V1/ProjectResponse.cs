@@ -13,4 +13,6 @@ public class ProjectResponse
     public required List<string> ImageUrls { get; set; } = [];
     public required ProjectType Type { get; set; } = ProjectType.Website;
     public required List<string> Technologies { get; set; } = [];
+    public DateTimeOffset? StartedAt { get; set; }
+    public DateTimeOffset? FinishedAt { get; set; }
 }

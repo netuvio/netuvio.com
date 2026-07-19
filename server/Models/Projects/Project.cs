@@ -24,6 +24,10 @@ public class Project
     public ProjectType Type { get; set; } = ProjectType.Website;
 
     public List<string> Technologies { get; set; } = [];
+
+    public DateTimeOffset? StartedAt { get; set; }
+    
+    public DateTimeOffset? FinishedAt { get; set; }
     
     
     public ICollection<ProjectLocalization> Localizations { get; set; } = new List<ProjectLocalization>();
