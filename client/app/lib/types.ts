@@ -17,6 +17,8 @@ export interface Project {
     imageUrls: string[];
     type: ProjectType;
     technologies: string[];
-    startedAt: string;
-    finishedAt: string;
+    startedAt?: string;
+    finishedAt?: string;
+    websiteUrl?: string;
+    sourceCodeUrl?: string;
 }

@@ -38,7 +38,9 @@ public class ProjectsController
             Type = ProjectType.Graphics,
             Technologies = ["Next.js", "React", "Nuxt"],
             StartedAt = new DateTimeOffset(2022, 1, 1, 0, 0, 0, TimeSpan.Zero),
-            FinishedAt = new DateTimeOffset(2022, 6, 1, 0, 0, 0, TimeSpan.Zero)
+            FinishedAt = new DateTimeOffset(2022, 6, 1, 0, 0, 0, TimeSpan.Zero),
+            WebsiteUrl = "https://example.com/project-beta",
+            SourceCodeUrl = "https://github.com/example/project-beta"
         };
 
         p1.Localizations = new List<ProjectLocalization>
@@ -155,28 +157,30 @@ Press `test` to continue
     [HttpGet]
     public IActionResult GetProjects([FromQuery] string? locale = null)
     {
-        var projects = _projects.Select(p =>
+        var projects = _projects.Select(project =>
         {
             var localization = locale != null
-                ? p.Localizations.FirstOrDefault(l => l.Locale == locale)
-                : p.Localizations.FirstOrDefault();
+                ? project.Localizations.FirstOrDefault(l => l.Locale == locale)
+                : project.Localizations.FirstOrDefault();
 
             if (localization == null) 
                 return null;
 
             return new ProjectResponse
             {
-                Id = p.Id,
-                Slug = p.Slug,
+                Id = project.Id,
+                Slug = project.Slug,
                 Title = localization.Title,
                 Description = localization.Description,
                 Body = localization.Body,
-                IsFeatured = p.IsFeatured,
-                ImageUrls = p.ImageUrls,
-                Type = p.Type,
-                Technologies = p.Technologies,
-                StartedAt = p.StartedAt,
-                FinishedAt = p.FinishedAt
+                IsFeatured = project.IsFeatured,
+                ImageUrls = project.ImageUrls,
+                Type = project.Type,
+                Technologies = project.Technologies,
+                StartedAt = project.StartedAt,
+                FinishedAt = project.FinishedAt,
+                WebsiteUrl = project.WebsiteUrl,
+                SourceCodeUrl = project.SourceCodeUrl
             };
         }).Where(p => p != null).ToArray();
 
@@ -209,7 +213,9 @@ Press `test` to continue
             Type = project.Type,
             Technologies = project.Technologies,
             StartedAt = project.StartedAt,
-            FinishedAt = project.FinishedAt
+            FinishedAt = project.FinishedAt,
+            WebsiteUrl = project.WebsiteUrl,
+            SourceCodeUrl = project.SourceCodeUrl
         };
 
         return new OkObjectResult(response);

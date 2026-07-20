@@ -4,9 +4,10 @@ import type {Project} from "~/lib/types";
 import Markdown from "~/components/Markdown.vue";
 import Lightbox from "~/components/lightbox/Lightbox.vue";
 import LightboxItem from "~/components/lightbox/LightboxItem.vue";
-import SimpleIconsNextdotjs from '~icons/simple-icons/nextdotjs'
 import TechnologyTag from "~/components/TechnologyTag.vue";
 import {computed} from "vue";
+import TablerWorld from '~icons/tabler/world';
+import TablerGitMerge from '~icons/tabler/git-merge';
 
 const { t, locale } = useI18n();
 
@@ -70,6 +71,18 @@ const dateRange = computed(() => {
                                 </li>
                             </ul>
                         </div>
+                        <ul :class="$style.links" v-if="project.websiteUrl || project.sourceCodeUrl">
+                            <li v-if="project.websiteUrl">
+                                <a :href="project.websiteUrl" target="_blank" rel="noopener noreferrer">
+                                    <TablerWorld /> Visit Website
+                                </a>
+                            </li>
+                            <li v-if="project.sourceCodeUrl">
+                                <a :href="project.sourceCodeUrl" target="_blank" rel="noopener noreferrer">
+                                    <TablerGitMerge /> Source Code
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                     <LightboxItem
                         :key="project.imageUrls[0]"
@@ -136,6 +149,10 @@ const dateRange = computed(() => {
         }
         
         .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
             .technologies {
                 h2 {
                     margin-bottom: 4px;
@@ -147,6 +164,38 @@ const dateRange = computed(() => {
                     display: flex;
                     margin-bottom: 16px;
                     gap: 12px;
+                }
+            }
+            
+            .links {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                //gap: 12px;
+                
+                color: var(--color-carbon-100);
+                border: 1px solid var(--color-carbon-300);
+                border-radius: 9999px;
+                font-weight: 500;
+                overflow: hidden;
+                
+                li {
+                    a {
+                        color: var(--color-carbon-100);
+                        padding: 10px 14px;
+                        border-right: 1px solid var(--color-carbon-300);
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+
+                        &:hover {
+                            color: var(--color-primary);
+                        }
+                    }
+                    
+                    &:last-child a {
+                        border-right: none;
+                    }
                 }
             }
         }

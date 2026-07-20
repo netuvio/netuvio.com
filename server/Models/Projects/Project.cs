@@ -29,6 +29,10 @@ public class Project
     
     public DateTimeOffset? FinishedAt { get; set; }
     
+    public string? WebsiteUrl { get; set; }
+    
+    public string? SourceCodeUrl { get; set; }
+    
     
     public ICollection<ProjectLocalization> Localizations { get; set; } = new List<ProjectLocalization>();
 }

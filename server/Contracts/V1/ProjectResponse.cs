@@ -15,4 +15,6 @@ public class ProjectResponse
     public required List<string> Technologies { get; set; } = [];
     public DateTimeOffset? StartedAt { get; set; }
     public DateTimeOffset? FinishedAt { get; set; }
+    public string? WebsiteUrl { get; set; }
+    public string? SourceCodeUrl { get; set; }
 }
