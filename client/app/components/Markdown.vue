@@ -21,25 +21,10 @@ const md = new MarkdownIt({
 
 const rawMarkdown = md.render(props.markdown);
 const cleanMarkdown = DOMPurify.sanitize(rawMarkdown, { ADD_ATTR: ['id', 'target'] });
-
-function handleLinkClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    if (target && target.classList.contains('header-anchor')) {
-        event.preventDefault();
-        
-        const href = target.getAttribute('href');
-        if (href) {
-            const url = new URL(href, window.location.href);
-            navigator.clipboard.writeText(url.href).catch(console.error);
-            
-            history.pushState(null, '', href);
-        }
-    }
-}
 </script>
 
 <template>
-    <article @click="handleLinkClick" v-html="cleanMarkdown" :class="$style.markdown"></article>
+    <article v-html="cleanMarkdown" :class="$style.markdown"></article>
 </template>
 
 <style module lang="scss">
