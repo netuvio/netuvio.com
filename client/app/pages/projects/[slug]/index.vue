@@ -151,7 +151,8 @@ const dateRange = computed(() => {
         .info {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: end;
+            margin-bottom: 16px;
             
             .technologies {
                 h2 {
@@ -162,7 +163,6 @@ const dateRange = computed(() => {
                     list-style: none;
                     padding: 0;
                     display: flex;
-                    margin-bottom: 16px;
                     gap: 12px;
                 }
             }
@@ -171,7 +171,6 @@ const dateRange = computed(() => {
                 list-style: none;
                 padding: 0;
                 display: flex;
-                //gap: 12px;
                 
                 color: var(--color-carbon-100);
                 border: 1px solid var(--color-carbon-300);
