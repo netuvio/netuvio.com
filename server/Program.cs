@@ -1,6 +1,8 @@
 using System.Text.Json.Serialization;
 using Asp.Versioning;
-using dotenv.net;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
+using server.Infrastructure.Persistence;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace server;
@@ -11,7 +13,6 @@ public static class Program {
 
     public static ILogger Logger { get; private set; } = null!;
     public static WebApplication Application { get; private set; } = null!;
-    public static IDictionary<string, string> ENV { get; private set; } = DotEnv.Read();
 
 
 
@@ -24,6 +25,8 @@ public static class Program {
 
     public static void Main(string[] args) {
         var builder = WebApplication.CreateBuilder(args);
+
+        DotNetEnv.Env.Load("../.env");
 
         // Add services to the container.
 
@@ -85,6 +88,19 @@ public static class Program {
         });
         
         builder.Services.AddHttpClient();
+        
+        // Connect to DB
+        var connectionString = new NpgsqlConnectionStringBuilder
+        {
+            Host = Environment.GetEnvironmentVariable("DB_HOST"),
+            Database = Environment.GetEnvironmentVariable("DB_NAME"),
+            Username = Environment.GetEnvironmentVariable("DB_USER"),
+            Password = Environment.GetEnvironmentVariable("DB_PASSWORD")
+        };
+        
+        builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(connectionString.ConnectionString));
+        
 
         Application = builder.Build();
 

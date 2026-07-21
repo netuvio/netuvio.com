@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace server.Models.Projects;
 
 public class ProjectLocalization
 {
-    public Guid Id { get; set; } =  Guid.NewGuid();
+    public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required, MaxLength(10)]
     public required string Locale { get; set; }
@@ -22,6 +21,5 @@ public class ProjectLocalization
     [Required]
     public required Guid ProjectId { get; set; }
     
-    [ForeignKey("ProjectId")]
     public required Project Project { get; set; }
 }
