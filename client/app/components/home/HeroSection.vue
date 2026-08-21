@@ -36,6 +36,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
                         :text="t('home.subtitle')"
                         :delay=".7"
                     />
+                    <img :class="$style.squiggle" src="/images/squiggle-1.svg" alt="" />
                 </h2>
                 <motion.div
                     :initial="{ opacity: 0, y: 10 }"
@@ -52,16 +53,19 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
                     </NuxtLinkLocale>
                 </motion.div>
             </motion.div>
-<!--            <div :class="$style.technologies">-->
-<!--                <span>{{ t("home.techWeUse") }}</span>-->
-<!--                <div>-->
-<!--                    <img src="/icons/tech/dotnet.svg" alt="DotNet" />-->
-<!--                    <img src="/icons/tech/vuejs.svg" alt="Vue.js" />-->
-<!--                    <img src="/icons/tech/react.svg" alt="React" />-->
-<!--                    <img src="/icons/tech/docker.svg" alt="Docker" />-->
-<!--                    <img src="/icons/tech/postgresql.svg" alt="PostgreSQL" />-->
-<!--                </div>-->
-<!--            </div>-->
+            <div :class="$style.technologies">
+                <span>
+                    {{ t("home.techWeUse") }}
+                    <img :class="$style.squiggle" src="/images/squiggle-2.svg" alt="" />
+                </span>
+                <div>
+                    <img src="/icons/tech/dotnet.svg" alt="DotNet" />
+                    <img src="/icons/tech/vuejs.svg" alt="Vue.js" />
+                    <img src="/icons/tech/react.svg" alt="React" />
+                    <img src="/icons/tech/docker.svg" alt="Docker" />
+                    <img src="/icons/tech/postgresql.svg" alt="PostgreSQL" />
+                </div>
+            </div>
         </main>
         <div :class="$style.pageTransition"></div>
     </main>
@@ -116,7 +120,14 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
         h2 {
             font-weight: 600;
             margin-top: 20px;
-            max-width: 700px;
+            max-width: 600px;
+            position: relative;
+            
+            .squiggle {
+                position: absolute;
+                top: -40px;
+                left: 100%;
+            }
         }
 
         button {
@@ -145,7 +156,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
         bottom: 0;
         transform: translate(-50%, 50%);
         background-color: var(--color-background-primary);
-        padding: 60px 60px;
+        padding: 50px 50px;
         border-radius: 48px;
         width: 100%;
         z-index: 10;
@@ -159,6 +170,13 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
             font-size: 20px;
             font-weight: 600;
             white-space: pre-line;
+            position: relative;
+            
+            .squiggle {
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
         }
         
         >div {
