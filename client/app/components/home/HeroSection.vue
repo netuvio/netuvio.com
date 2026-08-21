@@ -52,18 +52,18 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
                     </NuxtLinkLocale>
                 </motion.div>
             </motion.div>
-            <div :class="$style.technologies">
-                <span>{{ t("home.techWeUse") }}</span>
-                <div>
-                    <img src="/icons/tech/dotnet.svg" alt="DotNet" />
-                    <img src="/icons/tech/vuejs.svg" alt="Vue.js" />
-                    <img src="/icons/tech/react.svg" alt="React" />
-                    <img src="/icons/tech/docker.svg" alt="Docker" />
-                    <img src="/icons/tech/postgresql.svg" alt="PostgreSQL" />
-                </div>
-            </div>
+<!--            <div :class="$style.technologies">-->
+<!--                <span>{{ t("home.techWeUse") }}</span>-->
+<!--                <div>-->
+<!--                    <img src="/icons/tech/dotnet.svg" alt="DotNet" />-->
+<!--                    <img src="/icons/tech/vuejs.svg" alt="Vue.js" />-->
+<!--                    <img src="/icons/tech/react.svg" alt="React" />-->
+<!--                    <img src="/icons/tech/docker.svg" alt="Docker" />-->
+<!--                    <img src="/icons/tech/postgresql.svg" alt="PostgreSQL" />-->
+<!--                </div>-->
+<!--            </div>-->
         </main>
-        <img src="/images/page-transition.png" alt="" :class="$style.pageTransition" />
+        <div :class="$style.pageTransition"></div>
     </main>
 </template>
 
@@ -104,7 +104,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
         h1 {
             font-size: clamp(52px, 5.55vw, 80px);
-            -webkit-text-stroke: 8px transparent;
+            -webkit-text-stroke: 12px transparent;
             paint-order: stroke fill;
             font-weight: 800;
             background: linear-gradient(180deg, var(--color-text-primary), var(--color-lime-200));
@@ -209,11 +209,12 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
     position: absolute;
     bottom: 0;
     left: 0;
+    height: 150px;
     width: 100%;
-    object-fit: cover;
     pointer-events: none;
     user-select: none;
-    transform: translateY(50%);
+    background-image: url('/images/page-transition.svg');
+    background-size: 900px;
 }
 
 // Laptops Responsive
