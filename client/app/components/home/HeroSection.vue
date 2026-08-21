@@ -19,6 +19,11 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
         <div :class="$style.bg"></div>
         <main :class="[$style.hero, 'container']">
             <img :class="$style.bgName" src="/images/hero-bg-name.svg" alt="netuvio">
+            <div :class="$style.dots">
+                <img src="/images/dots.svg" alt="" />
+                <img src="/images/dots.svg" alt="" />
+                <img src="/images/dots.svg" alt="" />
+            </div>
             <motion.div :class="$style.textContainer" :style="{ scale: textScale, transformOrigin: 'center center' }">
                 <!-- nadpis -->
                 <h1>
@@ -99,9 +104,13 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
         h1 {
             font-size: clamp(52px, 5.55vw, 80px);
-            -webkit-text-stroke: 8px var(--color-text-primary);
+            -webkit-text-stroke: 8px transparent;
             paint-order: stroke fill;
             font-weight: 800;
+            background: linear-gradient(180deg, var(--color-text-primary), var(--color-lime-200));
+            -webkit-background-clip: text;
+            background-clip: text;
+            width: fit-content;
         }
 
         h2 {
@@ -126,6 +135,8 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
         left: -50px;
         pointer-events: none;
         user-select: none;
+        width: 100%;
+        max-width: 1500px;
     }
     
     .technologies {
@@ -161,6 +172,35 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
                 height: 40px;
                 object-fit: contain;
             }
+        }
+    }
+    
+    .dots {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        user-select: none;
+        
+        img {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        img:nth-child(1) {
+            top: 10%;
+        }
+
+        img:nth-child(2) {
+            top: 20%;
+            left: 35%;
+        }
+
+        img:nth-child(3) {
+            top: 12%;
+            right: 15%;
         }
     }
 }
