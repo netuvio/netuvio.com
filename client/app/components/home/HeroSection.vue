@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import Button from "~/components/Button.vue";
 import GlassShapes from "~/components/home/GlassShapes.vue";
 import { motion, useScroll, useTransform } from 'motion-v'
@@ -16,49 +16,49 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
 <template>
     <main :class="$style.heroWrapper">
-        <main :class="$style.hero">
-            <StarrySky />
-            <div :class="$style.inner">
-                <motion.div :style="{ scale: bgScale, transformOrigin: 'center center' }">
-                    <img src="/images/hero-circle.svg" alt="" draggable="false" />
-                    <GlassShapes />
+        <div :class="$style.bg"></div>
+        <main :class="[$style.hero, 'container']">
+            <img :class="$style.bgName" src="/images/hero-bg-name.svg" alt="netuvio">
+            <motion.div :class="$style.textContainer" :style="{ scale: textScale, transformOrigin: 'center center' }">
+                <!-- nadpis -->
+                <h1>
+                    <RandomTextAnimation :text="t('home.hero')" :interval="10" />
+                </h1>
+
+                <!-- podnadpis -->
+                <h2>
+                    <TypingTextAnimation 
+                        :text="t('home.subtitle')"
+                        :delay=".7"
+                    />
+                </h2>
+                <motion.div
+                    :initial="{ opacity: 0, y: 10 }"
+                    :animate="{ opacity: 1, y: 0 }"
+                    :transition="{
+                        duration: .4,
+                        delay: 1.8,
+                    }"
+                >
+                    <NuxtLinkLocale to="/#brief">
+                        <Button size="xl" variant="tertiary">
+                            {{ t("home.learnMore") }}
+                        </Button>
+                    </NuxtLinkLocale>
                 </motion.div>
-                <div :class="$style.inner">
-                    <motion.div :style="{ scale: textScale, transformOrigin: 'center center' }">
-
-                        <!-- nadpis -->
-                        <h1>
-                            <span class="sr-only">{{ t('home.hero.srOnly') }}</span>
-                            <span :class="$style.colored"><RandomTextAnimation :text="t('home.hero.line1.colored')" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation :text="t('home.hero.line1.text')" :seoFriendly="false" :ariaHidden="true" /> <br/>
-                            <span :class="$style.colored"><RandomTextAnimation :text="t('home.hero.line2.colored')" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation :text="t('home.hero.line2.text')" :seoFriendly="false" :ariaHidden="true" /> <br/>
-                            <span :class="$style.colored"><RandomTextAnimation :text="t('home.hero.line3.colored')" :seoFriendly="false" :ariaHidden="true" /></span>&nbsp;<RandomTextAnimation :text="t('home.hero.line3.text')" :seoFriendly="false" :ariaHidden="true" />
-                        </h1>
-
-                        <!-- podnadpis -->
-                        <h2>
-                            <TypingTextAnimation 
-                                :text="t('home.subtitle')"
-                                :delay=".7"
-                            />
-                        </h2>
-                        <motion.div
-                            :initial="{ opacity: 0, y: 10 }"
-                            :animate="{ opacity: 1, y: 0 }"
-                            :transition="{
-                                duration: .4,
-                                delay: 1.8,
-                            }"
-                        >
-                            <NuxtLinkLocale to="/#brief">
-                                <Button size="xl" variant="primary">
-                                    {{ t("home.learnMore") }}
-                                </Button>
-                            </NuxtLinkLocale>
-                        </motion.div>
-                    </motion.div>
+            </motion.div>
+            <div :class="$style.technologies">
+                <span>{{ t("home.techWeUse") }}</span>
+                <div>
+                    <img src="/icons/tech/dotnet.svg" alt="DotNet" />
+                    <img src="/icons/tech/vuejs.svg" alt="Vue.js" />
+                    <img src="/icons/tech/react.svg" alt="React" />
+                    <img src="/icons/tech/docker.svg" alt="Docker" />
+                    <img src="/icons/tech/postgresql.svg" alt="PostgreSQL" />
                 </div>
             </div>
         </main>
+        <img src="/images/page-transition.png" alt="" :class="$style.pageTransition" />
     </main>
 </template>
 
@@ -67,104 +67,133 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
 .heroWrapper {
     width: 100%;
-    height: clamp(760px, 75vw, 1088px);
+    height: 90vh;
+    background-color: var(--color-primary);
+    position: relative;
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 50% 50%, hsl(from var(--color-lime-500) h s l / 0.1) 20%, hsl(from var(--color-lime-600) h s l / 0.3) 100%);
+    mask-image: url("/patterns/topography-1.svg");
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    mask-position: center;
 }
 
 .hero {
-    position: fixed;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 0;
-    width: 100%;
-    overflow: hidden;
+    position: relative;
+    padding-top: 240px;
+    height: 100%;
 
-    >.inner {
-        position: relative;
-        user-select: none;
+    >.textContainer {
+        width: min(100%, 100vw);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: var(--color-text-secondary);
 
-        >img {
-            user-select: none;
-            min-width: min(1088px, 165vw);
-            width: min(1088px, 165vw);
+        h1 {
+            font-size: clamp(52px, 5.55vw, 80px);
+            -webkit-text-stroke: 8px var(--color-text-primary);
+            paint-order: stroke fill;
+            font-weight: 800;
         }
 
-        >.inner {
-            position: absolute;
-            inset: 0;
+        h2 {
+            font-weight: 600;
+            margin-top: 20px;
+            max-width: 700px;
+        }
+
+        button {
+            margin-top: 20px;
+            box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    .bgName {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        top: 60px;
+        left: -50px;
+        pointer-events: none;
+        user-select: none;
+    }
+    
+    .technologies {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 50%);
+        background-color: var(--color-background-primary);
+        padding: 70px 70px;
+        border-radius: 48px;
+        width: 100%;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 96px;
+
+        span {
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: 600;
+            white-space: pre-line;
+        }
+        
+        >div {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            user-select: text;
+            justify-content: space-between;
+            gap: 24px;
+            width: 100%;
 
-            >div {
-                width: min(100%, 100vw);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                padding: 0 12px;
-
-                h1 {
-                    color: var(--color-text-primary);
-                    font-size: clamp(52px, 5.55vw, 80px);
-                    text-align: center;
-
-                    > .colored {
-                        color: var(--color-primary);
-                    }
-                }
-
-                h2 {
-                    text-align: center;
-                    color: var(--color-lime-200);
-                    font-weight: 400;
-                    margin-top: 20px;
-                    max-width: 700px;
-                }
-
-                button {
-                    margin-top: 40px;
-                    box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
-                    position: relative;
-                    z-index: 1;
-                }
+            img {
+                height: 40px;
+                object-fit: contain;
             }
         }
     }
 }
 
+.pageTransition {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(50%);
+}
+
 // Laptops Responsive
-@media screen and (max-width: $laptopBreakpoint) {
-    .heroWrapper {
-        height: clamp(820px, 82vw, 1088px);
-    }
-    
+@media screen and (max-width: $laptopBreakpoint) {    
     .hero {
-        > .inner {
-            > img {
-                min-width: min(1000px, 150vw);
-                width: min(1000px, 150vw);
+        >.textContainer {
+            h1 {
+                font-size: clamp(50px, 6.8vw, 70px);
             }
             
-            >.inner > div {
-                h1 {
-                    font-size: clamp(50px, 6.8vw, 70px);
-                }
-                
-                h2 {
-                    font-size: 20px;
-                    margin-top: 12px;
-                }
+            h2 {
+                font-size: 20px;
+                margin-top: 12px;
+            }
 
-                button {
-                    padding: 16px 24px;
-                    font-size: 22px;
-                    min-height: 0;
-                    margin-top: 32px;
-                }
+            button {
+                padding: 16px 24px;
+                font-size: 22px;
+                min-height: 0;
+                margin-top: 32px;
             }
         }
     }
@@ -172,34 +201,24 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
 // tablet
 @media screen and (max-width: $tabletBreakpoint) {
-    .heroWrapper {
-        height: clamp(720px, 90vw, 870px);
-    }
-
     .hero {
         padding-top: 48px;
         
-        > .inner {
-            > img {
-                min-width: min(760px, 145vw);
-                width: min(760px, 145vw);
+
+        >.textContainer {
+            h1 {
+                font-size: clamp(38px, 6.5vw, 50px);
             }
 
-            >.inner > div {
-                h1 {
-                    font-size: clamp(38px, 6.5vw, 50px);
-                }
+            h2 {
+                font-size: 16px;
+            }
 
-                h2 {
-                    font-size: 16px;
-                }
-
-                button {
-                    padding: 16px 24px;
-                    font-size: 20px;
-                    min-height: 0;
-                    margin-top: 32px;
-                }
+            button {
+                padding: 16px 24px;
+                font-size: 20px;
+                min-height: 0;
+                margin-top: 32px;
             }
         }
     }
@@ -207,37 +226,26 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
 // mobile
 @media screen and (max-width: $mobileBreakpoint) {
-    .heroWrapper {
-        height: clamp(600px, 155vw, 720px);
-    }
-
     .hero {
         padding-top: 64px;
 
-        > .inner {
-            > img {
-                min-width: min(620px, 175vw);
-                width: min(620px, 175vw);
+        >.textContainer {
+            margin-top: -0px;
+            
+            h1 {
+                font-size: clamp(30px, 10vw, 42px);
+                width: min(100%, 720px);
             }
 
-            >.inner > div {
-                margin-top: -0px;
-                
-                h1 {
-                    font-size: clamp(30px, 10vw, 42px);
-                    width: min(100%, 720px);
-                }
+            h2 {
+                font-size: 12px;
+            }
 
-                h2 {
-                    font-size: 12px;
-                }
-
-                button {
-                    padding: 12px 20px;
-                    font-size: 16px;
-                    min-height: 0;
-                    margin-top: 20px;
-                }
+            button {
+                padding: 12px 20px;
+                font-size: 16px;
+                min-height: 0;
+                margin-top: 20px;
             }
         }
     }

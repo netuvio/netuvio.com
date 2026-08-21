@@ -7,21 +7,8 @@ export default defineI18nLocale(async (locale) => {
             "title": "Domů",
             "subtitle": "Za každým kvalitním projektem stojí nejen dobrý nápad, ale i správné technické řešení. S tím vám pomůžeme od začátku do konce.",
             "learnMore": "Zjistit více",
-            "hero": {
-                "srOnly": "Moderní aplikace, výkonný hosting, žádné starosti",
-                "line1": {
-                    "colored": "Moderní",
-                    "text": "aplikace,"
-                },
-                "line2": {
-                    "colored": "výkonný",
-                    "text": "hosting,"
-                },
-                "line3": {
-                    "colored": "žádné",
-                    "text": "starosti"
-                }
-            }
+            "hero": "Moderní aplikace, \nvýkonný hosting, \nžádné starosti",
+            "techWeUse": "Technologie, \nkteré používáme"
         },
         "brief": {
             "title": "Kdo jsme",

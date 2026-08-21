@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import {onMounted, ref} from "vue";
 import { motion, AnimatePresence } from "motion-v";
 
@@ -102,18 +102,20 @@ onMounted(() => {
     
     <span :aria-hidden="seoFriendly || ariaHidden" :class="$style.wrapper">
         <AnimatePresence mode="popLayout">
-            <motion.span
-                v-for="(item, i) in randomizedText"
-                :key="`${i}-${item.letter}`"
-                :initial="{ opacity: 0, y: -10, filter: 'blur(4px)' }"
-                :animate="{ opacity: 1, y: 0, filter: 'blur(0px)' }"
-                :exit="{ opacity: 0, y: 10, filter: 'blur(4px)', position: 'absolute' }"
-                :transition="{ duration: 0.15 }"
-                :class="$style.letter"
-                :aria-hidden="seoFriendly || ariaHidden"
-            >
-                {{ item.letter }}
-            </motion.span>
+            <template v-for="(item, i) in randomizedText" :key="`${i}-${item.letter}`">
+                <br v-if="item.letter === '\n'" />
+                <motion.span
+                    v-else
+                    :initial="{ opacity: 0, y: -10, filter: 'blur(4px)' }"
+                    :animate="{ opacity: 1, y: 0, filter: 'blur(0px)' }"
+                    :exit="{ opacity: 0, y: 10, filter: 'blur(4px)', position: 'absolute' }"
+                    :transition="{ duration: 0.15 }"
+                    :class="$style.letter"
+                    :aria-hidden="seoFriendly || ariaHidden"
+                >
+                    {{ item.letter }}
+                </motion.span>
+            </template>
         </AnimatePresence>
     </span>
 </template>

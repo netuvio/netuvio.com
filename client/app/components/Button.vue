@@ -1,5 +1,5 @@
 ﻿<script setup lang="ts">
-type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
+type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
 
 // Native button types forwarded to the underlying <button> element.
@@ -148,6 +148,16 @@ const classes = computed(() => ([
     &:hover:not(:disabled) {
         background-color: var(--color-carbon-600);
         border-color: var(--color-carbon-50);
+    }
+}
+
+.variant-tertiary {
+    background-color: var(--color-background-primary);
+    border-color: var(--color-background-primary);
+    color: var(--color-text-primary);
+
+    &:hover:not(:disabled) {
+        background-color: var(--color-background-primary-hover);
     }
 }
 

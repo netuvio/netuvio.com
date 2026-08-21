@@ -12,21 +12,8 @@ export default defineI18nLocale(async (locale) => {
             "title": "Home",
             "subtitle": "Behind every high-quality project lies not only a good idea, but also the right technical solution. We'll help you with that from start to finish.",
             "learnMore": "Learn More",
-            "hero": {
-                "srOnly": "Modern apps, powerful hosting, zero hassle",
-                "line1": {
-                    "colored": "Modern",
-                    "text": "apps,"
-                },
-                "line2": {
-                    "colored": "powerful",
-                    "text": "hosting,"
-                },
-                "line3": {
-                    "colored": "zero",
-                    "text": "hassle"
-                }
-            }
+            "hero": "Modern apps, \npowerful hosting, \nzero hassle",
+            "techWeUse": "Technologies, \nwe use"
         },
         "brief": {
             "title": "Brief",

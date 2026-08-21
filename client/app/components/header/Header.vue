@@ -84,6 +84,14 @@ header {
             border-radius: 10000px;
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             padding: 24px;
+            
+            .logo {
+                background-color: var(--color-text-primary);
+            }
+            
+            .links li a {
+                color: var(--color-text-primary);
+            }
         }
     }
     
@@ -103,7 +111,7 @@ header {
             mask-size: contain;
             mask-repeat: no-repeat;
             mask-position: left center;
-            background-color: var(--color-text-primary);
+            background-color: var(--color-text-secondary);
             width: 200px;
             height: 100%;
             z-index: 1;
@@ -127,8 +135,9 @@ header {
                 
                 li a {
                     padding: 8px 16px;
-                    color: var(--color-text-primary);
+                    color: var(--color-text-secondary);
                     position: relative;
+                    transition: all 0.3s ease;
                     
                     &::before {
                         content: "";

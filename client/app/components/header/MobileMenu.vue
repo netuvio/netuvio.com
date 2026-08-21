@@ -102,7 +102,7 @@ const isOpen = ref(false);
         left: 10px;
         width: 24px;
         height: 3px;
-        background: white;
+        background: var(--color-background-primary);
         border-radius: 2px;
         transition: all 0.3s ease;
     }

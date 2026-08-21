@@ -21,7 +21,6 @@ const gradientOpacity = useTransform(logoAnimationProgress, [.4, 1], [0, .5]);
 
 <template>
     <section class="theme-secondary" ref="sectionRef" :class="$style.section">
-        <Gradient :class="$style.gradient" />
         <div :class="$style.spacer" id="brief"></div>
         <div :class="['container', $style.container]">
             <motion.div :class="$style.wrapper">
