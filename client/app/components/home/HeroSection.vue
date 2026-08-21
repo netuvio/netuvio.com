@@ -134,7 +134,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
         bottom: 0;
         transform: translate(-50%, 50%);
         background-color: var(--color-background-primary);
-        padding: 70px 70px;
+        padding: 60px 60px;
         border-radius: 48px;
         width: 100%;
         z-index: 10;
