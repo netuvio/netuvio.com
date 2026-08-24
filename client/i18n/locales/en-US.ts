@@ -15,9 +15,9 @@ export default defineI18nLocale(async (locale) => {
             "hero": "Modern apps, \npowerful hosting, \nzero hassle",
             "techWeUse": "Technologies, \nwe use"
         },
-        "brief": {
-            "title": "Brief",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam."
+        "whoWeAre": {
+            "title": "Who We Are",
+            "subtitle": "We are a team of professionals \ncapable of creating <span>anything.</span>"
         },
         "services": {
             "design": {
@@ -67,7 +67,7 @@ export default defineI18nLocale(async (locale) => {
             },
             "about": {
                 "title": "About",
-                "brief": "Brief",
+                "whoWeAre": "Who We Are",
                 "services": "Services",
                 "process": "Process",
                 "projects": "Projects",

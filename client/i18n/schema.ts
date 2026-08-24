@@ -12,12 +12,13 @@ export type MessageSchema = {
         title: string,
         subtitle: string,
         learnMore: string,
-        hero: {
-            srOnly: string,
-            line1: { colored: string, text: string },
-            line2: { colored: string, text: string },
-            line3: { colored: string, text: string },
-        },
+        hero: string,
+        techWeUse: string,
+    },
+    
+    whoAreWe: {
+        title: string,
+        subtitle: string,
     },
 
     services: {

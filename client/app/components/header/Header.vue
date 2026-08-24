@@ -9,8 +9,8 @@ const { t } = useI18n();
 
 const links: HeaderLink[] = [
     {
-        name: t("footer.about.brief"),
-        to: "/#brief"
+        name: t("footer.about.whoWeAre"),
+        to: "/#whoWeAre"
     },
     {
         name: t("footer.about.services"),

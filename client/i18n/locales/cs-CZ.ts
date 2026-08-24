@@ -10,9 +10,9 @@ export default defineI18nLocale(async (locale) => {
             "hero": "Moderní aplikace, \nvýkonný hosting, \nžádné starosti",
             "techWeUse": "Technologie, \nkteré používáme"
         },
-        "brief": {
+        "whoWeAre": {
             "title": "Kdo jsme",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam."
+            "subtitle": "Jsme tým profesionálů. \nDokážeme vytvořit <span>úplně vše.</span>"
         },
         "services": {
             "design": {
@@ -62,7 +62,7 @@ export default defineI18nLocale(async (locale) => {
             },
             "about": {
                 "title": "O nás",
-                "brief": "Úvod",
+                "whoWeAre": "Kdo jsme",
                 "services": "Služby",
                 "process": "Proces",
                 "projects": "Projekty",

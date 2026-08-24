@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Head, Title } from "#components";
 import HeroSection from "~/components/home/HeroSection.vue";
-import Section2 from "~/components/home/Section2.vue";
+import WhoWeAreSection from "~/components/home/WhoWeAreSection.vue";
 import WhatWeDoSection from "~/components/home/WhatWeDoSection.vue";
 import ProcessSection from "../components/home/ProcessSection.vue";
 import FeaturedProjects from "~/components/home/FeaturedProjects.vue";
@@ -18,7 +18,7 @@ const { t } = useI18n();
 
     <div>
         <HeroSection />
-        <Section2 />
+        <WhoWeAreSection />
         <WhatWeDoSection />
         <ProcessSection /> 
         <FeaturedProjects />
