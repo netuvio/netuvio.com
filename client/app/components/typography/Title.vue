@@ -9,8 +9,8 @@
 @use "~/assets/variables" as *;
 
 .title {
-    font-size: 24px;
-    padding: 10px 18px;
+    font-size: 20px;
+    padding: 14px 24px;
     background-color: var(--color-background-primary);
     color: var(--color-text-primary);
     border-radius: 9999px;

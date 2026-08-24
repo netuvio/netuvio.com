@@ -29,6 +29,7 @@ const { t } = useI18n();
         line-height: 1.2;
         position: relative;
         width: max-content;
+        margin-top: 16px;
         
         &::after {
             content: "";

@@ -22,6 +22,8 @@ const props = withDefaults(defineProps<{
     
     /** Makes the button take the full width of its container when true */
     block?: boolean;
+    
+    arrow?: boolean;
 }>(), {
     variant: 'primary',
     size: 'md',
@@ -29,6 +31,7 @@ const props = withDefaults(defineProps<{
     disabled: false,
     loading: false,
     block: false,
+    arrow: true,
 });
 
 // CSS module classes generated for this component.
@@ -43,6 +46,7 @@ const classes = computed(() => ([
     css[`size-${props.size}`],
     props.block ? css.block : null,
     props.loading ? css.loading : null,
+    props.arrow ? css.arrow : null,
 ]));
 </script>
 
@@ -138,6 +142,10 @@ const classes = computed(() => ([
         background-color: var(--color-lime-300);
         border-color: var(--color-lime-300);
     }
+    
+    &::after {
+        background-color: var(--color-carbon-800);
+    }
 }
 
 .variant-secondary {
@@ -149,6 +157,10 @@ const classes = computed(() => ([
         background-color: var(--color-carbon-600);
         border-color: var(--color-carbon-50);
     }
+
+    &::after {
+        background-color: var(--color-text-primary);
+    }
 }
 
 .variant-tertiary {
@@ -158,6 +170,10 @@ const classes = computed(() => ([
 
     &:hover:not(:disabled) {
         background-color: var(--color-background-primary-hover);
+    }
+
+    &::after {
+        background-color: var(--color-text-primary);
     }
 }
 
@@ -195,5 +211,16 @@ const classes = computed(() => ([
     to {
         transform: rotate(360deg);
     }
+}
+
+.arrow::after {
+    content: "";
+    inset: 0;
+    mask-image: url("/images/arrow.svg");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    width: 15px;
+    height: 15px;
 }
 </style>
