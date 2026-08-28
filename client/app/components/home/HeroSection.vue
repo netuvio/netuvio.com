@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import Button from "~/components/Button.vue";
-import GlassShapes from "~/components/home/GlassShapes.vue";
 import { motion, useScroll, useTransform } from 'motion-v'
 import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
-import StarrySky from "~/components/home/StarrySky.vue";
 import TypingTextAnimation from "~/components/TypingTextAnimation.vue";
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
 
 const { scrollYProgress } = useScroll();
 const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
-const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 
 </script>
 

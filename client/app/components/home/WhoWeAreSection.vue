@@ -1,7 +1,5 @@
 <script setup lang="ts">
 
-import Gradient from "~/components/home/Gradient.vue";
-import {useScroll, useTransform, motion} from "motion-v";
 import Title from "~/components/typography/Title.vue";
 import WhoWeAreServiceCard from "~/components/home/WhoWeAreServiceCard.vue";
 
