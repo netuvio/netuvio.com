@@ -36,7 +36,34 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
                         :text="t('home.subtitle')"
                         :delay=".7"
                     />
-                    <img :class="$style.squiggle" src="/images/squiggle-1.svg" alt="" />
+                    <!-- Squiggle -->
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 155.04 73.442"
+                        :class="$style.squiggle"
+                    >
+                        <motion.path
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-width="5.6"
+                            d="M2.8 70.642s50.851-46.004 47.239-38.376c-3.612 7.628-41.307 25.497-23.296 23.347 18.011-2.15 21.079-18.828 45.495-27.669 24.417-8.84-44.735 28.412-34.631 33.66s34.042-34.729 78.579-50.098c44.537-15.369-97.689 61.553-53.113 55.605 44.576-5.948 67.848-68.955 85.268-64.048 17.42 4.906-29.431 39.878-29.431 39.878"
+                            :initial="{ pathLength: 0, opacity: 0 }"
+                            :animate="{ pathLength: 1, opacity: 1 }"
+                            :transition="{
+                                opacity: { 
+                                    duration: 0.2, 
+                                    ease: 'easeInOut',
+                                    delay: 1.8
+                                },
+                                pathLength: { 
+                                    duration: 1.2, 
+                                    ease: 'easeInOut',
+                                    delay: 1.9
+                                }
+                            }"
+                        />
+                    </svg>
                 </h2>
                 <motion.div
                     :initial="{ opacity: 0, y: 10 }"
@@ -127,6 +154,8 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
                 position: absolute;
                 top: -40px;
                 left: 100%;
+                width: 155px;
+                height: 73px;
             }
         }
 

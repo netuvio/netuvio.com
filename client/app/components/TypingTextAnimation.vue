@@ -23,6 +23,9 @@ const props = withDefaults(defineProps<{
     
     /** Include raw hidden text for SEO and accessibility */
     seoFriendly?: boolean;
+    
+    /** Text for screen readers */
+    srText?: string;
 }>(), {
     type: 'word',
     staggerDuration: 0.07,
@@ -52,7 +55,7 @@ const container = {
 </script>
 
 <template>
-    <span class="sr-only" v-if="seoFriendly">{{ t('home.hero.srOnly') }}</span>
+    <span class="sr-only" v-if="seoFriendly">{{ srText || props.text }}</span>
     
     <motion.span
         :variants="container"
