@@ -19,7 +19,7 @@ const { t } = useI18n();
     <div>
         <HeroSection />
         <WhoWeAreSection />
-        <WhatWeDoSection />
+<!--        <WhatWeDoSection />-->
         <ProcessSection /> 
         <FeaturedProjects />
         <WhyChooseUsSection />

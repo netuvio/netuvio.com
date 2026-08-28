@@ -196,6 +196,17 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
         .left {
             width: 50%;
             color: var(--color-primary);
+            
+            h1 {
+                position: relative;
+                
+                span {
+                    color: var(--color-background-primary);
+                    background-color: var(--color-primary);
+                    padding: 0 12px;
+                    border-radius: 16px;
+                }
+            }
         }
         
         .content {

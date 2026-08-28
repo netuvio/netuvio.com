@@ -48,7 +48,7 @@ const { t } = useI18n();
 @use "~/assets/variables" as *;
 
 .section {
-    padding-top: 180px;
+    padding: 180px 0 250px;
     
     .container {
         >h2 {

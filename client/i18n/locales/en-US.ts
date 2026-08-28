@@ -137,7 +137,7 @@ export default defineI18nLocale(async (locale) => {
             }
         },
         "process": {
-            "title": "From Idea to Launch,<br/>Your Way",
+            "title": "From Idea to Launch,<br/><span>Your Way</span>",
             "sections": {
                 "consultation": {
                     "title": "Consultation",
