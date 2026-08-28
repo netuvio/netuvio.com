@@ -17,6 +17,10 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
 <template>
     <main :class="$style.heroWrapper">
         <div :class="$style.bg"></div>
+        <div :class="$style.heroImageContainer">
+            <img src="/images/hero-image.png" :class="$style.heroImage" alt="Hero Image" />
+            <div :class="$style.blackHole"></div>
+        </div>
         <main :class="[$style.hero, 'container']">
             <img :class="$style.bgName" src="/images/hero-bg-name.svg" alt="netuvio">
             <div :class="$style.dots">
@@ -121,6 +125,48 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
     mask-position: center;
 }
 
+.heroImageContainer {
+    position: absolute;
+    right: -200px;
+    bottom: -200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+
+    >img {
+        width: 1200px;
+        height: auto;
+        object-fit: contain;
+        pointer-events: none;
+        user-select: none;
+        z-index: 1;
+    }
+    
+    .blackHole {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 1000px;
+        height: 1000px;
+        border-radius: 50%;
+        background: var(--color-background-primary);
+        box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
+        
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background-image: radial-gradient(circle closest-side, white 90%, transparent 100%);
+            z-index: -1;
+            transform: scale(1.1);
+        }
+    }
+}
+
 .hero {
     position: relative;
     padding-top: 240px;
@@ -176,7 +222,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
         pointer-events: none;
         user-select: none;
         width: 100%;
-        max-width: 1500px;
+        //max-width: 1500px;
     }
     
     .technologies {
@@ -262,6 +308,7 @@ const bgScale = useTransform(scrollYProgress, [0, 1.5], [1, 0.82]);
     user-select: none;
     background-image: url('/images/page-transition.svg');
     background-size: 900px;
+    z-index: 9;
 }
 
 // Laptops Responsive
