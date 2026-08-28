@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import {useScroll, useTransform, motion, useMotionValueEvent, AnimatePresence} from "motion-v";
 
 const { t } = useI18n();
@@ -77,6 +77,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
 
 <template>
     <section :class="[$style.section, 'theme-primary']" id="process" ref="sectionRef">
+        <div :class="$style.bg"></div>
         <div :class="$style.transition"></div>
         <div :class="['container', $style.container]">
             <motion.div :class="$style.timeline" :style="{ left: scrollLeft }">
@@ -121,11 +122,22 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
     top: -50px;
 }
 
+.bg {
+    position: sticky;
+    inset: 0;
+    height: 100vh;
+    margin-bottom: -100vh;
+    mask-image: url("/patterns/line-in-motion.svg");
+    mask-repeat: repeat;
+    mask-size: 128px;
+    background-color: var(--color-carbon-700);
+    opacity: .5;
+}
+
 .section {
     min-height: 400vh;
     z-index: 1;
     position: relative;
-    padding-top: clamp(180px, 21vw, 300px);
     overflow-x: clip;
 }
 
@@ -133,7 +145,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 40vh;
+    margin-top: calc(40vh + clamp(180px, 21vw, 300px));
     height: 40vh;
     position: sticky;
     top: 50%;
