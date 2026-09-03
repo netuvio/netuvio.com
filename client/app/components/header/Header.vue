@@ -33,10 +33,17 @@ const links: HeaderLink[] = [
 const hasScrolled = ref(false);
 
 const handleScroll = () => {
+    if (window.location.pathname.includes("/projects")) return;
+    
     hasScrolled.value = window.scrollY > 50;
 };
 
 onMounted(() => {
+    if (window.location.pathname.includes("/projects")) {
+        hasScrolled.value = true;
+        return;
+    }
+    
     window.addEventListener("scroll", handleScroll);
 });
 

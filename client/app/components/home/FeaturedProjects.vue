@@ -41,6 +41,7 @@ const featuredProjects = computed(() => {
 .section {
     min-height: 100vh;
     padding: clamp(90px, 10vw, 150px) 0;
+    box-shadow: 0 0 64px 64px var(--color-background-primary);
     
     h1 {
         margin-bottom: 32px;
