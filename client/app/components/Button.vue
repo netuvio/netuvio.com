@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -24,6 +24,9 @@ const props = withDefaults(defineProps<{
     block?: boolean;
     
     arrow?: boolean;
+
+    /** Enables 3D layered hover effect (defaults to true for primary and danger variants) */
+    threeD?: boolean;
 }>(), {
     variant: 'primary',
     size: 'md',
@@ -32,6 +35,7 @@ const props = withDefaults(defineProps<{
     loading: false,
     block: false,
     arrow: true,
+    threeD: undefined,
 });
 
 // CSS module classes generated for this component.
@@ -39,12 +43,16 @@ const css = useCssModule();
 
 const isDisabled = computed<boolean>(() => props.disabled || props.loading);
 
-// Resolved CSS module class list for the current button state.
+// const is3D = computed<boolean>(() => props.threeD ?? (props.variant === 'primary' || props.variant === 'tertiary' || props.variant === 'danger'));
+const is3D = computed<boolean>(() => props.threeD ?? (props.variant !== 'ghost'));
+
+// Resolved CSS module class list for the button element.
 const classes = computed(() => ([
     css.button,
     css[`variant-${props.variant}`],
     css[`size-${props.size}`],
     props.block ? css.block : null,
+    is3D.value ? css.is3d : null,
     props.loading ? css.loading : null,
     props.arrow ? css.arrow : null,
 ]));
@@ -57,40 +65,86 @@ const classes = computed(() => ([
         :disabled="isDisabled"
         :aria-busy="props.loading || undefined"
     >
-        <span v-if="props.loading" :class="$style.spinner" aria-hidden="true"></span>
-        <span :class="$style.content">
-            <slot />
+        <span v-if="is3D" :class="$style.bottomLayer" aria-hidden="true"></span>
+        <span :class="$style.topLayer">
+            <span v-if="props.loading" :class="$style.spinner" aria-hidden="true"></span>
+            <span :class="$style.content">
+                <slot />
+            </span>
         </span>
     </button>
 </template>
 
 <style module lang="scss">
 .button {
+    position: relative;
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: 1px solid transparent;
+    padding: 0 !important;
+    margin: 0;
+    border: none;
+    background: transparent;
     border-radius: 10000px;
+    font-family: inherit;
     font-weight: 600;
     line-height: 1;
     cursor: pointer;
-    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, opacity 0.18s ease, transform 0.08s ease;
     user-select: none;
-
-    //&:active {
-    //    transform: translateY(1px);
-    //}
-
-    &:focus-visible {
-        outline: 2px solid var(--color-lime-300);
-        outline-offset: 2px;
-    }
+    vertical-align: middle;
+    text-decoration: none;
+    outline: none;
+    transition: opacity 0.18s ease;
 
     &:disabled {
         cursor: not-allowed;
         opacity: 0.65;
-        transform: none;
+
+        .topLayer {
+            transform: none !important;
+        }
+    }
+}
+
+.bottomLayer {
+    position: absolute;
+    inset: 0;
+    border-radius: 10000px;
+    background-color: var(--color-background-primary);
+    pointer-events: none;
+    z-index: 0;
+    transform: scale(.99);
+}
+
+.topLayer {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 2px solid var(--color-background-secondary);
+    border-radius: 10000px;
+    font-weight: 600;
+    line-height: 1;
+    width: 100%;
+    transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1),
+                background-color 0.18s ease,
+                border-color 0.18s ease,
+                color 0.18s ease;
+    will-change: transform;
+}
+
+.is3d {
+    &:hover:not(:disabled) {
+        .topLayer {
+            transform: translate(-4px, -4px);
+        }
+    }
+
+    &:active:not(:disabled) {
+        .topLayer {
+            transform: translate(0, 0);
+            transition-duration: 0.06s;
+        }
     }
 }
 
@@ -101,6 +155,10 @@ const classes = computed(() => ([
 
 .block {
     width: 100%;
+
+    .topLayer {
+        width: 100%;
+    }
 }
 
 .loading {
@@ -108,93 +166,133 @@ const classes = computed(() => ([
 }
 
 .size-sm {
-    min-height: 32px;
-    padding: 0 14px;
-    font-size: 13px;
+    .topLayer {
+        min-height: 32px;
+        padding: 0 14px;
+        font-size: 13px;
+    }
 }
 
 .size-md {
-    min-height: 40px;
-    padding: 0 18px;
-    font-size: 15px;
+    .topLayer {
+        min-height: 40px;
+        padding: 0 18px;
+        font-size: 15px;
+    }
 }
 
 .size-lg {
-    min-height: 48px;
-    padding: 0 24px;
-    font-size: 18px;
-    font-weight: 700;
+    .topLayer {
+        min-height: 48px;
+        padding: 0 24px;
+        font-size: 18px;
+        font-weight: 700;
+    }
 }
 
 .size-xl {
-    min-height: 48px;
-    padding: 16px 32px;
-    font-size: 20px;
-    font-weight: 700;
+    .topLayer {
+        min-height: 48px;
+        padding: 16px 32px;
+        font-size: 20px;
+        font-weight: 700;
+    }
 }
 
 .variant-primary {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--color-carbon-800);
+    .topLayer {
+        background-color: var(--color-primary);
+        color: var(--color-text-secondary);
+        border-color: var(--color-background-primary);
+
+        &::after {
+            background-color: var(--color-text-secondary);
+        }
+    }
 
     &:hover:not(:disabled) {
-        background-color: var(--color-lime-300);
-        border-color: var(--color-lime-300);
+        .topLayer {
+            //background-color: var(--color-lime-300);
+        }
     }
     
-    &::after {
-        background-color: var(--color-carbon-800);
+    .bottomLayer {
+        background-color: var(--color-background-primary);
     }
 }
 
 .variant-secondary {
-    background-color: transparent;
-    border-color: var(--color-carbon-100);
-    color: var(--color-text-primary);
+    .topLayer {
+        background-color: var(--color-background-secondary);
+        color: var(--color-text-secondary);
+        border-color: var(--color-background-primary);
 
-    &:hover:not(:disabled) {
-        background-color: var(--color-carbon-600);
-        border-color: var(--color-carbon-50);
+        &::after {
+            background-color: var(--color-text-secondary);
+        }
     }
 
-    &::after {
-        background-color: var(--color-text-primary);
+    &:hover:not(:disabled) {
+        .topLayer {
+            //background-color: var(--color-carbon-600);
+        }
     }
 }
 
 .variant-tertiary {
-    background-color: var(--color-background-primary);
-    border-color: var(--color-background-primary);
-    color: var(--color-text-primary);
+    .topLayer {
+        background-color: var(--color-background-primary);
+        color: var(--color-text-primary);
 
-    &:hover:not(:disabled) {
-        background-color: var(--color-background-primary-hover);
+        &::after {
+            background-color: var(--color-text-primary);
+        }
     }
 
-    &::after {
-        background-color: var(--color-text-primary);
+    &:hover:not(:disabled) {
+        .topLayer {
+            //background-color: var(--color-background-primary-hover);
+        }
+    }
+
+    .bottomLayer {
+        background-color: var(--color-background-secondary);
     }
 }
 
 .variant-ghost {
-    background-color: transparent;
-    color: var(--color-lime-200);
+    .topLayer {
+        background-color: transparent;
+        color: var(--color-lime-200);
+        border: none;
+    }
 
     &:hover:not(:disabled) {
-        background-color: rgba(255, 255, 255, 0.08);
-        color: var(--color-lime-100);
+        .topLayer {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: var(--color-lime-100);
+        }
     }
 }
 
 .variant-danger {
-    background-color: #c62828;
-    border-color: #c62828;
-    color: #fff;
+    .topLayer {
+        background-color: #c62828;
+        color: #fff;
+
+        &::after {
+            background-color: #fff;
+        }
+    }
 
     &:hover:not(:disabled) {
-        background-color: #b71c1c;
-        border-color: #b71c1c;
+        .topLayer {
+            //background-color: #b71c1c;
+        }
+    }
+
+    .bottomLayer {
+        background-color: var(--color-background-secondary);
     }
 }
 
@@ -205,6 +303,7 @@ const classes = computed(() => ([
     border: 2px solid currentcolor;
     border-right-color: transparent;
     animation: spin 0.65s linear infinite;
+    flex-shrink: 0;
 }
 
 @keyframes spin {
@@ -213,14 +312,23 @@ const classes = computed(() => ([
     }
 }
 
-.arrow::after {
-    content: "";
-    inset: 0;
-    mask-image: url("/images/arrow.svg");
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    width: 15px;
-    height: 15px;
+.arrow {
+    .topLayer::after {
+        content: "";
+        mask-image: url("/images/arrow.svg");
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        flex-shrink: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .topLayer {
+        transition: none !important;
+    }
 }
 </style>
