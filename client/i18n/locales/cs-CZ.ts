@@ -104,12 +104,29 @@ export default defineI18nLocale(async (locale) => {
             }
         },
         "projects": {
+            "title": "Projekty",
+            "allProjects": "Všechny projekty",
+            "allProjectsTitle": "Naše projekty",
+            "badge": "Portfolio",
+            "subtitle": "Prohlédněte si naše portfolio webových aplikací, řešení na míru a kreativního grafického designu vytvořených pro firmy i inovátory.",
+            "metaDescription": "Prohlédněte si naše portfolio. Webové aplikace na míru, digitální řešení a grafický design.",
             "featuredProjects": "Vybrané projekty",
+            "viewAll": "Zobrazit všechny projekty",
+            "allFilter": "Vše",
+            "noProjectsFound": "V této kategorii nebyly nalezeny žádné projekty.",
+            "resetFilter": "Zobrazit všechny projekty",
+            "cta": {
+                "title": "Máte v hlavě projekt?",
+                "subtitle": "Pojďme společně vytvořit něco výjimečného. Řekněte nám o svých představách a my vám je pomůžeme uskutečnit.",
+                "button": "Napište nám"
+            },
             "types": {
                 "website": "Webová stránka",
                 "graphicDesign": "Grafický design"
             },
-            "learnMore": "Zjistit více"
+            "learnMore": "Zjistit více",
+            "visitWebsite": "Přejít na web",
+            "sourceCode": "Zdrojový kód"
         },
         "whyChooseUs": {
             "title": "Proč si vybrat nás",
@@ -144,7 +161,7 @@ export default defineI18nLocale(async (locale) => {
                 },
                 "build": {
                     "title": "Tvorba a spuštění",
-                    "description": "Jakmile je plán jasný, oživíme váš projekt. Od tvorby intuitivních designů a vývoje spolehlivých aplikací až po jejich nasazení na moderní infrastrukturu – postaráme se o technickou práci, abyste se mohli soustředit na své podnikání."
+                    "description": "Jakmile je plán jasný, oživíme váš projekt. Od tvorby intuitivních designů a vývoje spolehlivých aplikací až po jejich nasazení na moderní infrastrukturu. Postaráme se o technickou práci, abyste se mohli soustředit na své podnikání."
                 },
                 "support": {
                     "title": "Průběžná podpora",

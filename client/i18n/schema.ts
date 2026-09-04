@@ -78,12 +78,29 @@ export type MessageSchema = {
     },
 
     projects: {
+        title: string,
+        allProjects: string,
+        allProjectsTitle: string,
+        badge: string,
+        subtitle: string,
+        metaDescription: string,
         featuredProjects: string,
+        viewAll: string,
+        allFilter: string,
+        noProjectsFound: string,
+        resetFilter: string,
+        cta: {
+            title: string,
+            subtitle: string,
+            button: string,
+        },
         types: {
             website: string,
             graphicDesign: string,
         },
         learnMore: string,
+        visitWebsite: string,
+        sourceCode: string,
     },
 
     whyChooseUs: {

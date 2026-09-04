@@ -1,8 +1,9 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import ProjectComponent from "~/components/home/Project.vue";
+import Button from "~/components/Button.vue";
 import {useFetch} from "#app";
 import type {Project} from "~/lib/types";
-import {watch} from "vue";
+import {computed} from "vue";
 
 const { t, locale } = useI18n();
 
@@ -31,6 +32,13 @@ const featuredProjects = computed(() => {
                     </ProjectComponent>
                 </li>
             </ul>
+            <div :class="$style.actions">
+                <NuxtLinkLocale to="/projects">
+                    <Button variant="secondary" size="lg">
+                        {{ t('projects.viewAll') }}
+                    </Button>
+                </NuxtLinkLocale>
+            </div>
         </div>
     </section>
 </template>
@@ -59,6 +67,12 @@ const featuredProjects = computed(() => {
                 flex-direction: row-reverse;
             }
         }
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 56px;
     }
 }
 

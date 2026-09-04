@@ -109,12 +109,29 @@ export default defineI18nLocale(async (locale) => {
             }
         },
         "projects": {
+            "title": "Projects",
+            "allProjects": "All Projects",
+            "allProjectsTitle": "Our Projects",
+            "badge": "Portfolio",
+            "subtitle": "Explore our portfolio of web applications, custom platforms, and creative design work built for businesses and innovators.",
+            "metaDescription": "Explore our portfolio of custom web applications, digital solutions, and creative design.",
             "featuredProjects": "Featured Projects",
+            "viewAll": "View all projects",
+            "allFilter": "All",
+            "noProjectsFound": "No projects found in this category.",
+            "resetFilter": "Show all projects",
+            "cta": {
+                "title": "Have a project in mind?",
+                "subtitle": "Let's build something exceptional together. Tell us about your vision and we'll help bring it to life.",
+                "button": "Get in touch"
+            },
             "types": {
                 "website": "Website",
                 "graphicDesign": "Graphical design"
             },
-            "learnMore": "Learn More"
+            "learnMore": "Learn More",
+            "visitWebsite": "Visit Website",
+            "sourceCode": "Source Code"
         },
         "whyChooseUs": {
             "title": "Why Choose Us",

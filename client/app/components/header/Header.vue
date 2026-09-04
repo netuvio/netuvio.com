@@ -1,11 +1,13 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import LocaleSelector from "~/components/header/LocaleSelector.vue";
 import MobileMenu from "~/components/header/MobileMenu.vue";
 import type {HeaderLink} from "~/lib/types";
-import {ref} from "vue";
+import { ref, computed } from "vue";
+import { useRoute } from "#app";
 import { NuxtLinkLocale } from "#components";
 
 const { t } = useI18n();
+const route = useRoute();
 
 const links: HeaderLink[] = [
     {
@@ -30,20 +32,17 @@ const links: HeaderLink[] = [
     }
 ];
 
+const isSubpage = computed(() => route.path.includes("/projects"));
 const hasScrolled = ref(false);
 
 const handleScroll = () => {
-    if (window.location.pathname.includes("/projects")) return;
+    if (isSubpage.value) return;
     
     hasScrolled.value = window.scrollY > 50;
 };
 
 onMounted(() => {
-    if (window.location.pathname.includes("/projects")) {
-        hasScrolled.value = true;
-        return;
-    }
-    
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
 });
 
@@ -53,7 +52,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <header :class="{ [$style.scrolled]: hasScrolled }">
+    <header :class="{ [$style.scrolled]: hasScrolled || isSubpage }">
         <nav class="container">
             <NuxtLinkLocale to="/" :class="$style.logo"></NuxtLinkLocale>
             <div :class="$style.links">
