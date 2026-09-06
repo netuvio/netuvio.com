@@ -112,7 +112,7 @@ export type MessageSchema = {
             techStack: string,
             timeline: string,
             category: string,
-            caseStudy: string,
+            overview: string,
             gallery: string,
             gallerySubtitle: string,
             asset: string,

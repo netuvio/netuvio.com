@@ -143,7 +143,7 @@ export default defineI18nLocale(async (locale) => {
                 "techStack": "Tech Stack",
                 "timeline": "Timeline",
                 "category": "Category",
-                "caseStudy": "Project Overview & Case Study",
+                "overview": "Overview",
                 "gallery": "Visual Gallery",
                 "gallerySubtitle": "High-resolution screenshots and media assets from the project.",
                 "asset": "Asset",

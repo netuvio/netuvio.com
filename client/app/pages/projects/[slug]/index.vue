@@ -95,14 +95,6 @@ const updateToc = () => {
         }
     });
 
-    if (galleryImages.value.length > 0) {
-        items.push({
-            id: "gallery",
-            title: t("projects.detail.gallery"),
-            level: 2
-        });
-    }
-
     tocItems.value = items;
 
     if (observer) {
@@ -309,7 +301,6 @@ onUnmounted(() => {
                         <div :class="$style.metaDetailItem">
                             <span :class="$style.detailLabel">{{ t("projects.detail.projectStatus") }}</span>
                             <div :class="$style.detailVal">
-                                <span :class="[$style.statusDot, isOngoing ? $style.statusPulse : $style.statusSolid]"></span>
                                 <span>{{ isOngoing ? t("projects.detail.statusLive") : t("projects.detail.statusCompleted") }}</span>
                             </div>
                         </div>
@@ -317,7 +308,7 @@ onUnmounted(() => {
                 </motion.div>
             </div>
 
-            <section :class="[$style.contentSection, 'theme-primary']" id="case-study">
+            <section :class="[$style.contentSection, 'theme-primary']" id="overview">
                 <div :class="['container', $style.contentContainer]">
                     <div :class="$style.editorialLayout">
                         <main :class="$style.mainArticle">
@@ -325,9 +316,7 @@ onUnmounted(() => {
                                 <span :class="$style.sectionCounter">01 // OVERVIEW</span>
                             </div>
 
-                            <article :class="$style.markdownContainer">
-                                <Markdown :markdown="project.body" />
-                            </article>
+                            <Markdown :markdown="project.body" />
                         </main>
 
                         <aside :class="$style.sidebar">
@@ -743,27 +732,6 @@ onUnmounted(() => {
                 font-size: 16px;
                 font-weight: 700;
                 color: var(--color-text-primary);
-
-                .detailIcon {
-                    color: var(--color-primary);
-                    font-size: 18px;
-                }
-
-                .statusDot {
-                    width: 8px;
-                    height: 8px;
-                    border-radius: 50%;
-                }
-
-                .statusPulse {
-                    background-color: var(--color-primary);
-                    box-shadow: 0 0 10px var(--color-primary);
-                    animation: radarPulse 2s infinite ease-in-out;
-                }
-
-                .statusSolid {
-                    background-color: var(--color-carbon-100);
-                }
             }
         }
     }
@@ -802,106 +770,6 @@ onUnmounted(() => {
                         color: var(--color-primary);
                         letter-spacing: 2px;
                         text-transform: uppercase;
-                    }
-                }
-
-                .markdownContainer {
-                    font-size: 18px;
-                    line-height: 1.7;
-                    color: var(--color-carbon-50);
-                    
-                    :global(h1):first-child {
-                        margin-top: 0;
-                        padding-top: 0;
-                    }
-
-                    :global(h1), :global(h2), :global(h3), :global(h4) {
-                        color: var(--color-text-primary);
-                        font-weight: 800;
-                        letter-spacing: -0.5px;
-                        margin-top: 40px;
-                        margin-bottom: 16px;
-                    }
-
-                    :global(h2) {
-                        font-size: 30px;
-                        padding-bottom: 8px;
-                        border-bottom: 1px solid var(--color-carbon-400);
-                    }
-
-                    :global(h3) {
-                        font-size: 24px;
-                    }
-
-                    :global(p) {
-                        margin-bottom: 20px;
-                    }
-
-                    :global(ul), :global(ol) {
-                        margin-bottom: 24px;
-                        padding-left: 24px;
-
-                        li {
-                            margin-bottom: 8px;
-                        }
-                    }
-
-                    :global(blockquote) {
-                        border-left: 4px solid var(--color-primary);
-                        background-color: var(--color-carbon-700);
-                        padding: 16px 24px;
-                        border-radius: 0 16px 16px 0;
-                        margin: 24px 0;
-                        font-style: italic;
-                        color: var(--color-carbon-50);
-                    }
-
-                    :global(pre) {
-                        background-color: var(--color-carbon-700);
-                        border: 1px solid var(--color-carbon-400);
-                        border-radius: 16px;
-                        padding: 20px;
-                        overflow-x: auto;
-                        margin: 24px 0;
-                    }
-
-                    :global(code) {
-                        font-family: monospace;
-                        font-size: 0.9em;
-                        background-color: var(--color-carbon-600);
-                        border-radius: 6px;
-                        padding: 2px 6px;
-                    }
-
-                    :global(table) {
-                        width: 100%;
-                        border-collapse: collapse;
-                        margin: 32px 0;
-                        background-color: var(--color-carbon-700);
-                        border: 1px solid var(--color-carbon-400);
-                        border-radius: 16px;
-                        overflow: hidden;
-
-                        th {
-                            background-color: var(--color-carbon-800);
-                            color: var(--color-primary);
-                            font-weight: 800;
-                            text-transform: uppercase;
-                            font-size: 13px;
-                            letter-spacing: 1px;
-                            padding: 14px 18px;
-                            border-bottom: 2px solid var(--color-carbon-400);
-                        }
-
-                        td {
-                            padding: 14px 18px;
-                            border-bottom: 1px solid var(--color-carbon-500);
-                            color: var(--color-carbon-50);
-                        }
-
-                        tr:last-child td {
-                            border-bottom: none;
-                        }
                     }
                 }
             }

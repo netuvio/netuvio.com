@@ -138,7 +138,7 @@ export default defineI18nLocale(async (locale) => {
                 "techStack": "Použité technologie",
                 "timeline": "Časový rámec",
                 "category": "Kategorie",
-                "caseStudy": "Přehled a případová studie",
+                "overview": "Přehled",
                 "gallery": "Vizuální galerie",
                 "gallerySubtitle": "Snímky ve vysokém rozlišení a mediální materiály projektu.",
                 "asset": "Položka",
