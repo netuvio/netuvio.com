@@ -161,7 +161,7 @@ const primaryImage = computed(() => {
         width: 100%;
         height: 50px;
         left: 0;
-        bottom: -25px;
+        bottom: -30px;
         background-color: var(--color-background-secondary);
         z-index: 20;
     }
