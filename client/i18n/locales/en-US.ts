@@ -112,24 +112,29 @@ export default defineI18nLocale(async (locale) => {
             "title": "Projects",
             "allProjects": "All Projects",
             "allProjectsTitle": "Our Projects",
-            "badge": "Portfolio",
-            "subtitle": "Explore our portfolio of web applications, custom platforms, and creative design work built for businesses and innovators.",
+            "badge": "Portfolio & Showcase",
+            "subtitle": "High-performance web applications, bespoke digital architectures, and boundary-pushing design.",
             "metaDescription": "Explore our portfolio of custom web applications, digital solutions, and creative design.",
             "featuredProjects": "Featured Projects",
             "viewAll": "View all projects",
-            "allFilter": "All",
+            "allFilter": "All Projects",
             "noProjectsFound": "No projects found in this category.",
             "resetFilter": "Show all projects",
+            "stats": {
+                "customBuilt": "100% Bespoke Code",
+                "performance": "Max Performance",
+                "modernStack": "Cutting-Edge Tech"
+            },
             "cta": {
                 "title": "Have a project in mind?",
-                "subtitle": "Let's build something exceptional together. Tell us about your vision and we'll help bring it to life.",
-                "button": "Get in touch"
+                "subtitle": "Let's turn your vision into an exceptional, high-converting digital product with zero hassle.",
+                "button": "Get In Touch"
             },
             "types": {
                 "website": "Website",
                 "graphicDesign": "Graphical design"
             },
-            "learnMore": "Learn More",
+            "learnMore": "Explore Project",
             "visitWebsite": "Visit Website",
             "sourceCode": "Source Code"
         },

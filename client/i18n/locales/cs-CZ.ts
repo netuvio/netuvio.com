@@ -107,24 +107,29 @@ export default defineI18nLocale(async (locale) => {
             "title": "Projekty",
             "allProjects": "Všechny projekty",
             "allProjectsTitle": "Naše projekty",
-            "badge": "Portfolio",
-            "subtitle": "Prohlédněte si naše portfolio webových aplikací, řešení na míru a kreativního grafického designu vytvořených pro firmy i inovátory.",
+            "badge": "Portfolio & Showcase",
+            "subtitle": "Vysoce výkonné webové aplikace, digitální architektury na míru a odvážný kreativní design.",
             "metaDescription": "Prohlédněte si naše portfolio. Webové aplikace na míru, digitální řešení a grafický design.",
             "featuredProjects": "Vybrané projekty",
             "viewAll": "Zobrazit všechny projekty",
-            "allFilter": "Vše",
+            "allFilter": "Všechny projekty",
             "noProjectsFound": "V této kategorii nebyly nalezeny žádné projekty.",
             "resetFilter": "Zobrazit všechny projekty",
+            "stats": {
+                "customBuilt": "100% Kód na míru",
+                "performance": "Max. Výkon",
+                "modernStack": "Špičkový Stack"
+            },
             "cta": {
-                "title": "Máte v hlavě projekt?",
-                "subtitle": "Pojďme společně vytvořit něco výjimečného. Řekněte nám o svých představách a my vám je pomůžeme uskutečnit.",
-                "button": "Napište nám"
+                "title": "Máte v hlavě ambiciózní projekt?",
+                "subtitle": "Proměníme vaši vizi ve špičkový, spolehlivý digitální produkt s nulovými starostmi.",
+                "button": "Pojďme na to"
             },
             "types": {
                 "website": "Webová stránka",
                 "graphicDesign": "Grafický design"
             },
-            "learnMore": "Zjistit více",
+            "learnMore": "Prozkoumat projekt",
             "visitWebsite": "Přejít na web",
             "sourceCode": "Zdrojový kód"
         },

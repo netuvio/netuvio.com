@@ -89,6 +89,11 @@ export type MessageSchema = {
         allFilter: string,
         noProjectsFound: string,
         resetFilter: string,
+        stats: {
+            customBuilt: string,
+            performance: string,
+            modernStack: string,
+        },
         cta: {
             title: string,
             subtitle: string,
