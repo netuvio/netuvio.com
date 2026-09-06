@@ -178,7 +178,7 @@ const primaryImage = computed(() => {
         );
         mask-image: url("/patterns/topography-1.svg");
         mask-repeat: repeat;
-        mask-size: 800px;
+        mask-size: auto 100%;
         mask-position: center;
         pointer-events: none;
         z-index: 1;

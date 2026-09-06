@@ -111,15 +111,14 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
 .bg {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     background-image: radial-gradient(circle at 50% 50%, hsl(from var(--color-lime-500) h s l / 0.1) 20%, hsl(from var(--color-lime-600) h s l / 0.3) 100%);
     mask-image: url("/patterns/topography-1.svg");
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    mask-position: center;
+    mask-repeat: repeat;
+    mask-size: auto 100%;
+    pointer-events: none;
 }
 
 .heroImageContainer {

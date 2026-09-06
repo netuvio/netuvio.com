@@ -59,7 +59,7 @@ const { t } = useI18n();
         background-image: radial-gradient(circle at 60% 40%, hsl(from var(--color-primary) h s l / 0.12) 10%, transparent 80%);
         mask-image: url("/patterns/topography-1.svg");
         mask-repeat: repeat;
-        mask-size: 800px;
+        mask-size: auto 100%;
         opacity: 0.65;
         pointer-events: none;
         z-index: 1;
