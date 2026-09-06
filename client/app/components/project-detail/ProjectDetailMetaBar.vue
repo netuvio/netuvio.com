@@ -82,6 +82,7 @@ const isOngoing = computed(() => {
     position: relative;
     z-index: 20;
     margin-top: -60px;
+    padding: 0 clamp(6px, 3vw, 22px);
 }
 
 .floatingMetaBar {
