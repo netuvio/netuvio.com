@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 const { t } = useI18n();
 
 const props = defineProps<{
@@ -15,7 +15,7 @@ const techTo = computed(() => {
         case 'Nuxt':
             return 'https://nuxt.com/';
         default:
-            return null;
+            return undefined;
     }
 });
 </script>

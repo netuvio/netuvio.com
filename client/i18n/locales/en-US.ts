@@ -136,7 +136,26 @@ export default defineI18nLocale(async (locale) => {
             },
             "learnMore": "Explore Project",
             "visitWebsite": "Visit Website",
-            "sourceCode": "Source Code"
+            "sourceCode": "Source Code",
+            "detail": {
+                "backToProjects": "Back to Projects",
+                "showcaseBadge": "Project Showcase",
+                "techStack": "Tech Stack",
+                "timeline": "Timeline",
+                "category": "Category",
+                "caseStudy": "Project Overview & Case Study",
+                "gallery": "Visual Gallery",
+                "gallerySubtitle": "High-resolution screenshots and media assets from the project.",
+                "asset": "Asset",
+                "quickFacts": "Quick Facts",
+                "projectStatus": "Status",
+                "statusLive": "Live & Active",
+                "statusCompleted": "Completed",
+                "viewLive": "Live Website",
+                "viewCode": "Source Repository",
+                "zoomHint": "Click to expand",
+                "tableOfContents": "Contents"
+            }
         },
         "whyChooseUs": {
             "title": "Why Choose Us",

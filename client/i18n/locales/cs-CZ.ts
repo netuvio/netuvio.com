@@ -131,7 +131,26 @@ export default defineI18nLocale(async (locale) => {
             },
             "learnMore": "Prozkoumat projekt",
             "visitWebsite": "Přejít na web",
-            "sourceCode": "Zdrojový kód"
+            "sourceCode": "Zdrojový kód",
+            "detail": {
+                "backToProjects": "Zpět na projekty",
+                "showcaseBadge": "Detail projektu",
+                "techStack": "Použité technologie",
+                "timeline": "Časový rámec",
+                "category": "Kategorie",
+                "caseStudy": "Přehled a případová studie",
+                "gallery": "Vizuální galerie",
+                "gallerySubtitle": "Snímky ve vysokém rozlišení a mediální materiály projektu.",
+                "asset": "Položka",
+                "quickFacts": "Rychlý přehled",
+                "projectStatus": "Stav",
+                "statusLive": "Aktivní & V provozu",
+                "statusCompleted": "Dokončeno",
+                "viewLive": "Navštívit web",
+                "viewCode": "Zdrojový kód",
+                "zoomHint": "Kliknutím zvětšíte",
+                "tableOfContents": "Obsah"
+            }
         },
         "whyChooseUs": {
             "title": "Proč si vybrat nás",
