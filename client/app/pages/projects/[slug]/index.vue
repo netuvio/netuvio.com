@@ -207,7 +207,7 @@ onUnmounted(() => {
 
         .editorialLayout {
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 0;
         }
     }
 }
