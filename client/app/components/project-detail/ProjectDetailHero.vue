@@ -3,7 +3,7 @@ import { computed } from "vue";
 import { motion } from "motion-v";
 import type { Project } from "~/lib/types";
 import LightboxItem from "~/components/lightbox/LightboxItem.vue";
-import Button from "~/components/Button.vue";
+import { Button } from "@netuvio/netuvio-ui/vue";
 import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
 import TablerWorld from "~icons/tabler/world";
 import TablerGitMerge from "~icons/tabler/git-merge";
@@ -43,7 +43,7 @@ const primaryImage = computed(() => {
                 :transition="{ duration: 0.5 }"
             >
                 <NuxtLinkLocale to="/projects">
-                    <Button variant="tertiary" :arrow="false">
+                    <Button variant="tertiary">
                         <TablerArrowLeft :class="$style.buttonIcon" />
                         {{ t("projects.detail.backToProjects") }}
                     </Button>
@@ -82,9 +82,10 @@ const primaryImage = computed(() => {
                             rel="noopener noreferrer"
                             :class="$style.actionLink"
                         >
-                            <Button variant="tertiary" size="lg" :arrow="true">
+                            <Button variant="tertiary" size="lg">
                                 <TablerWorld :class="$style.buttonIcon" />
                                 {{ t("projects.visitWebsite") }}
+                                <DrawnArrow />
                             </Button>
                         </a>
 
@@ -98,6 +99,7 @@ const primaryImage = computed(() => {
                             <Button variant="secondary" size="lg">
                                 <TablerGitMerge :class="$style.buttonIcon" />
                                 {{ t("projects.sourceCode") }}
+                                <DrawnArrow />
                             </Button>
                         </a>
                     </motion.div>

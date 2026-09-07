@@ -1,5 +1,5 @@
-﻿<script setup lang="ts">
-import Button from "~/components/Button.vue";
+<script setup lang="ts">
+import { Button } from "@netuvio/netuvio-ui/vue";
 import { motion } from "motion-v";
 import type {ProjectType} from "~/lib/types";
 
@@ -29,7 +29,7 @@ const { t } = useI18n();
             </section>
             <section :class="$style.bottom">
                 <NuxtLinkLocale :to="`/projects/${slug}`">
-                    <Button>{{ t('projects.learnMore') }}</Button>
+                    <Button>{{ t('projects.learnMore') }} <DrawnArrow /></Button>
                 </NuxtLinkLocale>
             </section>
         </div>

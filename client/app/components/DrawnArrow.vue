@@ -1,0 +1,37 @@
+<template>
+    <svg
+        width="15"
+        height="13"
+        viewBox="0 0 15 13"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        :class="$style.arrow"
+    >
+        <path
+            d="M1 12C3.09001 9.62317 4.58735 8.31425 5.70979 7.3312C7.22311 6.00583 9.00082 4.56424 10.0133 3.64014C10.2759 3.43032 10.5722 3.25353 10.836 3.07407C11.0998 2.8946 11.322 2.71782 12 1.99995"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <path
+            d="M6 2.22631C8.15824 1.89613 10.0884 1.36706 11.8094 1.19898C12.1835 1.16244 12.553 1.10052 12.9276 1.03389C13.3022 0.967265 13.6713 0.901633 13.8614 1.85239C14.0515 2.80314 14.0515 4.77227 13.8278 6.99995"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+    </svg>
+</template>
+
+<style module lang="scss">
+.arrow {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+    width: 15px;
+    height: 13px;
+    margin-left: 8px;
+}
+</style>

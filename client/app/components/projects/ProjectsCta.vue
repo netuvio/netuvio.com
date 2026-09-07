@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { motion } from "motion-v";
-import Button from "~/components/Button.vue";
+import { Button } from "@netuvio/netuvio-ui/vue";
 
 const { t } = useI18n();
 </script>
@@ -24,8 +24,9 @@ const { t } = useI18n();
 
         <div :class="$style.ctaAction">
             <NuxtLinkLocale to="/#contact">
-                <Button variant="primary" size="xl" :arrow="true">
+                <Button variant="primary" size="xl">
                     {{ t("projects.cta.button") }}
+                    <DrawnArrow />
                 </Button>
             </NuxtLinkLocale>
         </div>

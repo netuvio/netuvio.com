@@ -1,5 +1,5 @@
-﻿<script setup lang="ts">
-import Button from "~/components/Button.vue";
+<script setup lang="ts">
+import { Button } from "@netuvio/netuvio-ui/vue";
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { motion, AnimatePresence } from "motion-v";
 
@@ -239,6 +239,7 @@ const handleSubmit = async () => {
                 >
                     <Button type="submit" size="lg" :disabled="isSubmitting">
                         {{ isSubmitting ? t('contact.sending') : t('contact.send') }}
+                        <DrawnArrow />
                     </Button>
                 </motion.span>
             </form>

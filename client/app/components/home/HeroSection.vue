@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from "~/components/Button.vue";
+import { Button } from "@netuvio/netuvio-ui/vue";
 import { motion, useScroll, useTransform } from 'motion-v'
 import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
 import TypingTextAnimation from "~/components/TypingTextAnimation.vue";
@@ -77,6 +77,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                     <NuxtLinkLocale to="/#brief">
                         <Button size="xl" variant="tertiary">
                             {{ t("home.learnMore") }}
+                            <DrawnArrow />
                         </Button>
                     </NuxtLinkLocale>
                 </motion.div>

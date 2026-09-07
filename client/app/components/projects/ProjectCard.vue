@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { Project } from "~/lib/types";
-import Button from "~/components/Button.vue";
+import { Button } from "@netuvio/netuvio-ui/vue";
 import TechnologyTag from "~/components/TechnologyTag.vue";
 import { motion } from "motion-v";
 import TablerWorld from '~icons/tabler/world';
@@ -112,8 +112,9 @@ const dateRange = computed(() => {
 
             <div :class="$style.footer">
                 <NuxtLinkLocale :to="`/projects/${project.slug}`">
-                    <Button size="md" variant="primary" :arrow="true">
+                    <Button size="md" variant="primary">
                         {{ t('projects.learnMore') }}
+                        <DrawnArrow />
                     </Button>
                 </NuxtLinkLocale>
 

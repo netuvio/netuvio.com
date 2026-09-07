@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from "vue";
 import type { Project } from "~/lib/types";
-import Button from "~/components/Button.vue";
+import { Button } from "@netuvio/netuvio-ui/vue";
 import TablerList from "~icons/tabler/list";
 import TablerWorld from "~icons/tabler/world";
 import TablerGitMerge from "~icons/tabler/git-merge";
@@ -93,9 +93,10 @@ onUnmounted(() => {
                     rel="noopener noreferrer"
                     :class="$style.actionLink"
                 >
-                    <Button variant="primary" size="md" :arrow="true" :block="true">
+                    <Button variant="primary" size="md" :block="true">
                         <TablerWorld :class="$style.buttonIcon" />
                         {{ t("projects.visitWebsite") }}
+                        <DrawnArrow />
                     </Button>
                 </a>
 
@@ -109,6 +110,7 @@ onUnmounted(() => {
                     <Button variant="secondary" size="md" :block="true">
                         <TablerGitMerge :class="$style.buttonIcon" />
                         {{ t("projects.sourceCode") }}
+                        <DrawnArrow />
                     </Button>
                 </a>
             </div>
@@ -180,9 +182,10 @@ onUnmounted(() => {
                             rel="noopener noreferrer"
                             :class="$style.actionLink"
                         >
-                            <Button variant="primary" size="md" :arrow="true" :block="true">
+                            <Button variant="primary" size="md" :block="true">
                                 <TablerWorld :class="$style.buttonIcon" />
                                 {{ t("projects.visitWebsite") }}
+                                <DrawnArrow />
                             </Button>
                         </a>
 
@@ -196,6 +199,7 @@ onUnmounted(() => {
                             <Button variant="secondary" size="md" :block="true">
                                 <TablerGitMerge :class="$style.buttonIcon" />
                                 {{ t("projects.sourceCode") }}
+                                <DrawnArrow />
                             </Button>
                         </a>
                     </div>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Project } from "~/lib/types";
 import ProjectCard from "~/components/projects/ProjectCard.vue";
-import Button from "~/components/Button.vue";
+import { Button } from "@netuvio/netuvio-ui/vue";
 
 defineProps<{
     projects: Project[];
@@ -42,6 +42,7 @@ const { t } = useI18n();
             <p :class="$style.emptyText">{{ t("projects.noProjectsFound") }}</p>
             <Button variant="primary" size="md" @click="$emit('resetFilter')">
                 {{ t("projects.resetFilter") }}
+                <DrawnArrow />
             </Button>
         </div>
     </div>

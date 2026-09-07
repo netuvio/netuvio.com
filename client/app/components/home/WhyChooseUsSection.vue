@@ -1,5 +1,5 @@
-﻿<script setup lang="ts">
-import Button from "~/components/Button.vue";
+<script setup lang="ts">
+import { Button } from "@netuvio/netuvio-ui/vue";
 import IonLayers from '~icons/ion/layers';
 import IonSparkles from '~icons/ion/sparkles';
 import MaterialSymbolsHandshakeRounded from '~icons/material-symbols/handshake-rounded';
@@ -44,7 +44,7 @@ const { t } = useI18n();
                     </section>
                     <section>
                         <NuxtLinkLocale to="/#contact">
-                            <Button size="xl">{{ t('whyChooseUs.cta.button') }}</Button>
+                            <Button size="xl">{{ t('whyChooseUs.cta.button') }} <DrawnArrow /></Button>
                         </NuxtLinkLocale>
                     </section>
                 </motion.div>

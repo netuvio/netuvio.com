@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ProjectComponent from "~/components/home/Project.vue";
-import Button from "~/components/Button.vue";
+import { Button } from "@netuvio/netuvio-ui/vue";
 import {useFetch} from "#app";
 import type {Project} from "~/lib/types";
 import {computed} from "vue";
@@ -36,6 +36,7 @@ const featuredProjects = computed(() => {
                 <NuxtLinkLocale to="/projects">
                     <Button variant="secondary" size="lg">
                         {{ t('projects.viewAll') }}
+                        <DrawnArrow />
                     </Button>
                 </NuxtLinkLocale>
             </div>
