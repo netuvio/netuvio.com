@@ -7,7 +7,7 @@ import Header from "~/components/header/Header.vue";
 import Debug from "~/components/Debug.vue";
 import 'lenis/dist/lenis.css'
 import Footer from "~/components/Footer.vue";
-import "@netuvio/netuvio-ui/styles.css";
+import "@netuvio/ui/styles.css";
 
 // state
 const route = useRoute();

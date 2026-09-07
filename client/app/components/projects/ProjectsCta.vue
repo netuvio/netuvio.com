@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { motion } from "motion-v";
-import { Button } from "@netuvio/netuvio-ui/vue";
+import { Button } from "@netuvio/ui/vue";
 
 const { t } = useI18n();
 </script>

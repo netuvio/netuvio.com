@@ -56,6 +56,7 @@ export default defineNuxtConfig({
     vite: {
         optimizeDeps: {
             include: [
+                '@netuvio/ui/vue',
                 '@vue/devtools-core',
                 '@vue/devtools-kit',
                 'libphonenumber-js',

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button } from "@netuvio/netuvio-ui/vue";
+import { Button } from "@netuvio/ui/vue";
 import { motion, useScroll, useTransform } from 'motion-v'
 import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
 import TypingTextAnimation from "~/components/TypingTextAnimation.vue";

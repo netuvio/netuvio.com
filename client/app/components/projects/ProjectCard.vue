@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { Project } from "~/lib/types";
-import { Button } from "@netuvio/netuvio-ui/vue";
+import { Button } from "@netuvio/ui/vue";
 import TechnologyTag from "~/components/TechnologyTag.vue";
 import { motion } from "motion-v";
 import TablerWorld from '~icons/tabler/world';

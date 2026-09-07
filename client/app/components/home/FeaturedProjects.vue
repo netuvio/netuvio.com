@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ProjectComponent from "~/components/home/Project.vue";
-import { Button } from "@netuvio/netuvio-ui/vue";
+import { Button } from "@netuvio/ui/vue";
 import {useFetch} from "#app";
 import type {Project} from "~/lib/types";
 import {computed} from "vue";

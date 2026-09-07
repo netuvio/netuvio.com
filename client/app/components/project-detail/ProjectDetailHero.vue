@@ -3,7 +3,7 @@ import { computed } from "vue";
 import { motion } from "motion-v";
 import type { Project } from "~/lib/types";
 import LightboxItem from "~/components/lightbox/LightboxItem.vue";
-import { Button } from "@netuvio/netuvio-ui/vue";
+import { Button } from "@netuvio/ui/vue";
 import RandomTextAnimation from "~/components/RandomTextAnimation.vue";
 import TablerWorld from "~icons/tabler/world";
 import TablerGitMerge from "~icons/tabler/git-merge";

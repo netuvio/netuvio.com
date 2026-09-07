@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Project } from "~/lib/types";
 import ProjectCard from "~/components/projects/ProjectCard.vue";
-import { Button } from "@netuvio/netuvio-ui/vue";
+import { Button } from "@netuvio/ui/vue";
 
 defineProps<{
     projects: Project[];

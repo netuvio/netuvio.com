@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button } from "@netuvio/netuvio-ui/vue";
+import { Button } from "@netuvio/ui/vue";
 import IonLayers from '~icons/ion/layers';
 import IonSparkles from '~icons/ion/sparkles';
 import MaterialSymbolsHandshakeRounded from '~icons/material-symbols/handshake-rounded';

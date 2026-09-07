@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from "vue";
 import type { Project } from "~/lib/types";
-import { Button } from "@netuvio/netuvio-ui/vue";
+import { Button } from "@netuvio/ui/vue";
 import TablerList from "~icons/tabler/list";
 import TablerWorld from "~icons/tabler/world";
 import TablerGitMerge from "~icons/tabler/git-merge";

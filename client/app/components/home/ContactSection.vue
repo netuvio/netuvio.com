@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button } from "@netuvio/netuvio-ui/vue";
+import { Button } from "@netuvio/ui/vue";
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { motion, AnimatePresence } from "motion-v";
 
