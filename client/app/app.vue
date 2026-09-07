@@ -96,7 +96,9 @@ watch(() => route.path, () => {
     <Debug v-if="isDev" />
     <VueLenis root ref="lenisRef">
         <Header />
-        <NuxtPage />
+        <div data-theme="light">
+            <NuxtPage />
+        </div>
         <Footer />
     </VueLenis>
 </template>

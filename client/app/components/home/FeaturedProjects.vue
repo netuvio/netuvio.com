@@ -4,6 +4,7 @@ import { Button } from "@netuvio/netuvio-ui/vue";
 import {useFetch} from "#app";
 import type {Project} from "~/lib/types";
 import {computed} from "vue";
+import DrawnArrow from "~/components/DrawnArrow.vue";
 
 const { t, locale } = useI18n();
 
@@ -34,7 +35,7 @@ const featuredProjects = computed(() => {
             </ul>
             <div :class="$style.actions">
                 <NuxtLinkLocale to="/projects">
-                    <Button variant="secondary" size="lg">
+                    <Button variant="secondary" size="lg" theme="dark">
                         {{ t('projects.viewAll') }}
                         <DrawnArrow />
                     </Button>

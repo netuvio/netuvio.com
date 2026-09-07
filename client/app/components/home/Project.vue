@@ -1,7 +1,8 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { Button } from "@netuvio/netuvio-ui/vue";
 import { motion } from "motion-v";
 import type {ProjectType} from "~/lib/types";
+import DrawnArrow from "~/components/DrawnArrow.vue";
 
 const props = defineProps<{
     title: string;
