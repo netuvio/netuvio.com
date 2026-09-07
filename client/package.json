@@ -11,7 +11,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@netuvio/ui": "^0.1.0",
+    "@netuvio/ui": "^1.0.0",
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/i18n": "^10.2.4",
     "isomorphic-dompurify": "^3.18.0",
