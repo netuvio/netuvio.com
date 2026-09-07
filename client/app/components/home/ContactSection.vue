@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { Button } from "@netuvio/ui/vue";
+import { Button, Input, Textarea } from "@netuvio/ui/vue";
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import { motion, AnimatePresence } from "motion-v";
 
 const { t } = useI18n();
+
+const phoneInputRef = ref<any>(null);
 
 const MAX_LENGTHS = {
     firstName: 50,
@@ -144,16 +146,26 @@ const handleSubmit = async () => {
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.5, delay: 0.1 }"
                 >
-                    <label :class="{ [$style.hasError]: errors.firstName }">
-                        <span>{{ t('contact.firstName') }} *</span>
-                        <input v-model="form.firstName" :maxlength="MAX_LENGTHS.firstName" />
-                        <span :class="$style.errorText">{{ errors.firstName }}</span>
-                    </label>
-                    <label :class="{ [$style.hasError]: errors.lastName }">
-                        <span>{{ t('contact.lastName') }} *</span>
-                        <input v-model="form.lastName" :maxlength="MAX_LENGTHS.lastName" />
-                        <span :class="$style.errorText">{{ errors.lastName }}</span>
-                    </label>
+                    <Input
+                        v-model="form.firstName"
+                        name="firstName"
+                        autocomplete="given-name"
+                        :label="`${t('contact.firstName')} *`"
+                        :error="errors.firstName"
+                        :maxlength="MAX_LENGTHS.firstName"
+                        size="lg"
+                        block
+                    />
+                    <Input
+                        v-model="form.lastName"
+                        name="lastName"
+                        autocomplete="family-name"
+                        :label="`${t('contact.lastName')} *`"
+                        :error="errors.lastName"
+                        :maxlength="MAX_LENGTHS.lastName"
+                        size="lg"
+                        block
+                    />
                 </motion.section>
                 <motion.section
                     :initial="{ opacity: 0, y: 20 }"
@@ -161,14 +173,32 @@ const handleSubmit = async () => {
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.5, delay: 0.2 }"
                 >
-                    <label :class="{ [$style.hasError]: errors.email }">
-                        <span>{{ t('contact.email') }} *</span>
-                        <input v-model="form.email" type="email" :maxlength="MAX_LENGTHS.email" />
-                        <span :class="$style.errorText">{{ errors.email }}</span>
-                    </label>
-                    <label :class="{ [$style.hasError]: errors.phone }">
-                        <span>{{ t('contact.phoneNumber') }}</span>
-                        <div :class="$style.phone">
+                    <Input
+                        v-model="form.email"
+                        type="email"
+                        name="email"
+                        autocomplete="email"
+                        :label="`${t('contact.email')} *`"
+                        :error="errors.email"
+                        :maxlength="MAX_LENGTHS.email"
+                        size="lg"
+                        block
+                    />
+                    <Input
+                        ref="phoneInputRef"
+                        v-model="form.phone"
+                        type="tel"
+                        name="phone"
+                        autocomplete="tel"
+                        :label="t('contact.phoneNumber')"
+                        :placeholder="t('contact.phonePlaceholder')"
+                        :error="errors.phone"
+                        :maxlength="MAX_LENGTHS.phone"
+                        size="lg"
+                        block
+                        @click:prefix="phoneInputRef?.focus?.()"
+                    >
+                        <template #prefix>
                             <div :class="$style.flagWrapper">
                                 <AnimatePresence mode="popLayout">
                                     <motion.img
@@ -183,10 +213,8 @@ const handleSubmit = async () => {
                                     />
                                 </AnimatePresence>
                             </div>
-                            <input v-model="form.phone" :placeholder="t('contact.phonePlaceholder')" :maxlength="MAX_LENGTHS.phone" />
-                        </div>
-                        <span :class="$style.errorText">{{ errors.phone }}</span>
-                    </label>
+                        </template>
+                    </Input>
                 </motion.section>
                 <motion.section 
                     :class="[$style.services, { [$style.hasError]: errors.service }]"
@@ -218,7 +246,7 @@ const handleSubmit = async () => {
                     <span :class="$style.errorText">{{ errors.service }}</span>
                 </motion.section>
                 <motion.label 
-                    :class="{ [$style.hasError]: errors.message }"
+                    :class="[$style.textareaField, { [$style.hasError]: errors.message }]"
                     :initial="{ opacity: 0, y: 20 }"
                     :whileInView="{ opacity: 1, y: 0 }"
                     :inViewOptions="{ once: true }"
@@ -228,7 +256,12 @@ const handleSubmit = async () => {
                         <span>{{ t('contact.message') }} *</span>
                         <span :class="$style.charCount">{{ form.message.length }} / {{ MAX_LENGTHS.message }}</span>
                     </div>
-                    <textarea v-model="form.message" :maxlength="MAX_LENGTHS.message" />
+                    <Textarea 
+                        v-model="form.message" 
+                        :maxlength="MAX_LENGTHS.message"
+                        size="lg"
+                        radius="lg"
+                    />
                     <span :class="$style.errorText">{{ errors.message }}</span>
                 </motion.label>
                 <motion.span
@@ -266,9 +299,14 @@ const handleSubmit = async () => {
             display: flex;
             justify-content: space-between;
             gap: 20px;
+
+            > * {
+                flex: 1;
+                min-width: 0;
+            }
         }
 
-        label, .services {
+        .textareaField, .services {
             display: flex;
             flex-direction: column;
             width: 100%;
@@ -303,12 +341,6 @@ const handleSubmit = async () => {
                 margin-top: 4px;
                 min-height: 1.2rem;
                 font-weight: 500;
-            }
-        }
-        
-        .hasError {
-            input, textarea, .phone {
-                border-color: #ff3333 !important;
             }
         }
         
@@ -349,39 +381,8 @@ const handleSubmit = async () => {
             }
         }
 
-        input, textarea, .phone {
-            padding: 12px 20px;
-            background-color: hsl(0, 0%, 97%);
-            border: 1px solid var(--color-carbon-50);
-            color: inherit;
-            border-radius: 30px;
-            font-weight: normal;
-            transition: all 0.18s ease;
-
-            &:focus-within {
-                outline: none;
-                border: 1px solid var(--color-carbon-400);
-            }
-        }
-        
-        .phone input {
-            padding: 0;
-            background-color: transparent;
-            border: none;
-            outline: none;
-            border-radius: 0;
-            width: 100%;
-            
-            &:focus {
-                outline: none;
-                border: none;
-            }
-        }
-        
-        .phone {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        textarea {
+            min-height: 240px !important;
         }
 
         .flagWrapper {
@@ -392,17 +393,14 @@ const handleSubmit = async () => {
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
 
             img {
                 width: 24px;
                 height: 18px;
                 display: block;
+                border-radius: 2px;
             }
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
         }
     }
 }
@@ -427,9 +425,7 @@ const handleSubmit = async () => {
             min-height: 44px;
         }
 
-        input,
-        textarea,
-        .phone {
+        textarea {
             min-height: 44px;
         }
     }
