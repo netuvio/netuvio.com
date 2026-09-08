@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { Button } from "@netuvio/ui/vue";
+import { Button, Card } from "@netuvio/ui/vue";
 import IonLayers from '~icons/ion/layers';
 import IonSparkles from '~icons/ion/sparkles';
 import MaterialSymbolsHandshakeRounded from '~icons/material-symbols/handshake-rounded';
 import { motion } from "motion-v";
+import DrawnArrow from "~/components/DrawnArrow.vue";
 
 const { t } = useI18n();
 </script>
@@ -28,8 +29,10 @@ const { t } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.1 }"
                 >
-                    <h2><i><IonLayers :style="{ fontSize: '35px' }" /></i> {{ t('whyChooseUs.flexibleServices.title') }}</h2>
-                    <p>{{ t('whyChooseUs.flexibleServices.description') }}</p>
+                    <Card>
+                        <h2><i><IonLayers :style="{ fontSize: '35px' }" /></i> {{ t('whyChooseUs.flexibleServices.title') }}</h2>
+                        <p>{{ t('whyChooseUs.flexibleServices.description') }}</p>
+                    </Card>
                 </motion.div>
                 <motion.div
                     :class="$style.cta"
@@ -38,15 +41,21 @@ const { t } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.3 }"
                 >
-                    <section>
-                        <h2>{{ t('whyChooseUs.cta.title') }}</h2>
-                        <p>{{ t('whyChooseUs.cta.description') }}</p>
-                    </section>
-                    <section>
-                        <NuxtLinkLocale to="/#contact">
-                            <Button size="xl">{{ t('whyChooseUs.cta.button') }} <DrawnArrow /></Button>
-                        </NuxtLinkLocale>
-                    </section>
+                    <Card 
+                        variant="accent"
+                        base3dOffset="10"
+                        
+                    >
+                        <section>
+                            <h2>{{ t('whyChooseUs.cta.title') }}</h2>
+                            <p>{{ t('whyChooseUs.cta.description') }}</p>
+                        </section>
+                        <section>
+                            <NuxtLinkLocale to="/#contact">
+                                <Button size="xl" variant="secondary">{{ t('whyChooseUs.cta.button') }} <DrawnArrow /></Button>
+                            </NuxtLinkLocale>
+                        </section>
+                    </Card>
                 </motion.div>
                 <motion.div
                     :initial="{ opacity: 0, y: 30 }"
@@ -54,8 +63,10 @@ const { t } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.2 }"
                 >
-                    <h2><i><IonSparkles :style="{ fontSize: '32px' }" /></i> {{ t('whyChooseUs.modernTechnology.title') }}</h2>
-                    <p>{{ t('whyChooseUs.modernTechnology.description') }}</p>
+                    <Card>
+                        <h2><i><IonSparkles :style="{ fontSize: '32px' }" /></i> {{ t('whyChooseUs.modernTechnology.title') }}</h2>
+                        <p>{{ t('whyChooseUs.modernTechnology.description') }}</p>
+                    </Card>
                 </motion.div>
                 <motion.div
                     :initial="{ opacity: 0, y: 30 }"
@@ -63,8 +74,10 @@ const { t } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.3 }"
                 >
-                    <h2><i><MaterialSymbolsHandshakeRounded :style="{ fontSize: '38px' }" /></i> {{ t('whyChooseUs.personalApproach.title') }}</h2>
-                    <p>{{ t('whyChooseUs.personalApproach.description') }}</p>
+                    <Card>
+                        <h2><i><MaterialSymbolsHandshakeRounded :style="{ fontSize: '38px' }" /></i> {{ t('whyChooseUs.personalApproach.title') }}</h2>
+                        <p>{{ t('whyChooseUs.personalApproach.description') }}</p>
+                    </Card>
                 </motion.div>
             </section>
         </div>
@@ -84,28 +97,32 @@ const { t } = useI18n();
         gap: 24px;
         
         >div {
-            border: 1px solid var(--color-carbon-50);
+            //border: 1px solid var(--color-carbon-50);
             width: 100%;
             min-height: 300px;
             height: auto;
-            border-radius: 30px;
-            padding: 24px;
+            //padding: 24px;
             
-            h2 {
-                font-size: clamp(28px, 2.8vw, 40px);
-                display: flex;
-                align-items: center;
-                gap: 8px;
-
-                i {
-                    width: 40px;
-                    height: 0;
+            >div {
+                width: 100%;
+                height: 100%;
+                
+                h2 {
+                    font-size: clamp(28px, 2.8vw, 40px);
                     display: flex;
                     align-items: center;
-                    justify-content: center;
-                    
-                    svg {
-                        position: absolute;
+                    gap: 8px;
+
+                    i {
+                        width: 40px;
+                        height: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        svg {
+                            position: absolute;
+                        }
                     }
                 }
             }
@@ -113,20 +130,18 @@ const { t } = useI18n();
         
         .title {
             border: none;
-            padding-left: 0;
+            padding: clamp(24px, 3vw, 40px);
         }
         
         .cta {
-            background:
-                radial-gradient(600px at top left, var(--color-primary) 0%, transparent 100%),
-                radial-gradient(500px at 30% 0%, hsl(from var(--color-primary) calc(h - 20) s l) 0%, transparent 100%),
-                radial-gradient(500px at bottom right, var(--color-primary) 0%, transparent 100%);
             grid-column: 3;
             grid-row: span 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            
+            >div {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
         }
     }
 }
