@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import { motion } from "motion-v";
 
 const { t } = useI18n();
@@ -128,6 +128,17 @@ defineProps<{
     }
 }
 
+@media screen and (max-width: $laptopBreakpoint) {
+    .card {
+        padding: 36px;
+        gap: 32px;
+
+        section:last-child {
+            width: min(40vw, 420px);
+        }
+    }
+}
+
 @media screen and (max-width: $tabletBreakpoint) {
     .card {
         min-height: auto;
@@ -151,10 +162,16 @@ defineProps<{
 @media screen and (max-width: $mobileBreakpoint) {
     .card {
         border-radius: 24px;
+        padding: 24px 20px;
+
+        section:first-child div h2 {
+            font-size: 28px;
+        }
 
         section:last-child {
             border-radius: 24px;
             width: min(100%, 320px);
+            padding: 24px;
         }
     }
 }

@@ -109,6 +109,12 @@ const { t } = useI18n();
     }
 }
 
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
 @media screen and (max-width: $mobileBreakpoint) {
     .filterBarWrapper .filters {
         width: 100%;

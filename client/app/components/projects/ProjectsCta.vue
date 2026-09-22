@@ -94,6 +94,12 @@ const { t } = useI18n();
     }
 }
 
+@media screen and (max-width: $laptopBreakpoint) {
+    .ctaBanner {
+        padding: 40px;
+    }
+}
+
 @media screen and (max-width: $tabletBreakpoint) {
     .ctaBanner {
         flex-direction: column;

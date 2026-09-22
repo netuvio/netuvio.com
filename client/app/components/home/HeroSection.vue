@@ -9,6 +9,37 @@ const { t } = useI18n();
 const { scrollYProgress } = useScroll();
 const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
+const techRowRef = ref<HTMLElement | null>(null);
+const canScrollLeft = ref(false);
+const canScrollRight = ref(false);
+
+const checkTechScroll = () => {
+    if (!techRowRef.value) return;
+    const { scrollLeft, scrollWidth, clientWidth } = techRowRef.value;
+    canScrollLeft.value = scrollLeft > 4;
+    canScrollRight.value = scrollLeft + clientWidth < scrollWidth - 4;
+};
+
+const scrollTech = (dir: "left" | "right") => {
+    if (!techRowRef.value) return;
+    const distance = 180;
+    techRowRef.value.scrollBy({
+        left: dir === "left" ? -distance : distance,
+        behavior: "smooth"
+    });
+};
+
+onMounted(() => {
+    nextTick(() => {
+        checkTechScroll();
+    });
+    window.addEventListener("resize", checkTechScroll);
+});
+
+onUnmounted(() => {
+    window.removeEventListener("resize", checkTechScroll);
+});
+
 </script>
 
 <template>
@@ -87,12 +118,34 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                     {{ t("home.techWeUse") }}
                     <img :class="$style.squiggle" src="/images/squiggle-2.svg" alt="" />
                 </span>
-                <div>
-                    <img src="/icons/tech/dotnet.svg" alt="DotNet" />
-                    <img src="/icons/tech/vuejs.svg" alt="Vue.js" />
-                    <img src="/icons/tech/react.svg" alt="React" />
-                    <img src="/icons/tech/docker.svg" alt="Docker" />
-                    <img src="/icons/tech/postgresql.svg" alt="PostgreSQL" />
+                <div :class="$style.techCarouselWrapper">
+                    <button
+                        type="button"
+                        :class="[$style.scrollArrow, $style.scrollLeft, !canScrollLeft && $style.arrowDisabled]"
+                        @click="scrollTech('left')"
+                        aria-label="Scroll left"
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div ref="techRowRef" :class="$style.techRow" @scroll="checkTechScroll">
+                        <img src="/icons/tech/dotnet.svg" alt="DotNet" />
+                        <img src="/icons/tech/vuejs.svg" alt="Vue.js" />
+                        <img src="/icons/tech/react.svg" alt="React" />
+                        <img src="/icons/tech/docker.svg" alt="Docker" />
+                        <img src="/icons/tech/postgresql.svg" alt="PostgreSQL" />
+                    </div>
+                    <button
+                        type="button"
+                        :class="[$style.scrollArrow, $style.scrollRight, !canScrollRight && $style.arrowDisabled]"
+                        @click="scrollTech('right')"
+                        aria-label="Scroll right"
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </main>
@@ -251,16 +304,73 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             }
         }
         
-        >div {
+        .techCarouselWrapper {
+            position: relative;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 24px;
             width: 100%;
+            min-width: 0;
 
-            img {
-                height: 40px;
-                object-fit: contain;
+            .techRow {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 24px;
+                width: 100%;
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                scroll-behavior: smooth;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                img {
+                    height: 40px;
+                    object-fit: contain;
+                    flex-shrink: 0;
+                }
+            }
+
+            .scrollArrow {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 5;
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.12);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                color: var(--color-primary);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+                cursor: pointer;
+                transition: all 0.25s ease;
+                padding: 0;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.22);
+                    transform: translateY(-50%) scale(1.08);
+                }
+
+                &.arrowDisabled {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+
+            .scrollLeft {
+                left: 8px;
+            }
+
+            .scrollRight {
+                right: 8px;
             }
         }
     }
@@ -308,9 +418,15 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
     z-index: 9;
 }
 
-// Laptops Responsive
 @media screen and (max-width: $laptopBreakpoint) {    
+    .heroWrapper {
+        height: auto;
+        min-height: 90vh;
+    }
+
     .hero {
+        padding-top: 180px;
+
         >.textContainer {
             h1 {
                 font-size: clamp(50px, 6.8vw, 70px);
@@ -328,14 +444,38 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                 margin-top: 32px;
             }
         }
+
+        .technologies {
+            padding: 40px;
+            gap: 48px;
+        }
     }
 }
 
-// tablet
 @media screen and (max-width: $tabletBreakpoint) {
+    .heroWrapper {
+        height: auto;
+        min-height: 85vh;
+        padding-bottom: 80px;
+    }
+
+    .heroImageContainer {
+        right: -100px;
+        bottom: -100px;
+
+        > img {
+            width: 750px;
+        }
+
+        .blackHole {
+            width: 650px;
+            height: 650px;
+        }
+    }
+
     .hero {
-        padding-top: 48px;
-        
+        padding-top: 120px;
+        height: auto;
 
         >.textContainer {
             h1 {
@@ -353,16 +493,62 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                 margin-top: 32px;
             }
         }
+
+        .technologies {
+            position: relative;
+            left: auto;
+            bottom: auto;
+            transform: none;
+            margin-top: 60px;
+            border-radius: 32px;
+            padding: 28px 20px;
+            gap: 20px;
+            flex-direction: column;
+            align-items: center;
+
+            .techCarouselWrapper {
+                .scrollArrow {
+                    display: flex;
+                }
+
+                .techRow {
+                    gap: 32px;
+                    padding: 4px 50px;
+                    justify-content: flex-start;
+                }
+            }
+        }
     }
 }
 
-// mobile
 @media screen and (max-width: $mobileBreakpoint) {
+    .heroWrapper {
+        height: auto;
+        min-height: 100svh;
+        padding-bottom: 40px;
+    }
+
+    .heroImageContainer {
+        opacity: 0.2;
+        right: -60px;
+        bottom: 0;
+
+        > img {
+            width: 420px;
+        }
+
+        .blackHole {
+            width: 380px;
+            height: 380px;
+        }
+    }
+
     .hero {
-        padding-top: 64px;
+        padding-top: 90px;
+        height: auto;
 
         >.textContainer {
-            margin-top: -0px;
+            margin-top: 0;
             
             h1 {
                 font-size: clamp(30px, 10vw, 42px);
@@ -370,7 +556,11 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             }
 
             h2 {
-                font-size: 12px;
+                font-size: 14px;
+
+                .squiggle {
+                    display: none;
+                }
             }
 
             button {
@@ -378,6 +568,41 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                 font-size: 16px;
                 min-height: 0;
                 margin-top: 20px;
+            }
+        }
+
+        .technologies {
+            position: relative;
+            left: auto;
+            bottom: auto;
+            transform: none;
+            margin-top: 40px;
+            border-radius: 24px;
+            padding: 20px 14px;
+            gap: 16px;
+            width: 100%;
+
+            span {
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .techCarouselWrapper {
+                .scrollArrow {
+                    display: flex;
+                    width: 34px;
+                    height: 34px;
+                }
+
+                .techRow {
+                    gap: 24px;
+                    padding: 4px 44px;
+                    justify-content: flex-start;
+
+                    img {
+                        height: 30px;
+                    }
+                }
             }
         }
     }

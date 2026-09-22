@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 const props = defineProps<{
     title: string;
     image: string;
@@ -155,11 +155,51 @@ const props = defineProps<{
 }
 
 @media screen and (max-width: $laptopBreakpoint) {
+    .card {
+        width: 100%;
+        max-width: 320px;
+        height: 470px;
+        padding: 24px;
+    }
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
+    .card {
+        width: 100%;
+        max-width: 100%;
+        height: 440px;
+        padding: 24px;
+
+        .content {
+            h2 {
+                font-size: 26px;
+            }
+
+            .text p {
+                font-size: 16px;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    .card {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 400px;
+        padding: 20px;
+        border-radius: 20px;
+
+        .content {
+            h2 {
+                font-size: 24px;
+            }
+
+            .text p {
+                font-size: 15px;
+            }
+        }
+    }
 }
 </style>

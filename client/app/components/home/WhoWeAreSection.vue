@@ -138,9 +138,77 @@ const cards = [
     }
 }
 
+@media screen and (max-width: $laptopBreakpoint) {
+    .section {
+        padding: 120px 0 160px;
+
+        .container .cards {
+            gap: 24px;
+            justify-content: center;
+        }
+    }
+}
+
 @media screen and (max-width: $tabletBreakpoint) {
+    .section {
+        padding: 90px 0 120px;
+
+        .container {
+            .subtitle {
+                font-size: clamp(32px, 4.5vw, 42px);
+                white-space: normal;
+                width: auto;
+                max-width: 100%;
+
+                &::after {
+                    top: -30px;
+                    right: 0;
+                    width: 60px;
+                    height: 52px;
+                }
+            }
+
+            .cards {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 24px;
+                margin-top: 48px;
+
+                .cardWrapper {
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    .section {
+        padding: 70px 0 90px;
+
+        .container {
+            .subtitle {
+                font-size: clamp(26px, 8vw, 34px);
+                white-space: normal;
+                width: auto;
+                max-width: 100%;
+
+                &::after {
+                    display: none;
+                }
+
+                span::before {
+                    width: 100%;
+                    height: 48px;
+                }
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-top: 36px;
+            }
+        }
+    }
 }
 </style>

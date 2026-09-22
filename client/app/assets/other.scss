@@ -1,4 +1,5 @@
-﻿
+@use "./variables" as *;
+
 #error-page {
     min-height: 100vh;
 
@@ -50,18 +51,7 @@
 
     /* animace */
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* mobil */
-    @media (max-width: 600px) {
-        .logo { width: 50vw; height: 50vw; }
-        h1 { font-size: 10vw; }
-    }
 }
-
-
-
-
-
 
 .grecaptcha-badge {
     visibility: hidden !important;
@@ -70,4 +60,22 @@
 * {
     -webkit-tap-highlight-color: transparent;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    #error-page {
+        .logo {
+            width: 50vw;
+            height: 50vw;
+        }
+        h1 {
+            font-size: 10vw;
+        }
+    }
 }

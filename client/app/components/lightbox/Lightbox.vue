@@ -252,6 +252,66 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
     z-index: 10;
     color: white;
 }
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .closeBtn {
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 1.5rem;
+    }
+
+    .navBtn {
+        font-size: 1.5rem;
+    }
+
+    .navBtnLeft {
+        left: 0.5rem;
+    }
+
+    .navBtnRight {
+        right: 0.5rem;
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .closeBtn {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1.25rem;
+    }
+
+    .navBtn {
+        font-size: 1.25rem;
+        padding: 0.25rem;
+    }
+
+    .navBtnLeft {
+        left: 0.25rem;
+    }
+
+    .navBtnRight {
+        right: 0.25rem;
+    }
+
+    .counter {
+        left: 1rem;
+        top: 1rem;
+        font-size: 13px;
+    }
+
+    .image {
+        max-height: 70%;
+        max-width: 95%;
+    }
+
+    .caption {
+        font-size: 14px;
+        padding: 0 16px;
+    }
+}
 </style>
 
 <style scoped>

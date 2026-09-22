@@ -27,6 +27,8 @@ const techTo = computed(() => {
 </template>
 
 <style module lang="scss">
+@use "~/assets/variables" as *;
+
 .icon {
     color: var(--color-carbon-100);
     border: 1px solid var(--color-carbon-300);
@@ -43,5 +45,18 @@ const techTo = computed(() => {
     color: var(--color-primary);
     border: 1px solid var(--color-primary);
     cursor: pointer;
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .icon {
+        font-size: 12px;
+        padding: 3px 8px;
+    }
 }
 </style>

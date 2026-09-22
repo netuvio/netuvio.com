@@ -104,4 +104,16 @@ onMounted(() => {
         opacity: 0.5;
     }
 }
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .wrapper {
+        border-radius: 20px;
+    }
+}
 </style>

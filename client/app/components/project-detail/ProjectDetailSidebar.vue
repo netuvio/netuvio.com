@@ -457,7 +457,13 @@ onUnmounted(() => {
     }
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: $laptopBreakpoint) {
+    .sidebar .sidebarCard {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
     .sidebar {
         display: none;
     }
@@ -475,6 +481,17 @@ onUnmounted(() => {
 
         .toggleText {
             font-size: 13px;
+        }
+    }
+
+    .drawerPanel {
+        width: 300px;
+        max-width: 90vw;
+
+        .drawerHeader,
+        .drawerBody,
+        .drawerFooter {
+            padding: 18px 20px;
         }
     }
 }

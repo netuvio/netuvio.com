@@ -40,5 +40,14 @@ const onLocaleChange = (newLocale: string | number) => {
 .localeSelect {
     z-index: 10;
 }
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+}
 </style>
 

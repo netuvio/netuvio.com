@@ -88,4 +88,32 @@ const filteredProjects = computed(() => {
         }
     }
 }
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .pageWrapper .contentSection {
+        padding: 10px 0 100px;
+
+        .contentContainer {
+            gap: 36px;
+        }
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .pageWrapper .contentSection {
+        padding: 0 0 70px;
+
+        .transition {
+            top: -50px;
+            height: 50px;
+        }
+
+        .contentContainer {
+            gap: 28px;
+        }
+    }
+}
 </style>

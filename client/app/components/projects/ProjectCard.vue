@@ -420,22 +420,46 @@ const dateRange = computed(() => {
     }
 }
 
+@media screen and (max-width: $laptopBreakpoint) {
+    .content {
+        padding: 22px 24px 24px;
+        gap: 18px;
+    }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .title {
+        font-size: clamp(22px, 3vw, 28px);
+    }
+}
+
 @media screen and (max-width: $mobileBreakpoint) {
     .card {
         border-radius: 24px;
     }
 
     .metaStrip {
-        padding: 12px 18px 10px;
+        padding: 0;
     }
 
     .content {
-        padding: 20px;
+        padding: 20px 18px;
         gap: 16px;
+    }
+
+    .header > div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
     }
 
     .title {
         font-size: 22px;
+    }
+
+    .footer {
+        padding-top: 14px;
+        gap: 12px;
     }
 }
 </style>

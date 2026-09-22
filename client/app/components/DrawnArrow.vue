@@ -26,6 +26,8 @@
 </template>
 
 <style module lang="scss">
+@use "~/assets/variables" as *;
+
 .arrow {
     display: inline-block;
     vertical-align: middle;
@@ -33,5 +35,14 @@
     width: 15px;
     height: 13px;
     margin-left: 8px;
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
 }
 </style>

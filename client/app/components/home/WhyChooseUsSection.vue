@@ -169,21 +169,31 @@ const { t } = useI18n();
             grid-column: 1 / -1;
             grid-row: auto;
             min-height: 320px;
+            order: 10;
         }
     }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
-    .section .grid {
-        grid-template-columns: 1fr;
+    .section {
+        padding: 60px 0;
 
-        > div {
-            min-height: auto;
-            border-radius: 24px;
-        }
+        .grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
 
-        .title {
-            padding: 0;
+            > div {
+                min-height: auto;
+                border-radius: 24px;
+            }
+
+            .title {
+                padding: 0;
+            }
+
+            .cta {
+                order: 10;
+            }
         }
     }
 }

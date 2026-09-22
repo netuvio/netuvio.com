@@ -132,11 +132,35 @@ const { t } = useI18n();
     }
 }
 
+@media screen and (max-width: $laptopBreakpoint) {
+    .grid,
+    .loadingGrid {
+        gap: 32px;
+    }
+}
+
 @media screen and (max-width: $tabletBreakpoint) {
     .grid,
     .loadingGrid {
         grid-template-columns: 1fr;
         gap: 28px;
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .grid,
+    .loadingGrid {
+        gap: 20px;
+    }
+
+    .loadingGrid .skeletonCard {
+        height: 420px;
+        border-radius: 24px;
+    }
+
+    .emptyState {
+        padding: 50px 20px;
+        border-radius: 24px;
     }
 }
 </style>

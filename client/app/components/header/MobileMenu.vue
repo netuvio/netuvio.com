@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import {ref} from "vue";
 import type {HeaderLink} from "~/lib/types";
 import { AnimatePresence, motion } from "motion-v";
@@ -148,5 +148,13 @@ const isOpen = ref(false);
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    .mobileMenu > div {
+        margin-top: 60px;
+
+        ul li a {
+            padding: 14px 0;
+            font-size: 18px;
+        }
+    }
 }
 </style>

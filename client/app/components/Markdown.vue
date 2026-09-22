@@ -180,4 +180,66 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown, { ADD_ATTR: ['id', 'target
         }
     }
 }
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .markdown {
+        font-size: 17px;
+
+        h1 {
+            font-size: 38px;
+        }
+
+        h2 {
+            font-size: 26px;
+        }
+
+        h3 {
+            font-size: 22px;
+        }
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .markdown {
+        font-size: 16px;
+        line-height: 1.6;
+
+        h1 {
+            font-size: 30px;
+        }
+
+        h2 {
+            font-size: 22px;
+        }
+
+        h3 {
+            font-size: 19px;
+        }
+
+        blockquote {
+            padding: 12px 16px;
+            margin: 18px 0;
+        }
+
+        pre {
+            padding: 14px;
+            border-radius: 12px;
+        }
+
+        table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+
+            th, td {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+        }
+    }
+}
 </style>

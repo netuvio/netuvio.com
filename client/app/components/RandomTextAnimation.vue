@@ -121,6 +121,8 @@ onMounted(() => {
 </template>
 
 <style module lang="scss">
+@use "~/assets/variables" as *;
+
 .wrapper {
     white-space: pre-wrap;
     position: relative;
@@ -129,5 +131,14 @@ onMounted(() => {
 
 .letter {
     display: inline-block;
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
 }
 </style>

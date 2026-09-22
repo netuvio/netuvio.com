@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 
 import {useScroll, useTransform, useMotionValueEvent, AnimatePresence} from "motion-v";
 import ServiceCard from "~/components/home/ServiceCard.vue";
@@ -187,6 +187,65 @@ onMounted(() => {
                 .servicesList li:nth-child(3) {
                     color: var(--color-primary);
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+    .sectionContainer {
+        min-height: 3500px;
+        height: 3500px;
+    }
+
+    .section {
+        padding-top: 600px;
+    }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    .sectionContainer {
+        min-height: 3000px;
+        height: 3000px;
+    }
+
+    .section {
+        padding-top: 400px;
+
+        .container .wrapper {
+            .servicesList li {
+                font-size: clamp(32px, 6vw, 44px);
+            }
+
+            .description {
+                height: auto;
+                min-height: 520px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .sectionContainer {
+        min-height: 2600px;
+        height: 2600px;
+    }
+
+    .section {
+        padding-top: 250px;
+
+        .container .wrapper {
+            .servicesList {
+                margin-bottom: 20px;
+
+                li {
+                    font-size: clamp(24px, 8vw, 32px);
+                }
+            }
+
+            .description {
+                height: auto;
+                min-height: 480px;
             }
         }
     }

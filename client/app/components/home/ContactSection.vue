@@ -417,16 +417,24 @@ const handleSubmit = async () => {
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
-    .section form {
-        gap: 18px;
+    .section {
+        padding: 60px 0;
 
-        .services > div label {
-            width: 100%;
-            min-height: 44px;
+        h1 {
+            margin-bottom: 24px;
         }
 
-        textarea {
-            min-height: 44px;
+        form {
+            gap: 18px;
+
+            .services > div label {
+                width: 100%;
+                min-height: 44px;
+            }
+
+            textarea {
+                min-height: 180px !important;
+            }
         }
     }
 }

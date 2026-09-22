@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 </script>
 <template>
     <div :class="$style.gradientWrapper">
@@ -33,8 +33,16 @@
     );
     height: var(--gradient-height);
     pointer-events: none;
-    
-    @media screen and (max-width: $mobileBreakpoint) {
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .gradient {
         --gradient-height: 600px;
     }
 }

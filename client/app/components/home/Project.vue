@@ -94,9 +94,16 @@ const { t } = useI18n();
     }
 }
 
+@media screen and (max-width: $laptopBreakpoint) {
+    .project {
+        height: 520px;
+    }
+}
+
 @media screen and (max-width: $tabletBreakpoint) {
     .project {
         flex-direction: column;
+        height: auto;
         min-height: 0;
 
         .info,
@@ -113,14 +120,19 @@ const { t } = useI18n();
 @media screen and (max-width: $mobileBreakpoint) {
     .project {
         gap: 20px;
+        height: auto;
 
         .info,
         .image {
             border-radius: 24px;
         }
 
-        .info .top h2 {
-            font-size: clamp(28px, 9vw, 36px);
+        .info {
+            padding: 20px;
+
+            .top h2 {
+                font-size: clamp(26px, 8vw, 32px);
+            }
         }
     }
 }

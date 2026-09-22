@@ -211,4 +211,14 @@ onUnmounted(() => {
         }
     }
 }
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .contentSection {
+        padding: 40px 0 80px;
+
+        .contentContainer {
+            gap: 40px;
+        }
+    }
+}
 </style>

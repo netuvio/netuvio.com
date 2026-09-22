@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 </script>
 
 <template>
@@ -17,4 +17,17 @@
     width: max-content;
     text-transform: uppercase;
 }
-</style>`
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .title {
+        font-size: 16px;
+        padding: 10px 18px;
+    }
+}
+</style>

@@ -92,5 +92,16 @@ const featuredProjects = computed(() => {
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    .section {
+        padding: 60px 0;
+
+        h1 {
+            margin-bottom: 24px;
+        }
+
+        .actions {
+            margin-top: 36px;
+        }
+    }
 }
 </style>
