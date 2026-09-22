@@ -49,7 +49,7 @@ const { t } = useI18n();
         //mask-size: contain;
         //mask-repeat: no-repeat;
         //mask-position: center;
-        background-image: url(~/../public/icons/logo_neon.svg);
+        background-image: url(/icons/logo_neon.svg);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
