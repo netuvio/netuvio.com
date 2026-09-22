@@ -130,8 +130,8 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
 .heroImageContainer {
     position: absolute;
-    right: -200px;
-    bottom: -200px;
+    right: -120px;
+    bottom: -120px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -140,7 +140,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
     z-index: 1;
 
     >img {
-        width: 1200px;
+        width: 950px;
         height: auto;
         object-fit: contain;
         pointer-events: none;
@@ -152,8 +152,8 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         position: absolute;
         bottom: 0;
         right: 0;
-        width: 1000px;
-        height: 1000px;
+        width: 83.33%;
+        aspect-ratio: 1;
         border-radius: 50%;
         background: var(--color-background-primary);
         box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
@@ -182,6 +182,8 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         flex-direction: column;
         justify-content: center;
         color: var(--color-text-secondary);
+        position: relative;
+        z-index: 2;
 
         h1 {
             font-size: clamp(52px, 5.55vw, 80px);
@@ -394,20 +396,6 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         min-height: auto;
     }
 
-    .heroImageContainer {
-        right: -100px;
-        bottom: -100px;
-
-        > img {
-            width: 750px;
-        }
-
-        .blackHole {
-            width: 650px;
-            height: 650px;
-        }
-    }
-
     .hero {
         padding-top: 120px;
         padding-bottom: 90px;
@@ -478,21 +466,6 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 @media screen and (max-width: $mobileBreakpoint) {
     .heroWrapper {
         min-height: auto;
-    }
-
-    .heroImageContainer {
-        opacity: 0.2;
-        right: -60px;
-        bottom: 0;
-
-        > img {
-            width: 420px;
-        }
-
-        .blackHole {
-            width: 380px;
-            height: 380px;
-        }
     }
 
     .hero {
@@ -595,6 +568,64 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                 max-width: 32px;
             }
         }
+    }
+}
+
+
+/* --- Hero Image Responsive Breakpoints --- */
+
+@media screen and (max-width: 1550px) {
+    .heroImageContainer {
+        right: -120px;
+        bottom: -120px;
+        > img { width: 850px; }
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .heroImageContainer {
+        right: -100px;
+        bottom: -100px;
+        > img { width: 750px; }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .heroImageContainer {
+        right: -80px;
+        bottom: -80px;
+        > img { width: 650px; }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .heroImageContainer {
+        right: -60px;
+        bottom: -60px;
+        > img { width: 550px; }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .heroImageContainer {
+        opacity: 0.22;
+        right: -50px;
+        bottom: 0;
+        > img { width: 450px; }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .heroImageContainer {
+        right: -30px;
+        > img { width: 380px; }
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .heroImageContainer {
+        right: -20px;
+        > img { width: 320px; }
     }
 }
 </style>

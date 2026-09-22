@@ -12,8 +12,8 @@ export default defineI18nLocale(async (locale) => {
             "title": "Home",
             "subtitle": "Behind every high-quality project lies not only a good idea, but also the right technical solution. We'll help you with that from start to finish.",
             "learnMore": "Learn More",
-            "hero": "Modern apps, \npowerful hosting, \nzero hassle",
-            "techWeUse": "Technologies, \nwe use"
+            "hero": "Modern apps,\npowerful hosting,\nzero hassle",
+            "techWeUse": "Technologies,\nwe use"
         },
         "whoWeAre": {
             "title": "Who We Are",
