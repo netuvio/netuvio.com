@@ -13,5 +13,6 @@
     <Folder Include="app\composables\" />
     <Folder Include="public\fonts\" />
     <Folder Include="public\icons\" />
+    <Folder Include="public\images\" />
   </ItemGroup>
 </Project>

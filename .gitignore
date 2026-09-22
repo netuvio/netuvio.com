@@ -4,3 +4,4 @@
 package.g.props
 obj
 bin
+.DS_Store
