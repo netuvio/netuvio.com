@@ -38,6 +38,8 @@ const props = defineProps<{
 .card {
     width: 350px;
     height: 500px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
     border: 4px solid var(--color-background-primary);
     border-radius: 24px;
     padding: 32px;
@@ -156,8 +158,7 @@ const props = defineProps<{
 
 @media screen and (max-width: $laptopBreakpoint) {
     .card {
-        width: 100%;
-        max-width: 320px;
+        width: 320px;
         height: 470px;
         padding: 24px;
     }
@@ -165,8 +166,7 @@ const props = defineProps<{
 
 @media screen and (max-width: $tabletBreakpoint) {
     .card {
-        width: 100%;
-        max-width: 100%;
+        width: 300px;
         height: 440px;
         padding: 24px;
 
@@ -184,9 +184,8 @@ const props = defineProps<{
 
 @media screen and (max-width: $mobileBreakpoint) {
     .card {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
+        width: min(290px, 80vw);
+        height: 420px;
         min-height: 400px;
         padding: 20px;
         border-radius: 20px;

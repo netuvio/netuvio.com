@@ -1,9 +1,41 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import { motion } from 'motion-v';
 import Title from "~/components/typography/Title.vue";
 import WhoWeAreServiceCard from "~/components/home/WhoWeAreServiceCard.vue";
 
 const { t } = useI18n();
+
+const cardsRowRef = ref<HTMLElement | null>(null);
+const canScrollLeft = ref(false);
+const canScrollRight = ref(false);
+
+const checkCardsScroll = () => {
+    if (!cardsRowRef.value) return;
+    const { scrollLeft, scrollWidth, clientWidth } = cardsRowRef.value;
+    canScrollLeft.value = scrollLeft > 4;
+    canScrollRight.value = scrollLeft + clientWidth < scrollWidth - 4;
+};
+
+const scrollCards = (dir: "left" | "right") => {
+    if (!cardsRowRef.value) return;
+    const distance = 360;
+    cardsRowRef.value.scrollBy({
+        left: dir === "left" ? -distance : distance,
+        behavior: "smooth"
+    });
+};
+
+onMounted(() => {
+    nextTick(() => {
+        checkCardsScroll();
+    });
+    window.addEventListener("resize", checkCardsScroll);
+});
+
+onUnmounted(() => {
+    window.removeEventListener("resize", checkCardsScroll);
+});
 
 const cards = [
     {
@@ -50,24 +82,48 @@ const cards = [
                 <h2 :class="$style.subtitle" v-html="t('whoWeAre.subtitle')"></h2>
             </motion.div>
 
-            <section :class="$style.cards">
-                <motion.div
-                    v-for="(card, index) in cards"
-                    :key="index"
-                    :class="$style.cardWrapper"
-                    :initial="{ opacity: 0, y: 40 }"
-                    :whileInView="{ opacity: 1, y: 0 }"
-                    :inViewOptions="{ once: true }"
-                    :transition="{ duration: 0.55, delay: 0.2 + index * 0.1, ease: 'easeOut' }"
+            <div :class="$style.cardsCarouselWrapper">
+                <button
+                    type="button"
+                    :class="[$style.scrollArrow, $style.scrollLeft, !canScrollLeft && $style.arrowDisabled]"
+                    @click="scrollCards('left')"
+                    aria-label="Scroll left"
                 >
-                    <WhoWeAreServiceCard
-                        :title="card.title"
-                        :image="card.image"
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <section ref="cardsRowRef" :class="$style.cards" @scroll="checkCardsScroll">
+                    <motion.div
+                        v-for="(card, index) in cards"
+                        :key="index"
+                        :class="$style.cardWrapper"
+                        :initial="{ opacity: 0, y: 40 }"
+                        :whileInView="{ opacity: 1, y: 0 }"
+                        :inViewOptions="{ once: true }"
+                        :transition="{ duration: 0.55, delay: 0.2 + index * 0.1, ease: 'easeOut' }"
                     >
-                        {{ card.description }}
-                    </WhoWeAreServiceCard>
-                </motion.div>
-            </section>
+                        <WhoWeAreServiceCard
+                            :title="card.title"
+                            :image="card.image"
+                        >
+                            {{ card.description }}
+                        </WhoWeAreServiceCard>
+                    </motion.div>
+                </section>
+
+                <button
+                    type="button"
+                    :class="[$style.scrollArrow, $style.scrollRight, !canScrollRight && $style.arrowDisabled]"
+                    @click="scrollCards('right')"
+                    aria-label="Scroll right"
+                >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
         </div>
     </section>
 </template>
@@ -76,7 +132,7 @@ const cards = [
 @use "~/assets/variables" as *;
 
 .section {
-    padding: 180px 0 250px;
+    padding: 130px 0 220px;
     
     .container {
         .subtitle {
@@ -124,15 +180,73 @@ const cards = [
             }
         }
         
+        .cardsCarouselWrapper {
+            position: relative;
+            margin-top: 64px;
+            width: 100%;
+
+            .scrollArrow {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 10;
+                width: 46px;
+                height: 46px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.25);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                color: #000;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+                transition: all 0.25s ease;
+                padding: 0;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.45);
+                    transform: translateY(-50%) scale(1.08);
+                    color: #000;
+                }
+
+                &.arrowDisabled {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+
+            .scrollLeft {
+                left: 12px;
+            }
+
+            .scrollRight {
+                right: 12px;
+            }
+        }
+
         .cards {
             display: flex;
             gap: 32px;
-            margin-top: 64px;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            margin-top: 0;
+            overflow-x: auto;
+            flex-wrap: nowrap;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 16px 8px;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             .cardWrapper {
                 display: flex;
+                flex-shrink: 0;
+                scroll-snap-align: start;
             }
         }
     }
@@ -142,16 +256,26 @@ const cards = [
     .section {
         padding: 120px 0 160px;
 
-        .container .cards {
-            gap: 24px;
-            justify-content: center;
+        .container {
+            .cardsCarouselWrapper {
+                margin-top: 48px;
+
+                .scrollArrow {
+                    width: 42px;
+                    height: 42px;
+                }
+
+                .cards {
+                    gap: 24px;
+                }
+            }
         }
     }
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
     .section {
-        padding: 90px 0 120px;
+        padding: 100px 0 120px;
 
         .container {
             .subtitle {
@@ -168,14 +292,19 @@ const cards = [
                 }
             }
 
-            .cards {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 24px;
-                margin-top: 48px;
+            .cardsCarouselWrapper {
+                margin-top: 40px;
 
-                .cardWrapper {
-                    width: 100%;
+                .scrollLeft {
+                    left: 8px;
+                }
+
+                .scrollRight {
+                    right: 8px;
+                }
+
+                .cards {
+                    gap: 20px;
                 }
             }
         }
@@ -184,7 +313,7 @@ const cards = [
 
 @media screen and (max-width: $mobileBreakpoint) {
     .section {
-        padding: 70px 0 90px;
+        padding: 85px 0 90px;
 
         .container {
             .subtitle {
@@ -203,10 +332,26 @@ const cards = [
                 }
             }
 
-            .cards {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                margin-top: 36px;
+            .cardsCarouselWrapper {
+                margin-top: 32px;
+
+                .scrollArrow {
+                    width: 38px;
+                    height: 38px;
+                }
+
+                .scrollLeft {
+                    left: 4px;
+                }
+
+                .scrollRight {
+                    right: 4px;
+                }
+
+                .cards {
+                    gap: 16px;
+                    padding: 8px 4px;
+                }
             }
         }
     }

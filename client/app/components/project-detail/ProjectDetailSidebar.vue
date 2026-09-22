@@ -117,18 +117,18 @@ onUnmounted(() => {
         </div>
     </aside>
 
-        <button
-            v-if="tocItems.length > 0"
-            :class="$style.floatingToggleBtn"
-            @click="isDrawerOpen = true"
-            type="button"
-            :aria-label="t('projects.detail.tableOfContents')"
-        >
-            <TablerList :class="$style.toggleIcon" />
-            <span :class="$style.toggleText">{{ t("projects.detail.tableOfContents") }}</span>
-        </button>
-
         <Teleport to="body">
+            <button
+                v-if="tocItems.length > 0"
+                :class="$style.floatingToggleBtn"
+                @click="isDrawerOpen = true"
+                type="button"
+                :aria-label="t('projects.detail.tableOfContents')"
+            >
+                <TablerList :class="$style.toggleIcon" />
+                <span :class="$style.toggleText">{{ t("projects.detail.tableOfContents") }}</span>
+            </button>
+
             <Transition name="fade">
                 <div
                     v-if="isDrawerOpen"
@@ -330,7 +330,7 @@ onUnmounted(() => {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    z-index: 1000;
+    z-index: 2000;
     align-items: center;
     gap: 10px;
     background-color: var(--color-carbon-700);
@@ -340,6 +340,9 @@ onUnmounted(() => {
     color: var(--color-text-primary);
     cursor: pointer;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5),
+                0 0 16px hsl(from var(--color-primary) h s l / 0.2);
     transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
 
     .toggleIcon {
@@ -458,12 +461,6 @@ onUnmounted(() => {
 }
 
 @media screen and (max-width: $laptopBreakpoint) {
-    .sidebar .sidebarCard {
-        padding: 20px;
-    }
-}
-
-@media screen and (max-width: $tabletBreakpoint) {
     .sidebar {
         display: none;
     }
@@ -471,6 +468,9 @@ onUnmounted(() => {
     .floatingToggleBtn {
         display: inline-flex;
     }
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
 }
 
 @media screen and (max-width: $mobileBreakpoint) {

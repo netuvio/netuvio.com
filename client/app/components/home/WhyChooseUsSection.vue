@@ -44,7 +44,6 @@ const { t } = useI18n();
                     <Card 
                         variant="accent"
                         base3dOffset="10"
-                        
                     >
                         <section>
                             <h2>{{ t('whyChooseUs.cta.title') }}</h2>
@@ -88,27 +87,25 @@ const { t } = useI18n();
 @use "~/assets/variables" as *;
 
 .section {
-    padding: clamp(90px, 10vw, 150px) 0;
+    padding: clamp(60px, 7vw, 110px) 0;
     
     .grid {
         display: grid;
-        grid-template-columns: 1fr 1fr minmax(360px, 450px);
-        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr minmax(340px, 420px);
+        grid-template-rows: auto;
         gap: 24px;
         
         >div {
-            //border: 1px solid var(--color-carbon-50);
             width: 100%;
-            min-height: 300px;
+            min-height: 220px;
             height: auto;
-            //padding: 24px;
             
             >div {
                 width: 100%;
                 height: 100%;
                 
                 h2 {
-                    font-size: clamp(28px, 2.8vw, 40px);
+                    font-size: clamp(24px, 2.4vw, 34px);
                     display: flex;
                     align-items: center;
                     gap: 8px;
@@ -130,17 +127,22 @@ const { t } = useI18n();
         
         .title {
             border: none;
-            padding: clamp(24px, 3vw, 40px);
+            padding: 24px 20px;
+            min-height: auto;
+            display: flex;
+            align-items: center;
         }
         
         .cta {
             grid-column: 3;
             grid-row: span 2;
+            min-height: auto;
             
             >div {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
+                gap: 24px;
             }
         }
     }
@@ -155,44 +157,88 @@ const { t } = useI18n();
 }
 
 @media screen and (max-width: $laptopBreakpoint) {
-    .section .grid {
-        grid-template-columns: 1fr 1fr minmax(320px, 380px);
+    .section {
+        padding: 70px 0;
+
+        .grid {
+            grid-template-columns: 1fr 1fr minmax(280px, 340px);
+            gap: 20px;
+
+            > div {
+                min-height: 200px;
+            }
+
+            .title {
+                padding: 16px 12px;
+            }
+        }
     }
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
-    .section .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: auto;
+    .section {
+        padding: 50px 0;
 
-        .cta {
-            grid-column: 1 / -1;
-            grid-row: auto;
-            min-height: 320px;
-            order: 10;
+        .grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: auto;
+            gap: 16px;
+
+            > div {
+                min-height: auto;
+
+                > div h2 {
+                    font-size: clamp(20px, 2.8vw, 26px);
+                }
+            }
+
+            .title {
+                padding: 8px 0;
+                min-height: auto;
+            }
+
+            .cta {
+                grid-column: 1 / -1;
+                grid-row: auto;
+                min-height: auto;
+                order: 10;
+
+                > div {
+                    gap: 20px;
+                }
+            }
         }
     }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
     .section {
-        padding: 60px 0;
+        padding: 40px 0;
 
         .grid {
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 14px;
 
             > div {
                 min-height: auto;
-                border-radius: 24px;
+                border-radius: 20px;
+
+                > div h2 {
+                    font-size: 22px;
+                }
             }
 
             .title {
-                padding: 0;
+                padding: 0 0 4px 0;
             }
 
             .cta {
                 order: 10;
+                min-height: auto;
+
+                > div {
+                    gap: 16px;
+                }
             }
         }
     }

@@ -63,7 +63,7 @@ onUnmounted(() => {
                 </ul>
             </div>
             <LocaleSelector :class="$style.locales"/>
-            <MobileMenu :class="$style.mobileMenu" :links="links" />
+            <MobileMenu :class="$style.mobileMenu" :links="links" :is-scrolled="hasScrolled || isSubpage" />
         </nav>
     </header>
 </template>

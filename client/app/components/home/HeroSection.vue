@@ -8,38 +8,6 @@ const { t } = useI18n();
 
 const { scrollYProgress } = useScroll();
 const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
-
-const techRowRef = ref<HTMLElement | null>(null);
-const canScrollLeft = ref(false);
-const canScrollRight = ref(false);
-
-const checkTechScroll = () => {
-    if (!techRowRef.value) return;
-    const { scrollLeft, scrollWidth, clientWidth } = techRowRef.value;
-    canScrollLeft.value = scrollLeft > 4;
-    canScrollRight.value = scrollLeft + clientWidth < scrollWidth - 4;
-};
-
-const scrollTech = (dir: "left" | "right") => {
-    if (!techRowRef.value) return;
-    const distance = 180;
-    techRowRef.value.scrollBy({
-        left: dir === "left" ? -distance : distance,
-        behavior: "smooth"
-    });
-};
-
-onMounted(() => {
-    nextTick(() => {
-        checkTechScroll();
-    });
-    window.addEventListener("resize", checkTechScroll);
-});
-
-onUnmounted(() => {
-    window.removeEventListener("resize", checkTechScroll);
-});
-
 </script>
 
 <template>
@@ -113,42 +81,24 @@ onUnmounted(() => {
                     </NuxtLinkLocale>
                 </motion.div>
             </motion.div>
+        </main>
+
+        <div :class="['container', $style.technologiesAnchor]">
             <div :class="$style.technologies">
                 <span>
                     {{ t("home.techWeUse") }}
                     <img :class="$style.squiggle" src="/images/squiggle-2.svg" alt="" />
                 </span>
-                <div :class="$style.techCarouselWrapper">
-                    <button
-                        type="button"
-                        :class="[$style.scrollArrow, $style.scrollLeft, !canScrollLeft && $style.arrowDisabled]"
-                        @click="scrollTech('left')"
-                        aria-label="Scroll left"
-                    >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-                    <div ref="techRowRef" :class="$style.techRow" @scroll="checkTechScroll">
-                        <img src="/icons/tech/dotnet.svg" alt="DotNet" />
-                        <img src="/icons/tech/vuejs.svg" alt="Vue.js" />
-                        <img src="/icons/tech/react.svg" alt="React" />
-                        <img src="/icons/tech/docker.svg" alt="Docker" />
-                        <img src="/icons/tech/postgresql.svg" alt="PostgreSQL" />
-                    </div>
-                    <button
-                        type="button"
-                        :class="[$style.scrollArrow, $style.scrollRight, !canScrollRight && $style.arrowDisabled]"
-                        @click="scrollTech('right')"
-                        aria-label="Scroll right"
-                    >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
+                <div :class="$style.techRow">
+                    <img src="/icons/tech/dotnet.svg" alt="DotNet" />
+                    <img src="/icons/tech/vuejs.svg" alt="Vue.js" />
+                    <img src="/icons/tech/react.svg" alt="React" />
+                    <img src="/icons/tech/docker.svg" alt="Docker" />
+                    <img src="/icons/tech/postgresql.svg" alt="PostgreSQL" />
                 </div>
             </div>
-        </main>
+        </div>
+
         <div :class="$style.pageTransition"></div>
     </main>
 </template>
@@ -158,9 +108,12 @@ onUnmounted(() => {
 
 .heroWrapper {
     width: 100%;
-    height: 90vh;
+    min-height: 90vh;
     background-color: var(--color-primary);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .bg {
@@ -219,8 +172,9 @@ onUnmounted(() => {
 
 .hero {
     position: relative;
-    padding-top: 240px;
-    height: 100%;
+    padding-top: 180px;
+    padding-bottom: 120px;
+    width: 100%;
 
     >.textContainer {
         width: min(100%, 100vw);
@@ -272,107 +226,6 @@ onUnmounted(() => {
         pointer-events: none;
         user-select: none;
         width: 100%;
-        //max-width: 1500px;
-    }
-    
-    .technologies {
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translate(-50%, 50%);
-        background-color: var(--color-background-primary);
-        padding: 50px 50px;
-        border-radius: 48px;
-        width: 100%;
-        z-index: 10;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 96px;
-
-        span {
-            text-transform: uppercase;
-            font-size: 20px;
-            font-weight: 600;
-            white-space: pre-line;
-            position: relative;
-            
-            .squiggle {
-                position: absolute;
-                top: 100%;
-                left: 0;
-            }
-        }
-        
-        .techCarouselWrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            min-width: 0;
-
-            .techRow {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 24px;
-                width: 100%;
-                overflow-x: auto;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                scroll-behavior: smooth;
-
-                &::-webkit-scrollbar {
-                    display: none;
-                }
-
-                img {
-                    height: 40px;
-                    object-fit: contain;
-                    flex-shrink: 0;
-                }
-            }
-
-            .scrollArrow {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                z-index: 5;
-                width: 38px;
-                height: 38px;
-                border-radius: 50%;
-                display: none;
-                align-items: center;
-                justify-content: center;
-                background: rgba(255, 255, 255, 0.12);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                border: 1px solid rgba(255, 255, 255, 0.25);
-                color: var(--color-primary);
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-                cursor: pointer;
-                transition: all 0.25s ease;
-                padding: 0;
-
-                &:hover {
-                    background: rgba(255, 255, 255, 0.22);
-                    transform: translateY(-50%) scale(1.08);
-                }
-
-                &.arrowDisabled {
-                    opacity: 0;
-                    pointer-events: none;
-                }
-            }
-
-            .scrollLeft {
-                left: 8px;
-            }
-
-            .scrollRight {
-                right: 8px;
-            }
-        }
     }
     
     .dots {
@@ -405,6 +258,69 @@ onUnmounted(() => {
     }
 }
 
+.technologiesAnchor {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 10;
+    width: 100%;
+    pointer-events: auto;
+}
+
+.technologies {
+    background-color: var(--color-background-primary);
+    padding: 42px 48px;
+    border-radius: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 36px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+
+    span {
+        text-transform: uppercase;
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 1.18;
+        white-space: pre-line;
+        position: relative;
+        flex-shrink: 0;
+        
+        .squiggle {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            width: 86px;
+            height: auto;
+            pointer-events: none;
+        }
+    }
+    
+    .techRow {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        justify-content: flex-end;
+        gap: 32px;
+        flex-wrap: nowrap;
+
+        img {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.2s ease;
+
+            @media (hover: hover) {
+                &:hover {
+                    transform: scale(1.08);
+                }
+            }
+        }
+    }
+}
+
 .pageTransition {
     position: absolute;
     bottom: 0;
@@ -420,12 +336,12 @@ onUnmounted(() => {
 
 @media screen and (max-width: $laptopBreakpoint) {    
     .heroWrapper {
-        height: auto;
-        min-height: 90vh;
+        min-height: 85vh;
     }
 
     .hero {
-        padding-top: 180px;
+        padding-top: 160px;
+        padding-bottom: 100px;
 
         >.textContainer {
             h1 {
@@ -444,19 +360,38 @@ onUnmounted(() => {
                 margin-top: 32px;
             }
         }
+    }
 
-        .technologies {
-            padding: 40px;
-            gap: 48px;
+    .technologies {
+        padding: 34px 36px;
+        border-radius: 32px;
+        gap: 28px;
+
+        span {
+            font-size: 16px;
+            line-height: 1.2;
+
+            .squiggle {
+                width: 72px;
+                top: calc(100% + 3px);
+            }
+        }
+
+        .techRow {
+            align-self: center;
+            flex-wrap: nowrap;
+            gap: 22px;
+
+            img {
+                height: 30px;
+            }
         }
     }
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
     .heroWrapper {
-        height: auto;
-        min-height: 85vh;
-        padding-bottom: 80px;
+        min-height: auto;
     }
 
     .heroImageContainer {
@@ -475,6 +410,7 @@ onUnmounted(() => {
 
     .hero {
         padding-top: 120px;
+        padding-bottom: 90px;
         height: auto;
 
         >.textContainer {
@@ -493,29 +429,47 @@ onUnmounted(() => {
                 margin-top: 32px;
             }
         }
+    }
 
-        .technologies {
-            position: relative;
-            left: auto;
-            bottom: auto;
-            transform: none;
-            margin-top: 60px;
-            border-radius: 32px;
-            padding: 28px 20px;
-            gap: 20px;
-            flex-direction: column;
-            align-items: center;
+    .technologiesAnchor {
+        padding: 0 clamp(16px, 3vw, 24px);
+    }
 
-            .techCarouselWrapper {
-                .scrollArrow {
-                    display: flex;
-                }
+    .technologies {
+        border-radius: 24px;
+        padding: 30px 24px;
+        gap: 20px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
 
-                .techRow {
-                    gap: 32px;
-                    padding: 4px 50px;
-                    justify-content: flex-start;
-                }
+        span {
+            font-size: 13px;
+            line-height: 1.18;
+            letter-spacing: 0.02em;
+            text-align: left;
+
+            .squiggle {
+                display: block;
+                position: absolute;
+                top: calc(100% + 3px);
+                left: 0;
+                width: 62px;
+                height: auto;
+                pointer-events: none;
+            }
+        }
+
+        .techRow {
+            align-self: center;
+            justify-content: flex-end;
+            gap: clamp(14px, 2vw, 20px);
+            flex-wrap: nowrap;
+
+            img {
+                height: 24px;
+                max-width: 44px;
             }
         }
     }
@@ -523,9 +477,7 @@ onUnmounted(() => {
 
 @media screen and (max-width: $mobileBreakpoint) {
     .heroWrapper {
-        height: auto;
-        min-height: 100svh;
-        padding-bottom: 40px;
+        min-height: auto;
     }
 
     .heroImageContainer {
@@ -545,6 +497,7 @@ onUnmounted(() => {
 
     .hero {
         padding-top: 90px;
+        padding-bottom: 80px;
         height: auto;
 
         >.textContainer {
@@ -570,39 +523,76 @@ onUnmounted(() => {
                 margin-top: 20px;
             }
         }
+    }
 
-        .technologies {
-            position: relative;
-            left: auto;
-            bottom: auto;
-            transform: none;
-            margin-top: 40px;
-            border-radius: 24px;
-            padding: 20px 14px;
-            gap: 16px;
+    .technologiesAnchor {
+        padding: 0 16px;
+    }
+
+    .technologies {
+        border-radius: 16px;
+        padding: 12px 16px;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+        span {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            white-space: normal;
+            line-height: 1.2;
+            text-align: center;
+            color: var(--color-carbon-100);
+
+            .squiggle {
+                display: none;
+            }
+        }
+
+        .techRow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(12px, 3.8vw, 18px);
+            flex-wrap: nowrap;
             width: 100%;
 
-            span {
-                font-size: 16px;
-                text-align: center;
+            img {
+                height: clamp(18px, 4.8vw, 22px);
+                width: auto;
+                max-width: 40px;
+                object-fit: contain;
+                flex-shrink: 0;
             }
+        }
+    }
+}
 
-            .techCarouselWrapper {
-                .scrollArrow {
-                    display: flex;
-                    width: 34px;
-                    height: 34px;
-                }
+@media screen and (max-width: 380px) {
+    .technologiesAnchor {
+        padding: 0 10px;
+    }
 
-                .techRow {
-                    gap: 24px;
-                    padding: 4px 44px;
-                    justify-content: flex-start;
+    .technologies {
+        padding: 10px 12px;
+        border-radius: 14px;
+        gap: 8px;
 
-                    img {
-                        height: 30px;
-                    }
-                }
+        span {
+            font-size: 10px;
+            letter-spacing: 0.04em;
+        }
+
+        .techRow {
+            gap: 10px;
+
+            img {
+                height: 17px;
+                max-width: 32px;
             }
         }
     }

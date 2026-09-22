@@ -195,8 +195,8 @@ onUnmounted(() => {
 @media screen and (max-width: $laptopBreakpoint) {
     .contentSection .contentContainer {
         .editorialLayout {
-            grid-template-columns: 1fr 300px;
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 0;
         }
     }
 }
@@ -204,11 +204,6 @@ onUnmounted(() => {
 @media screen and (max-width: $tabletBreakpoint) {
     .contentSection .contentContainer {
         gap: 60px;
-
-        .editorialLayout {
-            grid-template-columns: 1fr;
-            gap: 0;
-        }
     }
 }
 

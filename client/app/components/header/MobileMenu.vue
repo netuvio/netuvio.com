@@ -4,7 +4,8 @@ import type {HeaderLink} from "~/lib/types";
 import { AnimatePresence, motion } from "motion-v";
 
 const props = defineProps<{
-    links: HeaderLink[]
+    links: HeaderLink[];
+    isScrolled?: boolean;
 }>();
 
 const { t } = useI18n();
@@ -14,7 +15,15 @@ const isOpen = ref(false);
 
 <template>
     <div>
-        <button :class="[$style.menuButton, isOpen && $style.open]" @click="isOpen = !isOpen">
+        <button
+            :class="[
+                $style.menuButton,
+                isOpen && $style.open,
+                (props.isScrolled || isOpen) && $style.scrolled
+            ]"
+            @click="isOpen = !isOpen"
+            aria-label="Navigation menu"
+        >
             <span></span>
             <span></span>
             <span></span>
@@ -102,9 +111,15 @@ const isOpen = ref(false);
         left: 10px;
         width: 24px;
         height: 3px;
-        background: var(--color-background-primary);
+        background: var(--color-text-secondary);
         border-radius: 2px;
         transition: all 0.3s ease;
+    }
+
+    &.scrolled {
+        span {
+            background: var(--color-text-primary);
+        }
     }
 
     span:nth-child(1) {
