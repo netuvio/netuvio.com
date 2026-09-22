@@ -7,6 +7,7 @@ import { motion } from "motion-v";
 import TablerWorld from '~icons/tabler/world';
 import TablerGitMerge from '~icons/tabler/git-merge';
 import Fa7SolidStar from '~icons/fa7-solid/star'
+import DrawnArrow from "~/components/DrawnArrow.vue";
 
 const props = defineProps<{
     project: Project;
@@ -53,10 +54,10 @@ const dateRange = computed(() => {
     >
         <div :class="$style.decorations">
             <img src="/images/dots.svg" :class="$style.dotsPattern" alt="" />
-            <div :class="$style.cylinders">
-                <div></div>
-                <div></div>
-            </div>
+<!--            <div :class="$style.cylinders">-->
+<!--                <div></div>-->
+<!--                <div></div>-->
+<!--            </div>-->
         </div>
 
         <NuxtLinkLocale :to="`/projects/${project.slug}`" :class="$style.imageWrapper">
