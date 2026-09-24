@@ -207,9 +207,10 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             position: relative;
             display: flex;
             gap: 30px;
+            height: min-content;
+            margin-top: 20px;
             
             button {
-                margin-top: 20px;
                 box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
                 position: relative;
                 z-index: 1;
@@ -361,11 +362,19 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                 margin-top: 12px;
             }
 
-            button {
-                padding: 16px 24px;
-                font-size: 22px;
-                min-height: 0;
+            .ctaContainer {
                 margin-top: 32px;
+                
+                button > span:last-child {
+                    padding: 16px 24px;
+                    font-size: 22px;
+                    min-height: 0;
+                }
+                
+                .heroSquiggle {
+                    width: 86px !important;
+                    height: 56px !important;
+                }
             }
         }
     }
@@ -418,11 +427,19 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                 font-size: 16px;
             }
 
-            button {
-                padding: 16px 24px;
-                font-size: 20px;
-                min-height: 0;
+            .ctaContainer {
                 margin-top: 32px;
+
+                button > span:last-child {
+                    padding: 16px 24px;
+                    font-size: 20px;
+                    min-height: 0;
+                }
+                
+                .heroSquiggle {
+                    width: 86px !important;
+                    height: 56px !important;
+                }
             }
         }
     }
@@ -482,6 +499,8 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
         >.textContainer {
             margin-top: 0;
+            width: 100%;
+            max-width: 100%;
             
             h1 {
                 font-size: clamp(30px, 10vw, 42px);
@@ -491,12 +510,20 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             h2 {
                 font-size: 14px;
             }
-
-            button {
-                padding: 12px 20px;
-                font-size: 16px;
-                min-height: 0;
+            
+            .ctaContainer {
                 margin-top: 20px;
+
+                button >span:last-child {
+                    font-size: 16px;
+                    padding: 12px 20px;
+                    min-height: 0;
+                }
+
+                .heroSquiggle {
+                    width: 65px !important;
+                    height: 42px !important;
+                }
             }
         }
     }

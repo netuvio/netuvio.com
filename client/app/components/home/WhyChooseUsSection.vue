@@ -222,7 +222,7 @@ const { t } = useI18n();
 
         .grid {
             grid-template-columns: 1fr;
-            gap: 14px;
+            gap: 24px;
 
             > div {
                 min-height: auto;
