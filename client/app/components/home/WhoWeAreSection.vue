@@ -13,7 +13,7 @@ const canScrollRight = ref(false);
 const checkCardsScroll = () => {
     if (!cardsRowRef.value) return;
     const { scrollLeft, scrollWidth, clientWidth } = cardsRowRef.value;
-    canScrollLeft.value = scrollLeft > 4;
+    canScrollLeft.value = scrollLeft > 12;
     canScrollRight.value = scrollLeft + clientWidth < scrollWidth - 4;
 };
 
@@ -82,7 +82,13 @@ const cards = [
                 <h2 :class="$style.subtitle" v-html="t('whoWeAre.subtitle')"></h2>
             </motion.div>
 
-            <div :class="$style.cardsCarouselWrapper">
+            <div
+                :class="[
+                    $style.cardsCarouselWrapper,
+                    canScrollLeft && $style.hasOverflowLeft,
+                    canScrollRight && $style.hasOverflowRight
+                ]"
+            >
                 <button
                     type="button"
                     :class="[$style.scrollArrow, $style.scrollLeft, !canScrollLeft && $style.arrowDisabled]"
@@ -184,6 +190,37 @@ const cards = [
             position: relative;
             margin-top: 64px;
             width: 100%;
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: clamp(40px, 6vw, 80px);
+                pointer-events: none;
+                z-index: 2;
+                opacity: 0;
+                transition: opacity 0.25s ease;
+            }
+
+            &::before {
+                left: 0;
+                background: linear-gradient(to right, var(--color-background-secondary), transparent);
+            }
+
+            &::after {
+                right: 0;
+                background: linear-gradient(to left, var(--color-background-secondary), transparent);
+            }
+
+            &.hasOverflowLeft::before {
+                opacity: 1;
+            }
+
+            &.hasOverflowRight::after {
+                opacity: 1;
+            }
 
             .scrollArrow {
                 position: absolute;
