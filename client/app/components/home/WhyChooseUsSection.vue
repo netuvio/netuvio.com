@@ -105,10 +105,11 @@ const { t } = useI18n();
                 height: 100%;
                 
                 h2 {
-                    font-size: clamp(24px, 2.4vw, 34px);
+                    font-size: clamp(20px, 1.4vw, 34px);
                     display: flex;
                     align-items: center;
                     gap: 8px;
+                    margin-bottom: 8px;
 
                     i {
                         width: 40px;
@@ -121,6 +122,10 @@ const { t } = useI18n();
                             position: absolute;
                         }
                     }
+                }
+                
+                p {
+                    font-size: 18px;
                 }
             }
         }
