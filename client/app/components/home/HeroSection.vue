@@ -25,35 +25,6 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                 <img src="/images/dots.svg" alt="" />
             </div>
             <motion.div :class="$style.textContainer" :style="{ scale: textScale, transformOrigin: 'center center' }">
-                <!-- Squiggle -->
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 155.04 73.442"
-                    :class="$style.heroSquiggle"
-                >
-                    <motion.path
-                        stroke="#000"
-                        stroke-linecap="round"
-                        stroke-width="5.6"
-                        d="M2.8 70.642s50.851-46.004 47.239-38.376c-3.612 7.628-41.307 25.497-23.296 23.347 18.011-2.15 21.079-18.828 45.495-27.669 24.417-8.84-44.735 28.412-34.631 33.66s34.042-34.729 78.579-50.098c44.537-15.369-97.689 61.553-53.113 55.605 44.576-5.948 67.848-68.955 85.268-64.048 17.42 4.906-29.431 39.878-29.431 39.878"
-                        :initial="{ pathLength: 0, opacity: 0 }"
-                        :animate="{ pathLength: 1, opacity: 1 }"
-                        :transition="{
-                            opacity: { 
-                                duration: 0.2, 
-                                ease: 'easeInOut',
-                                delay: 1.8
-                            },
-                            pathLength: { 
-                                duration: 1.2, 
-                                ease: 'easeInOut',
-                                delay: 1.9
-                            }
-                        }"
-                    />
-                </svg>
-
                 <!-- nadpis -->
                 <h1>
                     <RandomTextAnimation :text="t('home.hero')" :interval="10" />
@@ -67,6 +38,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                     />
                 </h2>
                 <motion.div
+                    :class="$style.ctaContainer"
                     :initial="{ opacity: 0, y: 10 }"
                     :animate="{ opacity: 1, y: 0 }"
                     :transition="{
@@ -80,6 +52,33 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                             <DrawnArrow />
                         </Button>
                     </NuxtLinkLocale>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 155.04 73.442"
+                        :class="$style.heroSquiggle"
+                    >
+                        <motion.path
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-width="5.6"
+                            d="M2.8 70.642s50.851-46.004 47.239-38.376c-3.612 7.628-41.307 25.497-23.296 23.347 18.011-2.15 21.079-18.828 45.495-27.669 24.417-8.84-44.735 28.412-34.631 33.66s34.042-34.729 78.579-50.098c44.537-15.369-97.689 61.553-53.113 55.605 44.576-5.948 67.848-68.955 85.268-64.048 17.42 4.906-29.431 39.878-29.431 39.878"
+                            :initial="{ pathLength: 0, opacity: 0 }"
+                            :animate="{ pathLength: 1, opacity: 1 }"
+                            :transition="{
+                            opacity: { 
+                                duration: 0.2, 
+                                ease: 'easeInOut',
+                                delay: 1.8
+                            },
+                            pathLength: { 
+                                duration: 1.2, 
+                                ease: 'easeInOut',
+                                delay: 1.9
+                            }
+                        }"
+                        />
+                    </svg>
                 </motion.div>
             </motion.div>
         </main>
@@ -186,15 +185,6 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         position: relative;
         z-index: 2;
 
-        .heroSquiggle {
-            position: absolute;
-            top: -75px;
-            left: 10px;
-            width: 130px;
-            height: auto;
-            pointer-events: none;
-        }
-
         h1 {
             font-size: clamp(52px, 5.55vw, 80px);
             -webkit-text-stroke: 12px transparent;
@@ -212,12 +202,24 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             max-width: 600px;
             position: relative;
         }
-
-        button {
-            margin-top: 20px;
-            box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
+        
+        .ctaContainer {
             position: relative;
-            z-index: 1;
+            display: flex;
+            gap: 30px;
+            
+            button {
+                margin-top: 20px;
+                box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
+                position: relative;
+                z-index: 1;
+            }
+            
+            .heroSquiggle {
+                width: 130px;
+                height: auto;
+                pointer-events: none;
+            }
         }
     }
 
@@ -350,12 +352,6 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         >.textContainer {
             max-width: 560px;
 
-            .heroSquiggle {
-                top: -68px;
-                left: 10px;
-                width: 115px;
-            }
-
             h1 {
                 font-size: clamp(50px, 6.8vw, 70px);
             }
@@ -408,17 +404,11 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
     .hero {
         padding-top: 120px;
-        padding-bottom: 90px;
+        padding-bottom: 150px;
         height: auto;
 
         >.textContainer {
             max-width: min(440px, 52vw);
-
-            .heroSquiggle {
-                top: -58px;
-                left: 5px;
-                width: 100px;
-            }
 
             h1 {
                 font-size: clamp(38px, 6.5vw, 50px);
@@ -488,17 +478,10 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
     .hero {
         padding-top: 90px;
-        padding-bottom: 80px;
         height: auto;
 
         >.textContainer {
             margin-top: 0;
-
-            .heroSquiggle {
-                top: -42px;
-                left: 0;
-                width: 80px;
-            }
             
             h1 {
                 font-size: clamp(30px, 10vw, 42px);
