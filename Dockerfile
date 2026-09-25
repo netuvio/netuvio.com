@@ -36,19 +36,18 @@ RUN dotnet publish "./server.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:
 # ==============================================================================
 # Stage 2: Build the frontend (Node.js) - runs in parallel with Stage 1
 # ==============================================================================
-FROM node:22-bookworm-slim AS build-client
+FROM node:24-bookworm-slim AS build-client
 WORKDIR /src/client
 
 ARG DEPLOY_ENVIRONMENT
 ENV DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT
-ENV NODE_ENV=production
-
 # Install dependencies (cached by Docker unless package*.json changes)
 COPY client/package*.json ./
 RUN npm ci
 
 # Build Nuxt production bundle (.output)
 COPY client/ ./
+ENV NODE_ENV=production
 RUN npm run build
 
 # ==============================================================================
@@ -73,7 +72,7 @@ RUN if [ -f /app/.env ]; then cp /app/.env /.env && chmod 644 /app/.env /.env; f
 # Install only runtime dependencies (nginx and nodejs runtime), clean apt cache
 RUN apt-get update && \
     apt-get install -y --no-install-recommends curl nginx && \
-    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && \
     apt-get install -y --no-install-recommends nodejs && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
