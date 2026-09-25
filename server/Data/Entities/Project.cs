@@ -15,7 +15,7 @@ public class Project {
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
 
-    [Required] [MaxLength(255)]
+    [Required, MaxLength(255)]
     public required string Slug { get; set; }
 
     public bool IsFeatured { get; set; } = false;
