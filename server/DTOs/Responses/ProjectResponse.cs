@@ -1,6 +1,6 @@
-﻿using server.Models.Projects;
+﻿using server.Data.Entities;
 
-namespace server.Contracts.V1;
+namespace server.DTOs.Responses;
 
 public class ProjectResponse
 {

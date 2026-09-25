@@ -1,18 +1,16 @@
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using server.Contracts.V1;
-using server.Infrastructure.Persistence;
+using server.Data;
+using server.DTOs.Responses;
 
 namespace server.Controllers.V1;
 
 [ApiController]
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/projects")]
-public class ProjectsController(
-    AppDbContext db
-)
-{
+public class ProjectsControllerV1(AppDbContext db) : Controller {
+    
     [HttpGet]
     public async Task<IActionResult> GetProjects(
         [FromQuery] string? locale = null,

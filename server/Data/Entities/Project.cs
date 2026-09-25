@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
-namespace server.Models.Projects;
+namespace server.Data.Entities;
 
 public enum ProjectType
 {
@@ -29,8 +29,10 @@ public class Project
     
     public DateTimeOffset? FinishedAt { get; set; }
     
+    [MaxLength(512)]
     public string? WebsiteUrl { get; set; }
     
+    [MaxLength(512)]
     public string? SourceCodeUrl { get; set; }
     
     

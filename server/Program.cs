@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 using Asp.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
-using server.Infrastructure.Persistence;
+using server.Data;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace server;
@@ -115,13 +115,7 @@ public static class Program {
 
         Application.UseAuthorization();
         Application.UseCors();
-
-        // pridani X-Powered-By
-        Application.Use(async (context, next) => {
-            context.Response.Headers.Append("X-Powered-By", "ASP.NET");
-            await next.Invoke();
-        });
-
+        
 
         Application.MapControllers();
 

@@ -1,0 +1,44 @@
+﻿root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+brace_style = 1tbs
+
+[*.{vue,scss,css,sass,less}]
+indent_style = space
+indent_size = 4
+ij_vue_brace_style = end_of_line
+ij_scss_brace_style = end_of_line
+ij_css_brace_style = end_of_line
+
+[*.{ts,js,mjs,cjs,json}]
+indent_style = space
+indent_size = 4
+ij_typescript_brace_style = end_of_line
+ij_javascript_brace_style = end_of_line
+
+[*.cs]
+indent_style = space
+indent_size = 4
+
+# Roslyn (Visual Studio, VS Code, dotnet format, OmniSharp)
+csharp_new_line_before_open_brace = none
+csharp_new_line_before_else = false
+csharp_new_line_before_catch = false
+csharp_new_line_before_finally = false
+
+# JetBrains Rider / ReSharper
+resharper_csharp_brace_style = end_of_line
+resharper_csharp_type_declaration_braces = end_of_line
+resharper_csharp_method_declaration_braces = end_of_line
+resharper_csharp_accessor_owner_declaration_braces = end_of_line
+resharper_csharp_other_braces = end_of_line
+resharper_csharp_place_else_on_new_line = false
+resharper_csharp_place_catch_on_new_line = false
+resharper_csharp_place_finally_on_new_line = false
+ij_csharp_brace_style = end_of_line

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace server.Models.Projects;
+namespace server.Data.Entities;
 
 public class ProjectLocalization
 {

@@ -7,7 +7,7 @@ namespace server.Controllers.V1;
 [ApiController]
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}")]
-public class IndexController : ControllerBase
+public class IndexControllerV1 : Controller
 {
     [HttpGet]
     [ProducesResponseType<string>(StatusCodes.Status200OK)]
