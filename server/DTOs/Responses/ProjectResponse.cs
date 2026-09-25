@@ -2,8 +2,7 @@
 
 namespace server.DTOs.Responses;
 
-public class ProjectResponse
-{
+public class ProjectResponse {
     public required Guid Id { get; set; }
     public required string Slug { get; set; }
     public required string Title { get; set; }
