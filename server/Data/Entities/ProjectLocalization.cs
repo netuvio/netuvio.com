@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace server.Data.Entities;
 
+[PrimaryKey(nameof(ProjectId), nameof(Locale))]
 public class ProjectLocalization {
-    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; set; }
-
     [Required, MaxLength(10)]
     public required string Locale { get; set; }
 
