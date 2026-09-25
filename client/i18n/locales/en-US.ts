@@ -12,25 +12,12 @@ export default defineI18nLocale(async (locale) => {
             "title": "Home",
             "subtitle": "Behind every high-quality project lies not only a good idea, but also the right technical solution. We'll help you with that from start to finish.",
             "learnMore": "Learn More",
-            "hero": {
-                "srOnly": "Modern apps, powerful hosting, zero hassle",
-                "line1": {
-                    "colored": "Modern",
-                    "text": "apps,"
-                },
-                "line2": {
-                    "colored": "powerful",
-                    "text": "hosting,"
-                },
-                "line3": {
-                    "colored": "zero",
-                    "text": "hassle"
-                }
-            }
+            "hero": "Modern apps,\npowerful hosting,\nzero hassle",
+            "techWeUse": "Technologies,\nwe use"
         },
-        "brief": {
-            "title": "Brief",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam."
+        "whoWeAre": {
+            "title": "Who We Are",
+            "subtitle": "We are a team of professionals \ncapable of creating <span>anything.</span>"
         },
         "services": {
             "design": {
@@ -80,7 +67,7 @@ export default defineI18nLocale(async (locale) => {
             },
             "about": {
                 "title": "About",
-                "brief": "Brief",
+                "whoWeAre": "Who We Are",
                 "services": "Services",
                 "process": "Process",
                 "projects": "Projects",
@@ -122,12 +109,53 @@ export default defineI18nLocale(async (locale) => {
             }
         },
         "projects": {
+            "title": "Projects",
+            "allProjects": "All Projects",
+            "allProjectsTitle": "Our Projects",
+            "badge": "Portfolio & Showcase",
+            "subtitle": "High-performance web applications, bespoke digital architectures, and boundary-pushing design.",
+            "metaDescription": "Explore our portfolio of custom web applications, digital solutions, and creative design.",
             "featuredProjects": "Featured Projects",
+            "viewAll": "View all projects",
+            "allFilter": "All Projects",
+            "noProjectsFound": "No projects found in this category.",
+            "resetFilter": "Show all projects",
+            "stats": {
+                "customBuilt": "100% Bespoke Code",
+                "performance": "Max Performance",
+                "modernStack": "Cutting-Edge Tech"
+            },
+            "cta": {
+                "title": "Have a project in mind?",
+                "subtitle": "Let's turn your vision into an exceptional, high-converting digital product with zero hassle.",
+                "button": "Get In Touch"
+            },
             "types": {
                 "website": "Website",
                 "graphicDesign": "Graphical design"
             },
-            "learnMore": "Learn More"
+            "learnMore": "Explore Project",
+            "visitWebsite": "Visit Website",
+            "sourceCode": "Source Code",
+            "detail": {
+                "backToProjects": "Back to Projects",
+                "showcaseBadge": "Project Showcase",
+                "techStack": "Tech Stack",
+                "timeline": "Timeline",
+                "category": "Category",
+                "overview": "Overview",
+                "gallery": "Visual Gallery",
+                "gallerySubtitle": "High-resolution screenshots and media assets from the project.",
+                "asset": "Asset",
+                "quickFacts": "Quick Facts",
+                "projectStatus": "Status",
+                "statusLive": "Live & Active",
+                "statusCompleted": "Completed",
+                "viewLive": "Live Website",
+                "viewCode": "Source Repository",
+                "zoomHint": "Click to expand",
+                "tableOfContents": "Contents"
+            }
         },
         "whyChooseUs": {
             "title": "Why Choose Us",
@@ -150,7 +178,7 @@ export default defineI18nLocale(async (locale) => {
             }
         },
         "process": {
-            "title": "From Idea to Launch,<br/>Your Way",
+            "title": "From Idea to Launch,<br/><span>Your Way</span>",
             "sections": {
                 "consultation": {
                     "title": "Consultation",

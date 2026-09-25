@@ -1,5 +1,5 @@
-﻿<script setup lang="ts">
-import {onMounted, ref} from "vue";
+<script setup lang="ts">
+import {onMounted, onUnmounted, ref, computed, watch} from "vue";
 import { motion, AnimatePresence } from "motion-v";
 
 const props = withDefaults(defineProps<{
@@ -38,12 +38,44 @@ interface LetterWithCount {
     count: number;
 }
 
-const randomizedText = ref<LetterWithCount[]>(
-    props.text.split('').map((char, index) => ({
+const randomizedText = ref<LetterWithCount[]>([]);
+
+function initText() {
+    randomizedText.value = props.text.split('').map((char, index) => ({
         letter: getInitialScramble(char, index),
         count: 0
-    }))
-);
+    }));
+}
+
+initText();
+
+interface LineItem {
+    item: LetterWithCount;
+    originalIndex: number;
+}
+
+interface TextLine {
+    id: number;
+    items: LineItem[];
+}
+
+const lines = computed<TextLine[]>(() => {
+    const result: TextLine[] = [];
+    let currentItems: LineItem[] = [];
+    let lineId = 0;
+
+    randomizedText.value.forEach((item, index) => {
+        if (props.text[index] === '\n') {
+            result.push({ id: lineId++, items: currentItems });
+            currentItems = [];
+        } else {
+            currentItems.push({ item, originalIndex: index });
+        }
+    });
+
+    result.push({ id: lineId, items: currentItems });
+    return result;
+});
 
 function getRandomNonRandomizedIndex() {
     const unsolvedIndices = [];
@@ -74,8 +106,21 @@ function convertLetter(index: number, chance: number) {
     return targetLetter;
 }
 
-onMounted(() => {
-    setTimeout(() => {
+const activeIntervals: ReturnType<typeof setInterval>[] = [];
+let delayTimeout: ReturnType<typeof setTimeout> | null = null;
+
+function clearAllTimers() {
+    if (delayTimeout) {
+        clearTimeout(delayTimeout);
+        delayTimeout = null;
+    }
+    activeIntervals.forEach(clearInterval);
+    activeIntervals.length = 0;
+}
+
+function startAnimation() {
+    clearAllTimers();
+    delayTimeout = setTimeout(() => {
         for (let i = 0; i < props.consecutiveCount; i++) {
             const interval = setInterval(() => {
                 const randomIndex = getRandomNonRandomizedIndex();
@@ -88,12 +133,25 @@ onMounted(() => {
 
                 // Update the specific object in the array directly
                 randomizedText.value[randomIndex]!.letter = convertLetter(randomIndex, 30)!;
-
                 randomizedText.value[randomIndex]!.count++;
 
             }, props.interval);
+            activeIntervals.push(interval);
         }
     }, props.delay);
+}
+
+onMounted(() => {
+    startAnimation();
+});
+
+watch(() => props.text, () => {
+    initText();
+    startAnimation();
+});
+
+onUnmounted(() => {
+    clearAllTimers();
 });
 </script>
 
@@ -101,31 +159,56 @@ onMounted(() => {
     <span class="sr-only" v-if="seoFriendly">{{ props.text }}</span>
     
     <span :aria-hidden="seoFriendly || ariaHidden" :class="$style.wrapper">
-        <AnimatePresence mode="popLayout">
-            <motion.span
-                v-for="(item, i) in randomizedText"
-                :key="`${i}-${item.letter}`"
-                :initial="{ opacity: 0, y: -10, filter: 'blur(4px)' }"
-                :animate="{ opacity: 1, y: 0, filter: 'blur(0px)' }"
-                :exit="{ opacity: 0, y: 10, filter: 'blur(4px)', position: 'absolute' }"
-                :transition="{ duration: 0.15 }"
-                :class="$style.letter"
-                :aria-hidden="seoFriendly || ariaHidden"
-            >
-                {{ item.letter }}
-            </motion.span>
-        </AnimatePresence>
+        <span
+            v-for="line in lines"
+            :key="line.id"
+            :class="[$style.line, lines.length === 1 && $style.singleLine]"
+        >
+            <AnimatePresence mode="popLayout">
+                <motion.span
+                    v-for="{ item, originalIndex } in line.items"
+                    :key="`${originalIndex}-${item.letter}`"
+                    :initial="{ opacity: 0, y: -10, filter: 'blur(4px)' }"
+                    :animate="{ opacity: 1, y: 0, filter: 'blur(0px)' }"
+                    :exit="{ opacity: 0, y: 10, filter: 'blur(4px)', position: 'absolute' }"
+                    :transition="{ duration: 0.15 }"
+                    :class="$style.letter"
+                    :aria-hidden="seoFriendly || ariaHidden"
+                >{{ item.letter }}</motion.span>
+            </AnimatePresence>
+        </span>
     </span>
 </template>
 
 <style module lang="scss">
+@use "~/assets/variables" as *;
+
 .wrapper {
-    white-space: pre-wrap;
     position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.line {
+    display: block;
+    white-space: nowrap;
+}
+
+.singleLine {
     display: inline-block;
 }
 
 .letter {
     display: inline-block;
+    white-space: pre;
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
 }
 </style>

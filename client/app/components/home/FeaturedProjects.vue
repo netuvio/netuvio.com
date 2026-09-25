@@ -1,21 +1,46 @@
-﻿<script setup lang="ts">
-import Project from "~/components/home/Project.vue";
-import projects from "../../data/projects";
+<script setup lang="ts">
+import ProjectComponent from "~/components/home/Project.vue";
+import { Button } from "@netuvio/ui/vue";
+import {useFetch} from "#app";
+import type {Project} from "~/lib/types";
+import {computed} from "vue";
+import DrawnArrow from "~/components/DrawnArrow.vue";
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
+
+const { data: projects, pending, error } = useFetch<Project[]>("/api/v1/projects", {
+    query: { locale }
+});
+
+const featuredProjects = computed(() => {
+    return projects.value?.filter(p => p.isFeatured) || [];
+});
 </script>
 
 <template>
-    <section :class="[$style.section, 'theme-primary']" id="projects" ref="sectionRef">
+    <section :class="[$style.section, 'theme-primary']" id="projects" ref="sectionRef" v-if="projects && projects.length > 0">
         <div :class="['container', $style.container]">
             <h1>{{ t('projects.featuredProjects') }}</h1>
             <ul>
-                <li v-for="project in projects.filter(p => p.isFeatured)" :key="project.name">
-                    <Project :title="project.name" :imageUrl="project.imageUrl" :type="project.type" >
-                        {{project.description}}
-                    </Project>
+                <li v-for="project in featuredProjects" :key="project.title">
+                    <ProjectComponent 
+                        :title="project.title" 
+                        :imageUrl="project.imageUrls[0]" 
+                        :type="project.type"
+                        :slug="project.slug"
+                    >
+                        {{project.description ?? project.body}}
+                    </ProjectComponent>
                 </li>
             </ul>
+            <div :class="$style.actions">
+                <NuxtLinkLocale to="/projects">
+                    <Button variant="secondary" size="lg" theme="dark">
+                        {{ t('projects.viewAll') }}
+                        <DrawnArrow />
+                    </Button>
+                </NuxtLinkLocale>
+            </div>
         </div>
     </section>
 </template>
@@ -26,6 +51,7 @@ const { t } = useI18n();
 .section {
     min-height: 100vh;
     padding: clamp(90px, 10vw, 150px) 0;
+    box-shadow: 0 0 64px 64px var(--color-background-primary);
     
     h1 {
         margin-bottom: 32px;
@@ -44,6 +70,12 @@ const { t } = useI18n();
             }
         }
     }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 56px;
+    }
 }
 
 @media screen and (max-width: $laptopBreakpoint) {
@@ -60,5 +92,16 @@ const { t } = useI18n();
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    .section {
+        padding: 60px 0;
+
+        h1 {
+            margin-bottom: 24px;
+        }
+
+        .actions {
+            margin-top: 36px;
+        }
+    }
 }
 </style>

@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import {onMounted, ref} from 'vue'
 
 interface Comet {
@@ -66,6 +66,8 @@ onUnmounted(() => {
 </template>
 
 <style module lang="scss">
+@use "~/assets/variables" as *;
+
 .sky {
     position: absolute;
     inset: 0;
@@ -210,6 +212,26 @@ onUnmounted(() => {
     .stars::after {
         animation: none;
         filter: none;
+    }
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    .stars {
+        background-size: 50%;
+
+        &::before {
+            background-size: 46%;
+        }
+
+        &::after {
+            background-size: 56%;
+        }
     }
 }
 </style>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Head, Title } from "#components";
 import HeroSection from "~/components/home/HeroSection.vue";
-import Section2 from "~/components/home/Section2.vue";
+import WhoWeAreSection from "~/components/home/WhoWeAreSection.vue";
 import WhatWeDoSection from "~/components/home/WhatWeDoSection.vue";
 import ProcessSection from "../components/home/ProcessSection.vue";
 import FeaturedProjects from "~/components/home/FeaturedProjects.vue";
@@ -18,8 +18,8 @@ const { t } = useI18n();
 
     <div>
         <HeroSection />
-        <Section2 />
-        <WhatWeDoSection />
+        <WhoWeAreSection />
+<!--        <WhatWeDoSection />-->
         <ProcessSection /> 
         <FeaturedProjects />
         <WhyChooseUsSection />
@@ -29,4 +29,13 @@ const { t } = useI18n();
 
 <style module lang="scss">
 @use "~/assets/variables" as *;
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+}
 </style>

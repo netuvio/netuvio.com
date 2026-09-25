@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from "vue";
 
 // cookie (persisted)
@@ -127,5 +127,14 @@ onUnmounted(() => {
             }
         }
     }
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
 }
 </style>

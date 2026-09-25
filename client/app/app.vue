@@ -7,6 +7,7 @@ import Header from "~/components/header/Header.vue";
 import Debug from "~/components/Debug.vue";
 import 'lenis/dist/lenis.css'
 import Footer from "~/components/Footer.vue";
+import "@netuvio/ui/styles.css";
 
 // state
 const route = useRoute();
@@ -42,6 +43,15 @@ useHead({
 });
 
 const isDev = import.meta.env.DEV;
+
+
+// When switching pages scroll to top
+const lenisRef = ref<any>(null);
+watch(() => route.path, () => {
+    if (lenisRef.value?.lenis) {
+        lenisRef.value.lenis.scrollTo(0, { immediate: true });
+    }
+});
 </script>
 
 <template>
@@ -52,7 +62,7 @@ const isDev = import.meta.env.DEV;
         <!-- zaklad -->
         <Meta charset="utf-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Title>{{ t("common.comingSoon") }} • Netuvio</Title>
+        <Title>Netuvio</Title>
         <Meta name="description" :content="description" />
         <Meta name="robots" :content="'noindex, nofollow'/*robotsValue*/" />
 <!--        <Link rel="canonical" :href="canonicalUrl" />-->
@@ -84,13 +94,24 @@ const isDev = import.meta.env.DEV;
 
 
     <Debug v-if="isDev" />
-    <VueLenis root>
+    <VueLenis root ref="lenisRef">
         <Header />
-        <NuxtPage />
+        <div data-theme="light">
+            <NuxtPage />
+        </div>
         <Footer />
     </VueLenis>
 </template>
 
 <style module lang="scss">
+@use "~/assets/variables" as *;
 
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+}
 </style>

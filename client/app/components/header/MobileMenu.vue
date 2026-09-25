@@ -1,10 +1,11 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import {ref} from "vue";
 import type {HeaderLink} from "~/lib/types";
 import { AnimatePresence, motion } from "motion-v";
 
 const props = defineProps<{
-    links: HeaderLink[]
+    links: HeaderLink[];
+    isScrolled?: boolean;
 }>();
 
 const { t } = useI18n();
@@ -14,7 +15,15 @@ const isOpen = ref(false);
 
 <template>
     <div>
-        <button :class="[$style.menuButton, isOpen && $style.open]" @click="isOpen = !isOpen">
+        <button
+            :class="[
+                $style.menuButton,
+                isOpen && $style.open,
+                (props.isScrolled || isOpen) && $style.scrolled
+            ]"
+            @click="isOpen = !isOpen"
+            aria-label="Navigation menu"
+        >
             <span></span>
             <span></span>
             <span></span>
@@ -102,9 +111,15 @@ const isOpen = ref(false);
         left: 10px;
         width: 24px;
         height: 3px;
-        background: white;
+        background: var(--color-text-secondary);
         border-radius: 2px;
         transition: all 0.3s ease;
+    }
+
+    &.scrolled {
+        span {
+            background: var(--color-text-primary);
+        }
     }
 
     span:nth-child(1) {
@@ -148,5 +163,13 @@ const isOpen = ref(false);
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
+    .mobileMenu > div {
+        margin-top: 60px;
+
+        ul li a {
+            padding: 14px 0;
+            font-size: 18px;
+        }
+    }
 }
 </style>

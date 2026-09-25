@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
     overflow-x: clip;
     background-color: var(--color-background-primary);
     color: var(--color-text-primary);
@@ -72,6 +72,10 @@ picture {
     p {
         font-size: clamp(16px, 1.4vw, 20px);
     }
+    
+    ul li::marker {
+        color: var(--color-primary);
+    }
 }
 
 @layer components {
@@ -122,4 +126,13 @@ picture {
         white-space: nowrap;
         border-width: 0;
     }
+}
+
+@media screen and (max-width: $laptopBreakpoint) {
+}
+
+@media screen and (max-width: $tabletBreakpoint) {
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
 }

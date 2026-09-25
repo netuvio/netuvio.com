@@ -1,24 +1,44 @@
-﻿<script setup lang="ts">
-const { t, locale, setLocale, locales } = useI18n();
+<script setup lang="ts">
+import { Select, type SelectOption, type SelectSize } from "@netuvio/ui/vue";
+import { computed } from "vue";
+
+const { locale, setLocale, locales } = useI18n();
+
+const options = computed<SelectOption[]>(() =>
+    locales.value.map((loc: any) => {
+        const code = typeof loc === "string" ? loc : loc.code;
+        const name = typeof loc === "string" ? loc : loc.name;
+        return {
+            value: code,
+            label: name || code.toUpperCase(),
+        };
+    })
+);
+
+const onLocaleChange = (newLocale: string | number) => {
+    setLocale(String(newLocale) as "en" | "cs");
+};
 </script>
 
 <template>
-    <select :value="locale" @change="setLocale(($event.target as HTMLSelectElement).value)">
-        <option v-for="loc in locales" :key="loc.code" :value="loc.code">{{ loc.name }}</option>
-    </select>
+    <Select
+        :model-value="locale"
+        :options="options"
+        size="md"
+        radius="full"
+        align="right"
+        aria-label="Select language"
+        :class="$style.localeSelect"
+        @update:model-value="onLocaleChange"
+        theme="light"
+    />
 </template>
 
 <style module lang="scss">
 @use "~/assets/variables" as *;
 
-select {
-    background-color: var(--color-primary);
-    outline: none;
-    border: none;
-    border-radius: 10000px;
-    padding: 6px 12px;
-    font-weight: 700;
-    z-index: 1;
+.localeSelect {
+    z-index: 10;
 }
 
 @media screen and (max-width: $laptopBreakpoint) {
@@ -30,3 +50,4 @@ select {
 @media screen and (max-width: $mobileBreakpoint) {
 }
 </style>
+

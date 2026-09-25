@@ -1,16 +1,18 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import LocaleSelector from "~/components/header/LocaleSelector.vue";
 import MobileMenu from "~/components/header/MobileMenu.vue";
 import type {HeaderLink} from "~/lib/types";
-import {ref} from "vue";
+import { ref, computed } from "vue";
+import { useRoute } from "#app";
 import { NuxtLinkLocale } from "#components";
 
 const { t } = useI18n();
+const route = useRoute();
 
 const links: HeaderLink[] = [
     {
-        name: t("footer.about.brief"),
-        to: "/#brief"
+        name: t("footer.about.whoWeAre"),
+        to: "/#whoWeAre"
     },
     {
         name: t("footer.about.services"),
@@ -30,13 +32,17 @@ const links: HeaderLink[] = [
     }
 ];
 
+const isSubpage = computed(() => route.path.includes("/projects"));
 const hasScrolled = ref(false);
 
 const handleScroll = () => {
+    if (isSubpage.value) return;
+    
     hasScrolled.value = window.scrollY > 50;
 };
 
 onMounted(() => {
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
 });
 
@@ -46,7 +52,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <header :class="{ [$style.scrolled]: hasScrolled }">
+    <header :class="{ [$style.scrolled]: hasScrolled || isSubpage }">
         <nav class="container">
             <NuxtLinkLocale to="/" :class="$style.logo"></NuxtLinkLocale>
             <div :class="$style.links">
@@ -57,7 +63,7 @@ onUnmounted(() => {
                 </ul>
             </div>
             <LocaleSelector :class="$style.locales"/>
-            <MobileMenu :class="$style.mobileMenu" :links="links" />
+            <MobileMenu :class="$style.mobileMenu" :links="links" :is-scrolled="hasScrolled || isSubpage" />
         </nav>
     </header>
 </template>
@@ -84,6 +90,14 @@ header {
             border-radius: 10000px;
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             padding: 24px;
+            
+            .logo {
+                background-color: var(--color-text-primary);
+            }
+            
+            .links li a {
+                color: var(--color-text-primary);
+            }
         }
     }
     
@@ -103,7 +117,7 @@ header {
             mask-size: contain;
             mask-repeat: no-repeat;
             mask-position: left center;
-            background-color: var(--color-text-primary);
+            background-color: var(--color-text-secondary);
             width: 200px;
             height: 100%;
             z-index: 1;
@@ -127,8 +141,9 @@ header {
                 
                 li a {
                     padding: 8px 16px;
-                    color: var(--color-text-primary);
+                    color: var(--color-text-secondary);
                     position: relative;
+                    transition: all 0.3s ease;
                     
                     &::before {
                         content: "";

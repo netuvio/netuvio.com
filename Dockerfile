@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 # Define the user ID (default value 1000)
 ARG APP_UID=1000
 
@@ -19,6 +21,7 @@ ENV DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT
 # Stage to build the backend
 FROM with-node AS build
 ARG BUILD_CONFIGURATION=Release
+ARG BACKEND_ENV_B64
 WORKDIR /src
 COPY ["server/server.csproj", "server/"]
 COPY ["client/client.esproj", "client/"]
@@ -26,8 +29,19 @@ RUN dotnet restore "./server/server.csproj"
 COPY . .
 WORKDIR "/src/server"
 
-# vytvoreni prazdnyho .env souboru v tomto direktory pokud .env neexistuje
-RUN if [ ! -f ".env" ]; then touch .env; fi
+# zpracovani .env: pokud je predan BACKEND_ENV_B64 (pres secret nebo build-arg), dekoduje se do .env.
+# pripadne se pouzije existujici /src/.env z kontextu, nebo se vytvorie prazdny .env.
+RUN --mount=type=secret,id=BACKEND_ENV_B64,required=false \
+    if [ -f /run/secrets/BACKEND_ENV_B64 ] && [ -s /run/secrets/BACKEND_ENV_B64 ]; then \
+        tr -d '\r\n' < /run/secrets/BACKEND_ENV_B64 | base64 -d > .env; \
+    elif [ -n "$BACKEND_ENV_B64" ]; then \
+        printf '%s' "$BACKEND_ENV_B64" | tr -d '\r\n' | base64 -d > .env; \
+    elif [ -f "/src/.env" ]; then \
+        cp /src/.env .env; \
+    elif [ ! -f ".env" ]; then \
+        touch .env; \
+    fi && \
+    cp .env /src/.env
 
 # buildnuti backendu
 RUN dotnet build "./server.csproj" -c $BUILD_CONFIGURATION -o /app/build
@@ -44,6 +58,7 @@ COPY --from=publish /app/publish .
 
 # Switch to root to install packages
 USER root
+RUN if [ -f /app/.env ]; then cp /app/.env /.env && chmod 644 /app/.env /.env; fi
 RUN apt-get update && apt-get install -y curl nginx
 RUN curl -sL https://deb.nodesource.com/setup_26.x | bash && apt-get install -y nodejs
 

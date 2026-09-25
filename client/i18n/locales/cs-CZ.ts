@@ -7,25 +7,12 @@ export default defineI18nLocale(async (locale) => {
             "title": "Domů",
             "subtitle": "Za každým kvalitním projektem stojí nejen dobrý nápad, ale i správné technické řešení. S tím vám pomůžeme od začátku do konce.",
             "learnMore": "Zjistit více",
-            "hero": {
-                "srOnly": "Moderní aplikace, výkonný hosting, žádné starosti",
-                "line1": {
-                    "colored": "Moderní",
-                    "text": "aplikace,"
-                },
-                "line2": {
-                    "colored": "výkonný",
-                    "text": "hosting,"
-                },
-                "line3": {
-                    "colored": "žádné",
-                    "text": "starosti"
-                }
-            }
+            "hero": "Moderní aplikace,\nvýkonný hosting,\nžádné starosti",
+            "techWeUse": "Technologie, \nkteré používáme"
         },
-        "brief": {
+        "whoWeAre": {
             "title": "Kdo jsme",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam."
+            "subtitle": "Jsme tým profesionálů. \nDokážeme vytvořit <span>úplně vše.</span>"
         },
         "services": {
             "design": {
@@ -75,7 +62,7 @@ export default defineI18nLocale(async (locale) => {
             },
             "about": {
                 "title": "O nás",
-                "brief": "Úvod",
+                "whoWeAre": "Kdo jsme",
                 "services": "Služby",
                 "process": "Proces",
                 "projects": "Projekty",
@@ -117,12 +104,53 @@ export default defineI18nLocale(async (locale) => {
             }
         },
         "projects": {
+            "title": "Projekty",
+            "allProjects": "Všechny projekty",
+            "allProjectsTitle": "Naše projekty",
+            "badge": "Portfolio & Showcase",
+            "subtitle": "Vysoce výkonné webové aplikace, digitální architektury na míru a odvážný kreativní design.",
+            "metaDescription": "Prohlédněte si naše portfolio. Webové aplikace na míru, digitální řešení a grafický design.",
             "featuredProjects": "Vybrané projekty",
+            "viewAll": "Zobrazit všechny projekty",
+            "allFilter": "Všechny projekty",
+            "noProjectsFound": "V této kategorii nebyly nalezeny žádné projekty.",
+            "resetFilter": "Zobrazit všechny projekty",
+            "stats": {
+                "customBuilt": "100% Kód na míru",
+                "performance": "Max. Výkon",
+                "modernStack": "Špičkový Stack"
+            },
+            "cta": {
+                "title": "Máte v hlavě ambiciózní projekt?",
+                "subtitle": "Proměníme vaši vizi ve špičkový, spolehlivý digitální produkt s nulovými starostmi.",
+                "button": "Pojďme na to"
+            },
             "types": {
                 "website": "Webová stránka",
                 "graphicDesign": "Grafický design"
             },
-            "learnMore": "Zjistit více"
+            "learnMore": "Prozkoumat projekt",
+            "visitWebsite": "Přejít na web",
+            "sourceCode": "Zdrojový kód",
+            "detail": {
+                "backToProjects": "Zpět na projekty",
+                "showcaseBadge": "Detail projektu",
+                "techStack": "Použité technologie",
+                "timeline": "Časový rámec",
+                "category": "Kategorie",
+                "overview": "Přehled",
+                "gallery": "Vizuální galerie",
+                "gallerySubtitle": "Snímky ve vysokém rozlišení a mediální materiály projektu.",
+                "asset": "Položka",
+                "quickFacts": "Rychlý přehled",
+                "projectStatus": "Stav",
+                "statusLive": "Aktivní & V provozu",
+                "statusCompleted": "Dokončeno",
+                "viewLive": "Navštívit web",
+                "viewCode": "Zdrojový kód",
+                "zoomHint": "Kliknutím zvětšíte",
+                "tableOfContents": "Obsah"
+            }
         },
         "whyChooseUs": {
             "title": "Proč si vybrat nás",
@@ -157,7 +185,7 @@ export default defineI18nLocale(async (locale) => {
                 },
                 "build": {
                     "title": "Tvorba a spuštění",
-                    "description": "Jakmile je plán jasný, oživíme váš projekt. Od tvorby intuitivních designů a vývoje spolehlivých aplikací až po jejich nasazení na moderní infrastrukturu – postaráme se o technickou práci, abyste se mohli soustředit na své podnikání."
+                    "description": "Jakmile je plán jasný, oživíme váš projekt. Od tvorby intuitivních designů a vývoje spolehlivých aplikací až po jejich nasazení na moderní infrastrukturu. Postaráme se o technickou práci, abyste se mohli soustředit na své podnikání."
                 },
                 "support": {
                     "title": "Průběžná podpora",

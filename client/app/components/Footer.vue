@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 const { t } = useI18n();
 
 import { motion } from "motion-v";
@@ -117,6 +117,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
 </template>
 
 <style module lang="scss">
+@use "~/assets/variables" as *;
 
 .gradient {
     transform: rotate(180deg);
@@ -229,7 +230,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: $laptopBreakpoint) {
     .footer .linkSection {
         grid-template-columns: repeat(4, 1fr);
 
@@ -241,22 +242,29 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: $tabletBreakpoint) {
     .footer {
+        padding: 100px 0 40px;
+
         .linkSection {
             grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 32px;
         }
 
         .copyrightSection {
             flex-direction: column;
+            gap: 12px;
         }
     }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: $mobileBreakpoint) {
     .footer {
+        padding: 80px 0 32px;
+
         .linkSection {
             grid-template-columns: 1fr;
+            gap: 28px;
         }
 
         .copyrightSection .terms {

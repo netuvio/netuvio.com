@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import { motion } from "motion-v";
 
 const { t } = useI18n();
@@ -93,28 +93,13 @@ defineProps<{
             }
             
             ul {
-                list-style: none;
-                padding: 0;
                 font-weight: 500;
                 margin-top: 16px;
-                
+                padding: 0 0 0 20px;
+
                 li {
                     position: relative;
-                    padding-left: 20px;
                     margin-top: 4px;
-                    
-                    &::before {
-                        position: absolute;
-                        content: '';
-                        height: 6px;
-                        width: 6px;
-                        top: 50%;
-                        left: 4px;
-                        transform: translateY(-50%);
-                        border-radius: 10000px;
-                        background: var(--color-primary);
-                        z-index: 0;
-                    }
                 }
             }
         }
@@ -143,6 +128,17 @@ defineProps<{
     }
 }
 
+@media screen and (max-width: $laptopBreakpoint) {
+    .card {
+        padding: 36px;
+        gap: 32px;
+
+        section:last-child {
+            width: min(40vw, 420px);
+        }
+    }
+}
+
 @media screen and (max-width: $tabletBreakpoint) {
     .card {
         min-height: auto;
@@ -166,10 +162,16 @@ defineProps<{
 @media screen and (max-width: $mobileBreakpoint) {
     .card {
         border-radius: 24px;
+        padding: 24px 20px;
+
+        section:first-child div h2 {
+            font-size: 28px;
+        }
 
         section:last-child {
             border-radius: 24px;
             width: min(100%, 320px);
+            padding: 24px;
         }
     }
 }

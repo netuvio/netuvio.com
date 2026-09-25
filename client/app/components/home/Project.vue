@@ -1,11 +1,14 @@
-﻿<script setup lang="ts">
-import Button from "~/components/Button.vue";
+<script setup lang="ts">
+import { Button } from "@netuvio/ui/vue";
 import { motion } from "motion-v";
+import type {ProjectType} from "~/lib/types";
+import DrawnArrow from "~/components/DrawnArrow.vue";
 
-defineProps<{
+const props = defineProps<{
     title: string;
-    imageUrl: string;
-    type: "website" | "graphics";
+    imageUrl?: string;
+    type: ProjectType;
+    slug: string;
 }>();
 
 const { t } = useI18n();
@@ -22,15 +25,18 @@ const { t } = useI18n();
         <div :class="$style.info">
             <section :class="$style.top">
                 <h2>{{title}}</h2>
-                <h3>{{ type === "website" ? t('projects.types.website') : t('projects.types.graphicDesign') }}</h3>
+                <h3>{{ type === "Website" ? t('projects.types.website') : t('projects.types.graphicDesign') }}</h3>
                 <p><slot/></p>
             </section>
             <section :class="$style.bottom">
-                <Button>{{ t('projects.learnMore') }}</Button>
+                <NuxtLinkLocale :to="`/projects/${slug}`">
+                    <Button>{{ t('projects.learnMore') }} <DrawnArrow /></Button>
+                </NuxtLinkLocale>
             </section>
         </div>
         <div :class="$style.image">
-            <img :src="imageUrl"  alt=""/>
+            <NuxtImg v-if="imageUrl" :src="imageUrl"  alt=""/>
+<!--            TODO: add a fallback image -->
         </div>
     </motion.div>
 </template>
@@ -40,8 +46,7 @@ const { t } = useI18n();
 
 .project {
     display: flex;
-    min-height: 600px;
-    height: auto;
+    height: 600px;
     gap: 32px;
     
     .info {
@@ -91,13 +96,14 @@ const { t } = useI18n();
 
 @media screen and (max-width: $laptopBreakpoint) {
     .project {
-        min-height: 520px;
+        height: 520px;
     }
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
     .project {
         flex-direction: column;
+        height: auto;
         min-height: 0;
 
         .info,
@@ -114,14 +120,19 @@ const { t } = useI18n();
 @media screen and (max-width: $mobileBreakpoint) {
     .project {
         gap: 20px;
+        height: auto;
 
         .info,
         .image {
             border-radius: 24px;
         }
 
-        .info .top h2 {
-            font-size: clamp(28px, 9vw, 36px);
+        .info {
+            padding: 20px;
+
+            .top h2 {
+                font-size: clamp(26px, 8vw, 32px);
+            }
         }
     }
 }

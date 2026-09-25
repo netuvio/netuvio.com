@@ -12,12 +12,13 @@ export type MessageSchema = {
         title: string,
         subtitle: string,
         learnMore: string,
-        hero: {
-            srOnly: string,
-            line1: { colored: string, text: string },
-            line2: { colored: string, text: string },
-            line3: { colored: string, text: string },
-        },
+        hero: string,
+        techWeUse: string,
+    },
+    
+    whoAreWe: {
+        title: string,
+        subtitle: string,
     },
 
     services: {
@@ -77,12 +78,53 @@ export type MessageSchema = {
     },
 
     projects: {
+        title: string,
+        allProjects: string,
+        allProjectsTitle: string,
+        badge: string,
+        subtitle: string,
+        metaDescription: string,
         featuredProjects: string,
+        viewAll: string,
+        allFilter: string,
+        noProjectsFound: string,
+        resetFilter: string,
+        stats: {
+            customBuilt: string,
+            performance: string,
+            modernStack: string,
+        },
+        cta: {
+            title: string,
+            subtitle: string,
+            button: string,
+        },
         types: {
             website: string,
             graphicDesign: string,
         },
         learnMore: string,
+        visitWebsite: string,
+        sourceCode: string,
+        detail: {
+            backToProjects: string,
+            showcaseBadge: string,
+            techStack: string,
+            timeline: string,
+            category: string,
+            overview: string,
+            gallery: string,
+            gallerySubtitle: string,
+            asset: string,
+            quickFacts: string,
+            projectStatus: string,
+            statusLive: string,
+            statusCompleted: string,
+            viewLive: string,
+            viewCode: string,
+            zoomHint: string,
+            tableOfContents: string,
+        },
     },
 
     whyChooseUs: {
