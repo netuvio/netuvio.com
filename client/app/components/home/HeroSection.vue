@@ -46,7 +46,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                         delay: 1.8,
                     }"
                 >
-                    <NuxtLinkLocale to="/#brief">
+                    <NuxtLinkLocale to="/#whoWeAre">
                         <Button size="xl" variant="tertiary">
                             {{ t("home.learnMore") }}
                             <DrawnArrow />

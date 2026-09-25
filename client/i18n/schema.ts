@@ -34,11 +34,13 @@ export type MessageSchema = {
         hosting: { title: string },
         about: {
             title: string,
+            whoWeAre: string,
             brief: string,
             services: string,
             process: string,
             projects: string,
             whyChooseUs: string,
+            contact: string,
             contactUs: string,
         },
         loremIpsum: string,

@@ -1,31 +1,19 @@
 # syntax=docker/dockerfile:1
 
-# Define the user ID (default value 1000)
 ARG APP_UID=1000
 
-# Base stage
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
-WORKDIR /app
-
-ARG DEPLOY_ENVIRONMENT
-ENV DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT
-
-# Stage to install Node.js
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS with-node
-RUN apt-get update && apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_26.x | bash && apt-get install -y nodejs
-
-ARG DEPLOY_ENVIRONMENT
-ENV DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT
-
-# Stage to build the backend
-FROM with-node AS build
+# ==============================================================================
+# Stage 1: Build the backend (.NET SDK)
+# ==============================================================================
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build-backend
 ARG BUILD_CONFIGURATION=Release
 ARG BACKEND_ENV_B64
 WORKDIR /src
+
+# Restore backend dependencies (client.esproj is skipped via Condition in .csproj)
 COPY ["server/server.csproj", "server/"]
-COPY ["client/client.esproj", "client/"]
 RUN dotnet restore "./server/server.csproj"
+
 COPY . .
 WORKDIR "/src/server"
 
@@ -43,42 +31,55 @@ RUN --mount=type=secret,id=BACKEND_ENV_B64,required=false \
     fi && \
     cp .env /src/.env
 
-# buildnuti backendu
-RUN dotnet build "./server.csproj" -c $BUILD_CONFIGURATION -o /app/build
-
-# Stage to publish the backend
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./server.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-# Final stage
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
+# ==============================================================================
+# Stage 2: Build the frontend (Node.js) - runs in parallel with Stage 1
+# ==============================================================================
+FROM node:22-bookworm-slim AS build-client
+WORKDIR /src/client
 
-# Switch to root to install packages
+ARG DEPLOY_ENVIRONMENT
+ENV DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT
+ENV NODE_ENV=production
+
+# Install dependencies (cached by Docker unless package*.json changes)
+COPY client/package*.json ./
+RUN npm ci
+
+# Build Nuxt production bundle (.output)
+COPY client/ ./
+RUN npm run build
+
+# ==============================================================================
+# Stage 3: Final runtime image (ASP.NET + Nginx + Node.js runtime)
+# ==============================================================================
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+WORKDIR /app
+
+ARG DEPLOY_ENVIRONMENT
+ENV DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT
+
+# Copy backend binaries from build-backend
+COPY --from=build-backend /app/publish .
+
+# Copy ONLY the compiled frontend bundle (.output) - no node_modules or source files!
+COPY --from=build-client /src/client/.output /app/client/.output
+
+# Switch to root to configure permissions and install runtime packages
 USER root
 RUN if [ -f /app/.env ]; then cp /app/.env /.env && chmod 644 /app/.env /.env; fi
-RUN apt-get update && apt-get install -y curl nginx
-RUN curl -sL https://deb.nodesource.com/setup_26.x | bash && apt-get install -y nodejs
 
-# Copy frontend files and fix permissions
-COPY ["client/", "/app/client/"]
-RUN chown -R $APP_UID:$APP_UID /app/client
-WORKDIR /app/client
-
-# Set npm cache and install dependencies
-RUN npm config set cache /app/.npm
-RUN npm install --unsafe-perm
-
-# Build the frontend
-RUN npm run build
+# Install only runtime dependencies (nginx and nodejs runtime), clean apt cache
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends curl nginx && \
+    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y --no-install-recommends nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Copy Nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
-
-# Switch back to non-privileged user
-#USER $APP_UID
 
 # Prepare the start script
 EXPOSE 80

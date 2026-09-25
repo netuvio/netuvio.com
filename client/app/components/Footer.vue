@@ -84,7 +84,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                 >
                     <h1>{{ t('footer.about.title') }}</h1>
                     <ul>
-                        <li><NuxtLinkLocale to="/#brief">{{ t('footer.about.brief') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#whoWeAre">{{ t('footer.about.whoWeAre') }}</NuxtLinkLocale></li>
                         <li><NuxtLinkLocale to="/#services">{{ t('footer.about.services') }}</NuxtLinkLocale></li>
                         <li><NuxtLinkLocale to="/#process">{{ t('footer.about.process') }}</NuxtLinkLocale></li>
                         <li><NuxtLinkLocale to="/projects">{{ t('footer.about.projects') }}</NuxtLinkLocale></li>

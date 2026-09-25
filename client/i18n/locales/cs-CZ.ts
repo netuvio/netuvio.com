@@ -63,11 +63,13 @@ export default defineI18nLocale(async (locale) => {
             "about": {
                 "title": "O nás",
                 "whoWeAre": "Kdo jsme",
+                "brief": "Kdo jsme",
                 "services": "Služby",
                 "process": "Proces",
                 "projects": "Projekty",
                 "whyChooseUs": "Proč my",
-                "contact": "Kontakt"
+                "contact": "Kontakt",
+                "contactUs": "Kontakt"
             },
             "loremIpsum": "Lorem ipsum",
             "allRightsReserved": "Všechna práva vyhrazena",
