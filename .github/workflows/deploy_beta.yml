@@ -25,9 +25,9 @@ jobs:
         with:
           context: .
           push: true
-          #secrets: |
-          #  PROP=VALUE
-          #  PROP2=${{ secrets.SOMESECRET }}
+          secrets: |
+            PROP=VALUE
+            BACKEND_ENV_B64=${{ secrets.ENV_B64 }}
           build-args: |
             DEPLOY_ENVIRONMENT=beta
           tags: |
