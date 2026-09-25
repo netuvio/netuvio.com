@@ -12,6 +12,12 @@ const { data: projects, pending, error } = useFetch<Project[]>("/api/v1/projects
     query: { locale }
 });
 
+watch(error, (err) => {
+    if (err) {
+        console.error("[FeaturedProjects] Error fetching projects:", err);
+    }
+}, { immediate: true });
+
 const featuredProjects = computed(() => {
     return projects.value?.filter(p => p.isFeatured) || [];
 });

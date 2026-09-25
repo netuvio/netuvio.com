@@ -9,9 +9,13 @@ import ProjectsCta from "~/components/projects/ProjectsCta.vue";
 
 const { t, locale } = useI18n();
 
-const { data: projects, pending } = await useFetch<Project[]>("/api/v1/projects", {
+const { data: projects, pending, error } = await useFetch<Project[]>("/api/v1/projects", {
     query: { locale }
 });
+
+if (error.value) {
+    console.error("[ProjectsPage] Error fetching projects:", error.value);
+}
 
 type FilterType = "all" | ProjectType;
 const activeFilter = ref<FilterType>("all");

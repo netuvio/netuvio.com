@@ -2,8 +2,8 @@ import crypto  from 'node:crypto'
 import path from "node:path";
 import { csDomain, enDomain } from "./shared/vars";
 
-const target = 'http://localhost:5283'
 const isProd = process.env.NODE_ENV === 'production';
+const target = process.env.BACKEND_INTERNAL_URL || (isProd ? 'http://localhost:8080' : 'http://localhost:5283');
 
 function stableHash(input: string, length: number = 11): string {
     return crypto.createHash("sha256").update(input).digest("base64url").slice(0, length);

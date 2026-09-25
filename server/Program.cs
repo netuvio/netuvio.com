@@ -22,7 +22,32 @@ public static class Program {
     public static void Main(string[] args) {
         var builder = WebApplication.CreateBuilder(args);
 
-        DotNetEnv.Env.Load("../.env");
+        string[] candidates = [
+            ".env",
+            "../.env",
+            Path.Combine(AppContext.BaseDirectory, ".env"),
+            Path.Combine(AppContext.BaseDirectory, "../.env"),
+            "/app/.env",
+            "/.env"
+        ];
+
+        bool envLoaded = false;
+        foreach (var path in candidates) {
+            try {
+                if (File.Exists(path)) {
+                    DotNetEnv.Env.Load(path);
+                    Console.WriteLine($"[Env] Loaded environment from: {Path.GetFullPath(path)}");
+                    envLoaded = true;
+                    break;
+                }
+            } catch (Exception ex) {
+                Console.WriteLine($"[Env] Failed to load {path}: {ex.Message}");
+            }
+        }
+
+        if (!envLoaded) {
+            Console.WriteLine("[Env] Notice: No .env file loaded from candidate paths.");
+        }
 
         // Add services to the container.
 
@@ -74,11 +99,31 @@ public static class Program {
         builder.Services.AddHttpClient();
 
         // Connect to DB
+        var rawHost = Environment.GetEnvironmentVariable("DB_HOST");
+        var host = rawHost;
+        var port = 5432;
+        if (!string.IsNullOrEmpty(host) && host.Contains(':')) {
+            var parts = host.Split(':');
+            host = parts[0];
+            if (int.TryParse(parts[1], out var parsedPort)) {
+                port = parsedPort;
+            }
+        } else if (int.TryParse(Environment.GetEnvironmentVariable("DB_PORT"), out var envPort)) {
+            port = envPort;
+        }
+
+        var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+        var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+        var dbPass = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+        Console.WriteLine($"[DB] Host: '{host}', Port: {port}, Database: '{dbName}', User: '{dbUser}', PasswordSet: {!string.IsNullOrEmpty(dbPass)}");
+
         var connectionString = new NpgsqlConnectionStringBuilder {
-            Host = Environment.GetEnvironmentVariable("DB_HOST"),
-            Database = Environment.GetEnvironmentVariable("DB_NAME"),
-            Username = Environment.GetEnvironmentVariable("DB_USER"),
-            Password = Environment.GetEnvironmentVariable("DB_PASSWORD")
+            Host = host,
+            Port = port,
+            Database = dbName,
+            Username = dbUser,
+            Password = dbPass
         };
 
         builder.Services.AddDbContext<AppDbContext>(options =>
