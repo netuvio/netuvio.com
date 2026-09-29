@@ -2,6 +2,7 @@
 import {ref} from "vue";
 import type {HeaderLink} from "~/lib/types";
 import { AnimatePresence, motion } from "motion-v";
+import LocaleSelector from "~/components/header/LocaleSelector.vue";
 
 const props = defineProps<{
     links: HeaderLink[];
@@ -53,6 +54,9 @@ const isOpen = ref(false);
                             <NuxtLinkLocale :to="link.to" @click="isOpen = false">{{ link.name }}</NuxtLinkLocale>
                         </li>
                     </ul>
+                    <div :class="$style.localeContainer">
+                        <LocaleSelector />
+                    </div>
                 </div>
             </motion.div>
         </AnimatePresence>
@@ -68,9 +72,14 @@ const isOpen = ref(false);
     display: none;
     background-color: var(--color-background-primary);
     z-index: 1000;
+    overflow-y: auto;
     
     > div {
         margin-top: 80px;
+        padding-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         
         ul {
             list-style: none;
@@ -79,6 +88,7 @@ const isOpen = ref(false);
             flex-direction: column;
             align-items: center;
             font-weight: 600;
+            width: 100%;
             
             li {
                 width: 100%;
@@ -93,6 +103,13 @@ const isOpen = ref(false);
             }
         }
     }
+}
+
+.localeContainer {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .menuButton {
@@ -170,6 +187,10 @@ const isOpen = ref(false);
             padding: 14px 0;
             font-size: 18px;
         }
+    }
+
+    .localeContainer {
+        margin-top: 20px;
     }
 }
 </style>

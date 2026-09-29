@@ -37,7 +37,7 @@ const hasScrolled = ref(false);
 
 const handleScroll = () => {
     if (isSubpage.value) return;
-    
+
     hasScrolled.value = window.scrollY > 50;
 };
 
@@ -84,23 +84,23 @@ header {
 
     &.scrolled {
         margin: 16px 0;
-        
+
         nav {
             background-color: var(--color-background-header);
             border-radius: 10000px;
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             padding: 24px;
-            
+
             .logo {
                 background-color: var(--color-text-primary);
             }
-            
+
             .links li a {
                 color: var(--color-text-primary);
             }
         }
     }
-    
+
     nav {
         height: $headerHeight;
         padding-top: 24px;
@@ -110,7 +110,7 @@ header {
         justify-content: space-between;
         position: relative;
         transition: all 0.3s ease;
-                
+
         .logo {
             display: block;
             mask-image: url("/icons/logo-full.svg");
@@ -122,29 +122,32 @@ header {
             height: 100%;
             z-index: 1;
         }
-        
-        // Has to be absolute to be in the center and not spaced by other elements
+
         .links {
+            --link-padding-x: 16px;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            width: max-content;
+            white-space: nowrap;
             display: flex;
             align-items: center;
             justify-content: center;
-            
+
             ul {
                 list-style: none;
                 padding: 0;
                 display: flex;
                 align-items: center;
                 font-weight: 600;
-                
+
                 li a {
-                    padding: 8px 16px;
+                    padding: 8px var(--link-padding-x);
                     color: var(--color-text-secondary);
                     position: relative;
                     transition: all 0.3s ease;
-                    
+                    white-space: nowrap;
+
                     &::before {
                         content: "";
                         position: absolute;
@@ -157,14 +160,14 @@ header {
                         border-radius: 10000px;
                         transition: width 0.3s ease;
                     }
-                    
+
                     &:hover::before {
-                        width: calc(100% - 32px + 4px);
+                        width: calc(100% - (var(--link-padding-x) * 2) + 4px);
                     }
                 }
             }
         }
-        
+
         .mobileMenu {
             display: none;
             justify-content: center;
@@ -174,20 +177,43 @@ header {
 }
 
 @media screen and (max-width: $laptopBreakpoint) {
+    header nav {
+        .logo {
+            width: 175px;
+        }
+
+        .links {
+            --link-padding-x: 12px;
+            font-size: 0.95rem;
+        }
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    header nav {
+        .logo {
+            width: 160px;
+        }
+
+        .links {
+            --link-padding-x: 8px;
+            font-size: 0.9rem;
+        }
+    }
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
     header nav {
         height: 72px;
-        
+
         .logo {
             width: 170px;
         }
-        
+
         .links, .locales {
             display: none;
         }
-        
+
         .mobileMenu {
             display: flex;
         }
@@ -205,7 +231,7 @@ header {
                 padding: 18px;
             }
         }
-        
+
         nav .logo {
             width: 150px;
         }
