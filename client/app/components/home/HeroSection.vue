@@ -32,7 +32,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
                 <!-- podnadpis -->
                 <h2>
-                    <TypingTextAnimation 
+                    <TypingTextAnimation
                         :text="t('home.subtitle')"
                         :delay=".7"
                     />
@@ -66,13 +66,13 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                             :initial="{ pathLength: 0, opacity: 0 }"
                             :animate="{ pathLength: 1, opacity: 1 }"
                             :transition="{
-                            opacity: { 
-                                duration: 0.2, 
+                            opacity: {
+                                duration: 0.2,
                                 ease: 'easeInOut',
                                 delay: 1.8
                             },
-                            pathLength: { 
-                                duration: 1.2, 
+                            pathLength: {
+                                duration: 1.2,
                                 ease: 'easeInOut',
                                 delay: 1.9
                             }
@@ -147,7 +147,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         user-select: none;
         z-index: 1;
     }
-    
+
     .blackHole {
         position: absolute;
         bottom: 0;
@@ -157,7 +157,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         border-radius: 50%;
         background: var(--color-background-primary);
         box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
-        
+
         &::before {
             content: '';
             position: absolute;
@@ -202,20 +202,20 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             max-width: 600px;
             position: relative;
         }
-        
+
         .ctaContainer {
             position: relative;
             display: flex;
             gap: 30px;
             height: min-content;
             margin-top: 20px;
-            
+
             button {
                 box-shadow: 0 0 64px 0 hsl(from var(--color-primary) h s l / 0.2);
                 position: relative;
                 z-index: 1;
             }
-            
+
             .heroSquiggle {
                 width: 130px;
                 height: auto;
@@ -234,7 +234,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         user-select: none;
         width: 100%;
     }
-    
+
     .dots {
         position: absolute;
         inset: 0;
@@ -242,7 +242,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         height: 100%;
         pointer-events: none;
         user-select: none;
-        
+
         img {
             position: absolute;
             pointer-events: none;
@@ -294,7 +294,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         white-space: pre-line;
         position: relative;
         flex-shrink: 0;
-        
+
         .squiggle {
             position: absolute;
             top: calc(100% + 4px);
@@ -304,7 +304,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             pointer-events: none;
         }
     }
-    
+
     .techRow {
         display: flex;
         align-items: center;
@@ -341,7 +341,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
     z-index: 9;
 }
 
-@media screen and (max-width: $laptopBreakpoint) {    
+@media screen and (max-width: $laptopBreakpoint) {
     .heroWrapper {
         min-height: 85vh;
     }
@@ -356,7 +356,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             h1 {
                 font-size: clamp(50px, 6.8vw, 70px);
             }
-            
+
             h2 {
                 font-size: 20px;
                 margin-top: 12px;
@@ -364,13 +364,13 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
             .ctaContainer {
                 margin-top: 32px;
-                
+
                 button > span:last-child {
                     padding: 16px 24px;
                     font-size: 22px;
                     min-height: 0;
                 }
-                
+
                 .heroSquiggle {
                     width: 86px !important;
                     height: 56px !important;
@@ -435,7 +435,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
                     font-size: 20px;
                     min-height: 0;
                 }
-                
+
                 .heroSquiggle {
                     width: 86px !important;
                     height: 56px !important;
@@ -501,7 +501,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             margin-top: 0;
             width: 100%;
             max-width: 100%;
-            
+
             h1 {
                 font-size: clamp(30px, 10vw, 42px);
                 width: min(100%, 720px);
@@ -510,7 +510,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             h2 {
                 font-size: 14px;
             }
-            
+
             .ctaContainer {
                 margin-top: 20px;
 
@@ -623,7 +623,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 @media screen and (max-width: 1200px) {
     .heroImageContainer {
         right: -130px;
-        bottom: -130px;
+        bottom: -100px;
         > img { width: 800px; }
     }
 }
@@ -631,7 +631,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 @media screen and (max-width: 1050px) {
     .heroImageContainer {
         right: -140px;
-        bottom: -120px;
+        bottom: -60px;
         > img { width: 680px; }
     }
 }
@@ -639,7 +639,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 @media screen and (max-width: 960px) {
     .heroImageContainer {
         right: -150px;
-        bottom: -110px;
+        bottom: -40px;
         > img { width: 580px; }
     }
 }
@@ -647,7 +647,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 @media screen and (max-width: 840px) {
     .heroImageContainer {
         right: -130px;
-        bottom: -90px;
+        bottom: -30px;
         > img { width: 500px; }
     }
 }
@@ -655,7 +655,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 @media screen and (max-width: 720px) {
     .heroImageContainer {
         right: -110px;
-        bottom: -80px;
+        bottom: -10px;
         > img { width: 440px; }
     }
 }
@@ -663,8 +663,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 @media screen and (max-width: 600px) {
     .heroImageContainer {
         opacity: 0.22;
-        right: -50px;
-        bottom: 0;
+        right: 0;
         > img { width: 450px; }
     }
 }
