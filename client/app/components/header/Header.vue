@@ -15,16 +15,16 @@ const links = computed<HeaderLink[]>(() => [
         to: "/#whoWeAre"
     },
     {
-        name: t("header.services"),
-        to: "/#services"
-    },
-    {
         name: t("header.process"),
         to: "/#process"
     },
     {
         name: t("header.projects"),
         to: "/#projects"
+    },
+    {
+        name: t("header.whyChooseUs"),
+        to: "/#why-choose-us"
     },
     {
         name: t("header.contact"),

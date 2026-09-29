@@ -69,7 +69,7 @@ export default defineI18nLocale(async (locale) => {
                 "title": "Agentura",
                 "whoWeAre": "Kdo jsme",
                 "process": "Náš proces",
-                "whyChooseUs": "Proč Netuvio",
+                "whyChooseUs": "Proč my",
                 "contact": "Kontaktujte nás"
             },
             "about": {
@@ -210,9 +210,9 @@ export default defineI18nLocale(async (locale) => {
         "header": {
             "whoWeAre": "Kdo jsme",
             "brief": "Kdo jsme",
-            "services": "Služby",
             "process": "Proces",
             "projects": "Projekty",
+            "whyChooseUs": "Proč my",
             "contact": "Kontakt"
         },
 

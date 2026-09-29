@@ -74,7 +74,7 @@ export default defineI18nLocale(async (locale) => {
                 "title": "Agency",
                 "whoWeAre": "Who We Are",
                 "process": "Our Process",
-                "whyChooseUs": "Why Netuvio",
+                "whyChooseUs": "Why Choose Us",
                 "contact": "Contact Us"
             },
             "about": {
@@ -215,9 +215,9 @@ export default defineI18nLocale(async (locale) => {
         "header": {
             "whoWeAre": "Who We Are",
             "brief": "Who We Are",
-            "services": "Services",
             "process": "Process",
             "projects": "Projects",
+            "whyChooseUs": "Why Choose Us",
             "contact": "Contact Us"
         },
 
