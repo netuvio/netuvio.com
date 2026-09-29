@@ -167,22 +167,43 @@ export default defineI18nLocale(async (locale) => {
         },
         "whyChooseUs": {
             "title": "Proč si vybrat nás",
+            "subtitle": "Kombinujeme technickou preciznost, moderní design a lidský přístup bez kompromisů.",
             "flexibleServices": {
                 "title": "Flexibilní služby",
-                "description": "Každý projekt je jiný. Ať už potřebujete design, vývoj, hosting, nebo kompletní řešení, můžete si vybrat služby, které odpovídají vašim cílům, aniž byste platili za něco, co nepotřebujete."
+                "description": "Platíte jen za to, co skutečně potřebujete – ať už jde o kompletní realizaci, nebo jen dílčí design, vývoj či hosting.",
+                "bulletPoints": [
+                    "Kompletní realizace na klíč i samostatné služby",
+                    "Přizpůsobení vašemu rozpočtu a etapám projektu",
+                    "100% vlastnictví zdrojového kódu bez závazků"
+                ]
             },
             "cta": {
                 "title": "Jste připraveni oživit svůj nápad?",
-                "description": "Ať už potřebujete kompletní řešení nebo pomoc s konkrétní částí vašeho projektu, jsme tu, abychom vám pomohli. Pojďme probrat vaše cíle a najít ten správný přístup pro vaše podnikání.",
-                "button": "Kontaktujte nás"
+                "description": "Pojďme probrat vaše cíle a najít nejlepší přístup pro vaše podnikání.",
+                "button": "Kontaktujte nás",
+                "bulletPoints": [
+                    "Nezávazná úvodní konzultace zdarma",
+                    "Rychlá odpověď a odhad do 24 hodin",
+                    "Konkrétní technický návrh na míru"
+                ]
             },
             "modernTechnology": {
                 "title": "Moderní technologie",
-                "description": "Tvoříme s využitím moderních frameworků, nástrojů a osvědčených postupů, abychom vytvářeli rychlá, škálovatelná a udržovatelná řešení, která jsou připravena růst s vaším podnikáním."
+                "description": "Nestavíme na pomalých šablonách. Využíváme moderní technologie pro maximální rychlost, bezpečnost a snadný růst.",
+                "bulletPoints": [
+                    "Blesková rychlost a špičkové Core Web Vitals",
+                    "Moderní stack (Nuxt, Vue, TypeScript, .NET)",
+                    "Vysoké zabezpečení, cloud & Docker kontejnery"
+                ]
             },
             "personalApproach": {
                 "title": "Osobní přístup",
-                "description": "Jako malý tým úzce spolupracujeme s každým klientem. Budete komunikovat přímo s lidmi, kteří váš projekt budují, což zajišťuje jasnou komunikaci, rychlejší rozhodování a řešení přizpůsobené vašim potřebám."
+                "description": "Komunikujete přímo s lidmi, kteří váš web navrhují a kódují. Žádní zprostředkovatelé ani zbytečná byrokracie.",
+                "bulletPoints": [
+                    "Přímý kontakt s vývojáři a designéry",
+                    "Pravidelný reporting a průběžné funkční ukázky",
+                    "Rychlá reakční doba a spolehlivý servis"
+                ]
             }
         },
         "process": {

@@ -172,22 +172,43 @@ export default defineI18nLocale(async (locale) => {
         },
         "whyChooseUs": {
             "title": "Why Choose Us",
+            "subtitle": "We combine technical precision, modern design, and a personal approach without compromise.",
             "flexibleServices": {
                 "title": "Flexible Services",
-                "description": "Every project is different. Whether you need design, development, hosting, or a complete solution, you can choose the services that fit your goals without paying for what you don't need."
+                "description": "You only pay for what you actually need – whether you want turnkey delivery or standalone design, dev, or hosting.",
+                "bulletPoints": [
+                    "Turnkey solutions or standalone modular services",
+                    "Tailored to your budget, milestones, and timeline",
+                    "100% source code ownership with zero lock-in"
+                ]
             },
             "cta": {
                 "title": "Ready to Bring Your Idea to Life?",
-                "description": "Whether you need a complete solution or help with a specific part of your project, we're here to help. Let's discuss your goals and find the right approach for your business.",
-                "button": "Contact Us"
+                "description": "Let's discuss your goals and find the most effective approach for your business.",
+                "button": "Contact Us",
+                "bulletPoints": [
+                    "Free, non-binding initial consultation",
+                    "Quick response & rough estimate within 24h",
+                    "Concrete technical proposal tailored to you"
+                ]
             },
             "modernTechnology": {
                 "title": "Modern Technology",
-                "description": "We build with modern frameworks, tools, and best practices to create fast, scalable, and maintainable solutions that are ready to grow with your business."
+                "description": "We don't build on bloated templates. We leverage a modern stack built for speed, security, and effortless scaling.",
+                "bulletPoints": [
+                    "Lightning-fast performance & top Core Web Vitals",
+                    "Modern stack (Nuxt, Vue, TypeScript, .NET)",
+                    "High security standards, cloud & Docker containers"
+                ]
             },
             "personalApproach": {
                 "title": "Personal Approach",
-                "description": "As a small team, we work closely with every client. You'll communicate directly with the people building your project, ensuring clear communication, faster decisions, and a solution tailored to your needs."
+                "description": "You communicate directly with the people designing and coding your product. No middle managers or needless delays.",
+                "bulletPoints": [
+                    "Direct contact with developers and designers",
+                    "Regular progress demos throughout development",
+                    "Fast response times and dependable ongoing support"
+                ]
             }
         },
         "process": {

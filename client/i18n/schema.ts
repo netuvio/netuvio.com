@@ -152,22 +152,27 @@ export type MessageSchema = {
 
     whyChooseUs: {
         title: string,
+        subtitle: string,
         flexibleServices: {
             title: string,
             description: string,
+            bulletPoints: string[],
         },
         cta: {
             title: string,
             description: string,
             button: string,
+            bulletPoints: string[],
         },
         modernTechnology: {
             title: string,
             description: string,
+            bulletPoints: string[],
         },
         personalApproach: {
             title: string,
             description: string,
+            bulletPoints: string[],
         },
     },
 
