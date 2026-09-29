@@ -51,17 +51,29 @@ export default defineI18nLocale(async (locale) => {
         },
         "footer": {
             "description": "Ať už potřebujete design, vývoj, hosting nebo vše dohromady, jsme tu, abychom vaše nápady proměnili ve spolehlivé digitální produkty.",
-            "design": {
-                "title": "Design"
+            "services": {
+                "title": "Služby",
+                "design": "UI/UX a branding",
+                "development": "Vývoj webů a aplikací",
+                "hosting": "Cloud a spravovaný hosting",
+                "support": "Konzultace a podpora"
             },
-            "development": {
-                "title": "Vývoj"
+            "work": {
+                "title": "Tvorba",
+                "allProjects": "Všechny projekty",
+                "websites": "Weby a webové aplikace",
+                "graphics": "Grafický design",
+                "featured": "Vybrané realizace"
             },
-            "hosting": {
-                "title": "Hosting"
+            "agency": {
+                "title": "Agentura",
+                "whoWeAre": "Kdo jsme",
+                "process": "Náš proces",
+                "whyChooseUs": "Proč Netuvio",
+                "contact": "Kontaktujte nás"
             },
             "about": {
-                "title": "O nás",
+                "title": "Agentura",
                 "whoWeAre": "Kdo jsme",
                 "brief": "Kdo jsme",
                 "services": "Služby",
@@ -71,7 +83,6 @@ export default defineI18nLocale(async (locale) => {
                 "contact": "Kontakt",
                 "contactUs": "Kontakt"
             },
-            "loremIpsum": "Lorem ipsum",
             "allRightsReserved": "Všechna práva vyhrazena",
             "privacyPolicy": "Zásady ochrany osobních údajů",
             "termsOfService": "Podmínky služby"
@@ -194,6 +205,15 @@ export default defineI18nLocale(async (locale) => {
                     "description": "Spuštěním to teprve začíná. Můžeme váš projekt nadále podporovat údržbou, aktualizacemi, monitorováním, správou hostingu a budoucími vylepšeními podle toho, jak se budou vyvíjet vaše potřeby."
                 }
             }
+        },
+
+        "header": {
+            "whoWeAre": "Kdo jsme",
+            "brief": "Kdo jsme",
+            "services": "Služby",
+            "process": "Proces",
+            "projects": "Projekty",
+            "contact": "Kontakt"
         },
 
         "error": {

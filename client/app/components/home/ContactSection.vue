@@ -26,6 +26,24 @@ const form = reactive({
     message: ''
 });
 
+const route = useRoute();
+const validServices = ['design', 'development', 'hosting', 'other'];
+
+const setServiceFromQuery = () => {
+    const svc = route.query.service as string;
+    if (svc && validServices.includes(svc)) {
+        form.service = svc;
+    }
+};
+
+onMounted(() => {
+    setServiceFromQuery();
+});
+
+watch(() => route.query.service, () => {
+    setServiceFromQuery();
+});
+
 const errors = reactive({
     firstName: '',
     lastName: '',

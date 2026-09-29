@@ -56,17 +56,29 @@ export default defineI18nLocale(async (locale) => {
         },
         "footer": {
             "description": "Whether you need design, development, hosting, or everything in between, we're here to turn your ideas into reliable digital products.",
-            "design": {
-                "title": "Design"
+            "services": {
+                "title": "Services",
+                "design": "UI/UX & Branding",
+                "development": "Web & App Development",
+                "hosting": "Cloud & Managed Hosting",
+                "support": "Consultation & Support"
             },
-            "development": {
-                "title": "Development"
+            "work": {
+                "title": "Work",
+                "allProjects": "All Projects",
+                "websites": "Websites & Web Apps",
+                "graphics": "Graphic Design",
+                "featured": "Featured Projects"
             },
-            "hosting": {
-                "title": "Hosting"
+            "agency": {
+                "title": "Agency",
+                "whoWeAre": "Who We Are",
+                "process": "Our Process",
+                "whyChooseUs": "Why Netuvio",
+                "contact": "Contact Us"
             },
             "about": {
-                "title": "About",
+                "title": "Agency",
                 "whoWeAre": "Who We Are",
                 "brief": "Who We Are",
                 "services": "Services",
@@ -76,7 +88,6 @@ export default defineI18nLocale(async (locale) => {
                 "contact": "Contact Us",
                 "contactUs": "Contact Us"
             },
-            "loremIpsum": "Lorem ipsum",
             "allRightsReserved": "All rights reserved",
             "privacyPolicy": "Privacy Policy",
             "termsOfService": "Terms of Service"
@@ -199,6 +210,15 @@ export default defineI18nLocale(async (locale) => {
                     "description": "Launching is only the beginning. We can continue to support your project with maintenance, updates, monitoring, hosting management, and future improvements as your needs evolve."
                 }
             }
+        },
+
+        "header": {
+            "whoWeAre": "Who We Are",
+            "brief": "Who We Are",
+            "services": "Services",
+            "process": "Process",
+            "projects": "Projects",
+            "contact": "Contact Us"
         },
 
         "error": {

@@ -9,28 +9,28 @@ import { NuxtLinkLocale } from "#components";
 const { t } = useI18n();
 const route = useRoute();
 
-const links: HeaderLink[] = [
+const links = computed<HeaderLink[]>(() => [
     {
-        name: t("footer.about.whoWeAre"),
+        name: t("header.brief"),
         to: "/#whoWeAre"
     },
     {
-        name: t("footer.about.services"),
+        name: t("header.services"),
         to: "/#services"
     },
     {
-        name: t("footer.about.process"),
+        name: t("header.process"),
         to: "/#process"
     },
     {
-        name: t("footer.about.projects"),
+        name: t("header.projects"),
         to: "/#projects"
     },
     {
-        name: t("footer.about.contact"),
+        name: t("header.contact"),
         to: "/#contact"
     }
-];
+]);
 
 const isSubpage = computed(() => route.path.includes("/projects"));
 const hasScrolled = ref(false);
