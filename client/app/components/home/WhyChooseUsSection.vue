@@ -11,7 +11,7 @@ const { t, tm } = useI18n();
 </script>
 
 <template>
-    <section :class="[$style.section, 'theme-secondary']" id="why-choose-us" ref="sectionRef">
+    <section :class="[$style.section, 'theme-secondary']" id="why-choose-us" ref="sectionRef" data-theme="light">
         <div :class="$style.transition"></div>
         <div :class="['container', $style.container]">
             <section :class="$style.grid">
@@ -35,7 +35,7 @@ const { t, tm } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.1 }"
                 >
-                    <Card>
+                    <Card data-theme="light">
                         <div :class="$style.cardBody">
                             <div :class="$style.cardHeader">
                                 <h2><i><IonLayers :style="{ fontSize: '32px' }" /></i> {{ t('whyChooseUs.flexibleServices.title') }}</h2>
@@ -58,9 +58,10 @@ const { t, tm } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.3 }"
                 >
-                    <Card 
+                    <Card
                         variant="accent"
                         base3dOffset="10"
+                        data-theme="light"
                     >
                         <div :class="$style.ctaBody">
                             <div :class="$style.ctaContent">
@@ -75,7 +76,7 @@ const { t, tm } = useI18n();
                             </div>
                             <div :class="$style.ctaAction">
                                 <NuxtLinkLocale to="/#contact">
-                                    <Button size="xl" variant="secondary">{{ t('whyChooseUs.cta.button') }} <DrawnArrow /></Button>
+                                    <Button size="xl" variant="secondary" theme="light" data-theme="light">{{ t('whyChooseUs.cta.button') }} <DrawnArrow /></Button>
                                 </NuxtLinkLocale>
                             </div>
                         </div>
@@ -89,7 +90,7 @@ const { t, tm } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.2 }"
                 >
-                    <Card>
+                    <Card data-theme="light">
                         <div :class="$style.cardBody">
                             <div :class="$style.cardHeader">
                                 <h2><i><IonSparkles :style="{ fontSize: '30px' }" /></i> {{ t('whyChooseUs.modernTechnology.title') }}</h2>
@@ -112,7 +113,7 @@ const { t, tm } = useI18n();
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.3 }"
                 >
-                    <Card>
+                    <Card data-theme="light">
                         <div :class="$style.cardBody">
                             <div :class="$style.cardHeader">
                                 <h2><i><MaterialSymbolsHandshakeRounded :style="{ fontSize: '34px' }" /></i> {{ t('whyChooseUs.personalApproach.title') }}</h2>
@@ -136,25 +137,27 @@ const { t, tm } = useI18n();
 @use "~/assets/variables" as *;
 
 .section {
+    color-scheme: only light;
+    color-scheme: light;
     padding: clamp(60px, 7vw, 110px) 0;
-    
+
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr minmax(320px, 390px);
         gap: 24px;
         align-items: stretch;
-        
+
         >div {
             width: 100%;
             display: flex;
-            
+
             >div {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
             }
         }
-        
+
         .title {
             grid-column: 1;
             grid-row: 1;
@@ -239,7 +242,7 @@ const { t, tm } = useI18n();
                 }
             }
         }
-        
+
         p {
             font-size: 15px;
             line-height: 1.5;
