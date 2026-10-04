@@ -52,38 +52,6 @@ const { t, tm } = useI18n();
                 </motion.div>
 
                 <motion.div
-                    :class="$style.cta"
-                    :initial="{ opacity: 0, scale: 0.95 }"
-                    :whileInView="{ opacity: 1, scale: 1 }"
-                    :inViewOptions="{ once: true }"
-                    :transition="{ duration: 0.6, delay: 0.3 }"
-                >
-                    <Card
-                        variant="accent"
-                        base3dOffset="10"
-                        data-theme="light"
-                    >
-                        <div :class="$style.ctaBody">
-                            <div :class="$style.ctaContent">
-                                <h2>{{ t('whyChooseUs.cta.title') }}</h2>
-                                <p>{{ t('whyChooseUs.cta.description') }}</p>
-                                <ul :class="[$style.bulletList, $style.ctaList]">
-                                    <li v-for="point in (tm('whyChooseUs.cta.bulletPoints') as string[])" :key="point">
-                                        <MaterialSymbolsCheckCircleRounded :class="[$style.checkIcon, $style.ctaCheckIcon]" />
-                                        <span>{{ point }}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div :class="$style.ctaAction">
-                                <NuxtLinkLocale to="/#contact">
-                                    <Button size="xl" variant="secondary" theme="light" data-theme="light">{{ t('whyChooseUs.cta.button') }} <DrawnArrow /></Button>
-                                </NuxtLinkLocale>
-                            </div>
-                        </div>
-                    </Card>
-                </motion.div>
-
-                <motion.div
                     :class="$style.modernCard"
                     :initial="{ opacity: 0, y: 30 }"
                     :whileInView="{ opacity: 1, y: 0 }"
@@ -125,6 +93,38 @@ const { t, tm } = useI18n();
                                     <span>{{ point }}</span>
                                 </li>
                             </ul>
+                        </div>
+                    </Card>
+                </motion.div>
+
+                <motion.div
+                    :class="$style.cta"
+                    :initial="{ opacity: 0, scale: 0.95 }"
+                    :whileInView="{ opacity: 1, scale: 1 }"
+                    :inViewOptions="{ once: true }"
+                    :transition="{ duration: 0.6, delay: 0.4 }"
+                >
+                    <Card
+                        variant="accent"
+                        base3dOffset="10"
+                        data-theme="light"
+                    >
+                        <div :class="$style.ctaBody">
+                            <div :class="$style.ctaContent">
+                                <h2>{{ t('whyChooseUs.cta.title') }}</h2>
+                                <p>{{ t('whyChooseUs.cta.description') }}</p>
+                                <ul :class="[$style.bulletList, $style.ctaList]">
+                                    <li v-for="point in (tm('whyChooseUs.cta.bulletPoints') as string[])" :key="point">
+                                        <MaterialSymbolsCheckCircleRounded :class="[$style.checkIcon, $style.ctaCheckIcon]" />
+                                        <span>{{ point }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div :class="$style.ctaAction">
+                                <NuxtLinkLocale to="/#contact">
+                                    <Button size="xl" variant="secondary" theme="light" data-theme="light">{{ t('whyChooseUs.cta.button') }} <DrawnArrow /></Button>
+                                </NuxtLinkLocale>
+                            </div>
                         </div>
                     </Card>
                 </motion.div>
@@ -337,7 +337,7 @@ const { t, tm } = useI18n();
     background: repeating-linear-gradient(-45deg, var(--color-background-secondary), var(--color-background-secondary) 30px, transparent 0px, transparent 60px);
 }
 
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: $laptopBreakpoint) {
     .section {
         padding: clamp(50px, 6vw, 80px) 0;
 
@@ -347,7 +347,7 @@ const { t, tm } = useI18n();
 
             .title {
                 grid-column: 1 / -1;
-                grid-row: auto;
+                grid-row: 1;
                 padding: 4px 0 12px 0;
 
                 .titleContent {
@@ -357,22 +357,22 @@ const { t, tm } = useI18n();
 
             .flexibleCard {
                 grid-column: 1;
-                grid-row: auto;
+                grid-row: 2;
             }
 
             .modernCard {
                 grid-column: 2;
-                grid-row: auto;
+                grid-row: 2;
             }
 
             .personalCard {
                 grid-column: 1;
-                grid-row: auto;
+                grid-row: 3;
             }
 
             .cta {
                 grid-column: 2;
-                grid-row: auto;
+                grid-row: 3;
             }
         }
     }
