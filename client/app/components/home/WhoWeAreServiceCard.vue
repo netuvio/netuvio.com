@@ -45,36 +45,51 @@ const props = defineProps<{
     padding: 32px;
     position: relative;
     transition: 200ms all ease-in-out;
-    
+
     .image {
         height: 40%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        position: relative;
+        padding-bottom: 24px;
+
+        img {
+            width: auto;
+            height: 100%;
+            object-fit: cover;
+            //border-radius: 16px;
+            //background-color: var(--color-background-primary);
+        }
     }
 
     .content {
         height: 60%;
-        
+
         >div {
             height: 100%;
             display: flex;
             flex-direction: column;
         }
-        
+
         h2 {
-            font-size: 32px;
+            font-size: 30px;
             line-height: 1.2;
         }
-        
+
         .text {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             flex-grow: 1;
-            
+
             p {
                 margin-top: 8px;
                 font-size: 18px;
             }
-            
+
             img {
                 width: 24px;
                 height: 24px;
@@ -83,28 +98,28 @@ const props = defineProps<{
             }
         }
     }
-    
+
     .decorations {
         position: absolute;
         inset: 0;
         pointer-events: none;
         overflow: hidden;
-        
+
         .dots {
             position: absolute;
             inset: 0;
-            
+
             img {
                 position: absolute;
                 object-fit: contain;
-                
+
                 &:nth-child(1) {
                     top: 0;
                     left: 20%;
                     width: 160px;
                     height: 160px;
                 }
-                
+
                 &:nth-child(2) {
                     bottom: -10%;
                     right: 0;
@@ -113,11 +128,11 @@ const props = defineProps<{
                 }
             }
         }
-        
+
         .cylinders {
             position: absolute;
             inset: 0;
-            
+
             div {
                 position: absolute;
                 border-radius: 9999px;
@@ -146,7 +161,7 @@ const props = defineProps<{
 
 .card:hover {
     border-color: var(--color-primary);
-    
+
     .decorations {
         .cylinders {
             div {

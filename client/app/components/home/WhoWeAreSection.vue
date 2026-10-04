@@ -43,10 +43,10 @@ interface WhoWeAreCardItem {
 }
 
 const cardImages = [
-    "/images/who-we-are-card-1.svg",
-    "/images/who-we-are-card-1.svg",
-    "/images/who-we-are-card-1.svg",
-    "/images/who-we-are-card-1.svg"
+    "/images/whoAreWeCards/web.svg",
+    "/images/whoAreWeCards/ui.png",
+    "/images/whoAreWeCards/hosting.png",
+    "/images/whoAreWeCards/support.png",
 ];
 
 const cards = computed(() => {
