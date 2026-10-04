@@ -2,6 +2,11 @@ export default defineI18nLocale(async (locale) => {
     return {
         "common": {
             "comingSoon": "Již brzy",
+            "lorem": {
+                "title": "Moderní digitální řešení pro vaše podnikání",
+                "description": "Vytváříme webové aplikace na míru, navrhujeme intuitivní uživatelské zážitky a poskytujeme spolehlivý hosting. Ke každému projektu přistupujeme s důrazem na špičkový výkon, čistý kód a snadné ovládání.",
+                "longDescription": "V Netuvio pomáháme ambiciózním firmám i jednotlivcům měnit nápady v úspěšné digitální produkty. Od prvotního konceptu a UX návrhu přes zakázkový full-stack vývoj až po nasazení a dlouhodobý servis se staráme o kompletní technologické zázemí. Klademe důraz na moderní technologie, kontejnerizovanou infrastrukturu a úzkou spolupráci, abychom zaručili vysokou rychlost, spolehlivost a budoucí rozšiřitelnost bez zbytečných komplikací."
+            }
         },
         "home": {
             "title": "Domů",
@@ -12,40 +17,58 @@ export default defineI18nLocale(async (locale) => {
         },
         "whoWeAre": {
             "title": "Kdo jsme",
-            "subtitle": "Jsme tým profesionálů. \nDokážeme vytvořit <span>úplně vše.</span>"
+            "subtitle": "Jsme tým profesionálů. \nDokážeme vytvořit <span>úplně vše.</span>",
+            "cards": [
+                {
+                    "title": "Vývoj webů a aplikací na míru",
+                    "description": "Navrhujeme a programujeme rychlé, spolehlivé webové aplikace a systémy připravené na libovolnou zátěž."
+                },
+                {
+                    "title": "Moderní UI/UX design",
+                    "description": "Tvoříme promyšlená uživatelská rozhraní a osobitou vizuální identitu, která zaujme a přináší měřitelné výsledky."
+                },
+                {
+                    "title": "Cloud a spolehlivý hosting",
+                    "description": "Bezstarostné nasazení v cloudu, Docker kontejnery a správa serverů s automatickým zálohováním a vysokou dostupností."
+                },
+                {
+                    "title": "Dlouhodobá podpora a rozvoj",
+                    "description": "Průběžný dohled, bezpečnostní aktualizace a rychlý vývoj nových funkcí ruku v ruce s růstem vašeho podnikání."
+                }
+            ]
         },
         "services": {
             "design": {
                 "title": "Design",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
+                "subtitle": "Unikátní design na míru vaší značce",
+                "description": "Navrhujeme moderní a vizuálně působivé digitální produkty, které spojují čistou estetiku s intuitivní použitelností. Od prvotních konceptů až po ucelené design systémy promýšlíme každý detail.",
                 "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
+                    "UI/UX design webových i mobilních aplikací",
+                    "Vizuální identita, logotvorba a design systémy",
+                    "Wireframy a klikatelné interaktivní prototypy",
+                    "Responzivní rozvržení optimalizované pro všechna zařízení"
                 ]
             },
             "development": {
                 "title": "Vývoj",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
+                "subtitle": "Rychlá, škálovatelná a moderní digitální řešení",
+                "description": "Vyvíjíme vysoce výkonné webové aplikace a systémy postavené na moderních technologiích a čisté architektuře. Kód píšeme na míru bez zbytečné zátěže, s důrazem na rychlost, bezpečnost a snadnou rozšiřitelnost.",
                 "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
+                    "Webové aplikace na míru v Nuxt, Vue a TypeScript",
+                    "Robustní backendová API a služby v .NET a PostgreSQL",
+                    "Bleskové načítání a špičkové hodnocení Core Web Vitals",
+                    "Čistý, udržovatelný kód s plným vlastnictvím bez vendor lock-in"
                 ]
             },
             "hosting": {
                 "title": "Hosting",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
+                "subtitle": "Spolehlivá cloudová infrastruktura bez starostí",
+                "description": "Zajistíme bezproblémové nasazení a spolehlivý běh vašich projektů. Náš spravovaný hosting a cloudová infrastruktura garantují vysokou dostupnost, pravidelné zálohování a nepřetržitý dohled.",
                 "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
+                    "Kontejnerizace v Dockeru a moderní cloudové zázemí",
+                    "Automatické SSL certifikáty a pravidelné zálohy dat",
+                    "Nepřetržitý 24/7 monitoring serverů a rychlé řešení incidentů",
+                    "Škálovatelný výkon nastavený přesně podle vašich potřeb"
                 ]
             },
         },
@@ -85,7 +108,10 @@ export default defineI18nLocale(async (locale) => {
             },
             "allRightsReserved": "Všechna práva vyhrazena",
             "privacyPolicy": "Zásady ochrany osobních údajů",
-            "termsOfService": "Podmínky služby"
+            "termsOfService": "Podmínky služby",
+            "loremIpsum": "V Netuvio klademe maximální důraz na ochranu osobních údajů, transparentnost a bezpečnost všech poskytovaných služeb.",
+            "privacyPolicyText": "V Netuvio si vážíme vaší důvěry a zavazujeme se chránit vaše osobní údaje. Veškerá data shromážděná prostřednictvím našeho kontaktního formuláře nebo v průběhu spolupráce využíváme výhradně pro komunikaci, vypracování nabídek a poskytování našich služeb. Vaše údaje nikdy nepředáváme třetím stranám bez vašeho výslovného souhlasu a uchováváme je v zabezpečeném prostředí v souladu s platnými právními předpisy GDPR.",
+            "termsOfServiceText": "Tyto podmínky upravují využívání webových stránek a služeb poskytovaných společností Netuvio. Všechny projekty, grafické návrhy a softwarová řešení jsou realizovány na základě individuální dohody se zákazníkem. Dbáme na transparentní komunikaci, vysokou kvalitu dodávaných řešení, dodržování stanovených termínů a spolehlivou technickou podporu po celou dobu spolupráce."
         },
         "contact": {
             "title": "Kontaktujte nás",

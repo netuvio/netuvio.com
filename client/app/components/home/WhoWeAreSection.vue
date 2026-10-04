@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick, computed } from 'vue';
 import { motion } from 'motion-v';
 import Title from "~/components/typography/Title.vue";
 import WhoWeAreServiceCard from "~/components/home/WhoWeAreServiceCard.vue";
 
-const { t } = useI18n();
+const { t, tm } = useI18n();
 
 const cardsRowRef = ref<HTMLElement | null>(null);
 const canScrollLeft = ref(false);
@@ -37,28 +37,29 @@ onUnmounted(() => {
     window.removeEventListener("resize", checkCardsScroll);
 });
 
-const cards = [
-    {
-        title: "Lorem ipsum dolor sit amet",
-        image: "/images/who-we-are-card-1.svg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    },
-    {
-        title: "Lorem ipsum dolor sit amet",
-        image: "/images/who-we-are-card-1.svg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    },
-    {
-        title: "Lorem ipsum dolor sit amet",
-        image: "/images/who-we-are-card-1.svg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    },
-    {
-        title: "Lorem ipsum dolor sit amet",
-        image: "/images/who-we-are-card-1.svg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    }
+interface WhoWeAreCardItem {
+    title: string;
+    description: string;
+}
+
+const cardImages = [
+    "/images/who-we-are-card-1.svg",
+    "/images/who-we-are-card-1.svg",
+    "/images/who-we-are-card-1.svg",
+    "/images/who-we-are-card-1.svg"
 ];
+
+const cards = computed(() => {
+    const rawCards = tm('whoAreWe.cards') as WhoWeAreCardItem[] | undefined;
+    if (Array.isArray(rawCards) && rawCards.length > 0) {
+        return rawCards.map((card, index) => ({
+            title: typeof card.title === 'string' ? card.title : String(card.title ?? ''),
+            description: typeof card.description === 'string' ? card.description : String(card.description ?? ''),
+            image: cardImages[index % cardImages.length]!
+        }));
+    }
+    return [];
+});
 </script>
 
 <template>
@@ -70,7 +71,7 @@ const cards = [
                 :inViewOptions="{ once: true }"
                 :transition="{ duration: 0.5, ease: 'easeOut' }"
             >
-                <Title>{{ t('whoWeAre.title') }}</Title>
+                <Title>{{ t('whoAreWe.title') }}</Title>
             </motion.div>
 
             <motion.div
@@ -79,7 +80,7 @@ const cards = [
                 :inViewOptions="{ once: true }"
                 :transition="{ duration: 0.6, delay: 0.15, ease: 'easeOut' }"
             >
-                <h2 :class="$style.subtitle" v-html="t('whoWeAre.subtitle')"></h2>
+                <h2 :class="$style.subtitle" v-html="t('whoAreWe.subtitle')"></h2>
             </motion.div>
 
             <div
@@ -139,7 +140,7 @@ const cards = [
 
 .section {
     padding: 130px 0 220px;
-    
+
     .container {
         .subtitle {
             font-size: 48px;
@@ -185,7 +186,7 @@ const cards = [
                 }
             }
         }
-        
+
         .cardsCarouselWrapper {
             position: relative;
             margin-top: 64px;

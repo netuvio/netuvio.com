@@ -2,11 +2,6 @@ export default defineI18nLocale(async (locale) => {
     return {
         "common": {
             "comingSoon": "Coming soon",
-            "lorem": {
-                "title": "Lorem ipsum dolor sit amet",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
-                "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam. Cras in urna ipsum. Pellentesque nibh ligula, gravida vitae facilisis quis, malesuada in nisl."
-            }
         },
         "home": {
             "title": "Home",
@@ -15,44 +10,27 @@ export default defineI18nLocale(async (locale) => {
             "hero": "Modern apps,\npowerful hosting,\nzero hassle",
             "techWeUse": "Technologies,\nwe use"
         },
-        "whoWeAre": {
-            "title": "Who We Are",
-            "subtitle": "We are a team of professionals \ncapable of creating <span>anything.</span>"
-        },
-        "services": {
-            "design": {
-                "title": "Design",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
-                "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
-                ]
-            },
-            "development": {
-                "title": "Development",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
-                "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
-                ]
-            },
-            "hosting": {
-                "title": "Hosting",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
-                "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
-                ]
-            },
+        "whoAreWe": {
+            "title": "Who Are We",
+            "subtitle": "We are a team of professionals \ncapable of creating <span>anything.</span>",
+            "cards": [
+                {
+                    "title": "Web Development",
+                    "description": "We engineer fast, scalable web applications and digital platforms built to perform seamlessly under any load."
+                },
+                {
+                    "title": "Modern UI/UX Design",
+                    "description": "Crafting thoughtful user interfaces and distinctive brand identities that captivate users and drive real conversions."
+                },
+                {
+                    "title": "Cloud & Managed Hosting",
+                    "description": "Zero-hassle cloud deployment, containerization, and dedicated managed hosting with automated backups and high uptime."
+                },
+                {
+                    "title": "Long-term Support & Growth",
+                    "description": "Continuous monitoring, proactive security updates, and agile feature development as your business and user base expand."
+                }
+            ]
         },
         "footer": {
             "description": "Whether you need design, development, hosting, or everything in between, we're here to turn your ideas into reliable digital products.",
@@ -72,15 +50,15 @@ export default defineI18nLocale(async (locale) => {
             },
             "agency": {
                 "title": "Agency",
-                "whoWeAre": "Who We Are",
+                "whoWeAre": "Who Are We",
                 "process": "Our Process",
                 "whyChooseUs": "Why Choose Us",
                 "contact": "Contact Us"
             },
             "about": {
                 "title": "Agency",
-                "whoWeAre": "Who We Are",
-                "brief": "Who We Are",
+                "whoWeAre": "Who Are We",
+                "brief": "Who Are We",
                 "services": "Services",
                 "process": "Process",
                 "projects": "Projects",
@@ -234,8 +212,8 @@ export default defineI18nLocale(async (locale) => {
         },
 
         "header": {
-            "whoWeAre": "Who We Are",
-            "brief": "Who We Are",
+            "whoWeAre": "Who Are We",
+            "brief": "Who Are We",
             "process": "Process",
             "projects": "Projects",
             "whyChooseUs": "Why Choose Us",

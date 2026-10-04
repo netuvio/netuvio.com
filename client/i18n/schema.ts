@@ -19,12 +19,31 @@ export type MessageSchema = {
     whoAreWe: {
         title: string,
         subtitle: string,
+        cards?: Array<{
+            title: string,
+            description: string,
+        }>,
     },
 
     services: {
-        design: string,
-        development: string,
-        hosting: string,
+        design: {
+            title: string,
+            subtitle: string,
+            description: string,
+            bulletPoints: string[],
+        },
+        development: {
+            title: string,
+            subtitle: string,
+            description: string,
+            bulletPoints: string[],
+        },
+        hosting: {
+            title: string,
+            subtitle: string,
+            description: string,
+            bulletPoints: string[],
+        },
     },
 
     footer: {
@@ -65,6 +84,8 @@ export type MessageSchema = {
             contactUs?: string,
         },
         loremIpsum?: string,
+        privacyPolicyText?: string,
+        termsOfServiceText?: string,
         allRightsReserved: string,
         privacyPolicy: string,
         termsOfService: string,
