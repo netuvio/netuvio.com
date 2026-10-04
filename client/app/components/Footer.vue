@@ -15,7 +15,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
         <Gradient :class="$style.gradient" />
         <div :class="['container', $style.container]">
             <section :class="$style.linkSection">
-                <motion.div 
+                <motion.div
                     :class="$style.info"
                     :initial="{ opacity: 0, y: 30 }"
                     :whileInView="{ opacity: 1, y: 0 }"
@@ -70,20 +70,20 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                 >
                     <h1>{{ t('footer.agency.title') }}</h1>
                     <ul>
-                        <li><NuxtLinkLocale to="/#whoWeAre">{{ t('footer.agency.whoWeAre') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#whoAreWe">{{ t('footer.agency.whoAreWe') }}</NuxtLinkLocale></li>
                         <li><NuxtLinkLocale to="/#process">{{ t('footer.agency.process') }}</NuxtLinkLocale></li>
                         <li><NuxtLinkLocale to="/#why-choose-us">{{ t('footer.agency.whyChooseUs') }}</NuxtLinkLocale></li>
                         <li><NuxtLinkLocale to="/#contact">{{ t('footer.agency.contact') }}</NuxtLinkLocale></li>
                     </ul>
                 </motion.nav>
             </section>
-            <motion.hr 
+            <motion.hr
                 :initial="{ scaleX: 0, opacity: 0 }"
                 :whileInView="{ scaleX: 1, opacity: 1 }"
                 :inViewOptions="{ once: true }"
                 :transition="{ duration: 1, delay: 0.4, ease: 'easeOut' }"
             />
-            <motion.section 
+            <motion.section
                 :class="$style.copyrightSection"
                 :initial="{ opacity: 0, y: 20 }"
                 :whileInView="{ opacity: 1, y: 0 }"
@@ -112,15 +112,15 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
 
 .footer {
     padding: clamp(120px, 14vw, 200px) 0 50px;
-    
+
     .linkSection {
         display: grid;
         grid-template-columns: minmax(280px, 35%) repeat(3, 1fr);
         gap: 32px;
-        
+
         .info {
             margin-right: 64px;
-            
+
             .logo {
                 mask-image: url('/icons/logo-full.svg');
                 mask-repeat: no-repeat;
@@ -129,18 +129,18 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                 background-color: white;
                 margin-bottom: 12px;
             }
-            
+
             .email {
                 display: flex;
                 align-items: center;
                 gap: 8px;
                 margin-top: 16px;
-                
+
                 svg {
                     font-size: 20px;
                 }
             }
-            
+
             .links {
                 list-style: none;
                 padding: 0;
@@ -148,7 +148,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                 align-items: center;
                 gap: 8px;
                 margin-top: 16px;
-                
+
                 li a {
                     font-size: 24px;
                     border-radius: 9999px;
@@ -157,27 +157,27 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     background-color: var(--color-primary);
                     color: var(--color-background-primary);
                     transition: background-color 200ms;
-                    
+
                     &:hover {
                         background-color: var(--color-lime-200);
                     }
                 }
             }
         }
-        
+
         nav {
             margin-top: 16px;
-            
+
             h1 {
                 font-size: 20px;
                 font-weight: 600;
                 margin-bottom: 12px;
             }
-            
+
             ul {
                 list-style: none;
                 padding: 0;
-                
+
                 a {
                     color: var(--color-text-primary);
                     transition: color 0.15s ease-in-out;
@@ -190,18 +190,18 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
             }
         }
     }
-    
+
     .copyrightSection {
         display: flex;
         justify-content: space-between;
         gap: 16px;
-        
+
         .terms {
             display: flex;
             gap: 16px;
         }
     }
-    
+
     hr {
         width: 100%;
         border: none;

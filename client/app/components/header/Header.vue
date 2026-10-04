@@ -11,8 +11,8 @@ const route = useRoute();
 
 const links = computed<HeaderLink[]>(() => [
     {
-        name: t("header.brief"),
-        to: "/#whoWeAre"
+        name: t("header.whoAreWe"),
+        to: "/#whoAreWe"
     },
     {
         name: t("header.process"),

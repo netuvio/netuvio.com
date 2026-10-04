@@ -15,7 +15,7 @@ export default defineI18nLocale(async (locale) => {
             "hero": "Moderní aplikace,\nvýkonný hosting,\nžádné starosti",
             "techWeUse": "Technologie, \nkteré používáme"
         },
-        "whoWeAre": {
+        "whoAreWe": {
             "title": "Kdo jsme",
             "subtitle": "Jsme tým profesionálů. \nDokážeme vytvořit <span>úplně vše.</span>",
             "cards": [
@@ -90,14 +90,14 @@ export default defineI18nLocale(async (locale) => {
             },
             "agency": {
                 "title": "Agentura",
-                "whoWeAre": "Kdo jsme",
+                "whoAreWe": "Kdo jsme",
                 "process": "Náš proces",
                 "whyChooseUs": "Proč my",
                 "contact": "Kontaktujte nás"
             },
             "about": {
                 "title": "Agentura",
-                "whoWeAre": "Kdo jsme",
+                "whoAreWe": "Kdo jsme",
                 "brief": "Kdo jsme",
                 "services": "Služby",
                 "process": "Proces",
@@ -256,8 +256,7 @@ export default defineI18nLocale(async (locale) => {
         },
 
         "header": {
-            "whoWeAre": "Kdo jsme",
-            "brief": "Kdo jsme",
+            "whoAreWe": "Kdo jsme",
             "process": "Proces",
             "projects": "Projekty",
             "whyChooseUs": "Proč my",

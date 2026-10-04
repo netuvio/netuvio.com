@@ -50,14 +50,14 @@ export default defineI18nLocale(async (locale) => {
             },
             "agency": {
                 "title": "Agency",
-                "whoWeAre": "Who Are We",
+                "whoAreWe": "Who Are We",
                 "process": "Our Process",
                 "whyChooseUs": "Why Choose Us",
                 "contact": "Contact Us"
             },
             "about": {
                 "title": "Agency",
-                "whoWeAre": "Who Are We",
+                "whoAreWe": "Who Are We",
                 "brief": "Who Are We",
                 "services": "Services",
                 "process": "Process",
@@ -213,8 +213,7 @@ export default defineI18nLocale(async (locale) => {
         },
 
         "header": {
-            "whoWeAre": "Who Are We",
-            "brief": "Who Are We",
+            "whoAreWe": "Who Are We",
             "process": "Process",
             "projects": "Projects",
             "whyChooseUs": "Why Choose Us",

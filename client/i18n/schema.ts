@@ -15,7 +15,7 @@ export type MessageSchema = {
         hero: string,
         techWeUse: string,
     },
-    
+
     whoAreWe: {
         title: string,
         subtitle: string,
@@ -64,7 +64,7 @@ export type MessageSchema = {
         },
         agency: {
             title: string,
-            whoWeAre: string,
+            whoAreWe: string,
             process: string,
             whyChooseUs: string,
             contact: string,
@@ -74,7 +74,7 @@ export type MessageSchema = {
         hosting?: { title: string },
         about?: {
             title?: string,
-            whoWeAre?: string,
+            whoAreWe?: string,
             brief?: string,
             services?: string,
             process?: string,
@@ -208,7 +208,7 @@ export type MessageSchema = {
     },
 
     header: {
-        whoWeAre?: string,
+        whoAreWe?: string,
         brief: string,
         services: string,
         process: string,

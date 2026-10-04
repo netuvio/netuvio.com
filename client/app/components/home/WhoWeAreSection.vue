@@ -63,7 +63,7 @@ const cards = computed(() => {
 </script>
 
 <template>
-    <section class="theme-secondary" :class="$style.section" id="whoWeAre">
+    <section class="theme-secondary" :class="$style.section" id="whoAreWe">
         <div :class="['container', $style.container]">
             <motion.div
                 :initial="{ opacity: 0, y: 20 }"
