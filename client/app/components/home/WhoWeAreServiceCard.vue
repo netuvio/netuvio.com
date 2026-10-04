@@ -75,7 +75,7 @@ const props = defineProps<{
         }
 
         h2 {
-            font-size: 30px;
+            font-size: var(--font-size-xl);
             line-height: 1.2;
         }
 
@@ -87,7 +87,7 @@ const props = defineProps<{
 
             p {
                 margin-top: 8px;
-                font-size: 18px;
+                font-size: var(--font-size-base);
             }
 
             img {
@@ -184,16 +184,6 @@ const props = defineProps<{
         width: 300px;
         height: 440px;
         padding: 24px;
-
-        .content {
-            h2 {
-                font-size: 26px;
-            }
-
-            .text p {
-                font-size: 16px;
-            }
-        }
     }
 }
 
@@ -204,16 +194,6 @@ const props = defineProps<{
         min-height: 400px;
         padding: 20px;
         border-radius: 20px;
-
-        .content {
-            h2 {
-                font-size: 24px;
-            }
-
-            .text p {
-                font-size: 15px;
-            }
-        }
     }
 }
 </style>

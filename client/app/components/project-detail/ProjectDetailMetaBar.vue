@@ -104,7 +104,7 @@ const isOngoing = computed(() => {
         flex: 1;
 
         .metaLabel {
-            font-size: 14px;
+            font-size: var(--font-size-sm);
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -141,7 +141,7 @@ const isOngoing = computed(() => {
             gap: 6px;
 
             .detailLabel {
-                font-size: 12px;
+                font-size: var(--font-size-xs);
                 font-family: monospace;
                 text-transform: uppercase;
                 letter-spacing: 1px;
@@ -152,7 +152,7 @@ const isOngoing = computed(() => {
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                font-size: 16px;
+                font-size: var(--font-size-base);
                 font-weight: 700;
                 color: var(--color-text-primary);
             }

@@ -70,7 +70,7 @@ const { t } = useI18n();
         z-index: 1;
 
         h2 {
-            font-size: clamp(32px, 4vw, 52px);
+            font-size: var(--font-size-xl);
             font-weight: 900;
             color: var(--color-text-primary);
             margin-bottom: 16px;
@@ -81,7 +81,7 @@ const { t } = useI18n();
         }
 
         p {
-            font-size: clamp(16px, 1.4vw, 19px);
+            font-size: var(--font-size-base);
             color: var(--color-carbon-50);
             line-height: 1.6;
         }

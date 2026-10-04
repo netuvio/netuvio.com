@@ -35,7 +35,7 @@ const techTo = computed(() => {
     padding: 4px 8px;
     border-radius: 9999px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     transition: all 300ms ease;
     cursor: default;
     user-select: none;
@@ -55,7 +55,7 @@ const techTo = computed(() => {
 
 @media screen and (max-width: $mobileBreakpoint) {
     .icon {
-        font-size: 12px;
+        font-size: var(--font-size-xs);
         padding: 3px 8px;
     }
 }

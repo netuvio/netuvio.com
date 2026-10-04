@@ -180,7 +180,7 @@ onUnmounted(() => {
 
                     .sectionCounter {
                         font-family: monospace;
-                        font-size: 13px;
+                        font-size: var(--font-size-xs);
                         font-weight: 800;
                         color: var(--color-primary);
                         letter-spacing: 2px;

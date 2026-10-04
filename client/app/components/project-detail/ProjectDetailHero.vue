@@ -143,7 +143,7 @@ const primaryImage = computed(() => {
     text-decoration: none;
 
     .buttonIcon {
-        font-size: 18px;
+        font-size: var(--font-size-lg);
         margin-right: 4px;
     }
 }
@@ -264,7 +264,7 @@ const primaryImage = computed(() => {
 
                 .titleWrapper {
                     .title {
-                        font-size: clamp(44px, 5.5vw, 76px);
+                        font-size: var(--font-size-2xl);
                         font-weight: 900;
                         line-height: 1.08;
                         letter-spacing: -1.5px;
@@ -278,7 +278,7 @@ const primaryImage = computed(() => {
                     max-width: 620px;
 
                     .description {
-                        font-size: clamp(17px, 1.4vw, 21px);
+                        font-size: var(--font-size-lg);
                         line-height: 1.55;
                         font-weight: 500;
                         color: var(--color-text-secondary);
@@ -351,13 +351,13 @@ const primaryImage = computed(() => {
                             border-radius: 9999px;
                             padding: 6px 14px;
                             color: white;
-                            font-size: 12px;
+                            font-size: var(--font-size-xs);
                             font-weight: 600;
                             pointer-events: none;
                             z-index: 2;
 
                             .zoomIcon {
-                                font-size: 14px;
+                                font-size: var(--font-size-sm);
                                 color: var(--color-primary);
                             }
                         }
@@ -411,10 +411,6 @@ const primaryImage = computed(() => {
             gap: 24px;
 
             .heroGrid .heroText {
-                .titleWrapper .title {
-                    font-size: clamp(34px, 10vw, 46px);
-                }
-
                 .heroActions {
                     flex-direction: column;
                     align-items: stretch;

@@ -62,14 +62,14 @@ const { t } = useI18n();
         .top {
             
             h2 {
-                font-size: 36px;
+                font-size: var(--font-size-xl);
                 color: var(--color-primary);
             }
             
             h3 {
                 margin-top: -4px;
                 margin-bottom: 8px;
-                font-size: 18px;
+                font-size: var(--font-size-lg);
                 opacity: 0.8;
                 font-weight: normal;
             }
@@ -129,10 +129,6 @@ const { t } = useI18n();
 
         .info {
             padding: 20px;
-
-            .top h2 {
-                font-size: clamp(26px, 8vw, 32px);
-            }
         }
     }
 }

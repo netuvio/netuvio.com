@@ -185,7 +185,7 @@ const isOpen = ref(false);
 
         ul li a {
             padding: 14px 0;
-            font-size: 18px;
+            font-size: var(--font-size-lg);
         }
     }
 

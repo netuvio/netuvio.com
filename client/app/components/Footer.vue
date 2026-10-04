@@ -137,7 +137,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                 margin-top: 16px;
 
                 svg {
-                    font-size: 20px;
+                    font-size: var(--font-size-lg);
                 }
             }
 
@@ -150,7 +150,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                 margin-top: 16px;
 
                 li a {
-                    font-size: 24px;
+                    font-size: var(--font-size-xl);
                     border-radius: 9999px;
                     padding: 6px;
                     display: block;
@@ -169,7 +169,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
             margin-top: 16px;
 
             h1 {
-                font-size: 20px;
+                font-size: var(--font-size-lg);
                 font-weight: 600;
                 margin-bottom: 12px;
             }
@@ -195,6 +195,8 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
         display: flex;
         justify-content: space-between;
         gap: 16px;
+        font-size: var(--font-size-xs);
+        color: var(--color-carbon-100);
 
         .terms {
             display: flex;

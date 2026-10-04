@@ -57,7 +57,7 @@ const galleryImages = computed(() => {
 
         .sectionCounter {
             font-family: monospace;
-            font-size: 13px;
+            font-size: var(--font-size-xs);
             font-weight: 800;
             color: var(--color-primary);
             letter-spacing: 2px;
@@ -65,7 +65,7 @@ const galleryImages = computed(() => {
         }
 
         .sectionHeading {
-            font-size: clamp(32px, 3.8vw, 48px);
+            font-size: var(--font-size-xl);
             font-weight: 900;
             letter-spacing: -1px;
             color: var(--color-text-primary);
@@ -73,7 +73,7 @@ const galleryImages = computed(() => {
         }
 
         .gallerySubtitle {
-            font-size: 17px;
+            font-size: var(--font-size-base);
             color: var(--color-carbon-100);
             margin: 0;
         }

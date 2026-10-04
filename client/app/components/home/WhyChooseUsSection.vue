@@ -173,7 +173,7 @@ const { t, tm } = useI18n();
             }
 
             h1 {
-                font-size: clamp(28px, 2.8vw, 44px);
+                font-size: var(--font-size-2xl);
                 line-height: 1.15;
                 font-weight: 900;
                 margin: 0;
@@ -181,7 +181,7 @@ const { t, tm } = useI18n();
             }
 
             .titleLead {
-                font-size: 15px;
+                font-size: var(--font-size-sm);
                 line-height: 1.5;
                 color: var(--color-carbon-300);
                 margin: 0;
@@ -222,7 +222,7 @@ const { t, tm } = useI18n();
         gap: 8px;
 
         h2 {
-            font-size: clamp(19px, 1.35vw, 26px);
+            font-size: var(--font-size-xl);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -244,7 +244,7 @@ const { t, tm } = useI18n();
         }
 
         p {
-            font-size: 15px;
+            font-size: var(--font-size-sm);
             line-height: 1.5;
             color: var(--color-carbon-350);
             margin: 0;
@@ -265,7 +265,7 @@ const { t, tm } = useI18n();
         display: flex;
         align-items: flex-start;
         gap: 9px;
-        font-size: 14px;
+        font-size: var(--font-size-sm);
         line-height: 1.4;
         font-weight: 500;
         color: var(--color-carbon-400);
@@ -279,7 +279,7 @@ const { t, tm } = useI18n();
 .checkIcon {
     width: 17px;
     height: 17px;
-    font-size: 17px;
+    font-size: var(--font-size-base);
     color: var(--color-lime-500);
     flex-shrink: 0;
     margin-top: 1px;
@@ -297,13 +297,13 @@ const { t, tm } = useI18n();
         gap: 12px;
 
         h2 {
-            font-size: clamp(20px, 1.4vw, 28px);
+            font-size: var(--font-size-xl);
             line-height: 1.25;
             margin: 0;
         }
 
         p {
-            font-size: 15px;
+            font-size: var(--font-size-sm);
             line-height: 1.5;
             color: var(--color-carbon-400);
             margin: 0;
@@ -389,10 +389,6 @@ const { t, tm } = useI18n();
             .title {
                 grid-column: 1;
                 padding: 0 0 6px 0;
-
-                h1 {
-                    font-size: clamp(26px, 7vw, 34px);
-                }
             }
 
             .flexibleCard,

@@ -143,7 +143,7 @@ const cards = computed(() => {
 
     .container {
         .subtitle {
-            font-size: 48px;
+            font-size: var(--font-size-2xl);
             white-space: pre;
             line-height: 1.2;
             position: relative;
@@ -317,7 +317,6 @@ const cards = computed(() => {
 
         .container {
             .subtitle {
-                font-size: clamp(32px, 4.5vw, 42px);
                 white-space: normal;
                 width: auto;
                 max-width: 100%;
@@ -355,7 +354,6 @@ const cards = computed(() => {
 
         .container {
             .subtitle {
-                font-size: clamp(26px, 8vw, 34px);
                 white-space: normal;
                 width: auto;
                 max-width: 100%;

@@ -29,7 +29,7 @@ const { t } = useI18n();
         max-width: 800px;
 
         h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: var(--font-size-2xl);
             margin-bottom: 8px;
         }
 

@@ -186,7 +186,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         z-index: 2;
 
         h1 {
-            font-size: clamp(52px, 5.55vw, 80px);
+            font-size: var(--font-size-2xl);
             -webkit-text-stroke: 12px transparent;
             paint-order: stroke fill;
             font-weight: 800;
@@ -197,6 +197,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         }
 
         h2 {
+            font-size: var(--font-size-lg);
             font-weight: 600;
             margin-top: 20px;
             max-width: 600px;
@@ -288,7 +289,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
     span {
         text-transform: uppercase;
-        font-size: 19px;
+        font-size: var(--font-size-lg);
         font-weight: 600;
         line-height: 1.18;
         white-space: pre-line;
@@ -353,12 +354,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         >.textContainer {
             max-width: 560px;
 
-            h1 {
-                font-size: clamp(50px, 6.8vw, 70px);
-            }
-
             h2 {
-                font-size: 20px;
                 margin-top: 12px;
             }
 
@@ -367,7 +363,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
                 button > span:last-child {
                     padding: 16px 24px;
-                    font-size: 22px;
+                    font-size: var(--font-size-lg);
                     min-height: 0;
                 }
 
@@ -385,7 +381,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         gap: 28px;
 
         span {
-            font-size: 16px;
+            font-size: var(--font-size-base);
             line-height: 1.2;
 
             .squiggle {
@@ -419,12 +415,8 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         >.textContainer {
             max-width: min(440px, 52vw);
 
-            h1 {
-                font-size: clamp(38px, 6.5vw, 50px);
-            }
-
             h2 {
-                font-size: 16px;
+                font-size: var(--font-size-base);
             }
 
             .ctaContainer {
@@ -432,7 +424,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
                 button > span:last-child {
                     padding: 16px 24px;
-                    font-size: 20px;
+                    font-size: var(--font-size-base);
                     min-height: 0;
                 }
 
@@ -458,7 +450,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         text-align: left;
 
         span {
-            font-size: 13px;
+            font-size: var(--font-size-sm);
             line-height: 1.18;
             letter-spacing: 0.02em;
             text-align: left;
@@ -503,19 +495,18 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
             max-width: 100%;
 
             h1 {
-                font-size: clamp(30px, 10vw, 42px);
                 width: min(100%, 720px);
             }
 
             h2 {
-                font-size: 14px;
+                font-size: var(--font-size-sm);
             }
 
             .ctaContainer {
                 margin-top: 20px;
 
                 button >span:last-child {
-                    font-size: 16px;
+                    font-size: var(--font-size-base);
                     padding: 12px 20px;
                     min-height: 0;
                 }
@@ -543,7 +534,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 
         span {
-            font-size: 11px;
+            font-size: var(--font-size-xs);
             font-weight: 600;
             letter-spacing: 0.05em;
             white-space: normal;
@@ -586,7 +577,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         gap: 8px;
 
         span {
-            font-size: 10px;
+            font-size: var(--font-size-xs);
             letter-spacing: 0.04em;
         }
 

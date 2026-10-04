@@ -184,7 +184,7 @@ header {
 
         .links {
             --link-padding-x: 12px;
-            font-size: 0.95rem;
+            font-size: var(--font-size-sm);
         }
     }
 }
@@ -197,7 +197,7 @@ header {
 
         .links {
             --link-padding-x: 8px;
-            font-size: 0.9rem;
+            font-size: var(--font-size-sm);
         }
     }
 }

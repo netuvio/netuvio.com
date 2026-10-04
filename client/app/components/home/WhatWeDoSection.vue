@@ -131,7 +131,7 @@ onMounted(() => {
 
                 li {
                     font-weight: 700;
-                    font-size: clamp(40px, 10vw, 64px);
+                    font-size: var(--font-size-2xl);
                     transition: color 0.2s ease-in-out;
                     cursor: pointer;
                     line-height: 1.2em;
@@ -213,10 +213,6 @@ onMounted(() => {
         padding-top: 400px;
 
         .container .wrapper {
-            .servicesList li {
-                font-size: clamp(32px, 6vw, 44px);
-            }
-
             .description {
                 height: auto;
                 min-height: 520px;
@@ -237,10 +233,6 @@ onMounted(() => {
         .container .wrapper {
             .servicesList {
                 margin-bottom: 20px;
-
-                li {
-                    font-size: clamp(24px, 8vw, 32px);
-                }
             }
 
             .description {

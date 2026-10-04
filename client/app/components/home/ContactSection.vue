@@ -358,7 +358,7 @@ const handleSubmit = async () => {
                 }
 
                 .charCount {
-                    font-size: 0.8rem;
+                    font-size: var(--font-size-xs);
                     font-weight: 500;
                     color: var(--color-carbon-400);
                     margin: 0;
@@ -367,7 +367,7 @@ const handleSubmit = async () => {
 
             .errorText {
                 color: #ff3333;
-                font-size: 0.85rem;
+                font-size: var(--font-size-xs);
                 margin-top: 4px;
                 min-height: 1.2rem;
                 font-weight: 500;

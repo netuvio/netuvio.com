@@ -182,7 +182,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
                     transform: translateX(-50%);
                     text-align: center;
                     bottom: 32px;
-                    font-size: 18px;
+                    font-size: var(--font-size-lg);
                     font-weight: 500;
                 }
             }
@@ -225,7 +225,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
             width: 50%;
             
             h2 {
-                font-size: clamp(28px, 2.5vw, 36px);
+                font-size: var(--font-size-xl);
                 margin-bottom: 12px;
             }
             
@@ -262,7 +262,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
             .timeSection {
                 .dot span {
                     width: 220px;
-                    font-size: 15px;
+                    font-size: var(--font-size-sm);
                 }
 
                 .line {
@@ -302,7 +302,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
 
                     span {
                         width: 150px;
-                        font-size: 13px;
+                        font-size: var(--font-size-xs);
                     }
                 }
 
