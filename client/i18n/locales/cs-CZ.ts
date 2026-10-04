@@ -178,6 +178,7 @@ export default defineI18nLocale(async (locale) => {
                 "timeline": "Časový rámec",
                 "category": "Kategorie",
                 "overview": "Přehled",
+                "visualAssets": "Vizuální materiály",
                 "gallery": "Vizuální galerie",
                 "gallerySubtitle": "Snímky ve vysokém rozlišení a mediální materiály projektu.",
                 "asset": "Položka",

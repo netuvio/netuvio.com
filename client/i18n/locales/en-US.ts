@@ -135,6 +135,7 @@ export default defineI18nLocale(async (locale) => {
                 "timeline": "Timeline",
                 "category": "Category",
                 "overview": "Overview",
+                "visualAssets": "Visual Assets",
                 "gallery": "Visual Gallery",
                 "gallerySubtitle": "High-resolution screenshots and media assets from the project.",
                 "asset": "Asset",
@@ -145,7 +146,7 @@ export default defineI18nLocale(async (locale) => {
                 "viewLive": "Live Website",
                 "viewCode": "Source Repository",
                 "zoomHint": "Click to expand",
-                "tableOfContents": "Contents"
+                "tableOfContents": "Contents",
             }
         },
         "whyChooseUs": {

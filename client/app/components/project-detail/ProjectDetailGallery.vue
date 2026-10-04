@@ -17,7 +17,7 @@ const galleryImages = computed(() => {
 <template>
     <section :class="$style.gallerySection" id="gallery" v-if="galleryImages.length > 0">
         <div :class="$style.sectionHeader">
-            <span :class="$style.sectionCounter">02 // VISUAL ASSETS</span>
+            <span :class="$style.sectionCounter">02 // {{ t("projects.detail.visualAssets").toUpperCase() }}</span>
             <h2 :class="$style.sectionHeading">{{ t("projects.detail.gallery") }}</h2>
             <p :class="$style.gallerySubtitle">{{ t("projects.detail.gallerySubtitle") }}</p>
         </div>
