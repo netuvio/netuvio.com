@@ -20,6 +20,8 @@ public class Project {
 
     public bool IsFeatured { get; set; } = false;
 
+    public int? Order { get; set; }
+
     [MaxLength(1024)]
     public List<string> ImageUrls { get; set; } = [];
 

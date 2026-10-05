@@ -27,6 +27,7 @@ public class ProjectsControllerV1(AppDbContext db) : Controller {
                 Description = l.Description,
                 Body = l.Body,
                 IsFeatured = l.Project.IsFeatured,
+                Order = l.Project.Order,
                 ImageUrls = l.Project.ImageUrls,
                 Type = l.Project.Type,
                 Technologies = l.Project.Technologies,
@@ -35,6 +36,8 @@ public class ProjectsControllerV1(AppDbContext db) : Controller {
                 WebsiteUrl = l.Project.WebsiteUrl,
                 SourceCodeUrl = l.Project.SourceCodeUrl
             })
+            .OrderBy(l => l.Order ?? int.MaxValue)
+            .ThenByDescending(l => l.StartedAt)
             .ToListAsync(ct);
 
         return new OkObjectResult(response);
@@ -56,6 +59,7 @@ public class ProjectsControllerV1(AppDbContext db) : Controller {
                 Description = l.Description,
                 Body = l.Body,
                 IsFeatured = l.Project.IsFeatured,
+                Order = l.Project.Order,
                 ImageUrls = l.Project.ImageUrls,
                 Type = l.Project.Type,
                 Technologies = l.Project.Technologies,
