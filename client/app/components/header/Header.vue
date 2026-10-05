@@ -32,7 +32,10 @@ const links = computed<HeaderLink[]>(() => [
     }
 ]);
 
-const isSubpage = computed(() => route.path.includes("/projects"));
+const isSubpage = computed(() => {
+    const path = route.path;
+    return path.includes("/projects") || path.includes("/terms") || path.includes("/privacy");
+});
 const hasScrolled = ref(false);
 
 const handleScroll = () => {
@@ -52,7 +55,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <header :class="{ [$style.scrolled]: hasScrolled || isSubpage }">
+    <header :class="[$style.header, { [$style.scrolled]: hasScrolled || isSubpage }]">
         <nav class="container">
             <NuxtLinkLocale to="/" :class="$style.logo"></NuxtLinkLocale>
             <div :class="$style.links">
@@ -73,7 +76,7 @@ onUnmounted(() => {
 
 $headerHeight: 80px;
 
-header {
+.header {
     position: fixed;
     top: 0;
     left: 0;

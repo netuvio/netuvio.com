@@ -272,6 +272,44 @@ export default defineI18nLocale(async (locale) => {
                 "serverError": "Něco se pokazilo",
                 "unexpected": "Neočekávaná chyba"
             }
+        },
+
+        "terms": {
+            "title": "Podmínky služby",
+            "subtitle": "Právní podmínky upravující přístup na web, vyloučení záruk, omezení odpovědnosti a pravidla užívání služeb Netuvio.",
+            "badge": "Právní dokumentace",
+            "backHome": "Zpět na hlavní stránku",
+            "metadata": {
+                "effectiveDateLabel": "Datum účinnosti",
+                "effectiveDateValue": "5. října 2026",
+                "operatorLabel": "Provozovatel",
+                "operatorValue": "Stanislav Škudrna (Netuvio)",
+                "contactLabel": "Kontakt",
+                "contactValue": "info{'@'}netuvio.com",
+                "jurisdictionLabel": "Rozhodné právo",
+                "jurisdictionValue": "Česká republika (EU)"
+            },
+            "noticeTitle": "Důležité právní upozornění",
+            "noticeText": "Prohlížením tohoto webu nebo odesláním poptávky nevzniká závazná smlouva o poskytování služeb. Web je poskytován výhradně „jak stojí a leží“ a provozovatel v maximálním zákonem dovoleném rozsahu vylučuje veškerou odpovědnost za újmu."
+        },
+
+        "privacy": {
+            "title": "Zásady ochrany osobních údajů",
+            "subtitle": "Informace o zpracování a ochraně osobních údajů podle Nařízení Evropského parlamentu a Rady (EU) 2016/679 (GDPR).",
+            "badge": "Ochrana soukromí & GDPR",
+            "backHome": "Zpět na hlavní stránku",
+            "metadata": {
+                "effectiveDateLabel": "Datum účinnosti",
+                "effectiveDateValue": "5. října 2026",
+                "controllerLabel": "Správce údajů",
+                "controllerValue": "Stanislav Škudrna (Netuvio)",
+                "contactLabel": "Kontakt",
+                "contactValue": "info{'@'}netuvio.com",
+                "regulationLabel": "Právní rámec",
+                "regulationValue": "GDPR (EU 2016/679) & Zákon č. 110/2019 Sb."
+            },
+            "noticeTitle": "Shrnutí ochrany vašeho soukromí",
+            "noticeText": "Vaše osobní údaje zpracováváme výhradně pro vyřízení vašich poptávek, přípravu nabídek a zajištění bezpečnosti provozu webu. Údaje neprodáváme třetím stranám a chráníme je v souladu s přísnými standardy GDPR."
         }
     }
 })

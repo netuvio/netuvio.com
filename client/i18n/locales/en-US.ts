@@ -230,6 +230,44 @@ export default defineI18nLocale(async (locale) => {
                 "serverError": "Something went wrong",
                 "unexpected": "Unexpected error"
             }
+        },
+
+        "terms": {
+            "title": "Terms of Service",
+            "subtitle": "Legal terms and conditions governing website access, disclaimer of warranties, strict limitation of liability, and permissible use of Netuvio.",
+            "badge": "Legal Documentation",
+            "backHome": "Back to Home",
+            "metadata": {
+                "effectiveDateLabel": "Effective Date",
+                "effectiveDateValue": "October 5, 2026",
+                "operatorLabel": "Operator",
+                "operatorValue": "Stanislav Škudrna (Netuvio)",
+                "contactLabel": "Contact",
+                "contactValue": "info{'@'}netuvio.com",
+                "jurisdictionLabel": "Governing Law",
+                "jurisdictionValue": "Czech Republic (EU)"
+            },
+            "noticeTitle": "Important Legal Notice",
+            "noticeText": "Browsing this website or submitting an inquiry creates no binding service contract or guarantee of engagement. This website is provided strictly on an \"AS IS\" basis and the operator disclaims all liability to the maximum extent permitted by law."
+        },
+
+        "privacy": {
+            "title": "Privacy Policy",
+            "subtitle": "Information regarding the processing and protection of personal data in compliance with Regulation (EU) 2016/679 (GDPR).",
+            "badge": "Privacy & GDPR Compliance",
+            "backHome": "Back to Home",
+            "metadata": {
+                "effectiveDateLabel": "Effective Date",
+                "effectiveDateValue": "October 5, 2026",
+                "controllerLabel": "Data Controller",
+                "controllerValue": "Stanislav Škudrna (Netuvio)",
+                "contactLabel": "Contact",
+                "contactValue": "info{'@'}netuvio.com",
+                "regulationLabel": "Legal Framework",
+                "regulationValue": "GDPR (EU 2016/679) & Czech Act 110/2019 Coll."
+            },
+            "noticeTitle": "Privacy Commitment Summary",
+            "noticeText": "We process personal data solely to reply to inquiries, prepare bespoke proposals, and maintain server security. We never sell data to third parties and protect your information under strict GDPR standards."
         }
     }
 })
