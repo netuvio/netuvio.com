@@ -6,18 +6,17 @@ const props = defineProps<{
     to?: string;
 }>();
 
-const techTo = computed(() => {
-    switch (props.technology) {
-        case 'Next.js':
-            return 'https://nextjs.org/';
-        case 'React':
-            return 'https://reactjs.org/';
-        case 'Nuxt':
-            return 'https://nuxt.com/';
-        default:
-            return undefined;
-    }
-});
+const URL_MAP: Record<string, string> = {
+    'Next.js': 'https://nextjs.org/',
+    'React': 'https://reactjs.org/',
+    'Nuxt': 'https://nuxt.com/',
+    'ASP.NET': 'https://dotnet.microsoft.com/apps/aspnet',
+    'PHP': 'https://www.php.net/',
+    'Wordpress': 'https://wordpress.org/',
+    'Affinity': 'https://www.affinity.studio/',
+};
+
+const techTo = computed(() => URL_MAP[props.technology]);
 </script>
 
 <template>
