@@ -107,9 +107,9 @@ export default defineI18nLocale(async (locale) => {
                 "contactUs": "Kontakt"
             },
             "allRightsReserved": "Všechna práva vyhrazena",
+            "ownerSection": "Netuvio je obchodní značka provozována <a href='https://stanislavskudrna.cz' target='_blank'>Stanislavem Škudrnou</a>.",
             "privacyPolicy": "Zásady ochrany osobních údajů",
             "termsOfService": "Podmínky služby",
-            "loremIpsum": "V Netuvio klademe maximální důraz na ochranu osobních údajů, transparentnost a bezpečnost všech poskytovaných služeb.",
             "privacyPolicyText": "V Netuvio si vážíme vaší důvěry a zavazujeme se chránit vaše osobní údaje. Veškerá data shromážděná prostřednictvím našeho kontaktního formuláře nebo v průběhu spolupráce využíváme výhradně pro komunikaci, vypracování nabídek a poskytování našich služeb. Vaše údaje nikdy nepředáváme třetím stranám bez vašeho výslovného souhlasu a uchováváme je v zabezpečeném prostředí v souladu s platnými právními předpisy GDPR.",
             "termsOfServiceText": "Tyto podmínky upravují využívání webových stránek a služeb poskytovaných společností Netuvio. Všechny projekty, grafické návrhy a softwarová řešení jsou realizovány na základě individuální dohody se zákazníkem. Dbáme na transparentní komunikaci, vysokou kvalitu dodávaných řešení, dodržování stanovených termínů a spolehlivou technickou podporu po celou dobu spolupráce."
         },

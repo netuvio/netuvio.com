@@ -67,6 +67,7 @@ export default defineI18nLocale(async (locale) => {
                 "contactUs": "Contact Us"
             },
             "allRightsReserved": "All rights reserved",
+            "ownerSection": "Netuvio is a brand operated by <a href='https://skudrna.com' target='_blank'>Stanislav Škudrna</a>.",
             "privacyPolicy": "Privacy Policy",
             "termsOfService": "Terms of Service"
         },

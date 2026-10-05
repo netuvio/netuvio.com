@@ -96,6 +96,16 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     <NuxtLinkLocale to="/terms">{{ t('footer.termsOfService') }}</NuxtLinkLocale>
                 </div>
             </motion.section>
+
+            <motion.section
+                :class="$style.ownerSection"
+                :initial="{ opacity: 0, y: 20 }"
+                :whileInView="{ opacity: 1, y: 0 }"
+                :inViewOptions="{ once: true }"
+                :transition="{ duration: 0.6, delay: 0.5 }"
+            >
+                <span v-html="t('footer.ownerSection')"></span>
+            </motion.section>
         </div>
     </footer>
 </template>
@@ -191,7 +201,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
         }
     }
 
-    .copyrightSection {
+    .copyrightSection, .ownerSection {
         display: flex;
         justify-content: space-between;
         gap: 16px;
@@ -202,6 +212,11 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
             display: flex;
             gap: 16px;
         }
+    }
+
+    .ownerSection {
+        margin-top: 8px;
+        display: block;
     }
 
     hr {
