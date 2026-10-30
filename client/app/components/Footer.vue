@@ -15,7 +15,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
         <Gradient :class="$style.gradient" />
         <div :class="['container', $style.container]">
             <section :class="$style.linkSection">
-                <motion.div 
+                <motion.div
                     :class="$style.info"
                     :initial="{ opacity: 0, y: 30 }"
                     :whileInView="{ opacity: 1, y: 0 }"
@@ -40,12 +40,12 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.1 }"
                 >
-                    <h1>{{ t('footer.design.title') }}</h1>
+                    <h1>{{ t('footer.services.title') }}</h1>
                     <ul>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale :to="{ path: '/', hash: '#contact', query: { service: 'design' } }">{{ t('footer.services.design') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale :to="{ path: '/', hash: '#contact', query: { service: 'development' } }">{{ t('footer.services.development') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale :to="{ path: '/', hash: '#contact', query: { service: 'hosting' } }">{{ t('footer.services.hosting') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#process">{{ t('footer.services.support') }}</NuxtLinkLocale></li>
                     </ul>
                 </motion.nav>
                 <motion.nav
@@ -54,12 +54,12 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.2 }"
                 >
-                    <h1>{{ t('footer.development.title') }}</h1>
+                    <h1>{{ t('footer.work.title') }}</h1>
                     <ul>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/projects">{{ t('footer.work.allProjects') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale :to="{ path: '/projects', query: { filter: 'Website' } }">{{ t('footer.work.websites') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale :to="{ path: '/projects', query: { filter: 'Graphics' } }">{{ t('footer.work.graphics') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#projects">{{ t('footer.work.featured') }}</NuxtLinkLocale></li>
                     </ul>
                 </motion.nav>
                 <motion.nav
@@ -68,49 +68,43 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6, delay: 0.3 }"
                 >
-                    <h1>{{ t('footer.hosting.title') }}</h1>
+                    <h1>{{ t('footer.agency.title') }}</h1>
                     <ul>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#">{{ t('footer.loremIpsum') }}</NuxtLinkLocale></li>
-                    </ul>
-                </motion.nav>
-                <motion.nav
-                    :initial="{ opacity: 0, y: 30 }"
-                    :whileInView="{ opacity: 1, y: 0 }"
-                    :inViewOptions="{ once: true }"
-                    :transition="{ duration: 0.6, delay: 0.4 }"
-                >
-                    <h1>{{ t('footer.about.title') }}</h1>
-                    <ul>
-                        <li><NuxtLinkLocale to="/#whoWeAre">{{ t('footer.about.whoWeAre') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#services">{{ t('footer.about.services') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#process">{{ t('footer.about.process') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/projects">{{ t('footer.about.projects') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#why-choose-us">{{ t('footer.about.whyChooseUs') }}</NuxtLinkLocale></li>
-                        <li><NuxtLinkLocale to="/#contact">{{ t('footer.about.contact') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#whoAreWe">{{ t('footer.agency.whoAreWe') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#process">{{ t('footer.agency.process') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#why-choose-us">{{ t('footer.agency.whyChooseUs') }}</NuxtLinkLocale></li>
+                        <li><NuxtLinkLocale to="/#contact">{{ t('footer.agency.contact') }}</NuxtLinkLocale></li>
                     </ul>
                 </motion.nav>
             </section>
-            <motion.hr 
+            <motion.hr
                 :initial="{ scaleX: 0, opacity: 0 }"
                 :whileInView="{ scaleX: 1, opacity: 1 }"
                 :inViewOptions="{ once: true }"
-                :transition="{ duration: 1, delay: 0.5, ease: 'easeOut' }"
+                :transition="{ duration: 1, delay: 0.4, ease: 'easeOut' }"
             />
-            <motion.section 
+            <motion.section
                 :class="$style.copyrightSection"
                 :initial="{ opacity: 0, y: 20 }"
                 :whileInView="{ opacity: 1, y: 0 }"
                 :inViewOptions="{ once: true }"
-                :transition="{ duration: 0.6, delay: 0.6 }"
+                :transition="{ duration: 0.6, delay: 0.5 }"
             >
                 <div>&copy; {{(new Date()).getUTCFullYear()}} Netuvio, {{ t('footer.allRightsReserved') }}</div>
                 <div :class="$style.terms">
                     <NuxtLinkLocale to="/privacy">{{ t('footer.privacyPolicy') }}</NuxtLinkLocale>
                     <NuxtLinkLocale to="/terms">{{ t('footer.termsOfService') }}</NuxtLinkLocale>
                 </div>
+            </motion.section>
+
+            <motion.section
+                :class="$style.ownerSection"
+                :initial="{ opacity: 0, y: 20 }"
+                :whileInView="{ opacity: 1, y: 0 }"
+                :inViewOptions="{ once: true }"
+                :transition="{ duration: 0.6, delay: 0.5 }"
+            >
+                <span v-html="t('footer.ownerSection')"></span>
             </motion.section>
         </div>
     </footer>
@@ -128,15 +122,15 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
 
 .footer {
     padding: clamp(120px, 14vw, 200px) 0 50px;
-    
+
     .linkSection {
         display: grid;
-        grid-template-columns: minmax(280px, 40%) repeat(4, 1fr);
-        gap: 24px;
-        
+        grid-template-columns: minmax(280px, 35%) repeat(3, 1fr);
+        gap: 32px;
+
         .info {
             margin-right: 64px;
-            
+
             .logo {
                 mask-image: url('/icons/logo-full.svg');
                 mask-repeat: no-repeat;
@@ -145,18 +139,18 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                 background-color: white;
                 margin-bottom: 12px;
             }
-            
+
             .email {
                 display: flex;
                 align-items: center;
                 gap: 8px;
                 margin-top: 16px;
-                
+
                 svg {
-                    font-size: 20px;
+                    font-size: var(--font-size-lg);
                 }
             }
-            
+
             .links {
                 list-style: none;
                 padding: 0;
@@ -164,36 +158,36 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                 align-items: center;
                 gap: 8px;
                 margin-top: 16px;
-                
+
                 li a {
-                    font-size: 24px;
+                    font-size: var(--font-size-xl);
                     border-radius: 9999px;
                     padding: 6px;
                     display: block;
                     background-color: var(--color-primary);
                     color: var(--color-background-primary);
                     transition: background-color 200ms;
-                    
+
                     &:hover {
                         background-color: var(--color-lime-200);
                     }
                 }
             }
         }
-        
+
         nav {
             margin-top: 16px;
-            
+
             h1 {
-                font-size: 20px;
+                font-size: var(--font-size-lg);
                 font-weight: 600;
                 margin-bottom: 12px;
             }
-            
+
             ul {
                 list-style: none;
                 padding: 0;
-                
+
                 a {
                     color: var(--color-text-primary);
                     transition: color 0.15s ease-in-out;
@@ -206,18 +200,25 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
             }
         }
     }
-    
-    .copyrightSection {
+
+    .copyrightSection, .ownerSection {
         display: flex;
         justify-content: space-between;
         gap: 16px;
-        
+        font-size: var(--font-size-xs);
+        color: var(--color-carbon-100);
+
         .terms {
             display: flex;
             gap: 16px;
         }
     }
-    
+
+    .ownerSection {
+        margin-top: 8px;
+        display: block;
+    }
+
     hr {
         width: 100%;
         border: none;
@@ -232,7 +233,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
 
 @media screen and (max-width: $laptopBreakpoint) {
     .footer .linkSection {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
 
         .info {
             grid-column: 1 / -1;

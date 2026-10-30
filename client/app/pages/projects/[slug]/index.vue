@@ -9,7 +9,7 @@ import ProjectDetailMetaBar from "~/components/project-detail/ProjectDetailMetaB
 import ProjectDetailSidebar, { type TocItem } from "~/components/project-detail/ProjectDetailSidebar.vue";
 import ProjectDetailGallery from "~/components/project-detail/ProjectDetailGallery.vue";
 
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 const route = useRoute();
 
 const { data: project, error } = await useFetch<Project>(`/api/v1/projects/${route.params.slug}`, {
@@ -122,7 +122,7 @@ onUnmounted(() => {
                     <div :class="$style.editorialLayout">
                         <main :class="$style.mainArticle">
                             <div :class="$style.sectionHeader">
-                                <span :class="$style.sectionCounter">01 // OVERVIEW</span>
+                                <span :class="$style.sectionCounter">01 // {{ t("projects.detail.overview").toUpperCase() }}</span>
                             </div>
 
                             <Markdown :markdown="project.body" />
@@ -180,7 +180,7 @@ onUnmounted(() => {
 
                     .sectionCounter {
                         font-family: monospace;
-                        font-size: 13px;
+                        font-size: var(--font-size-xs);
                         font-weight: 800;
                         color: var(--color-primary);
                         letter-spacing: 2px;

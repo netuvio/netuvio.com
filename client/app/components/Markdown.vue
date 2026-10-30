@@ -31,7 +31,7 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown, { ADD_ATTR: ['id', 'target
 @use "~/assets/variables" as *;
 
 .markdown {
-    font-size: 18px;
+    font-size: var(--font-size-base);
     line-height: 1.7;
     color: var(--color-carbon-50);
     
@@ -54,21 +54,21 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown, { ADD_ATTR: ['id', 'target
     }
 
     h1 {
-        font-size: 48px;
+        font-size: var(--font-size-2xl);
     }
 
     h2 {
-        font-size: 30px;
+        font-size: var(--font-size-xl);
         padding-bottom: 8px;
         border-bottom: 1px solid var(--color-carbon-400);
     }
     
     h3 {
-        font-size: 24px;
+        font-size: var(--font-size-lg);
     }
 
     h4, h5, h6 {
-        font-size: 20px;
+        font-size: var(--font-size-base);
     }
 
     p {
@@ -162,7 +162,7 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown, { ADD_ATTR: ['id', 'target
             color: var(--color-primary);
             font-weight: 800;
             text-transform: uppercase;
-            font-size: 13px;
+            font-size: var(--font-size-xs);
             letter-spacing: 1px;
             border-bottom: 2px solid var(--color-carbon-400);
         }
@@ -185,39 +185,11 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown, { ADD_ATTR: ['id', 'target
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
-    .markdown {
-        font-size: 17px;
-
-        h1 {
-            font-size: 38px;
-        }
-
-        h2 {
-            font-size: 26px;
-        }
-
-        h3 {
-            font-size: 22px;
-        }
-    }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
     .markdown {
-        font-size: 16px;
         line-height: 1.6;
-
-        h1 {
-            font-size: 30px;
-        }
-
-        h2 {
-            font-size: 22px;
-        }
-
-        h3 {
-            font-size: 19px;
-        }
 
         blockquote {
             padding: 12px 16px;
@@ -237,7 +209,7 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown, { ADD_ATTR: ['id', 'target
 
             th, td {
                 padding: 10px 12px;
-                font-size: 14px;
+                font-size: var(--font-size-sm);
             }
         }
     }

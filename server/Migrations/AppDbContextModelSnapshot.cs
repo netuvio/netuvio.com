@@ -40,6 +40,9 @@ namespace server.Migrations
                     b.Property<bool>("IsFeatured")
                         .HasColumnType("boolean");
 
+                    b.Property<int?>("Order")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Slug")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -56,8 +59,9 @@ namespace server.Migrations
                         .IsRequired()
                         .HasColumnType("text[]");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("integer");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("WebsiteUrl")
                         .HasMaxLength(512)

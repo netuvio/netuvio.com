@@ -111,7 +111,7 @@ const { t } = useI18n();
                 align-items: center;
 
                 .title {
-                    font-size: clamp(48px, 7vw, 84px);
+                    font-size: var(--font-size-2xl);
                     font-weight: 900;
                     line-height: 1.15;
                     color: var(--color-text-primary);
@@ -138,7 +138,7 @@ const { t } = useI18n();
                 max-width: 720px;
 
                 .subtitle {
-                    font-size: clamp(18px, 1.6vw, 24px);
+                    font-size: var(--font-size-lg);
                     line-height: 1.55;
                     font-weight: 500;
                     color: var(--color-carbon-100);
@@ -183,10 +183,6 @@ const { t } = useI18n();
 
         .heroContainer .heroText {
             .titleWrapper {
-                .title {
-                    font-size: clamp(36px, 11vw, 50px);
-                }
-
                 .titleStar {
                     width: 36px;
                     height: 36px;

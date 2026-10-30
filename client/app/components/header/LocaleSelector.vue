@@ -15,6 +15,19 @@ const options = computed<SelectOption[]>(() =>
     })
 );
 
+const props = withDefaults(
+    defineProps<{
+        theme?: "light" | "dark";
+        align?: "left" | "right";
+        size?: SelectSize;
+    }>(),
+    {
+        theme: "light",
+        align: "right",
+        size: "md",
+    }
+);
+
 const onLocaleChange = (newLocale: string | number) => {
     setLocale(String(newLocale) as "en" | "cs");
 };
@@ -24,13 +37,13 @@ const onLocaleChange = (newLocale: string | number) => {
     <Select
         :model-value="locale"
         :options="options"
-        size="md"
+        :size="props.size"
         radius="full"
-        align="right"
+        :align="props.align"
         aria-label="Select language"
         :class="$style.localeSelect"
         @update:model-value="onLocaleChange"
-        theme="light"
+        :theme="props.theme"
     />
 </template>
 

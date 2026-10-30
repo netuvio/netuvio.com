@@ -158,7 +158,7 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
     top: 1rem;
     right: 1rem;
     color: white;
-    font-size: 1.875rem;
+    font-size: var(--font-size-xl);
     padding: 0.5rem;
     z-index: 10;
     cursor: pointer;
@@ -169,7 +169,7 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
 .navBtn {
     position: absolute;
     color: white;
-    font-size: 1.875rem;
+    font-size: var(--font-size-xl);
     padding: 0.5rem;
     z-index: 10;
     cursor: pointer;
@@ -260,11 +260,6 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
     .closeBtn {
         top: 0.75rem;
         right: 0.75rem;
-        font-size: 1.5rem;
-    }
-
-    .navBtn {
-        font-size: 1.5rem;
     }
 
     .navBtnLeft {
@@ -280,11 +275,9 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
     .closeBtn {
         top: 0.5rem;
         right: 0.5rem;
-        font-size: 1.25rem;
     }
 
     .navBtn {
-        font-size: 1.25rem;
         padding: 0.25rem;
     }
 
@@ -299,7 +292,7 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
     .counter {
         left: 1rem;
         top: 1rem;
-        font-size: 13px;
+        font-size: var(--font-size-xs);
     }
 
     .image {
@@ -308,7 +301,7 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
     }
 
     .caption {
-        font-size: 14px;
+        font-size: var(--font-size-sm);
         padding: 0 16px;
     }
 }

@@ -2,11 +2,6 @@ export default defineI18nLocale(async (locale) => {
     return {
         "common": {
             "comingSoon": "Coming soon",
-            "lorem": {
-                "title": "Lorem ipsum dolor sit amet",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis ipsum sed nisi finibus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
-                "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id turpis ut nibh molestie ultrices. Ut nec eleifend augue, vitae consequat arcu. Proin mollis, augue quis tristique iaculis, metus metus mollis mi, et dapibus elit dolor a neque. Quisque pharetra leo quam. Cras in urna ipsum. Pellentesque nibh ligula, gravida vitae facilisis quis, malesuada in nisl."
-            }
         },
         "home": {
             "title": "Home",
@@ -15,60 +10,55 @@ export default defineI18nLocale(async (locale) => {
             "hero": "Modern apps,\npowerful hosting,\nzero hassle",
             "techWeUse": "Technologies,\nwe use"
         },
-        "whoWeAre": {
-            "title": "Who We Are",
-            "subtitle": "We are a team of professionals \ncapable of creating <span>anything.</span>"
-        },
-        "services": {
-            "design": {
-                "title": "Design",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
-                "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
-                ]
-            },
-            "development": {
-                "title": "Development",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
-                "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
-                ]
-            },
-            "hosting": {
-                "title": "Hosting",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
-                "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
-                ]
-            },
+        "whoAreWe": {
+            "title": "Who Are We",
+            "subtitle": "We are a team of professionals \ncapable of creating <span>anything.</span>",
+            "cards": [
+                {
+                    "title": "Web Development",
+                    "description": "We engineer fast, scalable web applications and digital platforms built to perform seamlessly under any load."
+                },
+                {
+                    "title": "Modern UI/UX Design",
+                    "description": "Crafting thoughtful user interfaces and distinctive brand identities that captivate users and drive real conversions."
+                },
+                {
+                    "title": "Cloud & Managed Hosting",
+                    "description": "Zero-hassle cloud deployment, containerization, and dedicated managed hosting with automated backups and high uptime."
+                },
+                {
+                    "title": "Long-term Support & Growth",
+                    "description": "Continuous monitoring, proactive security updates, and agile feature development as your business and user base expand."
+                }
+            ]
         },
         "footer": {
             "description": "Whether you need design, development, hosting, or everything in between, we're here to turn your ideas into reliable digital products.",
-            "design": {
-                "title": "Design"
+            "services": {
+                "title": "Services",
+                "design": "UI/UX & Branding",
+                "development": "Web & App Development",
+                "hosting": "Cloud & Managed Hosting",
+                "support": "Consultation & Support"
             },
-            "development": {
-                "title": "Development"
+            "work": {
+                "title": "Work",
+                "allProjects": "All Projects",
+                "websites": "Websites & Web Apps",
+                "graphics": "Graphic Design",
+                "featured": "Featured Projects"
             },
-            "hosting": {
-                "title": "Hosting"
+            "agency": {
+                "title": "Agency",
+                "whoAreWe": "Who Are We",
+                "process": "Our Process",
+                "whyChooseUs": "Why Choose Us",
+                "contact": "Contact Us"
             },
             "about": {
-                "title": "About",
-                "whoWeAre": "Who We Are",
-                "brief": "Who We Are",
+                "title": "Agency",
+                "whoAreWe": "Who Are We",
+                "brief": "Who Are We",
                 "services": "Services",
                 "process": "Process",
                 "projects": "Projects",
@@ -76,8 +66,8 @@ export default defineI18nLocale(async (locale) => {
                 "contact": "Contact Us",
                 "contactUs": "Contact Us"
             },
-            "loremIpsum": "Lorem ipsum",
             "allRightsReserved": "All rights reserved",
+            "ownerSection": "Netuvio is a brand operated by <a href='https://skudrna.com' target='_blank'>Stanislav Škudrna</a>.",
             "privacyPolicy": "Privacy Policy",
             "termsOfService": "Terms of Service"
         },
@@ -146,6 +136,7 @@ export default defineI18nLocale(async (locale) => {
                 "timeline": "Timeline",
                 "category": "Category",
                 "overview": "Overview",
+                "visualAssets": "Visual Assets",
                 "gallery": "Visual Gallery",
                 "gallerySubtitle": "High-resolution screenshots and media assets from the project.",
                 "asset": "Asset",
@@ -156,27 +147,48 @@ export default defineI18nLocale(async (locale) => {
                 "viewLive": "Live Website",
                 "viewCode": "Source Repository",
                 "zoomHint": "Click to expand",
-                "tableOfContents": "Contents"
+                "tableOfContents": "Contents",
             }
         },
         "whyChooseUs": {
             "title": "Why Choose Us",
+            "subtitle": "We combine technical precision, modern design, and a personal approach without compromise.",
             "flexibleServices": {
                 "title": "Flexible Services",
-                "description": "Every project is different. Whether you need design, development, hosting, or a complete solution, you can choose the services that fit your goals without paying for what you don't need."
+                "description": "You only pay for what you actually need – whether you want turnkey delivery or standalone design, dev, or hosting.",
+                "bulletPoints": [
+                    "Turnkey solutions or standalone modular services",
+                    "Tailored to your budget, milestones, and timeline",
+                    "100% source code ownership with zero lock-in"
+                ]
             },
             "cta": {
                 "title": "Ready to Bring Your Idea to Life?",
-                "description": "Whether you need a complete solution or help with a specific part of your project, we're here to help. Let's discuss your goals and find the right approach for your business.",
-                "button": "Contact Us"
+                "description": "Let's discuss your goals and find the most effective approach for your business.",
+                "button": "Contact Us",
+                "bulletPoints": [
+                    "Free, non-binding initial consultation",
+                    "Quick response & rough estimate within 24h",
+                    "Concrete technical proposal tailored to you"
+                ]
             },
             "modernTechnology": {
                 "title": "Modern Technology",
-                "description": "We build with modern frameworks, tools, and best practices to create fast, scalable, and maintainable solutions that are ready to grow with your business."
+                "description": "We don't build on bloated templates. We leverage a modern stack built for speed, security, and effortless scaling.",
+                "bulletPoints": [
+                    "Lightning-fast performance & top Core Web Vitals",
+                    "Modern stack (Nuxt, Vue, TypeScript, .NET)",
+                    "High security standards, cloud & Docker containers"
+                ]
             },
             "personalApproach": {
                 "title": "Personal Approach",
-                "description": "As a small team, we work closely with every client. You'll communicate directly with the people building your project, ensuring clear communication, faster decisions, and a solution tailored to your needs."
+                "description": "You communicate directly with the people designing and coding your product. No middle managers or needless delays.",
+                "bulletPoints": [
+                    "Direct contact with developers and designers",
+                    "Regular progress demos throughout development",
+                    "Fast response times and dependable ongoing support"
+                ]
             }
         },
         "process": {
@@ -201,6 +213,14 @@ export default defineI18nLocale(async (locale) => {
             }
         },
 
+        "header": {
+            "whoAreWe": "Who Are We",
+            "process": "Process",
+            "projects": "Projects",
+            "whyChooseUs": "Why Choose Us",
+            "contact": "Contact Us"
+        },
+
         "error": {
             "title": "Error {code}",
             "back": "Back",
@@ -210,6 +230,44 @@ export default defineI18nLocale(async (locale) => {
                 "serverError": "Something went wrong",
                 "unexpected": "Unexpected error"
             }
+        },
+
+        "terms": {
+            "title": "Terms of Service",
+            "subtitle": "Legal terms and conditions governing website access, disclaimer of warranties, strict limitation of liability, and permissible use of Netuvio.",
+            "badge": "Legal Documentation",
+            "backHome": "Back to Home",
+            "metadata": {
+                "effectiveDateLabel": "Effective Date",
+                "effectiveDateValue": "October 5, 2026",
+                "operatorLabel": "Operator",
+                "operatorValue": "Stanislav Škudrna (Netuvio)",
+                "contactLabel": "Contact",
+                "contactValue": "info{'@'}netuvio.com",
+                "jurisdictionLabel": "Governing Law",
+                "jurisdictionValue": "Czech Republic (EU)"
+            },
+            "noticeTitle": "Important Legal Notice",
+            "noticeText": "Browsing this website or submitting an inquiry creates no binding service contract or guarantee of engagement. This website is provided strictly on an \"AS IS\" basis and the operator disclaims all liability to the maximum extent permitted by law."
+        },
+
+        "privacy": {
+            "title": "Privacy Policy",
+            "subtitle": "Information regarding the processing and protection of personal data in compliance with Regulation (EU) 2016/679 (GDPR).",
+            "badge": "Privacy & GDPR Compliance",
+            "backHome": "Back to Home",
+            "metadata": {
+                "effectiveDateLabel": "Effective Date",
+                "effectiveDateValue": "October 5, 2026",
+                "controllerLabel": "Data Controller",
+                "controllerValue": "Stanislav Škudrna (Netuvio)",
+                "contactLabel": "Contact",
+                "contactValue": "info{'@'}netuvio.com",
+                "regulationLabel": "Legal Framework",
+                "regulationValue": "GDPR (EU 2016/679) & Czech Act 110/2019 Coll."
+            },
+            "noticeTitle": "Privacy Commitment Summary",
+            "noticeText": "We process personal data solely to reply to inquiries, prepare bespoke proposals, and maintain server security. We never sell data to third parties and protect your information under strict GDPR standards."
         }
     }
 })

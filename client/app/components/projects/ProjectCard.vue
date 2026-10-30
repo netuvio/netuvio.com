@@ -244,7 +244,7 @@ const dateRange = computed(() => {
 
         .indexNumber {
             font-family: monospace;
-            font-size: 14px;
+            font-size: var(--font-size-sm);
             font-weight: 700;
             color: var(--color-primary);
             letter-spacing: 1px;
@@ -284,7 +284,7 @@ const dateRange = computed(() => {
     align-items: center;
     justify-content: center;
     color: var(--color-carbon-200);
-    font-size: 20px;
+    font-size: var(--font-size-lg);
     font-weight: 700;
 }
 
@@ -302,7 +302,7 @@ const dateRange = computed(() => {
     background-color: rgba(15, 18, 14, 0.5);
     backdrop-filter: blur(12px);
     color: var(--color-text-primary);
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     font-weight: 700;
     padding: 6px 14px;
     border-radius: 9999px;
@@ -358,7 +358,7 @@ const dateRange = computed(() => {
 }
 
 .title {
-    font-size: clamp(24px, 2.4vw, 32px);
+    font-size: var(--font-size-xl);
     font-weight: 800;
     color: var(--color-text-primary);
     margin: 0;
@@ -367,7 +367,7 @@ const dateRange = computed(() => {
 }
 
 .description {
-    font-size: 15px;
+    font-size: var(--font-size-sm);
     line-height: 1.6;
     color: var(--color-carbon-100);
     margin: 0;
@@ -408,7 +408,7 @@ const dateRange = computed(() => {
     border: 1px solid var(--color-carbon-400);
     background-color: var(--color-carbon-500);
     color: var(--color-carbon-100);
-    font-size: 20px;
+    font-size: var(--font-size-lg);
     transition: all 0.22s ease;
 
     &:hover {
@@ -428,9 +428,6 @@ const dateRange = computed(() => {
 }
 
 @media screen and (max-width: $tabletBreakpoint) {
-    .title {
-        font-size: clamp(22px, 3vw, 28px);
-    }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
@@ -451,10 +448,6 @@ const dateRange = computed(() => {
         flex-direction: column;
         align-items: flex-start;
         gap: 6px;
-    }
-
-    .title {
-        font-size: 22px;
     }
 
     .footer {

@@ -117,7 +117,7 @@ const { t } = useI18n();
     }
 
     .emptyText {
-        font-size: 20px;
+        font-size: var(--font-size-lg);
         margin: 0;
         font-weight: 600;
     }

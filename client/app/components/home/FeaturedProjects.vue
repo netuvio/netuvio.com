@@ -28,12 +28,10 @@ const featuredProjects = computed(() => {
         <div :class="['container', $style.container]">
             <h1>{{ t('projects.featuredProjects') }}</h1>
             <ul>
-                <li v-for="project in featuredProjects" :key="project.title">
+                <li v-for="(project, index) in featuredProjects" :key="project.id || project.slug || project.title">
                     <ProjectComponent 
-                        :title="project.title" 
-                        :imageUrl="project.imageUrls[0]" 
-                        :type="project.type"
-                        :slug="project.slug"
+                        :project="project"
+                        :index="index"
                     >
                         {{project.description ?? project.body}}
                     </ProjectComponent>

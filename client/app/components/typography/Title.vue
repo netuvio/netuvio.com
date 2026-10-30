@@ -9,7 +9,7 @@
 @use "~/assets/variables" as *;
 
 .title {
-    font-size: 20px;
+    font-size: var(--font-size-lg);
     padding: 14px 24px;
     background-color: var(--color-background-primary);
     color: var(--color-text-primary);
@@ -26,7 +26,6 @@
 
 @media screen and (max-width: $mobileBreakpoint) {
     .title {
-        font-size: 16px;
         padding: 10px 18px;
     }
 }

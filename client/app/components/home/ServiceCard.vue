@@ -80,10 +80,10 @@ defineProps<{
 
         div {
             width: min(70%, 620px);
-            font-size: clamp(16px, 1.4vw, 20px);
+            font-size: var(--font-size-base);
             
             h2 {
-                font-size: clamp(32px, 3.35vw, 48px);
+                font-size: var(--font-size-xl);
                 line-height: 1.16;
                 margin-bottom: 16px;
             }
@@ -163,10 +163,6 @@ defineProps<{
     .card {
         border-radius: 24px;
         padding: 24px 20px;
-
-        section:first-child div h2 {
-            font-size: 28px;
-        }
 
         section:last-child {
             border-radius: 24px;

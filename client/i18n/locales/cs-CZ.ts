@@ -2,6 +2,11 @@ export default defineI18nLocale(async (locale) => {
     return {
         "common": {
             "comingSoon": "Již brzy",
+            "lorem": {
+                "title": "Moderní digitální řešení pro vaše podnikání",
+                "description": "Vytváříme webové aplikace na míru, navrhujeme intuitivní uživatelské zážitky a poskytujeme spolehlivý hosting. Ke každému projektu přistupujeme s důrazem na špičkový výkon, čistý kód a snadné ovládání.",
+                "longDescription": "V Netuvio pomáháme ambiciózním firmám i jednotlivcům měnit nápady v úspěšné digitální produkty. Od prvotního konceptu a UX návrhu přes zakázkový full-stack vývoj až po nasazení a dlouhodobý servis se staráme o kompletní technologické zázemí. Klademe důraz na moderní technologie, kontejnerizovanou infrastrukturu a úzkou spolupráci, abychom zaručili vysokou rychlost, spolehlivost a budoucí rozšiřitelnost bez zbytečných komplikací."
+            }
         },
         "home": {
             "title": "Domů",
@@ -10,59 +15,89 @@ export default defineI18nLocale(async (locale) => {
             "hero": "Moderní aplikace,\nvýkonný hosting,\nžádné starosti",
             "techWeUse": "Technologie, \nkteré používáme"
         },
-        "whoWeAre": {
+        "whoAreWe": {
             "title": "Kdo jsme",
-            "subtitle": "Jsme tým profesionálů. \nDokážeme vytvořit <span>úplně vše.</span>"
+            "subtitle": "Jsme tým profesionálů. \nDokážeme vytvořit <span>úplně vše.</span>",
+            "cards": [
+                {
+                    "title": "Vývoj webů a aplikací na míru",
+                    "description": "Navrhujeme a programujeme rychlé, spolehlivé webové aplikace a systémy připravené na libovolnou zátěž."
+                },
+                {
+                    "title": "Moderní UI/UX design",
+                    "description": "Tvoříme promyšlená uživatelská rozhraní a osobitou vizuální identitu, která zaujme a přináší měřitelné výsledky."
+                },
+                {
+                    "title": "Cloud a spolehlivý hosting",
+                    "description": "Bezstarostné nasazení v cloudu, Docker kontejnery a správa serverů s automatickým zálohováním a vysokou dostupností."
+                },
+                {
+                    "title": "Dlouhodobá podpora a rozvoj",
+                    "description": "Průběžný dohled, bezpečnostní aktualizace a rychlý vývoj nových funkcí ruku v ruce s růstem vašeho podnikání."
+                }
+            ]
         },
         "services": {
             "design": {
                 "title": "Design",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
+                "subtitle": "Unikátní design na míru vaší značce",
+                "description": "Navrhujeme moderní a vizuálně působivé digitální produkty, které spojují čistou estetiku s intuitivní použitelností. Od prvotních konceptů až po ucelené design systémy promýšlíme každý detail.",
                 "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
+                    "UI/UX design webových i mobilních aplikací",
+                    "Vizuální identita, logotvorba a design systémy",
+                    "Wireframy a klikatelné interaktivní prototypy",
+                    "Responzivní rozvržení optimalizované pro všechna zařízení"
                 ]
             },
             "development": {
                 "title": "Vývoj",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
+                "subtitle": "Rychlá, škálovatelná a moderní digitální řešení",
+                "description": "Vyvíjíme vysoce výkonné webové aplikace a systémy postavené na moderních technologiích a čisté architektuře. Kód píšeme na míru bez zbytečné zátěže, s důrazem na rychlost, bezpečnost a snadnou rozšiřitelnost.",
                 "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
+                    "Webové aplikace na míru v Nuxt, Vue a TypeScript",
+                    "Robustní backendová API a služby v .NET a PostgreSQL",
+                    "Bleskové načítání a špičkové hodnocení Core Web Vitals",
+                    "Čistý, udržovatelný kód s plným vlastnictvím bez vendor lock-in"
                 ]
             },
             "hosting": {
                 "title": "Hosting",
-                "subtitle": "Lorem ipsum dolor sit amet",
-                "description": "Lorem",
+                "subtitle": "Spolehlivá cloudová infrastruktura bez starostí",
+                "description": "Zajistíme bezproblémové nasazení a spolehlivý běh vašich projektů. Náš spravovaný hosting a cloudová infrastruktura garantují vysokou dostupnost, pravidelné zálohování a nepřetržitý dohled.",
                 "bulletPoints": [
-                    "Lorem",
-                    "Lorem",
-                    "Lorem",
-                    "Lorem"
+                    "Kontejnerizace v Dockeru a moderní cloudové zázemí",
+                    "Automatické SSL certifikáty a pravidelné zálohy dat",
+                    "Nepřetržitý 24/7 monitoring serverů a rychlé řešení incidentů",
+                    "Škálovatelný výkon nastavený přesně podle vašich potřeb"
                 ]
             },
         },
         "footer": {
             "description": "Ať už potřebujete design, vývoj, hosting nebo vše dohromady, jsme tu, abychom vaše nápady proměnili ve spolehlivé digitální produkty.",
-            "design": {
-                "title": "Design"
+            "services": {
+                "title": "Služby",
+                "design": "UI/UX a branding",
+                "development": "Vývoj webů a aplikací",
+                "hosting": "Cloud a spravovaný hosting",
+                "support": "Konzultace a podpora"
             },
-            "development": {
-                "title": "Vývoj"
+            "work": {
+                "title": "Tvorba",
+                "allProjects": "Všechny projekty",
+                "websites": "Weby a webové aplikace",
+                "graphics": "Grafický design",
+                "featured": "Vybrané realizace"
             },
-            "hosting": {
-                "title": "Hosting"
+            "agency": {
+                "title": "Agentura",
+                "whoAreWe": "Kdo jsme",
+                "process": "Náš proces",
+                "whyChooseUs": "Proč my",
+                "contact": "Kontaktujte nás"
             },
             "about": {
-                "title": "O nás",
-                "whoWeAre": "Kdo jsme",
+                "title": "Agentura",
+                "whoAreWe": "Kdo jsme",
                 "brief": "Kdo jsme",
                 "services": "Služby",
                 "process": "Proces",
@@ -71,10 +106,12 @@ export default defineI18nLocale(async (locale) => {
                 "contact": "Kontakt",
                 "contactUs": "Kontakt"
             },
-            "loremIpsum": "Lorem ipsum",
             "allRightsReserved": "Všechna práva vyhrazena",
+            "ownerSection": "Netuvio je obchodní značka provozována <a href='https://stanislavskudrna.cz' target='_blank'>Stanislavem Škudrnou</a>.",
             "privacyPolicy": "Zásady ochrany osobních údajů",
-            "termsOfService": "Podmínky služby"
+            "termsOfService": "Podmínky služby",
+            "privacyPolicyText": "V Netuvio si vážíme vaší důvěry a zavazujeme se chránit vaše osobní údaje. Veškerá data shromážděná prostřednictvím našeho kontaktního formuláře nebo v průběhu spolupráce využíváme výhradně pro komunikaci, vypracování nabídek a poskytování našich služeb. Vaše údaje nikdy nepředáváme třetím stranám bez vašeho výslovného souhlasu a uchováváme je v zabezpečeném prostředí v souladu s platnými právními předpisy GDPR.",
+            "termsOfServiceText": "Tyto podmínky upravují využívání webových stránek a služeb poskytovaných společností Netuvio. Všechny projekty, grafické návrhy a softwarová řešení jsou realizovány na základě individuální dohody se zákazníkem. Dbáme na transparentní komunikaci, vysokou kvalitu dodávaných řešení, dodržování stanovených termínů a spolehlivou technickou podporu po celou dobu spolupráce."
         },
         "contact": {
             "title": "Kontaktujte nás",
@@ -141,6 +178,7 @@ export default defineI18nLocale(async (locale) => {
                 "timeline": "Časový rámec",
                 "category": "Kategorie",
                 "overview": "Přehled",
+                "visualAssets": "Vizuální materiály",
                 "gallery": "Vizuální galerie",
                 "gallerySubtitle": "Snímky ve vysokém rozlišení a mediální materiály projektu.",
                 "asset": "Položka",
@@ -156,22 +194,43 @@ export default defineI18nLocale(async (locale) => {
         },
         "whyChooseUs": {
             "title": "Proč si vybrat nás",
+            "subtitle": "Kombinujeme technickou preciznost, moderní design a lidský přístup bez kompromisů.",
             "flexibleServices": {
                 "title": "Flexibilní služby",
-                "description": "Každý projekt je jiný. Ať už potřebujete design, vývoj, hosting, nebo kompletní řešení, můžete si vybrat služby, které odpovídají vašim cílům, aniž byste platili za něco, co nepotřebujete."
+                "description": "Platíte jen za to, co skutečně potřebujete – ať už jde o kompletní realizaci, nebo jen dílčí design, vývoj či hosting.",
+                "bulletPoints": [
+                    "Kompletní realizace na klíč i samostatné služby",
+                    "Přizpůsobení vašemu rozpočtu a etapám projektu",
+                    "100% vlastnictví zdrojového kódu bez závazků"
+                ]
             },
             "cta": {
                 "title": "Jste připraveni oživit svůj nápad?",
-                "description": "Ať už potřebujete kompletní řešení nebo pomoc s konkrétní částí vašeho projektu, jsme tu, abychom vám pomohli. Pojďme probrat vaše cíle a najít ten správný přístup pro vaše podnikání.",
-                "button": "Kontaktujte nás"
+                "description": "Pojďme probrat vaše cíle a najít nejlepší přístup pro vaše podnikání.",
+                "button": "Kontaktujte nás",
+                "bulletPoints": [
+                    "Nezávazná úvodní konzultace zdarma",
+                    "Rychlá odpověď a odhad do 24 hodin",
+                    "Konkrétní technický návrh na míru"
+                ]
             },
             "modernTechnology": {
                 "title": "Moderní technologie",
-                "description": "Tvoříme s využitím moderních frameworků, nástrojů a osvědčených postupů, abychom vytvářeli rychlá, škálovatelná a udržovatelná řešení, která jsou připravena růst s vaším podnikáním."
+                "description": "Nestavíme na pomalých šablonách. Využíváme moderní technologie pro maximální rychlost, bezpečnost a snadný růst.",
+                "bulletPoints": [
+                    "Blesková rychlost a špičkové Core Web Vitals",
+                    "Moderní stack (Nuxt, Vue, TypeScript, .NET)",
+                    "Vysoké zabezpečení, cloud & Docker kontejnery"
+                ]
             },
             "personalApproach": {
                 "title": "Osobní přístup",
-                "description": "Jako malý tým úzce spolupracujeme s každým klientem. Budete komunikovat přímo s lidmi, kteří váš projekt budují, což zajišťuje jasnou komunikaci, rychlejší rozhodování a řešení přizpůsobené vašim potřebám."
+                "description": "Komunikujete přímo s lidmi, kteří váš web navrhují a kódují. Žádní zprostředkovatelé ani zbytečná byrokracie.",
+                "bulletPoints": [
+                    "Přímý kontakt s vývojáři a designéry",
+                    "Pravidelný reporting a průběžné funkční ukázky",
+                    "Rychlá reakční doba a spolehlivý servis"
+                ]
             }
         },
         "process": {
@@ -196,6 +255,14 @@ export default defineI18nLocale(async (locale) => {
             }
         },
 
+        "header": {
+            "whoAreWe": "Kdo jsme",
+            "process": "Proces",
+            "projects": "Projekty",
+            "whyChooseUs": "Proč my",
+            "contact": "Kontakt"
+        },
+
         "error": {
             "title": "Chyba {code}",
             "back": "Zpět",
@@ -205,6 +272,44 @@ export default defineI18nLocale(async (locale) => {
                 "serverError": "Něco se pokazilo",
                 "unexpected": "Neočekávaná chyba"
             }
+        },
+
+        "terms": {
+            "title": "Podmínky služby",
+            "subtitle": "Právní podmínky upravující přístup na web, vyloučení záruk, omezení odpovědnosti a pravidla užívání služeb Netuvio.",
+            "badge": "Právní dokumentace",
+            "backHome": "Zpět na hlavní stránku",
+            "metadata": {
+                "effectiveDateLabel": "Datum účinnosti",
+                "effectiveDateValue": "5. října 2026",
+                "operatorLabel": "Provozovatel",
+                "operatorValue": "Stanislav Škudrna (Netuvio)",
+                "contactLabel": "Kontakt",
+                "contactValue": "info{'@'}netuvio.com",
+                "jurisdictionLabel": "Rozhodné právo",
+                "jurisdictionValue": "Česká republika (EU)"
+            },
+            "noticeTitle": "Důležité právní upozornění",
+            "noticeText": "Prohlížením tohoto webu nebo odesláním poptávky nevzniká závazná smlouva o poskytování služeb. Web je poskytován výhradně „jak stojí a leží“ a provozovatel v maximálním zákonem dovoleném rozsahu vylučuje veškerou odpovědnost za újmu."
+        },
+
+        "privacy": {
+            "title": "Zásady ochrany osobních údajů",
+            "subtitle": "Informace o zpracování a ochraně osobních údajů podle Nařízení Evropského parlamentu a Rady (EU) 2016/679 (GDPR).",
+            "badge": "Ochrana soukromí & GDPR",
+            "backHome": "Zpět na hlavní stránku",
+            "metadata": {
+                "effectiveDateLabel": "Datum účinnosti",
+                "effectiveDateValue": "5. října 2026",
+                "controllerLabel": "Správce údajů",
+                "controllerValue": "Stanislav Škudrna (Netuvio)",
+                "contactLabel": "Kontakt",
+                "contactValue": "info{'@'}netuvio.com",
+                "regulationLabel": "Právní rámec",
+                "regulationValue": "GDPR (EU 2016/679) & Zákon č. 110/2019 Sb."
+            },
+            "noticeTitle": "Shrnutí ochrany vašeho soukromí",
+            "noticeText": "Vaše osobní údaje zpracováváme výhradně pro vyřízení vašich poptávek, přípravu nabídek a zajištění bezpečnosti provozu webu. Údaje neprodáváme třetím stranám a chráníme je v souladu s přísnými standardy GDPR."
         }
     }
 })

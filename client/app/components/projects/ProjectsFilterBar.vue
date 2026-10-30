@@ -75,7 +75,7 @@ const { t } = useI18n();
             border: none;
             border-radius: 10000px;
             padding: 10px 22px;
-            font-size: 15px;
+            font-size: var(--font-size-sm);
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -99,7 +99,7 @@ const { t } = useI18n();
             .filterCount {
                 background-color: var(--color-carbon-500);
                 color: var(--color-carbon-100);
-                font-size: 12px;
+                font-size: var(--font-size-xs);
                 font-weight: 700;
                 padding: 2px 8px;
                 border-radius: 9999px;
@@ -125,7 +125,7 @@ const { t } = useI18n();
             flex: 1;
             justify-content: center;
             padding: 8px 14px;
-            font-size: 13px;
+            font-size: var(--font-size-xs);
         }
     }
 }

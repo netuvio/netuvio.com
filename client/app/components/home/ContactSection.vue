@@ -26,6 +26,24 @@ const form = reactive({
     message: ''
 });
 
+const route = useRoute();
+const validServices = ['design', 'development', 'hosting', 'other'];
+
+const setServiceFromQuery = () => {
+    const svc = route.query.service as string;
+    if (svc && validServices.includes(svc)) {
+        form.service = svc;
+    }
+};
+
+onMounted(() => {
+    setServiceFromQuery();
+});
+
+watch(() => route.query.service, () => {
+    setServiceFromQuery();
+});
+
 const errors = reactive({
     firstName: '',
     lastName: '',
@@ -88,7 +106,7 @@ const validate = () => {
         errors.message = t('contact.validation.maxLength', { max: MAX_LENGTHS.message });
         isValid = false;
     }
-    
+
     if (form.phone.trim() && !parsedPhoneNumber.value?.isValid()) {
         errors.phone = t('contact.validation.phoneInvalid');
         isValid = false;
@@ -104,13 +122,13 @@ const handleSubmit = async () => {
     if (!validate()) return;
 
     isSubmitting.value = true;
-    
+
     try {
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1500));
-        
+
         console.log('Form submitted:', form);
-        
+
         // Reset form
         Object.assign(form, {
             firstName: '',
@@ -129,9 +147,9 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-    <section :class="[$style.section, 'theme-secondary']" id="contact" ref="sectionRef">
+    <section :class="[$style.section, 'theme-secondary']" id="contact" data-theme="light" ref="sectionRef">
         <div :class="['container', $style.container]">
-            <motion.h1 
+            <motion.h1
                 :initial="{ opacity: 0, y: 30 }"
                 :whileInView="{ opacity: 1, y: 0 }"
                 :inViewOptions="{ once: true }"
@@ -154,6 +172,8 @@ const handleSubmit = async () => {
                         :error="errors.firstName"
                         :maxlength="MAX_LENGTHS.firstName"
                         size="lg"
+                        theme="light"
+                        data-theme="light"
                         block
                     />
                     <Input
@@ -164,6 +184,8 @@ const handleSubmit = async () => {
                         :error="errors.lastName"
                         :maxlength="MAX_LENGTHS.lastName"
                         size="lg"
+                        theme="light"
+                        data-theme="light"
                         block
                     />
                 </motion.section>
@@ -182,6 +204,8 @@ const handleSubmit = async () => {
                         :error="errors.email"
                         :maxlength="MAX_LENGTHS.email"
                         size="lg"
+                        theme="light"
+                        data-theme="light"
                         block
                     />
                     <Input
@@ -195,6 +219,8 @@ const handleSubmit = async () => {
                         :error="errors.phone"
                         :maxlength="MAX_LENGTHS.phone"
                         size="lg"
+                        theme="light"
+                        data-theme="light"
                         block
                         @click:prefix="phoneInputRef?.focus?.()"
                     >
@@ -216,7 +242,7 @@ const handleSubmit = async () => {
                         </template>
                     </Input>
                 </motion.section>
-                <motion.section 
+                <motion.section
                     :class="[$style.services, { [$style.hasError]: errors.service }]"
                     :initial="{ opacity: 0, y: 20 }"
                     :whileInView="{ opacity: 1, y: 0 }"
@@ -224,7 +250,7 @@ const handleSubmit = async () => {
                     :transition="{ duration: 0.5, delay: 0.3 }"
                 >
                     <span>{{ t('contact.whatDoYouNeed') }} *</span>
-                    
+
                     <div>
                         <label>
                             <input type="radio" v-model="form.service" value="design" />
@@ -245,7 +271,7 @@ const handleSubmit = async () => {
                     </div>
                     <span :class="$style.errorText">{{ errors.service }}</span>
                 </motion.section>
-                <motion.label 
+                <motion.label
                     :class="[$style.textareaField, { [$style.hasError]: errors.message }]"
                     :initial="{ opacity: 0, y: 20 }"
                     :whileInView="{ opacity: 1, y: 0 }"
@@ -256,11 +282,13 @@ const handleSubmit = async () => {
                         <span>{{ t('contact.message') }} *</span>
                         <span :class="$style.charCount">{{ form.message.length }} / {{ MAX_LENGTHS.message }}</span>
                     </div>
-                    <Textarea 
-                        v-model="form.message" 
+                    <Textarea
+                        v-model="form.message"
                         :maxlength="MAX_LENGTHS.message"
                         size="lg"
                         radius="lg"
+                        theme="light"
+                        data-theme="light"
                     />
                     <span :class="$style.errorText">{{ errors.message }}</span>
                 </motion.label>
@@ -270,7 +298,7 @@ const handleSubmit = async () => {
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.5, delay: 0.5 }"
                 >
-                    <Button type="submit" size="lg" :disabled="isSubmitting">
+                    <Button type="submit" size="lg" :disabled="isSubmitting" theme="light" data-theme="light">
                         {{ isSubmitting ? t('contact.sending') : t('contact.send') }}
                         <DrawnArrow />
                     </Button>
@@ -284,17 +312,19 @@ const handleSubmit = async () => {
 @use "~/assets/variables" as *;
 
 .section {
+    color-scheme: only light;
+    color-scheme: light;
     padding: clamp(90px, 10vw, 150px) 0;
-    
+
     h1 {
         margin-bottom: 32px;
     }
-    
+
     form {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        
+
         section {
             display: flex;
             justify-content: space-between;
@@ -312,7 +342,7 @@ const handleSubmit = async () => {
             width: 100%;
             gap: 8px;
             font-weight: bold;
-            
+
             >span {
                 margin-left: 12px;
             }
@@ -328,7 +358,7 @@ const handleSubmit = async () => {
                 }
 
                 .charCount {
-                    font-size: 0.8rem;
+                    font-size: var(--font-size-xs);
                     font-weight: 500;
                     color: var(--color-carbon-400);
                     margin: 0;
@@ -337,19 +367,19 @@ const handleSubmit = async () => {
 
             .errorText {
                 color: #ff3333;
-                font-size: 0.85rem;
+                font-size: var(--font-size-xs);
                 margin-top: 4px;
                 min-height: 1.2rem;
                 font-weight: 500;
             }
         }
-        
+
         .services {
             >div {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 8px;
-                
+
                 label {
                     display: flex;
                     flex-direction: row;
@@ -364,7 +394,7 @@ const handleSubmit = async () => {
                     font-weight: 500;
                     margin: 0;
                     user-select: none;
-                    
+
                     &:hover {
                         background-color: hsl(0, 0%, 90%);
                     }
@@ -373,7 +403,7 @@ const handleSubmit = async () => {
                         background-color: var(--color-background-primary);
                         color: white;
                     }
-                    
+
                     input {
                         display: none;
                     }

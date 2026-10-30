@@ -215,7 +215,7 @@ onUnmounted(() => {
     text-decoration: none;
 
     .buttonIcon {
-        font-size: 18px;
+        font-size: var(--font-size-base);
         margin-right: 4px;
     }
 }
@@ -243,12 +243,12 @@ onUnmounted(() => {
             border-bottom: 1px solid var(--color-carbon-500);
 
             .sidebarIcon {
-                font-size: 20px;
+                font-size: var(--font-size-lg);
                 color: var(--color-primary);
             }
 
             h3 {
-                font-size: 18px;
+                font-size: var(--font-size-lg);
                 font-weight: 800;
                 color: var(--color-text-primary);
                 margin: 0;
@@ -291,7 +291,7 @@ onUnmounted(() => {
     .tocItem {
         .tocLink {
             display: block;
-            font-size: 14px;
+            font-size: var(--font-size-sm);
             line-height: 1.4;
             color: var(--color-carbon-100);
             text-decoration: none;
@@ -314,7 +314,7 @@ onUnmounted(() => {
             padding-left: 14px;
 
             .tocLink {
-                font-size: 13px;
+                font-size: var(--font-size-xs);
                 color: var(--color-carbon-200);
 
                 &.activeTocLink {
@@ -346,12 +346,12 @@ onUnmounted(() => {
     transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
 
     .toggleIcon {
-        font-size: 18px;
+        font-size: var(--font-size-base);
         color: var(--color-primary);
     }
 
     .toggleText {
-        font-size: 14px;
+        font-size: var(--font-size-sm);
         font-weight: 700;
         letter-spacing: 0.3px;
     }
@@ -401,12 +401,12 @@ onUnmounted(() => {
             gap: 10px;
 
             .drawerTitleIcon {
-                font-size: 20px;
+                font-size: var(--font-size-lg);
                 color: var(--color-primary);
             }
 
             h3 {
-                font-size: 18px;
+                font-size: var(--font-size-lg);
                 font-weight: 800;
                 color: var(--color-text-primary);
                 margin: 0;
@@ -423,7 +423,7 @@ onUnmounted(() => {
             align-items: center;
             justify-content: center;
             color: var(--color-carbon-100);
-            font-size: 18px;
+            font-size: var(--font-size-lg);
             cursor: pointer;
             transition: all 0.2s ease;
 
@@ -480,7 +480,7 @@ onUnmounted(() => {
         padding: 10px 18px;
 
         .toggleText {
-            font-size: 13px;
+            font-size: var(--font-size-xs);
         }
     }
 

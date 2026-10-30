@@ -43,7 +43,7 @@ onMounted(() => {
             draggable="false"
         />
         <div :class="[$style.overlay, className]">
-            <IconMagnifyingGlassPlus style="font-size: 32px;" />
+            <IconMagnifyingGlassPlus style="font-size: var(--font-size-xl);" />
         </div>
         <div :class="[$style.skeleton, className]"></div>
     </div>

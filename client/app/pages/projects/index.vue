@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { useFetch } from "#app";
+import { ref, computed, onMounted, watch } from "vue";
+import { useFetch, useRoute } from "#app";
 import type { Project, ProjectType } from "~/lib/types";
 import ProjectsHero from "~/components/projects/ProjectsHero.vue";
 import ProjectsFilterBar from "~/components/projects/ProjectsFilterBar.vue";
@@ -8,6 +8,7 @@ import ProjectsGrid from "~/components/projects/ProjectsGrid.vue";
 import ProjectsCta from "~/components/projects/ProjectsCta.vue";
 
 const { t, locale } = useI18n();
+const route = useRoute();
 
 const { data: projects, pending, error } = await useFetch<Project[]>("/api/v1/projects", {
     query: { locale }
@@ -19,6 +20,23 @@ if (error.value) {
 
 type FilterType = "all" | ProjectType;
 const activeFilter = ref<FilterType>("all");
+
+const syncFilterFromQuery = () => {
+    const f = route.query.filter as string;
+    if (f === "Website" || f === "Graphics") {
+        activeFilter.value = f;
+    } else if (f === "all") {
+        activeFilter.value = "all";
+    }
+};
+
+onMounted(() => {
+    syncFilterFromQuery();
+});
+
+watch(() => route.query.filter, () => {
+    syncFilterFromQuery();
+});
 
 const counts = computed(() => {
     const all = projects.value?.length || 0;

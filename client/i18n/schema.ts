@@ -15,35 +15,77 @@ export type MessageSchema = {
         hero: string,
         techWeUse: string,
     },
-    
+
     whoAreWe: {
         title: string,
         subtitle: string,
+        cards?: Array<{
+            title: string,
+            description: string,
+        }>,
     },
 
     services: {
-        design: string,
-        development: string,
-        hosting: string,
+        design: {
+            title: string,
+            subtitle: string,
+            description: string,
+            bulletPoints: string[],
+        },
+        development: {
+            title: string,
+            subtitle: string,
+            description: string,
+            bulletPoints: string[],
+        },
+        hosting: {
+            title: string,
+            subtitle: string,
+            description: string,
+            bulletPoints: string[],
+        },
     },
 
     footer: {
         description: string,
-        design: { title: string },
-        development: { title: string },
-        hosting: { title: string },
-        about: {
+        services: {
             title: string,
-            whoWeAre: string,
-            brief: string,
-            services: string,
+            design: string,
+            development: string,
+            hosting: string,
+            support: string,
+        },
+        work: {
+            title: string,
+            allProjects: string,
+            websites: string,
+            graphics: string,
+            featured: string,
+        },
+        agency: {
+            title: string,
+            whoAreWe: string,
             process: string,
-            projects: string,
             whyChooseUs: string,
             contact: string,
-            contactUs: string,
         },
-        loremIpsum: string,
+        design?: { title: string },
+        development?: { title: string },
+        hosting?: { title: string },
+        about?: {
+            title?: string,
+            whoAreWe?: string,
+            brief?: string,
+            services?: string,
+            process?: string,
+            projects?: string,
+            whyChooseUs?: string,
+            contact?: string,
+            contactUs?: string,
+        },
+        loremIpsum?: string,
+        privacyPolicyText?: string,
+        termsOfServiceText?: string,
         allRightsReserved: string,
         privacyPolicy: string,
         termsOfService: string,
@@ -131,22 +173,27 @@ export type MessageSchema = {
 
     whyChooseUs: {
         title: string,
+        subtitle: string,
         flexibleServices: {
             title: string,
             description: string,
+            bulletPoints: string[],
         },
         cta: {
             title: string,
             description: string,
             button: string,
+            bulletPoints: string[],
         },
         modernTechnology: {
             title: string,
             description: string,
+            bulletPoints: string[],
         },
         personalApproach: {
             title: string,
             description: string,
+            bulletPoints: string[],
         },
     },
 
@@ -161,6 +208,7 @@ export type MessageSchema = {
     },
 
     header: {
+        whoAreWe?: string,
         brief: string,
         services: string,
         process: string,
@@ -185,4 +233,43 @@ export type MessageSchema = {
             unexpected: string,
         },
     },
+
+    terms: {
+        title: string,
+        subtitle: string,
+        badge: string,
+        backHome: string,
+        metadata: {
+            effectiveDateLabel: string,
+            effectiveDateValue: string,
+            operatorLabel: string,
+            operatorValue: string,
+            contactLabel: string,
+            contactValue: string,
+            jurisdictionLabel: string,
+            jurisdictionValue: string,
+        },
+        noticeTitle: string,
+        noticeText: string,
+    },
+
+    privacy: {
+        title: string,
+        subtitle: string,
+        badge: string,
+        backHome: string,
+        metadata: {
+            effectiveDateLabel: string,
+            effectiveDateValue: string,
+            controllerLabel: string,
+            controllerValue: string,
+            contactLabel: string,
+            contactValue: string,
+            regulationLabel: string,
+            regulationValue: string,
+        },
+        noticeTitle: string,
+        noticeText: string,
+    },
 }
+
