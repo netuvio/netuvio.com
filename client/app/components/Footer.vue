@@ -22,7 +22,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                     :inViewOptions="{ once: true }"
                     :transition="{ duration: 0.6 }"
                 >
-                    <NuxtLinkLocale to="/">
+                    <NuxtLinkLocale to="/" aria-label="Netuvio">
                         <div :class="$style.logo"></div>
                     </NuxtLinkLocale>
                     <span>{{ t('footer.description') }}</span>
@@ -134,6 +134,8 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
             .logo {
                 mask-image: url('/icons/logo-full.svg');
                 mask-repeat: no-repeat;
+                mask-size: contain;
+                mask-position: left center;
                 width: 100%;
                 height: 40px;
                 background-color: white;

@@ -57,7 +57,7 @@ onUnmounted(() => {
 <template>
     <header :class="[$style.header, { [$style.scrolled]: hasScrolled || isSubpage }]">
         <nav class="container">
-            <NuxtLinkLocale to="/" :class="$style.logo"></NuxtLinkLocale>
+            <NuxtLinkLocale to="/" :class="$style.logo" aria-label="Netuvio"></NuxtLinkLocale>
             <div :class="$style.links">
                 <ul>
                     <li v-for="link in links" :key="link.to">
