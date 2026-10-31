@@ -128,10 +128,9 @@ $headerHeight: 80px;
 
         .links {
             --link-padding-x: 16px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: max-content;
+            position: relative;
+            flex: 1;
+            width: auto;
             white-space: nowrap;
             display: flex;
             align-items: center;
@@ -205,7 +204,7 @@ $headerHeight: 80px;
     }
 }
 
-@media screen and (max-width: $tabletBreakpoint) {
+@media screen and (max-width: $laptopBreakpoint) {
     header nav {
         height: 72px;
 

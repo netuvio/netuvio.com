@@ -225,7 +225,7 @@ useMotionValueEvent(activeSectionValue, "change", (v) => {
             width: 50%;
             
             h2 {
-                font-size: var(--font-size-xl);
+                font-size: var(--font-size-2xl);
                 margin-bottom: 12px;
             }
             

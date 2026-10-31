@@ -369,7 +369,7 @@ const handleSubmit = async () => {
                 color: #ff3333;
                 font-size: var(--font-size-xs);
                 margin-top: 4px;
-                min-height: 1.2rem;
+                min-height: 19.2px;
                 font-weight: 500;
             }
         }

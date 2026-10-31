@@ -56,7 +56,7 @@ const galleryImages = computed(() => {
         gap: 8px;
 
         .sectionCounter {
-            font-family: monospace;
+            font-family: inherit;
             font-size: var(--font-size-xs);
             font-weight: 800;
             color: var(--color-primary);
@@ -65,7 +65,7 @@ const galleryImages = computed(() => {
         }
 
         .sectionHeading {
-            font-size: var(--font-size-xl);
+            font-size: var(--font-size-2xl);
             font-weight: 900;
             letter-spacing: -1px;
             color: var(--color-text-primary);

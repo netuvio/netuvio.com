@@ -160,7 +160,7 @@ import Fa7BrandsGithub from '~icons/fa7-brands/github';
                 margin-top: 16px;
 
                 li a {
-                    font-size: var(--font-size-xl);
+                    font-size: var(--font-size-2xl);
                     border-radius: 9999px;
                     padding: 6px;
                     display: block;

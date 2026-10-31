@@ -155,11 +155,11 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
 
 .closeBtn {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 16px;
+    right: 16px;
     color: white;
-    font-size: var(--font-size-xl);
-    padding: 0.5rem;
+    font-size: var(--font-size-2xl);
+    padding: 8px;
     z-index: 10;
     cursor: pointer;
     background: transparent;
@@ -169,8 +169,8 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
 .navBtn {
     position: absolute;
     color: white;
-    font-size: var(--font-size-xl);
-    padding: 0.5rem;
+    font-size: var(--font-size-2xl);
+    padding: 8px;
     z-index: 10;
     cursor: pointer;
     background: transparent;
@@ -178,17 +178,17 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
 }
 
 .navBtnLeft {
-    left: 1rem;
+    left: 16px;
 }
 
 .navBtnRight {
-    right: 1rem;
+    right: 16px;
 }
 
 .counter {
     position: absolute;
-    left: 1.5rem;
-    top: 1.5rem;
+    left: 24px;
+    top: 24px;
     z-index: 10;
     color: white;
 }
@@ -258,40 +258,40 @@ const slideTransitionName = computed(() => direction.value === 1 ? 'slide-right'
 
 @media screen and (max-width: $tabletBreakpoint) {
     .closeBtn {
-        top: 0.75rem;
-        right: 0.75rem;
+        top: 12px;
+        right: 12px;
     }
 
     .navBtnLeft {
-        left: 0.5rem;
+        left: 8px;
     }
 
     .navBtnRight {
-        right: 0.5rem;
+        right: 8px;
     }
 }
 
 @media screen and (max-width: $mobileBreakpoint) {
     .closeBtn {
-        top: 0.5rem;
-        right: 0.5rem;
+        top: 8px;
+        right: 8px;
     }
 
     .navBtn {
-        padding: 0.25rem;
+        padding: 4px;
     }
 
     .navBtnLeft {
-        left: 0.25rem;
+        left: 4px;
     }
 
     .navBtnRight {
-        right: 0.25rem;
+        right: 4px;
     }
 
     .counter {
-        left: 1rem;
-        top: 1rem;
+        left: 16px;
+        top: 16px;
         font-size: var(--font-size-xs);
     }
 

@@ -141,9 +141,11 @@ const cards = computed(() => {
 .section {
     padding: 130px 0 220px;
 
+
+
     .container {
         .subtitle {
-            font-size: var(--font-size-2xl);
+            font-size: var(--font-size-heading);
             white-space: pre;
             line-height: 1.2;
             position: relative;
@@ -283,7 +285,7 @@ const cards = computed(() => {
 
             .cardWrapper {
                 display: flex;
-                flex-shrink: 0;
+                flex: 1 0 auto;
                 scroll-snap-align: start;
             }
         }
@@ -387,6 +389,40 @@ const cards = computed(() => {
                 .cards {
                     gap: 16px;
                     padding: 8px 4px;
+                }
+            }
+        }
+    }
+}
+.section {
+    @media (min-width: 1265px) {
+        padding: 96px 0 120px;
+
+        .container {
+
+            .subtitle {
+                font-size: var(--font-size-3xl);
+
+                &::after {
+                    width: 64px;
+                    height: 56px;
+                    top: -32px;
+                    right: -32px;
+                }
+
+                span {
+                    &::before {
+                        width: 192px;
+                        height: 48px;
+                    }
+                }
+            }
+
+            .cardsCarouselWrapper {
+                margin-top: 40px;
+
+                .cards {
+                    gap: 24px;
                 }
             }
         }

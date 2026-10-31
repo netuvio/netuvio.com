@@ -142,7 +142,7 @@ const isOngoing = computed(() => {
 
             .detailLabel {
                 font-size: var(--font-size-xs);
-                font-family: monospace;
+                font-family: inherit;
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 color: var(--color-carbon-200);

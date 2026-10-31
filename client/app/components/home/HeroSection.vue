@@ -13,12 +13,12 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 <template>
     <main :class="$style.heroWrapper">
         <div :class="$style.bg"></div>
+        <img :class="$style.bgName" src="/images/hero-bg-name.svg" alt="" aria-hidden="true">
         <div :class="$style.heroImageContainer">
             <img src="/images/hero-image.png" :class="$style.heroImage" alt="Hero Image" />
             <div :class="$style.blackHole"></div>
         </div>
         <main :class="[$style.hero, 'container']">
-            <img :class="$style.bgName" src="/images/hero-bg-name.svg" alt="netuvio">
             <div :class="$style.dots">
                 <img src="/images/dots.svg" alt="" />
                 <img src="/images/dots.svg" alt="" />
@@ -107,6 +107,19 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 @use "~/assets/variables" as *;
 
 .heroWrapper {
+    .bgName {
+        position: absolute;
+        top: 5vh;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        max-width: none;
+        height: auto;
+        z-index: 0;
+        pointer-events: none;
+        user-select: none;
+    }
+
     width: 100%;
     min-height: 90vh;
     background-color: var(--color-primary);
@@ -174,7 +187,6 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
     position: relative;
     padding-top: 180px;
     padding-bottom: 120px;
-    width: 100%;
 
     >.textContainer {
         width: min(100%, 100vw);
@@ -186,10 +198,15 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         z-index: 2;
 
         h1 {
-            font-size: var(--font-size-2xl);
+            font-size: var(--font-size-heading);
+
+            @media (min-width: 1265px) {
+                font-size: 80px;
+            }
             -webkit-text-stroke: 12px transparent;
             paint-order: stroke fill;
-            font-weight: 800;
+            font-weight: 1000;
+            line-height: 1.02;
             background: linear-gradient(180deg, var(--color-text-primary), var(--color-lime-200));
             -webkit-background-clip: text;
             background-clip: text;
@@ -225,16 +242,6 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         }
     }
 
-    .bgName {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        top: 60px;
-        left: -50px;
-        pointer-events: none;
-        user-select: none;
-        width: 100%;
-    }
 
     .dots {
         position: absolute;
@@ -272,7 +279,6 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
     left: 50%;
     transform: translate(-50%, 50%);
     z-index: 10;
-    width: 100%;
     pointer-events: auto;
 }
 
@@ -452,7 +458,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         span {
             font-size: var(--font-size-sm);
             line-height: 1.18;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.28px;
             text-align: left;
 
             .squiggle {
@@ -536,7 +542,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
         span {
             font-size: var(--font-size-xs);
             font-weight: 600;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.6px;
             white-space: normal;
             line-height: 1.2;
             text-align: center;
@@ -578,7 +584,7 @@ const textScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.82]);
 
         span {
             font-size: var(--font-size-xs);
-            letter-spacing: 0.04em;
+            letter-spacing: 0.48px;
         }
 
         .techRow {

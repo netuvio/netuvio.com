@@ -243,7 +243,7 @@ const dateRange = computed(() => {
         gap: 12px;
 
         .indexNumber {
-            font-family: monospace;
+            font-family: inherit;
             font-size: var(--font-size-sm);
             font-weight: 700;
             color: var(--color-primary);
@@ -358,7 +358,7 @@ const dateRange = computed(() => {
 }
 
 .title {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-2xl);
     font-weight: 800;
     color: var(--color-text-primary);
     margin: 0;

@@ -54,17 +54,17 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown, { ADD_ATTR: ['id', 'target
     }
 
     h1 {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-heading);
     }
 
     h2 {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-2xl);
         padding-bottom: 8px;
         border-bottom: 1px solid var(--color-carbon-400);
     }
     
     h3 {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-xl);
     }
 
     h4, h5, h6 {
@@ -110,7 +110,7 @@ const cleanMarkdown = DOMPurify.sanitize(rawMarkdown, { ADD_ATTR: ['id', 'target
 
     code {
         font-family: monospace;
-        font-size: 0.9em;
+        font-size: var(--font-size-sm);
         background-color: var(--color-carbon-600);
         border-radius: 6px;
         padding: 2px 6px;

@@ -83,7 +83,7 @@ const { t } = useI18n();
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: clamp(80px, 14vw, 220px);
+        font-size: 14vw;
         font-weight: 900;
         letter-spacing: -2px;
         white-space: nowrap;
@@ -111,7 +111,7 @@ const { t } = useI18n();
                 align-items: center;
 
                 .title {
-                    font-size: var(--font-size-2xl);
+                    font-size: var(--font-size-heading);
                     font-weight: 900;
                     line-height: 1.15;
                     color: var(--color-text-primary);
@@ -138,7 +138,7 @@ const { t } = useI18n();
                 max-width: 720px;
 
                 .subtitle {
-                    font-size: var(--font-size-lg);
+                    font-size: var(--font-size-base);
                     line-height: 1.55;
                     font-weight: 500;
                     color: var(--color-carbon-100);
@@ -160,7 +160,7 @@ const { t } = useI18n();
 
 @media screen and (max-width: $laptopBreakpoint) {
     .heroSection .bgWatermark {
-        font-size: 130px;
+        font-size: 14vw;
     }
 }
 

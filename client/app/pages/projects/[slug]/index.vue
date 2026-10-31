@@ -179,7 +179,7 @@ onUnmounted(() => {
                     gap: 8px;
 
                     .sectionCounter {
-                        font-family: monospace;
+                        font-family: inherit;
                         font-size: var(--font-size-xs);
                         font-weight: 800;
                         color: var(--color-primary);

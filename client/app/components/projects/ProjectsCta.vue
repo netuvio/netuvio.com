@@ -70,7 +70,7 @@ const { t } = useI18n();
         z-index: 1;
 
         h2 {
-            font-size: var(--font-size-xl);
+            font-size: var(--font-size-2xl);
             font-weight: 900;
             color: var(--color-text-primary);
             margin-bottom: 16px;

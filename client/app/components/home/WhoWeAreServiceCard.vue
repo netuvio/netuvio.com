@@ -38,13 +38,15 @@ const props = defineProps<{
 .card {
     width: 350px;
     height: 500px;
-    flex-shrink: 0;
+    flex: 1 0 auto;
     scroll-snap-align: start;
     border: 4px solid var(--color-background-primary);
     border-radius: 24px;
     padding: 32px;
     position: relative;
     transition: 200ms all ease-in-out;
+
+
 
     .image {
         height: 40%;
@@ -75,7 +77,7 @@ const props = defineProps<{
         }
 
         h2 {
-            font-size: var(--font-size-xl);
+            font-size: var(--font-size-2xl);
             line-height: 1.2;
         }
 
@@ -194,6 +196,20 @@ const props = defineProps<{
         min-height: 400px;
         padding: 20px;
         border-radius: 20px;
+    }
+}
+.card {
+    @media (min-width: 1265px) {
+        width: 280px;
+        height: 420px;
+        padding: 24px;
+        border-width: 3px;
+
+        .content {
+            h2 {
+                font-size: var(--font-size-xl);
+            }
+        }
     }
 }
 </style>

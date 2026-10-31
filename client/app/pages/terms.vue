@@ -118,7 +118,6 @@ const termsMarkdown = computed(() => {
     .container {
         position: relative;
         z-index: 5;
-        max-width: 960px;
         display: flex;
         flex-direction: column;
         gap: 32px;
@@ -165,7 +164,7 @@ const termsMarkdown = computed(() => {
         }
 
         .title {
-            font-size: var(--font-size-2xl);
+            font-size: var(--font-size-heading);
             font-weight: 900;
             letter-spacing: -1.5px;
             line-height: 1.1;
@@ -201,7 +200,7 @@ const termsMarkdown = computed(() => {
 
             .metaLabel {
                 font-size: var(--font-size-xs);
-                font-family: monospace;
+                font-family: inherit;
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 color: var(--color-carbon-200);
@@ -254,7 +253,7 @@ const termsMarkdown = computed(() => {
             padding-top: 2px;
 
             .noticeIcon {
-                font-size: 24px;
+                font-size: var(--font-size-xl);
                 color: var(--color-primary);
             }
         }

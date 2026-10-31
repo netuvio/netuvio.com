@@ -191,7 +191,7 @@ const primaryImage = computed(() => {
         top: 25%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: clamp(90px, 15vw, 240px);
+        font-size: 15vw;
         font-weight: 900;
         letter-spacing: -3px;
         white-space: nowrap;
@@ -264,7 +264,7 @@ const primaryImage = computed(() => {
 
                 .titleWrapper {
                     .title {
-                        font-size: var(--font-size-2xl);
+                        font-size: var(--font-size-heading);
                         font-weight: 900;
                         line-height: 1.08;
                         letter-spacing: -1.5px;
@@ -278,7 +278,7 @@ const primaryImage = computed(() => {
                     max-width: 620px;
 
                     .description {
-                        font-size: var(--font-size-lg);
+                        font-size: var(--font-size-base);
                         line-height: 1.55;
                         font-weight: 500;
                         color: var(--color-text-secondary);
@@ -371,7 +371,7 @@ const primaryImage = computed(() => {
 @media screen and (max-width: $laptopBreakpoint) {
     .heroSection {
         .bgWatermark {
-            font-size: 140px;
+            font-size: 15vw;
         }
 
         .heroContainer .heroGrid {

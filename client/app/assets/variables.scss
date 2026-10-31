@@ -2,6 +2,8 @@ $mobileBreakpoint: 600px;
 $tabletBreakpoint: 960px;
 $laptopBreakpoint: 1264px;
 $desktopBreakpoint: 1800px;
+$containerWidth: 80vw;
+$containerMaxWidth: 1800px;
 
 :root {
     // Palettes
@@ -37,16 +39,19 @@ $desktopBreakpoint: 1800px;
 
     --color-text-primary: white;
     --color-text-secondary: black;
-    
+
     --color-border-primary: hsl(81 75% 45%);
 
-    // Typography Scale (max 6 sizes)
-    --font-size-xs: 0.75rem;                          // 12px  - tags, badges, copyright, fine metadata
-    --font-size-sm: 0.875rem;                         // 14px  - secondary text, navigation, details, filters
-    --font-size-base: 1rem;                           // 16px  - body text, form controls, standard buttons
-    --font-size-lg: clamp(1.125rem, 1.2vw, 1.25rem);  // 18-20px - subheadings (h3/h4), lead copy, card titles
-    --font-size-xl: clamp(1.5rem, 2.5vw, 2rem);       // 24-32px - section titles (h2), dialogs, large cards
-    --font-size-2xl: clamp(2.25rem, 5vw, 4rem);       // 36-64px - hero headers (h1), main page titles
+    // Velikosti pisma drzime na jedny skale
+    --font-size-heading: var(--font-size-4xl);
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 20px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 32px;
+    --font-size-3xl: 48px;
+    --font-size-4xl: 64px;
 }
 
 $font-size-xs: var(--font-size-xs);
@@ -55,6 +60,8 @@ $font-size-base: var(--font-size-base);
 $font-size-lg: var(--font-size-lg);
 $font-size-xl: var(--font-size-xl);
 $font-size-2xl: var(--font-size-2xl);
+$font-size-3xl: var(--font-size-3xl);
+$font-size-4xl: var(--font-size-4xl);
 
 //:root[data-theme="light"] {
 //
@@ -63,3 +70,19 @@ $font-size-2xl: var(--font-size-2xl);
 //:root[data-theme="dark"] {
 //
 //}
+
+@media screen and (max-width: $tabletBreakpoint) {
+    :root {
+        --font-size-heading: var(--font-size-3xl);
+    }
+}
+
+@media screen and (max-width: $mobileBreakpoint) {
+    :root {
+        --font-size-heading: var(--font-size-2xl);
+    }
+}
+
+:root:root {
+    --nv-font-sans: 'DM Sans', Helvetica, Arial, sans-serif;
+}

@@ -83,7 +83,7 @@ defineProps<{
             font-size: var(--font-size-base);
             
             h2 {
-                font-size: var(--font-size-xl);
+                font-size: var(--font-size-2xl);
                 line-height: 1.16;
                 margin-bottom: 16px;
             }

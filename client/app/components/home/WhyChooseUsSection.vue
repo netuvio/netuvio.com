@@ -173,7 +173,7 @@ const { t, tm } = useI18n();
             }
 
             h1 {
-                font-size: var(--font-size-2xl);
+                font-size: var(--font-size-heading);
                 line-height: 1.15;
                 font-weight: 900;
                 margin: 0;
@@ -181,7 +181,7 @@ const { t, tm } = useI18n();
             }
 
             .titleLead {
-                font-size: var(--font-size-sm);
+                font-size: var(--font-size-base);
                 line-height: 1.5;
                 color: var(--color-carbon-300);
                 margin: 0;
@@ -222,7 +222,7 @@ const { t, tm } = useI18n();
         gap: 8px;
 
         h2 {
-            font-size: var(--font-size-xl);
+            font-size: var(--font-size-2xl);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -244,7 +244,7 @@ const { t, tm } = useI18n();
         }
 
         p {
-            font-size: var(--font-size-sm);
+            font-size: var(--font-size-base);
             line-height: 1.5;
             color: var(--color-carbon-350);
             margin: 0;
@@ -297,13 +297,13 @@ const { t, tm } = useI18n();
         gap: 12px;
 
         h2 {
-            font-size: var(--font-size-xl);
+            font-size: var(--font-size-2xl);
             line-height: 1.25;
             margin: 0;
         }
 
         p {
-            font-size: var(--font-size-sm);
+            font-size: var(--font-size-base);
             line-height: 1.5;
             color: var(--color-carbon-400);
             margin: 0;
